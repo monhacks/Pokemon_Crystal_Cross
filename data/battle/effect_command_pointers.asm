@@ -167,4 +167,6 @@ BattleCommandPointers:
 	dw BattleCommand_Hex
 	dw BattleCommand_DoubleUnderwaterDamage
 	dw BattleCommand_CheckPowder
+	dw BattleCommand_EffectSporeStatusChance
+	dw BattleCommand_SpecialAttackUp2
 	

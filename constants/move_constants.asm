@@ -15,7 +15,7 @@
 	const THUNDERPUNCH ; 09
 	const SCRATCH      ; 0a
 	const MUD_SHOT     ; 0b spd -1
-	const ASTONISH     ; 0c
+	const OMINOUS_WIND ; 0c
 	const RAZOR_WIND   ; 0d
 	const SWORDS_DANCE ; 0e atk +2
 	const CUT          ; 0f
@@ -34,17 +34,14 @@
 	const SAND_ATTACK  ; 1c acc -1
 	const HEADBUTT     ; 1d
 	const HORN_ATTACK  ; 1e
-	const FURY_ATTACK  ; 1f
 	const HORN_DRILL   ; 20
 	const TACKLE       ; 21
 	const POWER_GEM    ; 22
 	const WRAP         ; 23
 	const TAKE_DOWN    ; 24
-	const THRASH       ; 25
 	const ICE_FANG     ; 26
 	const TAIL_WHIP    ; 27 def -1
 	const POISON_STING ; 28
-	const TWINEEDLE    ; 29
 	const PIN_MISSILE  ; 2a spd -1
 	const LEER         ; 2b def -1
 	const BITE         ; 2c
@@ -57,7 +54,7 @@
 	const WATER_PULSE  ; 33
 	const EMBER        ; 34
 	const FLAMETHROWER ; 35
-	const MIST         ; 36 
+	const REFRESH      ; 36 
 	const WATER_GUN    ; 37
 	const HYDRO_PUMP   ; 38
 	const SURF         ; 39
@@ -74,14 +71,11 @@
 	const COUNTER      ; 44
 	const SEISMIC_TOSS ; 45
 	const STRENGTH     ; 46
-	const ABSORB       ; 47
 	const MEGA_DRAIN   ; 48
 	const LEECH_SEED   ; 49
 	const GROWTH       ; 4a atk +1 spatk +1
 	const RAZOR_LEAF   ; 4b
 	const SOLARBEAM    ; 4c
-	const POISONPOWDER ; 4d
-	const STUN_SPORE   ; 4e
 	const SLEEP_POWDER ; 4f
 	const PETAL_DANCE  ; 50
 	const STRING_SHOT  ; 51 spd -1
@@ -102,7 +96,6 @@
 	const HOWL         ; 60
 	const AGILITY      ; 61 spd +2
 	const QUICK_ATTACK ; 62
-	const RAGE         ; 63
 	const TELEPORT     ; 64
 	const NIGHT_SHADE  ; 65
 	const MIMIC        ; 66
@@ -118,7 +111,6 @@
 	const LIGHT_SCREEN ; 71 
 	const HAZE         ; 72
 	const REFLECT      ; 73 
-	const FOCUS_ENERGY ; 74 
 	const SILVER_WIND  ; 75 allup
 	const METRONOME    ; 76
 	const MIRROR_MOVE  ; 77
@@ -126,16 +118,14 @@
 	const DRAGON_DANCE ; 79
 	const LICK         ; 7a
 	const SMOG         ; 7b
-	const SLUDGE       ; 7c
-	const BONE_CLUB    ; 7d ;rename bone rush
+	const ACID_SPRAY   ; 7c 
+	const BONE_CLUB    ; 7d
 	const FIRE_BLAST   ; 7e
 	const WATERFALL    ; 7f
 	const SWIFT        ; 81
 	const SPIKE_CANNON ; 83
 	const POISON_FANG  ; 84 
 	const AMNESIA      ; 85 spdef +2
-	const SHADOW_PUNCH ; 86 
-	const SOFTBOILED   ; 87
 	const WILL_O_WISP  ; 88 
 	const GLARE        ; 89
 	const DREAM_EATER  ; 8a
@@ -145,8 +135,6 @@
 	const ROOST        ; 8e
 	const SKY_ATTACK   ; 8f
 	const TRANSFORM    ; 90
-	const BUBBLE       ; 91
-	const SPORE        ; 93
 	const FLASH        ; 94 acc -1 spatk +1 
 	const ICICLE_CRASH ; 95
 	const SPLASH       ; 96
@@ -157,7 +145,6 @@
 	const BONEMERANG   ; 9b
 	const REST         ; 9c
 	const ROCK_SLIDE   ; 9d
-	const HYPER_FANG   ; 9e
 	const SHARPEN      ; 9f
 	const FIRE_FANG    ; a0
 	const TRI_ATTACK   ; a1
@@ -169,34 +156,24 @@
 	const THIEF        ; a8
 	const SPIDER_WEB   ; a9
 	const DRAGON_CLAW  ; aa
-	const NIGHTMARE    ; ab
 	const FLAME_WHEEL  ; ac
-	const SNORE        ; ad
 	const CURSE        ; ae atk +1 def +1 spd -1
-	const FLAIL        ; af
-	const CONVERSION2  ; b0
 	const AEROBLAST    ; b1
-	const COTTON_SPORE ; b2 spd -2
 	const REVERSAL     ; b3
 	const SPITE        ; b4
 	const POWDER_SNOW  ; b5
 	const PROTECT      ; b6
-	const MACH_PUNCH   ; b7
-	const SCARY_FACE   ; b8
-	const FAINT_ATTACK ; b9
-	const SWEET_KISS   ; ba
+	const SCARY_FACE   ; b8 spd -2
 	const BELLY_DRUM   ; bb atk +3
 	const SLUDGE_BOMB  ; bc
 	const MUD_SLAP     ; bd acc -1
 	const OCTAZOOKA    ; be acc -1
 	const SPIKES       ; bf
 	const ZAP_CANNON   ; c0
-	const FORESIGHT    ; c1 
 	const DESTINY_BOND ; c2
 	const PERISH_SONG  ; c3
 	const ICY_WIND     ; c4 spd -1
 	const FEATHERDANCE ; c5
-	const LOCK_ON      ; c7
 	const OUTRAGE      ; c8
 	const SANDSTORM    ; c9
 	const GIGA_DRAIN   ; ca
@@ -219,8 +196,6 @@
 	const SAFEGUARD    ; db
 	const PAIN_SPLIT   ; dc
 	const SACRED_FIRE  ; dd
-	const MAGNITUDE    ; de
-	const DYNAMICPUNCH ; df
 	const MEGAHORN     ; e0
 	const DRAGONBREATH ; e1
 	const BATON_PASS   ; e2
@@ -234,7 +209,6 @@
 	const ENERGY_BALL  ; eb
 	const MOONLIGHT    ; ec
 	const HIDDEN_POWER ; ed
-	const CROSS_CHOP   ; ee 
 	const TWISTER      ; ef
 	const RAIN_DANCE   ; f0
 	const SUNNY_DAY    ; f1
@@ -247,7 +221,6 @@
 	const HYPER_VOICE  ; f8
 	const ROCK_SMASH   ; f9 def -1
 	const WHIRLPOOL    ; fa
-	const BEAT_UP      ; fb
 	const ROCK_CLIMB   ; fc
 	const DARK_PULSE   ; 253 
 	const POISON_JAB   ; 254
@@ -260,6 +233,33 @@
 	const RAZOR_SHELL  ; c6
 	const CHARGE_BEAM  ; e9
 	const SHADOW_RUSH  ; a5
+	const SYNTHESIS
+	const EFFECT_SPORE
+	const BULLDOZE
+	const BULLET_PUNCH
+	const BUG_BITE
+	const COIL
+	const FLAIL
+	const AIR_CUTTER
+	const MIRROR_SHOT
+	const PSYSTRIKE
+	const VACUUM_WAVE
+	const SHADOWSTRIKE
+	const ECHOED_VOICE
+	const DIRE_CLAW
+	const AQUA_JET
+	const MYSTICALFIRE
+	const NASTY_PLOT
+	const FELL_STINGER
+	const LASER_FOCUS
+	const DRILL_RUN
+	const ACCELEROCK
+	const WAVE_CRASH
+	const NIGHT_SLASH
+	const SKY_UPPERCUT
+	const BLAZE_KICK
+	const QUIVER_DANCE
+	const BULK_UP
 	const STRUGGLE
 	
 NUM_ATTACKS EQU const_value - 1

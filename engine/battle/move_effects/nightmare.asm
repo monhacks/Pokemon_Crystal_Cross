@@ -33,5 +33,6 @@ BattleCommand_Nightmare:
 	jp StdBattleTextbox
 
 .failed
-	call AnimateFailedMove
-	jp PrintButItFailed
+;	call AnimateFailedMove
+;	jp PrintButItFailed
+	ret

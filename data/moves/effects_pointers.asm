@@ -155,3 +155,16 @@ MoveEffectsPointers:
 	dw Whirlpool
 	dw SpAtkUpHit
 	dw SpAtkDownHit
+	dw DoEffectSpore
+	dw Coil
+	dw DireClaw
+	dw HoneClaws
+	dw SpecialAttackUp2
+	dw NightmareHit
+	dw SpiderWeb
+	dw Howl
+	dw ClearSmog
+	dw SkyUppercut
+	dw QuiverDance
+	dw BulkUp
+	

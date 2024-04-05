@@ -167,6 +167,8 @@ ENDM
 	command hex                     ; a4
 	command doubleunderwaterdamage  ; a5
 	command checkpowder
+	command effectsporestatuschance
+	command specialattackup2
 
 	const_def -1, -1
 	command endmove                 ; ff

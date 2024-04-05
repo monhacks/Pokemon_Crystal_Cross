@@ -3,10 +3,8 @@
 ResidualMoves:
 	db MIST
 	db LEECH_SEED
-	db POISONPOWDER
-	db STUN_SPORE
+	db EFFECT_SPORE
 	db THUNDER_WAVE
-	db FOCUS_ENERGY
 	db TRANSFORM
 	db SUBSTITUTE
 	db SPIKES
@@ -23,4 +21,5 @@ ResidualMoves:
 	db DOUBLE_TEAM
 	db CURSE
 	db IRON_DEFENSE
+	db LASER_FOCUS
 	db -1 ; end

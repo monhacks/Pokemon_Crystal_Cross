@@ -10,7 +10,7 @@ BattleAnimations::
 	dw BattleAnim_Thunderpunch
 	dw BattleAnim_Scratch
 	dw BattleAnim_SandAttack
-	dw BattleAnim_Tackle ;astonish
+	dw BattleAnim_Gust ;ominous wind
 	dw BattleAnim_RazorWind
 	dw BattleAnim_SwordsDance
 	dw BattleAnim_Cut
@@ -29,17 +29,14 @@ BattleAnimations::
 	dw BattleAnim_SandAttack
 	dw BattleAnim_Headbutt
 	dw BattleAnim_HornAttack
-	dw BattleAnim_FuryAttack
 	dw BattleAnim_HornDrill
 	dw BattleAnim_Tackle
 	dw BattleAnim_HiddenPower ;power gem
 	dw BattleAnim_Wrap
 	dw BattleAnim_TakeDown
-	dw BattleAnim_Thrash
 	dw BattleAnim_Bite ;ice fang
 	dw BattleAnim_TailWhip
 	dw BattleAnim_PoisonSting
-	dw BattleAnim_Twineedle
 	dw BattleAnim_PinMissile
 	dw BattleAnim_Leer
 	dw BattleAnim_Bite
@@ -52,7 +49,7 @@ BattleAnimations::
 	dw BattleAnim_Supersonic  ; water pulse
 	dw BattleAnim_Ember
 	dw BattleAnim_Flamethrower
-	dw BattleAnim_Mist
+	dw BattleAnim_Mist        ; refresh
 	dw BattleAnim_WaterGun
 	dw BattleAnim_HydroPump
 	dw BattleAnim_Surf
@@ -69,19 +66,15 @@ BattleAnimations::
 	dw BattleAnim_Counter
 	dw BattleAnim_SeismicToss
 	dw BattleAnim_Strength
-	dw BattleAnim_Absorb
 	dw BattleAnim_MegaDrain
 	dw BattleAnim_LeechSeed
 	dw BattleAnim_Growth
 	dw BattleAnim_RazorLeaf
 	dw BattleAnim_Solarbeam
-	dw BattleAnim_Poisonpowder
-	dw BattleAnim_StunSpore
 	dw BattleAnim_SleepPowder
 	dw BattleAnim_PetalDance
 	dw BattleAnim_StringShot
 	dw BattleAnim_DragonRage
-	dw BattleAnim_FireSpin
 	dw BattleAnim_Thundershock
 	dw BattleAnim_Thunderbolt
 	dw BattleAnim_ThunderWave
@@ -97,7 +90,6 @@ BattleAnimations::
 	dw BattleAnim_Growl
 	dw BattleAnim_Agility
 	dw BattleAnim_QuickAttack
-	dw BattleAnim_Rage
 	dw BattleAnim_Teleport
 	dw BattleAnim_NightShade
 	dw BattleAnim_Mimic
@@ -113,7 +105,6 @@ BattleAnimations::
 	dw BattleAnim_LightScreen
 	dw BattleAnim_Haze
 	dw BattleAnim_Reflect
-	dw BattleAnim_FocusEnergy
 	dw BattleAnim_IcyWind
 	dw BattleAnim_Metronome
 	dw BattleAnim_MirrorMove
@@ -121,7 +112,7 @@ BattleAnimations::
 	dw BattleAnim_FocusEnergy
 	dw BattleAnim_Lick
 	dw BattleAnim_Smog
-	dw BattleAnim_Sludge
+	dw BattleAnim_Sludge        ;acid spray
 	dw BattleAnim_BoneClub
 	dw BattleAnim_FireBlast
 	dw BattleAnim_Waterfall
@@ -129,8 +120,6 @@ BattleAnimations::
 	dw BattleAnim_SpikeCannon
 	dw BattleAnim_Bite
 	dw BattleAnim_Amnesia
-	dw BattleAnim_MegaPunch
-	dw BattleAnim_Softboiled
 	dw BattleAnim_Ember
 	dw BattleAnim_Glare
 	dw BattleAnim_DreamEater
@@ -140,8 +129,6 @@ BattleAnimations::
 	dw BattleAnim_Synthesis
 	dw BattleAnim_SkyAttack
 	dw BattleAnim_Transform
-	dw BattleAnim_Bubble
-	dw BattleAnim_Spore
 	dw BattleAnim_Flash
 	dw BattleAnim_Crabhammer  ;icicle crash
 	dw BattleAnim_Splash
@@ -152,7 +139,6 @@ BattleAnimations::
 	dw BattleAnim_Bonemerang
 	dw BattleAnim_Rest
 	dw BattleAnim_RockSlide
-	dw BattleAnim_HyperFang
 	dw BattleAnim_Sharpen
 	dw BattleAnim_Bite ;fire fang
 	dw BattleAnim_TriAttack
@@ -164,34 +150,24 @@ BattleAnimations::
 	dw BattleAnim_Thief
 	dw BattleAnim_SpiderWeb
 	dw BattleAnim_Slash
-	dw BattleAnim_Nightmare
 	dw BattleAnim_FlameWheel
-	dw BattleAnim_Snore
 	dw BattleAnim_Curse
-	dw BattleAnim_Flail
-	dw BattleAnim_Conversion2
 	dw BattleAnim_Aeroblast
-	dw BattleAnim_CottonSpore
 	dw BattleAnim_Reversal
 	dw BattleAnim_Spite
 	dw BattleAnim_PowderSnow
 	dw BattleAnim_Protect
-	dw BattleAnim_MachPunch
 	dw BattleAnim_ScaryFace
-	dw BattleAnim_FaintAttack
-	dw BattleAnim_SweetKiss
 	dw BattleAnim_BellyDrum
 	dw BattleAnim_SludgeBomb
 	dw BattleAnim_MudSlap
 	dw BattleAnim_Octazooka
 	dw BattleAnim_Spikes
 	dw BattleAnim_ZapCannon
-	dw BattleAnim_Foresight
 	dw BattleAnim_DestinyBond
 	dw BattleAnim_PerishSong
 	dw BattleAnim_IcyWind
 	dw BattleAnim_TailWhip
-	dw BattleAnim_LockOn
 	dw BattleAnim_Outrage
 	dw BattleAnim_Sandstorm
 	dw BattleAnim_GigaDrain
@@ -214,7 +190,6 @@ BattleAnimations::
 	dw BattleAnim_Safeguard
 	dw BattleAnim_PainSplit
 	dw BattleAnim_SacredFire
-	dw BattleAnim_Magnitude
 	dw BattleAnim_Dynamicpunch
 	dw BattleAnim_Megahorn
 	dw BattleAnim_Dragonbreath
@@ -229,7 +204,6 @@ BattleAnimations::
 	dw BattleAnim_Octazooka ; energy ball
 	dw BattleAnim_Moonlight
 	dw BattleAnim_HiddenPower
-	dw BattleAnim_CrossChop
 	dw BattleAnim_Twister
 	dw BattleAnim_RainDance
 	dw BattleAnim_SunnyDay
@@ -242,7 +216,6 @@ BattleAnimations::
 	dw BattleAnim_Supersonic
 	dw BattleAnim_RockSmash
 	dw BattleAnim_Whirlpool
-	dw BattleAnim_BeatUp
 	dw BattleAnim_Waterfall
 	dw BattleAnim_Psybeam
 	dw BattleAnim_Slash
@@ -254,7 +227,34 @@ BattleAnimations::
 	dw BattleAnim_IcyWind
 	dw BattleAnim_Slash
 	dw BattleAnim_AuroraBeam ; charge beam
-	dw BattleAnim_TakeDown
+	dw BattleAnim_TakeDown   ; shadow rush
+	dw BattleAnim_Synthesis
+	dw BattleAnim_StunSpore  ; effect spore
+	dw BattleAnim_Magnitude  ; bulldoze
+	dw BattleAnim_MachPunch  ; bullet punch
+	dw BattleAnim_SuperFang  ; bug bite
+	dw BattleAnim_DefenseCurl ;coil
+	dw BattleAnim_Flail
+	dw BattleAnim_Gust       ; air cutter
+	dw BattleAnim_MirrorCoat ; mirror shot
+	dw BattleAnim_Slam       ; psystrike
+	dw BattleAnim_CometPunch ; vacuum wave
+	dw BattleAnim_FaintAttack ;shadow strike
+	dw BattleAnim_Roar       ; echoed voice
+	dw BattleAnim_Slash      ; dire claw
+	dw BattleAnim_Dive       ; aqua jet
+	dw BattleAnim_FireSpin   ; mysticalfire
+	dw BattleAnim_PsychUp    ; nasty plot
+	dw BattleAnim_Twineedle  ; fell stinger
+	dw BattleAnim_LockOn     ; laser focus
+	dw BattleAnim_HornDrill  ; drill run
+	dw BattleAnim_QuickAttack ;accelerock
+	dw BattleAnim_Slam       ; wave crash
+	dw BattleAnim_Slash      ; night slash
+	dw BattleAnim_Slam       ; sky uppercut
+	dw BattleAnim_DoubleKick ; blaze kick
+	dw BattleAnim_Splash     ; quiver dance
+	dw BattleAnim_Meditate   ; bulk up
 	dw BattleAnim_Struggle
 ; $100	
 	dw BattleAnim_SweetScent2
@@ -4861,3 +4861,4 @@ BattleAnim_ShowMon_1:
 	anim_incobj 1
 	anim_wait 1
 	anim_ret
+

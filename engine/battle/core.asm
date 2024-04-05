@@ -1579,7 +1579,7 @@ HandleWrap:
 	call SwitchTurnCore
 
 .skip_anim
-	call GetSixteenthMaxHP
+	call GetEighthMaxHPMaxHP
 	call SubtractHPFromUser
 	ld hl, BattleText_UsersHurtByStringBuffer1
 	jr .print_text
@@ -6826,6 +6826,7 @@ LoadEnemyMon:
 	ld bc, NUM_EXP_STATS * 2
 	call CopyBytes
 
+	call ApplyStatusEffectOnEnemyStats
 	ret
 
 CheckSleepingTreeMon:

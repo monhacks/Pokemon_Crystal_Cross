@@ -182,8 +182,6 @@ BattleCommand_CheckTurn:
 
 	; Snore and Sleep Talk bypass sleep.
 	ld a, [wCurPlayerMove]
-	cp SNORE
-	jr z, .not_asleep
 	cp SLEEP_TALK
 	jr z, .not_asleep
 
@@ -416,8 +414,6 @@ CheckEnemyTurn:
 .fast_asleep
 	; Snore and Sleep Talk bypass sleep.
 	ld a, [wCurEnemyMove]
-	cp SNORE
-	jr z, .not_asleep
 	cp SLEEP_TALK
 	jr z, .not_asleep
 	call CantMove
@@ -935,8 +931,6 @@ IgnoreSleepOnly:
 	call GetBattleVar
 
 	; Snore and Sleep Talk bypass sleep.
-	cp SNORE
-	jr z, .CheckSleep
 	cp SLEEP_TALK
 	jr z, .CheckSleep
 	and a
@@ -1787,8 +1781,6 @@ BattleCommand_CheckHit:
 
 	cp EARTHQUAKE
 	ret z
-	cp MAGNITUDE
-	ret z
 
 .LockedOn:
 	ld a, 1
@@ -1849,6 +1841,8 @@ BattleCommand_CheckHit:
 	cp THUNDER
 	ret z
 	cp TWISTER
+	ret z
+	cp SKY_UPPERCUT
 	ret
 
 .DigMoves:
@@ -1856,8 +1850,6 @@ BattleCommand_CheckHit:
 	call GetBattleVar
 
 	cp EARTHQUAKE
-	ret z
-	cp MAGNITUDE
 	ret
 
 .ThunderRain:
@@ -3818,10 +3810,6 @@ INCLUDE "engine/battle/move_effects/encore.asm"
 
 INCLUDE "engine/battle/move_effects/pain_split.asm"
 
-INCLUDE "engine/battle/move_effects/snore.asm"
-
-INCLUDE "engine/battle/move_effects/conversion2.asm"
-
 INCLUDE "engine/battle/move_effects/lock_on.asm"
 
 INCLUDE "engine/battle/move_effects/sketch.asm"
@@ -4681,6 +4669,11 @@ BattleCommand_SpecialDefenseUp2:
 BattleCommand_EvasionUp2:
 ; evasionup2
 	ld b, $10 | EVASION
+	jr BattleCommand_StatUp
+	
+BattleCommand_SpecialAttackUp2:
+; specialattackup2
+	ld b, $10 | SP_ATTACK
 	jr BattleCommand_StatUp
 
 BattleCommand_StatUp:
@@ -5997,8 +5990,9 @@ BattleCommand_EndLoop:
 	jr .loop_back_to_critical
 
 .twineedle
-	ld a, 1
-	jr .double_hit
+;	ld a, 1
+;	jr .double_hit
+	jr .not_triple_kick
 
 .in_loop
 	ld a, [de]
@@ -6559,8 +6553,6 @@ BattleCommand_FinishConfusingTarget:
 	call GetBattleVar
 	cp EFFECT_CONFUSE_HIT
 	jr z, .got_effect
-	cp EFFECT_SNORE
-	jr z, .got_effect
 	cp EFFECT_SWAGGER
 	jr z, .got_effect
 	call AnimateCurrentMove
@@ -6586,8 +6578,6 @@ BattleCommand_Confuse_CheckSnore_Swagger_ConfuseHit:
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_CONFUSE_HIT
-	ret z
-	cp EFFECT_SNORE
 	ret z
 	cp EFFECT_SWAGGER
 	ret z
@@ -7204,6 +7194,8 @@ BattleCommand_HealMorn:
 
 BattleCommand_HealDay:
 ; healday
+	ld a, EVE_F
+	ld [wc708], a
 	ld b, DAY_F
 	jr BattleCommand_TimeBasedHealContinue
 
@@ -7619,3 +7611,22 @@ SandstormSpDefBoost:
 BattleCommand_CheckPowder:
 	call BattleCommand_CheckPowder2
 	ret	
+	
+BattleCommand_EffectSporeStatusChance:
+; effectsporestatuschance
+
+	call BattleCommand_EffectChance
+.loop
+	; 1/3 chance of each status
+	call BattleRandom
+	swap a
+	and %11
+	jr z, .loop
+	dec a
+	ld hl, .StatusCommands
+	rst JumpTable
+	ret
+
+.StatusCommands:
+	dw BattleCommand_ParalyzeTarget ; paralyze
+	dw BattleCommand_PoisonTarget ; poison

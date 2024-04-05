@@ -189,7 +189,7 @@
 	const ITEM_X32     ; b5
 	const ITEM_X33     ; b6
 	const ITEM_X34     ; b7
-	const ITEM_X35     ; b8
+	const ITEM_X35     ; b8 b9 skipped on purpose?
 
 __tmhm_value__ = 1
 
@@ -214,67 +214,67 @@ PURGE MOVE_FOR_TM
 __tmhm_value__ = __tmhm_value__ + 1
 ENDM
 
-; see data/moves/tmhm_moves.asm for moves
+; see data/moves/tmhm_moves.asm for moves | ba-c1, 60
 	add_tm DYNAMICPUNCH ; ba  1
-	add_tm HEADBUTT     ; bb  2
-	add_tm CURSE        ; bc  3
-	add_tm SNARL        ; bd  4
+	add_tm DRAGON_CLAW  ; bb  2
+	add_tm WATER_PULSE  ; bc  3
+	add_tm CALM_MIND    ; bd  4
 	add_tm ROAR         ; be  5
 	add_tm TOXIC        ; bf  6
-	add_tm ZAP_CANNON   ; c0  7
-	add_tm CHARGE_BEAM  ; c2  8
-	add_tm HIDDEN_POWER ; c3  9
-	add_tm SUNNY_DAY    ; c4 10
-	add_tm ENERGY_BALL  ; c5 11
-	add_tm ICE_BEAM     ; c6 12
-	add_tm BLIZZARD     ; c7 13
-	add_tm HYPER_BEAM   ; c8 14
-	add_tm ICY_WIND     ; c9 15
-	add_tm PROTECT      ; ca 16
-	add_tm RAIN_DANCE   ; cb 17
-	add_tm GIGA_DRAIN   ; cc 18
-	add_tm THUNDERBOLT  ; cd 19
-	add_tm CALM_MIND    ; ce 20
-	add_tm SOLARBEAM    ; cf 21
-	add_tm IRON_TAIL    ; d0 22
-	add_tm DRAGONBREATH ; d1 23
-	add_tm THUNDER      ; d2 24
-	add_tm EARTHQUAKE   ; d3 25
-	add_tm RETURN       ; d4 26
-	add_tm DIG          ; d5 27
-	add_tm PSYCHIC_M    ; d6 28
-	add_tm SHADOW_BALL  ; d7 29
-	add_tm MUD_SLAP     ; d8 30
-	add_tm DOUBLE_TEAM  ; d9 31
-	add_tm ICE_PUNCH    ; da 32
-	add_tm SWAGGER      ; db 33
-	add_tm SLEEP_TALK   ; dc 34
-	add_tm SLUDGE_BOMB  ; dd 35
-	add_tm SANDSTORM    ; de 36
-	add_tm FIRE_BLAST   ; df 37
-	add_tm RAZOR_WIND   ; e0 38
-	add_tm FLAMETHROWER ; e1 39
-	add_tm THUNDERPUNCH ; e2 40
-	add_tm DREAM_EATER  ; e3 41
-	add_tm ROCK_SLIDE   ; e4 42
-	add_tm REST         ; e5 43
-	add_tm ATTRACT      ; e6 44
-	add_tm THIEF        ; e7 45
-	add_tm STEEL_WING   ; e8 46
-	add_tm FIRE_PUNCH   ; e9 47
-	add_tm FURY_CUTTER  ; ea 48
-	add_tm NIGHTMARE    ; eb 49
-	add_tm DRAGON_CLAW  ; ec 50
-	add_tm WATER_PULSE  ; ed 51
-	add_tm DARK_PULSE   ; ee 52
-	add_tm FLASH_CANNON ; ef 53
-	add_tm HAIL         ; f0 54
-	add_tm REFLECT      ; f1 55
-	add_tm LIGHT_SCREEN ; f2 56
-	add_tm WILL_O_WISP  ; f3 57
-	add_tm AURA_SPHERE  ; f4 58
-	add_tm SUBSTITUTE   ; f5 59
-	add_tm SHADOW_RUSH  ; c1 60
+	add_tm HAIL         ; c0  7
+	add_tm CURSE        ; c1  8
+	add_tm HEADBUTT     ; c2  9
+	add_tm HIDDEN_POWER ; c3 10
+	add_tm SUNNY_DAY    ; c4 11
+	add_tm SLEEP_TALK   ; c5 12
+	add_tm ICE_BEAM     ; c6 13
+	add_tm BLIZZARD     ; c7 14
+	add_tm HYPER_BEAM   ; c8 15
+	add_tm LIGHT_SCREEN ; c9 16
+	add_tm PROTECT      ; ca 17
+	add_tm RAIN_DANCE   ; cb 18
+	add_tm GIGA_DRAIN   ; cc 19
+	add_tm REFLECT      ; cd 20
+	add_tm SNARL        ; ce 21
+	add_tm SOLARBEAM    ; cf 22
+	add_tm IRON_TAIL    ; d0 23
+	add_tm THUNDERBOLT  ; d1 24
+	add_tm THUNDER      ; d2 25
+	add_tm EARTHQUAKE   ; d3 26
+	add_tm RETURN       ; d4 27
+	add_tm DIG          ; d5 28
+	add_tm PSYCHIC_M    ; d6 29
+	add_tm SHADOW_BALL  ; d7 30
+	add_tm WILL_O_WISP  ; d8 31
+	add_tm DOUBLE_TEAM  ; d9 32
+	add_tm ICE_PUNCH    ; da 33
+	add_tm THUNDER_WAVE ; db 34
+	add_tm FLAMETHROWER ; dc 35
+	add_tm SLUDGE_BOMB  ; dd 36
+	add_tm SANDSTORM    ; de 37
+	add_tm FIRE_BLAST   ; df 38
+	add_tm ROCK_SLIDE   ; e0 39
+	add_tm ZAP_CANNON   ; e1 40
+	add_tm THUNDERPUNCH ; e2 41
+	add_tm DREAM_EATER  ; e3 42
+	add_tm RAZOR_WIND   ; e4 43
+	add_tm REST         ; e5 44
+	add_tm ATTRACT      ; e6 45
+	add_tm THIEF        ; e7 46
+	add_tm STEEL_WING   ; e8 47
+	add_tm FIRE_PUNCH   ; e9 48
+	add_tm FURY_CUTTER  ; ea 49
+	add_tm SUBSTITUTE   ; eb 50
+	add_tm ROOST        ; ec 51
+	add_tm AURA_SPHERE  ; ed 52
+	add_tm ENERGY_BALL  ; ee 53
+	add_tm POISON_JAB   ; ef 54
+	add_tm SHADOWSTRIKE ; f0 55
+	add_tm FLASH_CANNON ; f1 56
+	add_tm CHARGE_BEAM  ; f2 57
+	add_tm DARK_PULSE   ; f3 58
+	add_tm DRAGONBREATH ; f4 59
+	add_tm SHADOW_RUSH  ; f5 60
 NUM_TMS EQU __tmhm_value__ - 1
 
 add_hm: MACRO
@@ -309,7 +309,7 @@ ENDM
 	add_hm WATERFALL    ; fc
 	add_hm ROCK_CLIMB   ; fd
 	add_hm ROCK_SMASH   ; fe
-	add_hm DIVE         ; b9
+	add_hm DIVE         ; ff
 NUM_HMS EQU __tmhm_value__ - NUM_TMS - 1
 
 add_mt: MACRO
@@ -337,17 +337,19 @@ ENDM
 	add_mt SWORDS_DANCE
 	add_mt SEISMIC_TOSS
 	add_mt COUNTER
-	add_mt THUNDER_WAVE
+	add_mt LASER_FOCUS
 	add_mt SELFDESTRUCT
 	add_mt NIGHT_SHADE
 	add_mt EARTH_POWER
 	add_mt SUBMISSION
 	add_mt TWISTER
-	add_mt ROOST
+	add_mt ICY_WIND
 	add_mt HYPER_VOICE
 	add_mt PAIN_SPLIT
 	add_mt HEAL_BELL
 	add_mt SPIKES
+	add_mt WAVE_CRASH
+	add_mt BULLDOZE
 	add_mt SACRED_FIRE
 	add_mt AEROBLAST
 	add_mt VOLT_TACKLE

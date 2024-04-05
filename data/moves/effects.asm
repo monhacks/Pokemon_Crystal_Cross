@@ -176,6 +176,7 @@ DreamEater:
 	supereffectivetext
 	eatdream
 	checkfaint
+	nightmare
 	buildopponentrage
 	endmove
 
@@ -895,6 +896,8 @@ FocusEnergy:
 	usedmovetext
 	doturn
 	focusenergy
+	checkhit
+	lockon
 	endmove
 
 DoConfuse:
@@ -2055,6 +2058,7 @@ Hex:
 	damagevariation
 	hex
 	checkhit
+	effectchance
 	moveanim
 	failuretext
 	applydamage
@@ -2063,6 +2067,7 @@ Hex:
 	checkfaint
 	buildopponentrage
 	kingsrock
+	nightmare
 	endmove
 
 ChargeWave:
@@ -2137,12 +2142,21 @@ Whirlpool:
 	traptarget
 	endmove	
 	
-;SpiderWeb:
-	;checkobedience
-	;usedmovetext
-	;doturn
-	;spiderweb
-	;endmove
+SpiderWeb:
+	checkobedience
+	usedmovetext
+	doturn
+	arenatrap
+	checkhit
+	speeddown
+	lowersub
+	statdownanim
+	raisesub
+	statdownmessage
+	statdownfailtext
+	checksafeguard
+	poison
+	endmove
 	
 SpAtkUpHit:
 	checkobedience
@@ -2187,3 +2201,185 @@ SpAtkDownHit:
 	specialattackdown
 	statdownmessage
 	endmove
+	
+DoEffectSpore:
+	checkobedience
+	usedmovetext
+	doturn
+	stab
+	checkhit
+	checkpowder
+	checksafeguard
+	effectsporestatuschance
+	endmove
+	
+Coil:
+	checkobedience
+    usedmovetext
+    doturn
+	lowersub
+    statupanim
+	raisesub
+    attackup
+	statupmessage
+	defenseup
+	statupmessage
+	accuracyup
+	statupmessage
+    statupfailtext
+    endmove
+	
+DireClaw:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	buildopponentrage
+	effectsporestatuschance
+	endmove
+	
+HoneClaws:
+	checkobedience
+    usedmovetext
+    doturn
+	lowersub
+    statupanim
+	raisesub
+    attackup
+	statupmessage
+	accuracyup
+	statupmessage
+    statupfailtext
+    endmove
+	
+SpecialAttackUp2:
+	checkobedience
+	usedmovetext
+	doturn
+	specialattackup2
+	lowersub
+	statupanim
+	raisesub
+	statupmessage
+	statupfailtext
+	endmove
+	
+NightmareHit:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	buildopponentrage
+	kingsrock
+	nightmare
+	endmove
+	
+Howl:
+	checkobedience
+	usedmovetext
+	doturn
+	attackup
+	lowersub
+	statupanim
+	raisesub
+	statupmessage
+	statupfailtext
+	focusenergy
+	endmove
+	
+ClearSmog:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	resetstats
+	buildopponentrage
+	poisontarget
+	endmove
+	
+SkyUppercut:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	doubleflyingdamage
+	checkhit
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	buildopponentrage
+	kingsrock
+	endmove
+	
+QuiverDance:
+	checkobedience
+    usedmovetext
+    doturn
+	lowersub
+    statupanim
+	raisesub
+    specialattackup
+	statupmessage
+	specialdefenseup
+	statupmessage
+	speedup
+	statupmessage
+    statupfailtext
+    endmove
+	
+BulkUp:
+	checkobedience
+    usedmovetext
+    doturn
+	lowersub
+    statupanim
+	raisesub
+    attackup
+	statupmessage
+	defenseup
+	statupmessage
+    statupfailtext
+    endmove
+	

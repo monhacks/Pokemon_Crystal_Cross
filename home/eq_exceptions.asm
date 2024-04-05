@@ -4,8 +4,7 @@ EarthquakeMiss::
 	cp EFFECT_EARTHQUAKE
 	jr z, .checkmon
 	
-	cp EFFECT_MAGNITUDE
-	jr nz, .not_eq_mag
+	jr .not_eq_mag
 
 .checkmon	
 	jr .duserpent
