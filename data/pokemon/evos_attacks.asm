@@ -580,7 +580,7 @@ NidorinoEvosAttacks:                 ;final
 
 NidokingEvosAttacks:                 ;final
 	db 0 ; no more evolutions
-	db 1, BULLDOZE
+	db 1, POWERUPPUNCH
 	db 1, HORN_DRILL     ;evolution move
 	db 1, PECK
 	db 1, LEER
@@ -639,37 +639,36 @@ ClefableEvosAttacks:                 ;final
 VulpixEvosAttacks:                   ;final
 	dbbbw EVOLVE_ITEM_LEVEL, FIRE_STONE, 25, NINETALES
 	db 0 ; no more evolutions
-	db 1, DISABLE
 	db 1, EMBER
-	db 4, TAIL_WHIP
+	db 1, TAIL_WHIP
+	db 4, SPITE
 	db 7, QUICK_ATTACK
-	db 13, CONFUSE_RAY
-	db 18, MYSTICALFIRE
-	db 22, SAFEGUARD
-	db 26, HEX
-	db 32, SPITE
-	db 35, FLAMETHROWER
-	db 43, WILL_O_WISP
-	db 48, FIRE_BLAST
+	db 12, CONFUSE_RAY
+	db 15, MYSTICALFIRE
+	db 20, SHADOWSTRIKE
+	db 24, WILL_O_WISP
+	db 28, HEX
+	db 34, FLAMETHROWER
+	db 39, SAFEGUARD
+	db 45, FIRE_BLAST
 	db 0 ; no more level-up moves
 
 NinetalesEvosAttacks:                ;final
 	db 0 ; no more evolutions
 	db 1, NASTY_PLOT
-	db 1, DISABLE
 	db 1, EMBER
-	db 4, TAIL_WHIP
+	db 1, TAIL_WHIP
+	db 4, SPITE
 	db 7, QUICK_ATTACK
-	db 13, CONFUSE_RAY
-	db 18, MYSTICALFIRE
-	db 22, SAFEGUARD
+	db 12, CONFUSE_RAY
+	db 15, MYSTICALFIRE
+	db 20, SHADOWSTRIKE
+	db 24, WILL_O_WISP
 	db 24, CURSE         ;evolution move
-	db 28, HEX
-	db 35, SPITE
-	db 38, FLAMETHROWER
-	db 44, WILL_O_WISP
-	db 49, SHADOW_BALL
-	db 55, FIRE_BLAST
+	db 34, HEX
+	db 39, FLAMETHROWER
+	db 45, SAFEGUARD
+	db 53, FIRE_BLAST
 	db 0 ; no more level-up moves
 
 JigglypuffEvosAttacks:               ;final
@@ -1613,8 +1612,8 @@ SeelEvosAttacks:                     ;final
 	db 27, AURORA_BEAM
 	db 32, DIVE
 	db 33, TAKE_DOWN
-	db 37, WAVE_CRASH
-	db 41, SAFEGUARD
+	db 37, SAFEGUARD
+	db 41, WAVE_CRASH
 	db 43, ICE_BEAM
 	db 47, HAIL
 	db 0 ; no more level-up moves
@@ -1632,8 +1631,8 @@ DewgongEvosAttacks:                  ;final
 	db 27, AURORA_BEAM
 	db 32, DIVE
 	db 33, TAKE_DOWN
-	db 39, WAVE_CRASH
-	db 43, SAFEGUARD
+	db 39, SAFEGUARD
+	db 43, WAVE_CRASH
 	db 47, ICE_BEAM
 	db 53, HAIL
 	db 0 ; no more level-up moves
@@ -4828,37 +4827,36 @@ CelebiEvosAttacks:                   ;final
 Vulpix_AlolanEvosAttacks:            ;final
 	dbbbw EVOLVE_ITEM_LEVEL, ICE_STONE, 25, NINETALES_ALOLAN
 	db 0 ; no more evolutions
-	db 1, DISABLE
 	db 1, POWDER_SNOW
-	db 4, TAIL_WHIP
+	db 1, TAIL_WHIP
+	db 4, SPITE
 	db 7, QUICK_ATTACK
-	db 13, CONFUSE_RAY
-	db 18, ICY_WIND
-	db 22, SAFEGUARD
-	db 26, OMINOUS_WIND
-	db 32, SPITE
-	db 35, ICE_BEAM
-	db 43, LIGHT_SCREEN
-	db 48, BLIZZARD
+	db 12, CONFUSE_RAY
+	db 15, ICY_WIND
+	db 20, SHADOWSTRIKE
+	db 24, DISABLE
+	db 28, OMINOUS_WIND
+	db 34, ICE_BEAM
+	db 39, SAFEGUARD
+	db 45, BLIZZARD
 	db 0 ; no more level-up moves
 
 Ninetales_AlolanEvosAttacks:         ;final
 	db 0 ; no more evolutions
 	db 1, NASTY_PLOT
-	db 1, DISABLE
 	db 1, POWDER_SNOW
-	db 4, TAIL_WHIP
+	db 1, TAIL_WHIP
+	db 4, SPITE
 	db 7, QUICK_ATTACK
-	db 13, CONFUSE_RAY
-	db 18, ICY_WIND
-	db 22, SAFEGUARD
+	db 12, CONFUSE_RAY
+	db 15, ICY_WIND
+	db 20, SHADOWSTRIKE
+	db 24, DISABLE
 	db 24, CURSE         ;evolution move
-	db 28, OMINOUS_WIND
-	db 35, SPITE
-	db 38, ICE_BEAM
-	db 44, LIGHT_SCREEN
-	db 49, SHADOW_BALL
-	db 55, BLIZZARD
+	db 34, OMINOUS_WIND
+	db 39, ICE_BEAM
+	db 45, SAFEGUARD
+	db 53, BLIZZARD
 	db 0 ; no more level-up moves
 
 Articuno_GalarianEvosAttacks:        ;final

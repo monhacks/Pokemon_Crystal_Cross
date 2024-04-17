@@ -215,66 +215,66 @@ __tmhm_value__ = __tmhm_value__ + 1
 ENDM
 
 ; see data/moves/tmhm_moves.asm for moves | ba-c1, 60
-	add_tm DYNAMICPUNCH ; ba  1
-	add_tm DRAGON_CLAW  ; bb  2
-	add_tm WATER_PULSE  ; bc  3
-	add_tm CALM_MIND    ; bd  4
-	add_tm ROAR         ; be  5
-	add_tm TOXIC        ; bf  6
-	add_tm HAIL         ; c0  7
-	add_tm CURSE        ; c1  8
-	add_tm HEADBUTT     ; c2  9
-	add_tm HIDDEN_POWER ; c3 10
-	add_tm SUNNY_DAY    ; c4 11
-	add_tm SLEEP_TALK   ; c5 12
-	add_tm ICE_BEAM     ; c6 13
-	add_tm BLIZZARD     ; c7 14
-	add_tm HYPER_BEAM   ; c8 15
-	add_tm LIGHT_SCREEN ; c9 16
-	add_tm PROTECT      ; ca 17
-	add_tm RAIN_DANCE   ; cb 18
-	add_tm GIGA_DRAIN   ; cc 19
-	add_tm REFLECT      ; cd 20
-	add_tm SNARL        ; ce 21
-	add_tm SOLARBEAM    ; cf 22
-	add_tm IRON_TAIL    ; d0 23
-	add_tm THUNDERBOLT  ; d1 24
-	add_tm THUNDER      ; d2 25
-	add_tm EARTHQUAKE   ; d3 26
-	add_tm RETURN       ; d4 27
-	add_tm DIG          ; d5 28
-	add_tm PSYCHIC_M    ; d6 29
-	add_tm SHADOW_BALL  ; d7 30
-	add_tm WILL_O_WISP  ; d8 31
-	add_tm DOUBLE_TEAM  ; d9 32
-	add_tm ICE_PUNCH    ; da 33
-	add_tm THUNDER_WAVE ; db 34
-	add_tm FLAMETHROWER ; dc 35
-	add_tm SLUDGE_BOMB  ; dd 36
-	add_tm SANDSTORM    ; de 37
-	add_tm FIRE_BLAST   ; df 38
-	add_tm ROCK_SLIDE   ; e0 39
-	add_tm ZAP_CANNON   ; e1 40
-	add_tm THUNDERPUNCH ; e2 41
-	add_tm DREAM_EATER  ; e3 42
-	add_tm RAZOR_WIND   ; e4 43
-	add_tm REST         ; e5 44
-	add_tm ATTRACT      ; e6 45
-	add_tm THIEF        ; e7 46
-	add_tm STEEL_WING   ; e8 47
-	add_tm FIRE_PUNCH   ; e9 48
-	add_tm FURY_CUTTER  ; ea 49
-	add_tm SUBSTITUTE   ; eb 50
-	add_tm ROOST        ; ec 51
-	add_tm AURA_SPHERE  ; ed 52
-	add_tm ENERGY_BALL  ; ee 53
-	add_tm POISON_JAB   ; ef 54
-	add_tm SHADOWSTRIKE ; f0 55
-	add_tm FLASH_CANNON ; f1 56
-	add_tm CHARGE_BEAM  ; f2 57
-	add_tm DARK_PULSE   ; f3 58
-	add_tm DRAGONBREATH ; f4 59
-	add_tm SHADOW_RUSH  ; f5 60
+	add_tm DYNAMICPUNCH ; ba  1 x
+	add_tm DRAGON_CLAW  ; bb  2 x
+	add_tm WATER_PULSE  ; bc  3 x
+	add_tm CALM_MIND    ; bd  4 x
+	add_tm ROAR         ; be  5 x
+	add_tm TOXIC        ; bf  6 x
+	add_tm HAIL         ; c0  7 x
+	add_tm CURSE        ; c1  8 x
+	add_tm HEADBUTT     ; c2  9 x
+	add_tm HIDDEN_POWER ; c3 10 x
+	add_tm SUNNY_DAY    ; c4 11 x
+	add_tm SLEEP_TALK   ; c5 12 x
+	add_tm ICE_BEAM     ; c6 13 x
+	add_tm BLIZZARD     ; c7 14 x
+	add_tm HYPER_BEAM   ; c8 15 x
+	add_tm LIGHT_SCREEN ; c9 16 x
+	add_tm PROTECT      ; ca 17 x
+	add_tm RAIN_DANCE   ; cb 18 x
+	add_tm GIGA_DRAIN   ; cc 19 x
+	add_tm REFLECT      ; cd 20 x
+	add_tm SNARL        ; ce 21 x
+	add_tm SOLARBEAM    ; cf 22 x
+	add_tm IRON_TAIL    ; d0 23 x
+	add_tm THUNDERBOLT  ; d1 24 x
+	add_tm THUNDER      ; d2 25 x
+	add_tm EARTHQUAKE   ; d3 26 x
+	add_tm RETURN       ; d4 27 x
+	add_tm DIG          ; d5 28 x
+	add_tm PSYCHIC_M    ; d6 29 x
+	add_tm SHADOW_BALL  ; d7 30 x
+	add_tm WILL_O_WISP  ; d8 31 x
+	add_tm DOUBLE_TEAM  ; d9 32 x
+	add_tm ICE_PUNCH    ; da 33 x
+	add_tm THUNDER_WAVE ; db 34 x
+	add_tm FLAMETHROWER ; dc 35 x
+	add_tm SLUDGE_BOMB  ; dd 36 x
+	add_tm SANDSTORM    ; de 37 x
+	add_tm FIRE_BLAST   ; df 38 x
+	add_tm ROCK_SLIDE   ; e0 39 x
+	add_tm ZAP_CANNON   ; e1 40 x
+	add_tm THUNDERPUNCH ; e2 41 x
+	add_tm DREAM_EATER  ; e3 42 x
+	add_tm RAZOR_WIND   ; e4 43 x
+	add_tm REST         ; e5 44 x
+	add_tm ATTRACT      ; e6 45 x
+	add_tm THIEF        ; e7 46 x
+	add_tm STEEL_WING   ; e8 47 x
+	add_tm FIRE_PUNCH   ; e9 48 x
+	add_tm FURY_CUTTER  ; ea 49 x
+	add_tm SUBSTITUTE   ; eb 50 x
+	add_tm ROOST        ; ec 51 x
+	add_tm AURA_SPHERE  ; ed 52 x
+	add_tm ENERGY_BALL  ; ee 53 x
+	add_tm POISON_JAB   ; ef 54 x
+	add_tm SHADOWSTRIKE ; f0 55 x
+	add_tm FLASH_CANNON ; f1 56 x
+	add_tm CHARGE_BEAM  ; f2 57 x
+	add_tm DARK_PULSE   ; f3 58 x
+	add_tm DRAGONBREATH ; f4 59 x
+	add_tm SHADOW_RUSH  ; f5 60 x
 NUM_TMS EQU __tmhm_value__ - 1
 
 add_hm: MACRO
@@ -300,16 +300,16 @@ PURGE HM_VALUE
 __tmhm_value__ = __tmhm_value__ + 1
 ENDM
 
-	add_hm CUT          ; f6
-	add_hm FLY          ; f7
-	add_hm SURF         ; f8
-	add_hm STRENGTH     ; f9
-	add_hm FLASH        ; fa
-	add_hm WHIRLPOOL    ; fb
-	add_hm WATERFALL    ; fc
-	add_hm ROCK_CLIMB   ; fd
-	add_hm ROCK_SMASH   ; fe
-	add_hm DIVE         ; ff
+	add_hm CUT          ; f6 x
+	add_hm FLY          ; f7 x
+	add_hm SURF         ; f8 x
+	add_hm STRENGTH     ; f9 x
+	add_hm FLASH        ; fa x
+	add_hm WHIRLPOOL    ; fb x
+	add_hm WATERFALL    ; fc x
+	add_hm ROCK_SMASH   ; fd x
+	add_hm ROCK_CLIMB   ; fe x
+	add_hm DIVE         ; ff x
 NUM_HMS EQU __tmhm_value__ - NUM_TMS - 1
 
 add_mt: MACRO
@@ -329,30 +329,30 @@ PURGE MT_VALUE
 __tmhm_value__ = __tmhm_value__ + 1
 ENDM
 
-	add_mt MIMIC
-	add_mt SWIFT
-	add_mt OUTRAGE
-	add_mt MEGA_PUNCH
-	add_mt MEGA_KICK
-	add_mt SWORDS_DANCE
-	add_mt SEISMIC_TOSS
-	add_mt COUNTER
-	add_mt LASER_FOCUS
-	add_mt SELFDESTRUCT
-	add_mt NIGHT_SHADE
-	add_mt EARTH_POWER
-	add_mt SUBMISSION
-	add_mt TWISTER
-	add_mt ICY_WIND
-	add_mt HYPER_VOICE
-	add_mt PAIN_SPLIT
-	add_mt HEAL_BELL
-	add_mt SPIKES
-	add_mt WAVE_CRASH
-	add_mt BULLDOZE
-	add_mt SACRED_FIRE
-	add_mt AEROBLAST
-	add_mt VOLT_TACKLE
+	add_mt MIMIC          ; x
+	add_mt SWIFT          ; x
+	add_mt OUTRAGE        ; x
+	add_mt MEGA_PUNCH     ; x
+	add_mt MEGA_KICK      ; x
+	add_mt SWORDS_DANCE   ; x
+	add_mt SEISMIC_TOSS   ; x
+	add_mt COUNTER        ; x
+	add_mt LASER_FOCUS    ; x
+	add_mt SELFDESTRUCT   ; x
+	add_mt NIGHT_SHADE    ; x
+	add_mt EARTH_POWER    ; x
+	add_mt SUBMISSION     ; x
+	add_mt TWISTER        ; x
+	add_mt ICY_WIND       ; x
+	add_mt HYPER_VOICE    ; x
+	add_mt PAIN_SPLIT     ; x
+	add_mt HEAL_BELL      ; x
+	add_mt SPIKES         ; x
+	add_mt WAVE_CRASH     ; x
+	add_mt BULLDOZE       ; x
+	add_mt SACRED_FIRE    ; x
+	add_mt AEROBLAST      ; x
+	add_mt VOLT_TACKLE    ; x
 NUM_TUTORS = __tmhm_value__ - NUM_TMS - NUM_HMS - 1
 
 NUM_TM_HM_TUTOR EQU __tmhm_value__ - 1

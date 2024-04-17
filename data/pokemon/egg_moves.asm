@@ -117,7 +117,7 @@ EkansEggMoves:   ;x
 	db DRAGON_DANCE
 	db ICE_FANG
 	db DRAGON_RAGE
-	db BULLDOZE
+	db SUPER_FANG
 	db -1 ; end
 	
 PichuEggMoves:   ;x
@@ -337,7 +337,6 @@ MankeyEggMoves:   ;x
 	db SCARY_FACE
 	db POWERUPPUNCH
 	db BULK_UP
-	db BULLDOZE
 	db NIGHT_SLASH
 	db -1 ; end
 
@@ -383,7 +382,6 @@ MachopEggMoves:   ;x
 	db BULLET_PUNCH
 	db SLAM
 	db SKY_UPPERCUT
-	db BULLDOZE
 	db STOMP
 	db SWAGGER
 	db -1 ; end
@@ -440,7 +438,6 @@ SlowpokeEggMoves:   ;x
 	db SLAM
 	db ECHOED_VOICE
 	db ACID_SPRAY
-	db BULLDOZE
 	db BUBBLEBEAM
 	db METRONOME
 	db -1 ; end
@@ -600,7 +597,6 @@ TyrogueEggMoves:   ;x
 	db POWERUPPUNCH
 	db BULK_UP
 	db BULLET_PUNCH
-	db BULLDOZE
 	db ENDURE
 	db SWAGGER
 	db -1 ; end
@@ -653,7 +649,6 @@ KangaskidEggMoves:   ;x
 	db DOUBLE_KICK
 	db ECHOED_VOICE
 	db SING
-	db BULLDOZE
 	db LOW_KICK
 	db SWAGGER
 	db -1 ; end
@@ -677,7 +672,6 @@ GoldeenEggMoves:   ;x
 	db HYDRO_PUMP
 	db MUD_SHOT
 	db SLAM
-	db BULLDOZE
 	db AQUA_JET
 	db SPLASH
 	db DRAGON_DANCE
@@ -742,7 +736,6 @@ PinsirEggMoves:   ;x
 	db MEGAHORN
 	db BULK_UP
 	db FLAIL
-	db BULLDOZE
 	db FALSE_SWIPE
 	db SWAGGER
 	db -1 ; end
@@ -752,7 +745,6 @@ MoobyEggMoves:   ;x
 	db REVERSAL
 	db QUICK_ATTACK
 	db SPARK
-	db BULLDOZE
 	db DOUBLE_KICK
 	db REFRESH
 	db BULK_UP
@@ -777,7 +769,6 @@ NessiEggMoves:   ;x
 	db HYPNOSIS
 	db PURSUIT
 	db WATER_GUN
-	db BULLDOZE
 	db ECHOED_VOICE
 	db BUBBLEBEAM
 	db DRAGON_RAGE
@@ -1012,7 +1003,6 @@ MareepEggMoves:   ;x
 	db DEFENSE_CURL
 	db ENDURE
 	db ECHOED_VOICE
-	db BULLDOZE
 	db -1 ; end
 
 MarillEggMoves:   ;x
@@ -1026,7 +1016,6 @@ MarillEggMoves:   ;x
 	db AQUA_JET
 	db REFRESH
 	db SLAM
-	db BULLDOZE
 	db POWERUPPUNCH
 	db -1 ; end
 
@@ -1035,7 +1024,6 @@ BonslyEggMoves:   ;x
 	db DEFENSE_CURL
 	db ROLLOUT
 	db SELFDESTRUCT
-	db BULLDOZE
 	db -1 ; end
 
 HoppipEggMoves:   ;x
@@ -1078,6 +1066,7 @@ SunkernEggMoves:
 	db VINE_WHIP
 	db ENDURE
 	db SAFEGUARD
+	db QUIVER_DANCE
 	db -1
 
 YanmaEggMoves:   ;x
@@ -1147,7 +1136,6 @@ OkapakoEggMoves:   ;x
 	db PSYCHO_CUT
 	db SLAM
 	db PSYCH_UP
-	db BULLDOZE
 	db PSYSTRIKE
 	db ECHOED_VOICE
 	db -1 ; end
@@ -1155,7 +1143,6 @@ OkapakoEggMoves:   ;x
 PinecoEggMoves:   ;x
 	db CONFUSION
 	db REVERSAL
-	db BULLDOZE
 	db DEFENSE_CURL
 	db STRING_SHOT
 	db ROLLOUT
@@ -1171,7 +1158,6 @@ DunsparceEggMoves:   ;x
 	db HORN_DRILL
 	db AGILITY
 	db HYPNOSIS
-	db BULLDOZE
 	db HEX
 	db PURSUIT
 	db REFRESH
@@ -1193,7 +1179,6 @@ GligarEggMoves:   ;x
 	db CRABHAMMER
 	db SHARPEN
 	db AIR_CUTTER
-	db BULLDOZE
 	db -1 ; end
 
 SnubbullEggMoves:   ;x
@@ -1220,7 +1205,6 @@ QwilfishEggMoves:   ;x
 	db AQUA_JET
 	db ACID_SPRAY
 	db FLAIL
-	db BULLDOZE
 	db FELL_STINGER
 	db HEX
 	db -1 ; end
@@ -1232,7 +1216,6 @@ ShuckleEggMoves:   ;x
 	db MUD_SHOT
 	db STRING_SHOT
 	db ENDURE
-	db BULLDOZE
 	db SWAGGER
 	db TRI_ATTACK
 	db -1 ; end
@@ -1247,7 +1230,6 @@ HeracrossEggMoves:   ;x
 	db VACUUM_WAVE
 	db BUG_BITE
 	db BUG_BUZZ
-	db BULLDOZE
 	db FLAIL
 	db SKY_UPPERCUT
 	db IRON_DEFENSE
@@ -1282,7 +1264,6 @@ TeddiursaEggMoves:   ;x
 	db BULK_UP
 	db REFRESH
 	db METRONOME
-	db BULLDOZE
 	db LOW_KICK
 	db -1 ; end
 
@@ -1290,7 +1271,6 @@ SlugmaEggMoves:   ;x
 	db ACID_ARMOR
 	db MIRROR_COAT
 	db PSYBEAM
-	db BULLDOZE
 	db ENCORE
 	db IRON_DEFENSE
 	db REFRESH
@@ -1299,7 +1279,6 @@ SlugmaEggMoves:   ;x
 SwinubEggMoves:   ;x
 	db BITE
 	db SLAM
-	db BULLDOZE
 	db WHIRLWIND
 	db CHARM
 	db HOWL
@@ -1316,7 +1295,6 @@ CorsolaEggMoves:   ;x
 	db IRON_DEFENSE
 	db ENDURE
 	db FLAIL
-	db BULLDOZE
 	db -1 ; end
 
 RemoraidEggMoves:   ;x
@@ -1407,7 +1385,6 @@ StantlerEggMoves:   ;x
 	db PSYCHO_CUT
 	db PSYCH_UP
 	db BLAZE_KICK
-	db BULLDOZE
 	db -1 ; end
 
 LarvitarEggMoves:   ;x
@@ -1430,7 +1407,6 @@ Vulpix_AlolanEggMoves:   ;x
 	db HOWL
 	db CHARM
 	db DESTINY_BOND
-	db DISABLE
 	db LICK
 	db CONFUSION
 	db ICE_FANG
@@ -1492,7 +1468,7 @@ Ekans_DarkEggMoves:
 	db DRAGON_DANCE
 	db ICE_FANG
 	db DRAGON_RAGE
-	db BULLDOZE
+	db SUPER_FANG
 	db -1 ; end
 	
 Pichu_SpikyEggMoves:
@@ -1533,7 +1509,6 @@ Sandshrew_AlolanEggMoves:   ;x
 	db NIGHT_SLASH
 	db X_SCISSOR
 	db DIRE_CLAW
-	db BULLDOZE
 	db ICE_SHARD
 	db SHARPEN
 	db LEECH_LIFE
