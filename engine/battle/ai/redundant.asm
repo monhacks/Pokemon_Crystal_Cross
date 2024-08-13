@@ -43,6 +43,8 @@ AI_Redundant:
 	dbw EFFECT_SYNTHESIS,    .Synthesis
 	dbw EFFECT_MOONLIGHT,    .Moonlight
 	dbw EFFECT_SWAGGER,      .Swagger
+	dbw EFFECT_HAIL,         .Hail
+	dbw EFFECT_ACID_RAIN,    .Acid
 	db -1
 
 .LightScreen:
@@ -103,7 +105,7 @@ AI_Redundant:
 	ld a, [wEnemyMonStatus]
 	and SLP
 	jr z, .Redundant
-	jr .NotRedundant
+	jp .NotRedundant
 
 .MeanLook:
 	ld a, [wEnemySubStatus5]
@@ -173,6 +175,18 @@ AI_Redundant:
 	ld a, [wPlayerSubStatus3]
 	bit SUBSTATUS_CONFUSED, a
 	ret
+	
+.Hail:
+	ld a, [wBattleWeather]
+	cp WEATHER_HAIL
+	jr z, .Redundant
+	jr .NotRedundant
+	
+.Acid:
+	ld a, [wBattleWeather]
+	cp WEATHER_ACID_RAIN
+	jr z, .Redundant
+	jr .NotRedundant
 
 .Heal:
 .MorningSun:

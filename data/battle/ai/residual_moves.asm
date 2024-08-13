@@ -1,25 +1,25 @@
 ; AI_CAUTIOUS discourages these moves after the first turn.
 
 ResidualMoves:
-	db MIST
-	db LEECH_SEED
-	db EFFECT_SPORE
-	db THUNDER_WAVE
-	db TRANSFORM
-	db SUBSTITUTE
-	db SPIKES
-	db DRAGON_DANCE
-	db CALM_MIND
-	db GROWTH
-	db SWORDS_DANCE
-	db ACID_ARMOR
-	db WILL_O_WISP
-	db GLARE
-	db AGILITY
-	db AMNESIA
-	db COSMIC_POWER
-	db DOUBLE_TEAM
-	db CURSE
-	db IRON_DEFENSE
-	db LASER_FOCUS
-	db -1 ; end
+	dw REFRESH
+	dw LEECH_SEED
+	dw EFFECT_SPORE
+	dw THUNDER_WAVE
+	dw TRANSFORM
+	dw SUBSTITUTE
+	dw SPIKES
+	dw DRAGON_DANCE
+	dw CALM_MIND
+	dw GROWTH
+	dw SWORDS_DANCE
+	dw ACID_ARMOR
+	dw WILL_O_WISP
+	dw GLARE
+	dw AGILITY
+	dw AMNESIA
+	dw COSMIC_POWER
+	dw DOUBLE_TEAM
+	dw CURSE
+	dw IRON_DEFENSE
+	dw LASER_FOCUS
+	dw -1 ; end

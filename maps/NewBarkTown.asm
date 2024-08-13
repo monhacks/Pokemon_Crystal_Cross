@@ -364,9 +364,11 @@ NewBarkTown_MapEvents:
 	warp_event 10, 12, PLAYERS_HOUSE_1F, 1
 	;warp_event  3, 11, PLAYERS_NEIGHBORS_HOUSE, 1
 	warp_event  2, 12, JOHTO_SAFARI_GATE, 1
-	warp_event 13,  4, ELMS_HOUSE, 1
+	;warp_event 13,  4, ELMS_HOUSE, 1
+	warp_event 13,  4, PALLET_TOWN, 1
 	warp_event 21,  7, ROUTE_27, 4
-	warp_event  7,  3, ELMS_LAB, 2
+	;warp_event  7,  3, ELMS_LAB, 2
+	warp_event  7,  3, TWO_ISLAND, 1
 
 
 	def_coord_events

@@ -169,6 +169,20 @@ SetUpTextbox::
 	call ApplyTilemap
 	pop hl
 	ret
+	
+FarPlaceString::
+	ld c, a
+	ldh a, [hROMBank]
+	ld b, a
+	ld a, c
+	rst Bankswitch
+
+	push bc
+	call PlaceString
+
+	pop af
+	rst Bankswitch
+	ret
 
 PlaceString::
 	push hl

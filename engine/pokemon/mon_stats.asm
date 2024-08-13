@@ -221,12 +221,14 @@ GetGender:
 	call GetPokemonIndexFromID
 	ld b, h
 	ld c, l
-	ld hl, BaseData + BASE_GENDER - BASE_DATA_SIZE ;go one back so we don't decrement hl
-	ld a, BASE_DATA_SIZE
-	call AddNTimes
-	pop bc
-
+	ld hl, BaseData
 	ld a, BANK(BaseData)
+	call LoadIndirectPointer
+	ld bc, BASE_GENDER
+	add hl, bc
+	pop bc
+	jr z, .Genderless
+
 	call GetFarByte
 
 ; The higher the ratio, the more likely the monster is to be female.
@@ -469,10 +471,8 @@ ListMoves:
 	push de
 	push hl
 	push hl
-	ld [wCurSpecies], a
-	ld a, MOVE_NAME
-	ld [wNamedObjectType], a
-	call GetName
+	ld [wNamedObjectIndex], a
+	call GetMoveName
 	ld de, wStringBuffer1
 	pop hl
 	push bc

@@ -754,12 +754,24 @@ Link_PrepPartyData_Gen1:
 	ld [de], a
 	inc de
 	ld a, [bc]
-	cp MAGNEMITE
-	jr z, .steel_type
-	cp MAGNETON
+	call GetPokemonIndexFromID
+	push bc
+	ld bc, MAGNEMITE
+	call .compare
+	if MAGNETON == (MAGNEMITE + 1)
+		inc bc
+	else
+		ld bc, MAGNETON
+	endc
+	call nz, .compare
 	jr nz, .skip_steel
+	ld a, ELECTRIC
+	ld [de], a
+	inc de
+	ld [de], a
+	inc de
+	jr .done_steel
 
-.steel_type
 	ld a, ELECTRIC
 	ld [de], a
 	inc de
@@ -768,23 +780,40 @@ Link_PrepPartyData_Gen1:
 	jr .done_steel
 
 .skip_steel
-	push bc
-	call GetPokemonIndexFromID
 	ld b, h
 	ld c, l
-	ld hl, BaseData + BASE_TYPES - BASE_DATA_SIZE ;go one back so we don't decrement hl
-	ld a, BASE_DATA_SIZE
-	call AddNTimes
-	ld bc, BASE_CATCH_RATE - BASE_TYPES
+	ld hl, BaseData
 	ld a, BANK(BaseData)
-	call FarCopyBytes
-	pop bc
+	call LoadIndirectPointer
+	ld bc, BASE_TYPES
+	add hl, bc
+	ld c, BASE_CATCH_RATE - BASE_TYPES
+	call nz, FarCopyBytes
 
 .done_steel
-	push bc
+	pop bc
 	ld hl, MON_ITEM
 	add hl, bc
-	ld bc, MON_HAPPINESS - MON_ITEM
+	push bc
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld b, NUM_MOVES
+
+.move_loop
+	ld a, [hli]
+	push hl
+	call GetMoveIndexFromID
+	ld a, h
+	sub 1
+	sbc a
+	and l
+	pop hl
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .move_loop
+	ld c, MON_HAPPINESS - MON_ID
 	call CopyBytes
 	pop bc
 
@@ -806,11 +835,9 @@ Link_PrepPartyData_Gen1:
 	push bc
 
 	ld a, [bc]
-	dec a
 	push bc
-	ld b, 0
-	ld c, a
-	ld hl, KantoMonSpecials
+	call GetPokemonIndexFromID
+	ld bc, KantoMonSpecials - 1
 	add hl, bc
 	ld a, BANK(KantoMonSpecials)
 	call GetFarByte
@@ -834,6 +861,14 @@ Link_PrepPartyData_Gen1:
 	inc de
 	ld h, b
 	ld l, c
+	ret
+	
+.compare
+	ld a, h
+	cp b
+	ret nz
+	ld a, l
+	cp c
 	ret
 
 Link_PrepPartyData_Gen2:
@@ -2113,6 +2148,13 @@ CheckTimeCapsuleCompatibility:
 	ld c, NUM_MOVES
 .move_next
 	ld a, [hli]
+	push hl
+	call GetMoveIndexFromID
+	ld a, h
+	and a
+	ld a, l
+	pop hl
+	jr nz, .move_too_new
 	cp STRUGGLE + 1
 	jr nc, .move_too_new
 	dec c

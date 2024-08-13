@@ -74,7 +74,7 @@ MoveEffectsPointers:
 	dw DragonDance
 	dw Substitute
 	dw HyperBeam
-	dw Rage
+;	dw Rage
 	dw Mimic
 	dw Metronome
 	dw LeechSeed
@@ -118,7 +118,7 @@ MoveEffectsPointers:
 	dw Present
 	dw Safeguard
 	dw SacredFire
-	dw Magnitude
+;	dw Magnitude
 	dw BatonPass
 	dw Pursuit
 	dw RapidSpin
@@ -145,12 +145,11 @@ MoveEffectsPointers:
 	dw Solarbeam
 	dw Thunder
 	dw Teleport
-	dw BeatUp
+;	dw BeatUp
 	dw Fly
 	dw DefenseCurl
 	dw FreezeHit
 	dw Hex
-	dw ChargeWave
 	dw Surf
 	dw Whirlpool
 	dw SpAtkUpHit
@@ -167,4 +166,12 @@ MoveEffectsPointers:
 	dw SkyUppercut
 	dw QuiverDance
 	dw BulkUp
+	dw SwitchHit
+	dw SpeedUpHit
+	dw SpecialDefenseDown2
+	dw LaserFocus
+	dw NormalHit
+	dw AcidRain
+	dw Fly
+	dw Fly
 	

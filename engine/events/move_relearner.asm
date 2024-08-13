@@ -97,7 +97,7 @@ MoveRelearner:
 	dt 1000
 
 GetRelearnableMoves:
-	GLOBAL EvosAttacksPointers, EvosAttacks
+	GLOBAL EvosAttacksPointers, EvosAttacksPointers2, EvosAttacksPointers1
 	; Get moves relearnable by CurPartyMon
 	; Returns z if no moves can be relearned.
 	ld hl, wRelearner
@@ -128,14 +128,16 @@ GetRelearnableMoves:
 	call FarSkipEvolutions
 	
 .loop_moves
-	ld a, BANK(EvosAttacks)
+	;ld a, BANK(EvosAttacks)
+	ld a, BANK(EvosAttacksPointers)
 	call GetFarByte2
 	and a
 	jr z, .done
 	ld c, a
 	ld a, [wCurPartyLevel]
 	cp c
-	ld a, BANK(EvosAttacks)
+	;ld a, BANK(EvosAttacks)
+	ld a, BANK(EvosAttacksPointers)
 	call GetFarByte2
 	jr c, .loop_moves
 .okay
@@ -272,13 +274,13 @@ ChooseMoveToLearn:
 	cp $ff
 	ret z
 	push de
-	dec a
+	dec a                      ;-remove section
 	ld bc, MOVE_LENGTH
 	ld hl, Moves + MOVE_TYPE
 	call AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
-	ld [wNamedObjectIndex], a
+	ld [wNamedObjectIndex], a  ;replace w/ call GetMoveData ?
 	; get move type
 	and $3f
 	; 5 characters
@@ -301,12 +303,12 @@ ChooseMoveToLearn:
 	; get move class
 
 	ld a, [wMenuSelection]
-	dec a
+	dec a                      ;-remove section
 	ld bc, MOVE_LENGTH
 	ld hl, Moves + MOVE_PP
 	call AddNTimes
 	ld a, BANK(Moves)
-	call GetFarByte
+	call GetFarByte            ;replace w/ call GetMoveData ?
 	ld [wEngineBuffer1], a
 	ld hl, wStringBuffer1 + 10
 	ld de, wEngineBuffer1

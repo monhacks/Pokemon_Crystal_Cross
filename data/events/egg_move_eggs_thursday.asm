@@ -24,7 +24,8 @@ prob_totalthu = 0
 ; Happiny
 	probthu 2
 	probthu 2
-	probthu 2
+	probthu 1
+	probthu 1
 ; Snubbull
 	probthu 2
 	probthu 1
@@ -33,37 +34,35 @@ prob_totalthu = 0
 	probthu 2
 ; Mantyke
 	probthu 2
-	probthu 1
-	probthu 1
-	probthu 1
+	probthu 3
 	probthu 2
 ; Pinsir
 	probthu 2
-	probthu 1
-	probthu 1
+	probthu 2
 	probthu 1
 	probthu 2
 ; VulpixA
 	probthu 2
 	probthu 2
 	probthu 1
-	probthu 2
+	probthu 1
 ; Girafarig
 	probthu 2
 	probthu 1
 	probthu 1
 	probthu 1
-	probthu 2
+	probthu 1
 ; Ekans
 	probthu 2
-	probthu 2
+	probthu 1
 	probthu 1
 	probthu 2
 ; Seel
 	probthu 2
 	probthu 1
 	probthu 1
-	probthu 2
+	probthu 1
+	probthu 1
 ; Elekid
 	probthu 2
 	probthu 2
@@ -71,9 +70,8 @@ prob_totalthu = 0
 ; Stantler
 	probthu 2
 	probthu 1
-	probthu 1
-	probthu 1
 	probthu 2
+	probthu 1
 ; Wooper
 	probthu 2
 	probthu 1
@@ -84,11 +82,13 @@ prob_totalthu = 0
 	probthu 2
 	probthu 1
 	probthu 1
-	probthu 1
 	probthu 2
+; Swinub
+	probmon 2
+	probmon 1
+	probmon 2
 	
 	
-; ghost, ice, water	
 EggMoveEggSpeciesThursday:
 	dw HOPPIP        ;1
 	dw HOPPIP        ;2
@@ -106,255 +106,255 @@ EggMoveEggSpeciesThursday:
 	dw HAPPINY       ;14
 	dw HAPPINY       ;15
 	dw HAPPINY       ;16
-	dw SNUBBULL      ;17
+	dw HAPPINY       ;17
 	dw SNUBBULL      ;18
 	dw SNUBBULL      ;19
 	dw SNUBBULL      ;20
 	dw SNUBBULL      ;21
-	dw MANTYKE       ;22
+	dw SNUBBULL      ;22
 	dw MANTYKE       ;23
 	dw MANTYKE       ;24
 	dw MANTYKE       ;25
-	dw MANTYKE       ;26
+	dw PINSIR        ;26
 	dw PINSIR        ;27
 	dw PINSIR        ;28
 	dw PINSIR        ;29
-	dw PINSIR        ;30
-	dw PINSIR        ;31
+	dw VULPIX_ALOLAN ;30
+	dw VULPIX_ALOLAN ;31
 	dw VULPIX_ALOLAN ;32
 	dw VULPIX_ALOLAN ;33
-	dw VULPIX_ALOLAN ;34
-	dw VULPIX_ALOLAN ;35
-	dw GIRAFARIG     ;36
-	dw GIRAFARIG     ;37
-	dw GIRAFARIG     ;38
-	dw GIRAFARIG     ;39
-	dw GIRAFARIG     ;40
+	dw OKAPAKO       ;34
+	dw OKAPAKO       ;35
+	dw OKAPAKO       ;36
+	dw OKAPAKO       ;37
+	dw OKAPAKO       ;38
+	dw EKANS         ;39
+	dw EKANS         ;40
 	dw EKANS         ;41
 	dw EKANS         ;42
-	dw EKANS         ;43
-	dw EKANS         ;44
+	dw SEEL          ;43
+	dw SEEL          ;44
 	dw SEEL          ;45
 	dw SEEL          ;46
 	dw SEEL          ;47
-	dw SEEL          ;48
+	dw ELEKID        ;48
 	dw ELEKID        ;49
 	dw ELEKID        ;50
-	dw ELEKID        ;51
+	dw STANTLER      ;51
 	dw STANTLER      ;52
 	dw STANTLER      ;53
 	dw STANTLER      ;54
-	dw STANTLER      ;55
-	dw STANTLER      ;56
+	dw WOOPER        ;55
+	dw WOOPER        ;56
 	dw WOOPER        ;57
 	dw WOOPER        ;58
 	dw WOOPER        ;59
-	dw WOOPER        ;60
-	dw WOOPER        ;61
-	dw GROWLITHE_HISUIAN ;62
-	dw GROWLITHE_HISUIAN ;63
-	dw GROWLITHE_HISUIAN ;64
-	dw GROWLITHE_HISUIAN ;65
-	dw GROWLITHE_HISUIAN ;66
+	dw GROWLITHE_HISUIAN  ;60
+	dw GROWLITHE_HISUIAN  ;61
+	dw GROWLITHE_HISUIAN  ;62
+	dw GROWLITHE_HISUIAN  ;63
+	dw SWINUB             ;64
+	dw SWINUB             ;65
+	dw SWINUB             ;66
 	
 
 EggMoveEggsThursday:
 
 	; Hoppip1
-	db SPLASH, TACKLE, ENCORE, PAY_DAY
+	dw SPLASH, TAIL_WHIP, PAY_DAY, ENCORE
 	
 	; Hoppip2
-	db GROWL, TACKLE, SWEET_SCENT, SILVER_WIND
+	dw TACKLE, TAIL_WHIP, SWEET_SCENT, SING
 	
 	; Hoppip3
-	db SPLASH, TACKLE, CONFUSION, AMNESIA
+	dw TACKLE, TAIL_WHIP, CONFUSION, AMNESIA
 	
 	; Hoppip4
-	db SPLASH, TACKLE, AGILITY, RAZOR_LEAF
+	dw TACKLE, GROWL, RAZOR_LEAF, CHARM
 	
 	; Hoppip5
-	db SPLASH, TACKLE, SPORE, ENDURE
+	dw TACKLE, ENDURE, AGILITY, TAKE_DOWN
 	
 	; Cyndaquil1
-	db TACKLE, LEER, HOWL, REVERSAL
+	dw TACKLE, LEER, HOWL, FURY_SWIPES
 	
 	; Cyndaquil2
-	db TACKLE, LEER, FORESIGHT, THRASH
+	dw TACKLE, LEER, METAL_CLAW, SWAGGER
 	
 	; Cyndaquil3
-	db TACKLE, LEER, SNORE, ANCIENTPOWER
+	dw TACKLE, LEER, ANCIENTPOWER, CONFUSION
 	
 	; Cyndaquil4
-	db TACKLE, LEER, DOUBLE_KICK, FURY_SWIPES
+	dw TACKLE, ENDURE, DOUBLE_KICK, REVERSAL
 	
 	; Remoraid1
-	db WATER_GUN, LOCK_ON, HAZE, OCTAZOOKA
+	dw WATER_GUN, LASER_FOCUS, OCTAZOOKA, HAZE
 	
 	; Remoraid2
-	db WATER_GUN, LOCK_ON, BUBBLE, SUPERSONIC
+	dw WATER_GUN, LASER_FOCUS, SUPERSONIC, FLAIL
 	
 	; Remoraid3
-	db WATER_GUN, LOCK_ON, SLUDGE, SCREECH
+	dw WATER_GUN, LASER_FOCUS, ACID_SPRAY, SCREECH
 	
 	; Remoraid4
-	db WATER_GUN, STRING_SHOT, AMNESIA, MUD_SHOT
+	dw WATER_GUN, STRING_SHOT, AMNESIA, MUD_SHOT
 	
 	; Happiny1
-	db POUND, CHARM, PRESENT, PSYCH_UP
+	dw POUND, DEFENSE_CURL, PRESENT, PSYCH_UP
 	
 	; Happiny2
-	db POUND, CHARM, SPARK, METRONOME
+	dw POUND, CHARM, METRONOME, MOONLIGHT
 	
 	; Happiny3
-	db POUND, CHARM, ENDURE, SLAM
+	dw POUND, DEFENSE_CURL, BUBBLEBEAM, SPARK
+	
+	; Happiny4
+	dw POUND, ENDURE, MUD_SHOT, SAFEGUARD
 	
 	; Snubbull1
-	db TACKLE, TAIL_WHIP, METRONOME, PRESENT
+	dw TACKLE, TAIL_WHIP, METRONOME, PRESENT
 	
 	; Snubbull2
-	db TACKLE, TAIL_WHIP, POISON_FANG, FAINT_ATTACK
+	dw TACKLE, LEER, POISON_FANG, PURSUIT
 	
 	; Snubbull3
-	db TACKLE, TAIL_WHIP, LOW_KICK, ENDURE
+	dw TACKLE, TAIL_WHIP, ENDURE, POWERUPPUNCH
 	
 	; Snubbull4
-	db TACKLE, TAIL_WHIP, SPARK, SNORE
+	dw TACKLE, SAND_ATTACK, LOW_KICK, SPARK
 	
 	; Snubbull5
-	db TACKLE, TAIL_WHIP, SUPER_FANG, POWERUPPUNCH
+	dw TACKLE, TAIL_WHIP, SUPER_FANG, BULK_UP
 	
 	; Mantyke1
-	db TACKLE, BUBBLE, HAZE, MIRROR_COAT
+	dw GUST, SUPERSONIC, MIRROR_COAT, HAZE
 	
 	; Mantyke2
-	db TACKLE, BUBBLE, SPLASH, HYDRO_PUMP
+	dw SPLASH, SUPERSONIC, MUD_SHOT, AMNESIA
 	
 	; Mantyke3
-	db TACKLE, BUBBLE, CHARM, SLAM
-	
-	; Mantyke4
-	db TACKLE, BUBBLE, GUST, AMNESIA
-	
-	; Mantyke5
-	db TACKLE, BUBBLE, MUD_SHOT, PURSUIT
+	dw TACKLE, CHARM, PSYBEAM, SLAM
 	
 	; Pinsir1
-	db RAGE, HARDEN, ENDURE, REVERSAL
+	dw PECK, ENDURE, MEGAHORN, REVERSAL
 	
 	; Pinsir2
-	db RAGE, HARDEN, ROCK_THROW, IRON_DEFENSE
+	dw PECK, IRON_DEFENSE, ROCK_THROW, FLAIL
 	
 	; Pinsir3
-	db RAGE, HARDEN, QUICK_ATTACK, SLAM
+	dw PECK, HARDEN, SWAGGER, FALSE_SWIPE
 	
 	; Pinsir4
-	db RAGE, HARDEN, TAKE_DOWN, FLAIL
-	
-	; Pinsir5
-	db RAGE, HARDEN, CROSS_CHOP, FAINT_ATTACK
+	dw PECK, BULK_UP, SKY_UPPERCUT, SLAM
 	
 	; Vulpix Alolan1
-	db POWDER_SNOW, TAIL_WHIP, HOWL, ICE_FANG
+	dw POWDER_SNOW, HOWL, ICE_FANG, FLAIL
 	
 	; Vulpix Alolan2
-	db POWDER_SNOW, TAIL_WHIP, CHARM, FLAIL
+	dw POWDER_SNOW, CHARM, CONFUSION, ENCORE
 	
 	; Vulpix Alolan3
-	db POWDER_SNOW, TAIL_WHIP, LICK, DISABLE
+	dw LICK, TAIL_WHIP, ICE_SHARD, PURSUIT
 	
 	; Vulpix Alolan4
-	db POWDER_SNOW, TAIL_WHIP, SPITE, HYPNOSIS
+	dw POWDER_SNOW, HYPNOSIS, DESTINY_BOND, HEX
 	
 	; Girafarig1
-	db TACKLE, GROWL, AMNESIA, PSYCHO_CUT
+	dw TACKLE, GROWL, AMNESIA, PSYSTRIKE
 	
 	; Girafarig2
-	db TACKLE, GROWL, MEAN_LOOK, BEAT_UP
+	dw TACKLE, PSYCH_UP, MEAN_LOOK, PSYCHO_CUT
 	
 	; Girafarig3
-	db TACKLE, GROWL, ENDURE, SLAM
+	dw TACKLE, GROWL, TRI_ATTACK, MIRROR_COAT
 	
 	; Girafarig4
-	db TACKLE, GROWL, THUNDERSHOCK, MIRROR_COAT
+	dw TACKLE, GROWL, THUNDERSHOCK, ECHOED_VOICE
 	
 	; Girafarig5
-	db TACKLE, GROWL, DOUBLE_KICK, TRI_ATTACK
+	dw TACKLE, GROWL, DOUBLE_KICK, SLAM
 	
 	; Ekans1
-	db WRAP, LEER, SPITE, CRUNCH
+	dw WRAP, LEER, SPITE, CRUNCH
 	
 	; Ekans2
-	db WRAP, LEER, DISABLE, BEAT_UP
+	dw WRAP, LEER, SUPER_FANG, DISABLE
 	
 	; Ekans3
-	db WRAP, LEER, PURSUIT, SLAM
+	dw WRAP, LEER, DRAGON_DANCE, PURSUIT, 
 	
 	; Ekans4
-	db WRAP, LEER, DRAGON_DANCE, ICE_FANG
+	dw WRAP, LEER, DRAGON_RAGE, ICE_FANG
 	
 	; Seel1
-	db HEADBUTT, DISABLE, PERISH_SONG, LICK
+	dw LICK, GROWL, BUBBLEBEAM, PERISH_SONG
 	
 	; Seel2
-	db HEADBUTT, GROWL, HORN_DRILL, SLAM
+	dw PECK, GROWL, HORN_ATTACK, HORN_DRILL
 	
 	; Seel3
-	db HEADBUTT, GROWL, PECK, FLAIL
+	dw TACKLE, GROWL, DRILL_RUN, PURSUIT
 	
 	; Seel4
-	db HEADBUTT, GROWL, SNORE, PURSUIT
+	dw TACKLE, GROWL, AQUA_JET, ECHOED_VOICE
+	
+	; Seel5
+	dw TACKLE, DISABLE, MILK_DRINK, SLAM
 	
 	; Elekid1
-	db QUICK_ATTACK, LEER, CROSS_CHOP, ENDURE
+	dw QUICK_ATTACK, ENDURE, SPARK, REVERSAL
 	
 	; Elekid2
-	db QUICK_ATTACK, LEER, MACH_PUNCH, PURSUIT
+	dw QUICK_ATTACK, LEER, SWAGGER, PURSUIT
 	
 	; Elekid3
-	db QUICK_ATTACK, LEER, FOCUS_ENERGY, POWERUPPUNCH
+	dw THUNDERSHOCK, LEER, POWERUPPUNCH, BATON_PASS
 	
 	; Stantler1
-	db TACKLE, LEER, RAGE, SPITE
+	dw TACKLE, SPITE, PSYCHO_CUT, BITE
 	
 	; Stantler2
-	db TACKLE, LEER, PSYCH_UP, MEGAHORN
+	dw TACKLE, LEER, MEGAHORN, BLAZE_KICK
 	
 	; Stantler3
-	db TACKLE, LEER, DISABLE, PSYCHO_CUT
+	dw TACKLE, LEER, SAFEGUARD, SLAM
 	
 	; Stantler4
-	db TACKLE, LEER, BITE, SAFEGUARD
-	
-	; Stantler5
-	db TACKLE, LEER, DOUBLE_KICK, SLAM
+	dw TACKLE, LEER, DOUBLE_KICK, PSYCH_UP
 	
 	; Wooper1
-	db WATER_GUN, TAIL_WHIP, SAFEGUARD, RECOVER
+	dw WATER_GUN, TAIL_WHIP, SAFEGUARD, ANCIENTPOWER
 	
 	; Wooper2
-	db WATER_GUN, TAIL_WHIP, BELLY_DRUM, DOUBLE_KICK
+	dw WATER_GUN, TAIL_WHIP, BELLY_DRUM, DOUBLE_KICK
 	
 	; Wooper3
-	db WATER_GUN, TAIL_WHIP, ENCORE, SLUDGE
+	dw WATER_GUN, TAIL_WHIP, ACID_SPRAY, RECOVER
 	
 	; Wooper4
-	db WATER_GUN, TAIL_WHIP, ENDURE, ANCIENTPOWER
+	dw WATER_GUN, ENDURE, POWERUPPUNCH, PURSUIT
 	
-	; Wooper4
-	db WATER_GUN, TAIL_WHIP, PURSUIT, THUNDERSHOCK
+	; Wooper5
+	dw WATER_GUN, TAIL_WHIP, THUNDERSHOCK, ENCORE
 	
 	; GrowlitheHisuian1
-	db EMBER, LEER, ENDURE, SLAM
+	dw EMBER, ENDURE, DOUBLE_KICK, SWAGGER
 	
 	; GrowlitheHisuian2
-	db EMBER, LEER, GROWL, THRASH
+	dw EMBER, GROWL, MORNING_SUN, BITE
 	
 	; GrowlitheHisuian3
-	db EMBER, LEER, CHARM, SNORE
+	dw EMBER, CHARM, SAFEGUARD, SLAM
 	
 	; GrowlitheHisuian4
-	db EMBER, LEER, SAFEGUARD, FIRE_SPIN
+	dw EMBER, LEER, DRAGON_RAGE, ANCIENTPOWER
 	
-	; GrowlitheHisuian5
-	db EMBER, LEER, DOUBLE_KICK, MORNING_SUN
+	; Swinub1
+	dw TACKLE, SAND_ATTACK, HOWL, BITE
+
+	; Swinub2
+	dw TACKLE, CHARM, WHIRLWIND, SLAM
+
+	; Swinub3
+	dw TACKLE, DEFENSE_CURL, SWAGGER, SLAM
 	

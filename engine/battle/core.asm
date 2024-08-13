@@ -932,7 +932,7 @@ ParsePlayerAction:
 .not_encored
 	ld a, [wBattlePlayerAction]
 	cp BATTLEPLAYERACTION_SWITCH
-	jr z, .reset_rage
+	jp z, .reset_rage
 	and a
 	jr nz, .reset_bide        ;do not edit, breaks running from battle
 	ld a, [wPlayerSubStatus3]
@@ -940,18 +940,33 @@ ParsePlayerAction:
 	jr nz, .locked_in
 	xor a
 	ld [wMoveSelectionMenuType], a
-	inc a ; POUND
+	if HIGH(POUND)
+		ld a, HIGH(POUND)
+	endc
+	ld [wFXAnimID + 1], a
+	if LOW(POUND) == (HIGH(POUND) + 1)
+		inc a
+	else
+		ld a, LOW(POUND)
+	endc
 	ld [wFXAnimID], a
 	call MoveSelectionScreen
 	push af
 	call SafeLoadTempTilemapToTilemap
 	call UpdateBattleHuds
 	ld a, [wCurPlayerMove]
-	cp STRUGGLE
-	jr z, .struggle
-	call PlayClickSFX
-
-.struggle
+	call GetMoveIndexFromID
+	ld a, h
+	if HIGH(STRUGGLE)
+		cp HIGH(STRUGGLE)
+	else
+		and a
+	endc
+	jr nz, .not_struggle
+	ld a, l
+	cp LOW(STRUGGLE)
+.not_struggle
+	call nz, PlayClickSFX
 	ld a, $1
 	ldh [hBGMapMode], a
 	pop af
@@ -969,15 +984,15 @@ ParsePlayerAction:
 	ld [wPlayerFuryCutterCount], a
 
 .continue_fury_cutter
-	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
-	cp EFFECT_RAGE
-	jr z, .continue_rage
-	ld hl, wPlayerSubStatus4
-	res SUBSTATUS_RAGE, [hl]
-	xor a
-	ld [wPlayerRageCounter], a
+;	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
+;	cp EFFECT_RAGE
+;	jr z, .continue_rage
+;	ld hl, wPlayerSubStatus4
+;	res SUBSTATUS_RAGE, [hl]
+;	xor a
+;	ld [wPlayerRageCounter], a
 
-.continue_rage
+;.continue_rage
 	ld a, [wPlayerMoveStruct + MOVE_EFFECT]
 	cp EFFECT_PROTECT
 	jr z, .continue_protect
@@ -995,7 +1010,7 @@ ParsePlayerAction:
 	xor a
 	ld [wPlayerFuryCutterCount], a
 	ld [wPlayerProtectCount], a
-	ld [wPlayerRageCounter], a
+;	ld [wPlayerRageCounter], a
 	ld hl, wPlayerSubStatus4
 	res SUBSTATUS_RAGE, [hl]
 
@@ -1008,7 +1023,7 @@ ParsePlayerAction:
 	xor a
 	ld [wPlayerFuryCutterCount], a
 	ld [wPlayerProtectCount], a
-	ld [wPlayerRageCounter], a
+;	ld [wPlayerRageCounter], a
 	ld hl, wPlayerSubStatus4
 	res SUBSTATUS_RAGE, [hl]
 	xor a
@@ -1171,13 +1186,9 @@ GetMovePriority:
 INCLUDE "data/moves/effects_priorities.asm"
 
 GetMoveEffect:
-	ld a, b
-	dec a
-	ld hl, Moves + MOVE_EFFECT
-	ld bc, MOVE_LENGTH
-	call AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	ld l, b
+	ld a, MOVE_EFFECT
+	call GetMoveAttribute
 	ld b, a
 	ret
 
@@ -1556,7 +1567,13 @@ HandleWrap:
 
 	ld a, [de]
 	ld [wNamedObjectIndex], a
+	push hl
+	call GetMoveIndexFromID
+	ld a, l
 	ld [wFXAnimID], a
+	ld a, h
+	ld [wFXAnimID + 1], a
+	pop hl
 	call GetMoveName
 	dec [hl]
 	jr z, .release_from_bounds
@@ -1574,12 +1591,11 @@ HandleWrap:
 	call SwitchTurnCore
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimID + 1], a
 	predef PlayBattleAnim
 	call SwitchTurnCore
 
 .skip_anim
-	call GetEighthMaxHPMaxHP
+	call GetEighthMaxHP
 	call SubtractHPFromUser
 	ld hl, BattleText_UsersHurtByStringBuffer1
 	jr .print_text
@@ -1711,11 +1727,23 @@ HandleMysteryberry:
 .restore
 	; lousy hack
 	ld a, [hl]
-	cp SKETCH
-	ld b, 1
-	jr z, .sketch
+	push hl
+	call GetMoveIndexFromID
+	ld a, h
+	if HIGH(SKETCH)
+		cp HIGH(SKETCH)
+	else
+		and a
+	endc
+	ld a, l
+	pop hl
 	ld b, 5
-.sketch
+	jr nz, .not_sketch
+	cp LOW(SKETCH)
+	jr nz, .not_sketch
+	ld b, 1
+	
+.not_sketch
 	ld a, [de]
 	add b
 	ld [de], a
@@ -2100,7 +2128,8 @@ HandleWeather:
 	ld a, [wBattleWeather]
 	cp WEATHER_RAIN
 	;ret nz
-	jp nz, .check_sun
+;	jp nz, .check_sun
+	jp nz, .check_acid
 	
 	ldh a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
@@ -2190,6 +2219,66 @@ HandleWeather:
 	ld hl, RainRestoreText
 	jp StdBattleTextbox
 	
+.check_acid
+	ld a, [wBattleWeather]
+	cp WEATHER_ACID_RAIN
+	jp nz, .check_sun
+	
+	ldh a, [hSerialConnectionStatus]
+	cp USING_EXTERNAL_CLOCK
+	jr z, .enemy_first_acid
+
+; player first
+	call SetPlayerTurn
+	call .AcidDamage
+	call SetEnemyTurn
+	jr .AcidDamage
+
+.enemy_first_acid
+	call SetEnemyTurn
+	call .AcidDamage
+	call SetPlayerTurn
+
+.AcidDamage:
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	bit SUBSTATUS_UNDERGROUND, a
+	ret nz
+
+	ld hl, wBattleMonType1
+	ldh a, [hBattleTurn]
+	and a
+	jr z, .ok3
+	ld hl, wEnemyMonType1
+.ok3
+	ld a, [hli]
+	cp POISON
+	ret z
+	cp STEEL
+	jr z, .extradamage1
+	cp ROCK
+	jr z, .extradamage1
+
+	ld a, [hl]
+	cp POISON
+	ret z
+	cp STEEL
+	jr z, .extradamage1
+	cp ROCK
+	jr z, .extradamage1
+
+	call GetSixteenthMaxHP
+	call SubtractHPFromUser
+	jr .acidtext
+	
+.extradamage1
+	call GetEighthMaxHP
+	call SubtractHPFromUser	
+
+.acidtext
+	ld hl, AcidHitsText
+	jp StdBattleTextbox
+	
 .check_sun
 	ld a, [wBattleWeather]
 	cp WEATHER_SUN
@@ -2258,6 +2347,8 @@ HandleWeather:
 	dw BattleText_TheSunlightIsStrong
 	dw BattleText_TheSandstormRages
 	dw BattleText_HailContinuesToFall
+	dw BattleText_AcidContinuesToFall
+	dw BattleText_FogContinues
 
 .WeatherEndedMessages:
 ; entries correspond to WEATHER_* constants
@@ -2265,6 +2356,8 @@ HandleWeather:
 	dw BattleText_TheSunlightFaded
 	dw BattleText_TheSandstormSubsided
 	dw BattleText_TheHailEnded
+	dw BattleText_TheAcidEnded
+	dw BattleText_TheFogEnded
 
 SubtractHPFromTarget:
 	call SubtractHP
@@ -3694,13 +3787,8 @@ LookUpTheEffectivenessOfEveryMove:
 	push hl
 	push de
 	push bc
-	dec a
-	ld hl, Moves
-	ld bc, MOVE_LENGTH
-	call AddNTimes
 	ld de, wEnemyMoveStruct
-	ld a, BANK(Moves)
-	call FarCopyBytes
+	call GetMoveData
 	call SetEnemyTurn
 	callfar BattleCheckTypeMatchup
 	pop bc
@@ -3729,11 +3817,14 @@ IsThePlayerMonTypesEffectiveAgainstOTMon:
 	call GetPokemonIndexFromID
 	ld b, h
 	ld c, l
-	ld hl, BaseData + BASE_TYPES - BASE_DATA_SIZE ;go one back so we don't decrement hl
-	ld a, BASE_DATA_SIZE
-	call AddNTimes
+	ld hl, BaseData
+	ld a, BANK(BaseData)
+	call LoadIndirectPointer
+	jr z, .done
+	ld bc, BASE_TYPES
+	add hl, bc
 	ld de, wEnemyMonType
-	ld bc, BASE_CATCH_RATE - BASE_TYPES
+	ld c, BASE_CATCH_RATE - BASE_TYPES
 	ld a, BANK(BaseData)
 	call FarCopyBytes
 	ld a, [wBattleMonType1]
@@ -3749,6 +3840,7 @@ IsThePlayerMonTypesEffectiveAgainstOTMon:
 	ld a, [wTypeMatchup]
 	cp EFFECTIVE + 1
 	jr nc, .super_effective
+.done
 	pop bc
 	ret
 
@@ -3997,7 +4089,7 @@ endr
 	ld [wEnemyDisableCount], a
 	ld [wEnemyFuryCutterCount], a
 	ld [wEnemyProtectCount], a
-	ld [wEnemyRageCounter], a
+;	ld [wEnemyRageCounter], a
 	ld [wEnemyDisabledMove], a
 	ld [wEnemyMinimized], a
 	ld [wPlayerWrapCount], a
@@ -4464,7 +4556,7 @@ endr
 	ld [wPlayerDisableCount], a
 	ld [wPlayerFuryCutterCount], a
 	ld [wPlayerProtectCount], a
-	ld [wPlayerRageCounter], a
+;	ld [wPlayerRageCounter], a
 	ld [wDisabledMove], a
 	ld [wPlayerMinimized], a
 	ld [wEnemyWrapCount], a
@@ -4733,12 +4825,15 @@ ItemRecoveryAnim:
 	push de
 	push bc
 	call EmptyBattleTextbox
-	ld a, RECOVER
-	ld [wFXAnimID], a
 	call SwitchTurnCore
 	xor a
 	ld [wNumHits], a
+	if HIGH(RECOVER)
+		ld a, HIGH(RECOVER)
+	endc
 	ld [wFXAnimID + 1], a
+	ld a, LOW(RECOVER)
+	ld [wFXAnimID], a
 	predef PlayBattleAnim
 	call SwitchTurnCore
 	pop bc
@@ -6071,7 +6166,8 @@ MoveInfoBox:
 	ret
 
 CheckPlayerHasUsableMoves:
-	ld a, STRUGGLE
+	ld hl, STRUGGLE
+	call GetMoveIDFromIndex
 	ld [wCurPlayerMove], a
 	ld a, [wPlayerDisableCount]
 	and a
@@ -6244,15 +6340,15 @@ ParseEnemyAction:
 	ld [wEnemyFuryCutterCount], a
 
 .fury_cutter
-	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	cp EFFECT_RAGE
-	jr z, .no_rage
-	ld hl, wEnemySubStatus4
-	res SUBSTATUS_RAGE, [hl]
-	xor a
-	ld [wEnemyRageCounter], a
+;	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
+;	cp EFFECT_RAGE
+;	jr z, .no_rage
+;	ld hl, wEnemySubStatus4
+;	res SUBSTATUS_RAGE, [hl]
+;	xor a
+;	ld [wEnemyRageCounter], a
 
-.no_rage
+;.no_rage
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_PROTECT
 	ret z
@@ -6263,14 +6359,15 @@ ParseEnemyAction:
 	ret
 
 .struggle
-	ld a, STRUGGLE
+	ld hl, STRUGGLE
+	call GetMoveIDFromIndex
 	jr .finish
 
 ResetVarsForSubstatusRage:
 	xor a
 	ld [wEnemyFuryCutterCount], a
 	ld [wEnemyProtectCount], a
-	ld [wEnemyRageCounter], a
+;	ld [wEnemyRageCounter], a
 	ld hl, wEnemySubStatus4
 	res SUBSTATUS_RAGE, [hl]
 	ret

@@ -182,11 +182,17 @@ BattleCommand_CheckTurn:
 
 	; Snore and Sleep Talk bypass sleep.
 	ld a, [wCurPlayerMove]
-	cp SLEEP_TALK
-	jr z, .not_asleep
+	ld hl, .sleep_bypass_moves
+	call CheckMoveInList
+	jr c, .not_asleep
 
 	call CantMove
 	jp EndTurn
+	
+.sleep_bypass_moves
+	dw SNORE
+	dw SLEEP_TALK
+	dw -1
 
 .not_asleep
 
@@ -196,16 +202,20 @@ BattleCommand_CheckTurn:
 
 	; Flame Wheel and Sacred Fire thaw the user.
 	ld a, [wCurPlayerMove]
-	cp FLAME_WHEEL
-	jr z, .not_frozen
-	cp SACRED_FIRE
-	jr z, .not_frozen
+	ld hl, .thawing_moves
+	call CheckMoveInList
+	jr c, .not_frozen
 
 	ld hl, FrozenSolidText
 	call StdBattleTextbox
 
 	call CantMove
 	jp EndTurn
+	
+.thawing_moves
+	dw FLAME_WHEEL
+	dw SACRED_FIRE
+	dw -1
 
 .not_frozen
 
@@ -345,22 +355,24 @@ CantMove:
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp FLY
-	jr z, .fly_dig_dive
+	push hl
+	ld hl, .fly_dig_moves
+	call CheckMoveInList
+	pop hl
+	ret nc
 
-	cp DIG
-	jr z, .fly_dig_dive
-
-	cp DIVE
-	ret nz
-
-.fly_dig_dive
 	res SUBSTATUS_UNDERGROUND, [hl]
 	res SUBSTATUS_FLYING, [hl]
 	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVarAddr
 	res SUBSTATUS_UNDERWATER, [hl]
 	jp AppearUserRaiseSub
+	
+.fly_dig_moves
+	dw FLY
+	dw DIG
+	dw DIVE
+	dw -1
 
 OpponentCantMove:
 	call BattleCommand_SwitchTurn
@@ -414,10 +426,16 @@ CheckEnemyTurn:
 .fast_asleep
 	; Snore and Sleep Talk bypass sleep.
 	ld a, [wCurEnemyMove]
-	cp SLEEP_TALK
-	jr z, .not_asleep
+	ld hl, .sleep_bypass_moves
+	call CheckMoveInList
+	jr c, .not_asleep
 	call CantMove
 	jp EndTurn
+	
+.sleep_bypass_moves
+	dw SNORE
+	dw SLEEP_TALK
+	dw -1
 
 .not_asleep
 
@@ -427,15 +445,20 @@ CheckEnemyTurn:
 
 	; Flame Wheel and Sacred Fire thaw the user.
 	ld a, [wCurEnemyMove]
-	cp FLAME_WHEEL
-	jr z, .not_frozen
-	cp SACRED_FIRE
-	jr z, .not_frozen
+	ld hl, .thawing_moves
+	call CheckMoveInList
+	jr c, .not_frozen
 
 	ld hl, FrozenSolidText
 	call StdBattleTextbox
 	call CantMove
 	jp EndTurn
+	
+
+.thawing_moves
+	dw FLAME_WHEEL
+	dw SACRED_FIRE
+	dw -1
 
 .not_frozen
 
@@ -931,12 +954,16 @@ IgnoreSleepOnly:
 	call GetBattleVar
 
 	; Snore and Sleep Talk bypass sleep.
-	cp SLEEP_TALK
-	jr z, .CheckSleep
-	and a
-	ret
+	ld hl, .sleep_moves
+	call CheckMoveInList
+	ret nc
 
 .CheckSleep:
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVar
+	and SLP
+	ret z
+	
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and SLP
@@ -950,6 +977,11 @@ IgnoreSleepOnly:
 
 	scf
 	ret
+	
+.sleep_moves
+	dw SNORE
+	dw SLEEP_TALK
+	dw -1
 
 BattleCommand_UsedMoveText:
 ; usedmovetext
@@ -991,7 +1023,8 @@ BattleCommand_DoTurn:
 
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	cp STRUGGLE
+	ld bc, STRUGGLE
+	call CompareMove
 	ret z
 
 	ld a, [de]
@@ -1054,16 +1087,17 @@ BattleCommand_DoTurn:
 .wild
 	ld hl, wEnemyMonMoves
 	ld a, [wCurEnemyMoveNum]
-	ld c, a
-	ld b, 0
-	add hl, bc
+	ld e, a
+	ld d, 0
+	add hl, de
 	ld a, [hl]
-	cp MIMIC
+	ld bc, MIMIC
+	call CompareMove
 	jr z, .mimic
 	ld hl, wWildMonMoves
-	add hl, bc
+	add hl, de
 	ld a, [hl]
-	cp MIMIC
+	call CompareMove
 	ret z
 
 .mimic
@@ -1110,16 +1144,17 @@ CheckMimicUsed:
 	ld a, MON_MOVES
 	call UserPartyAttr
 
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVar
-	cp MIMIC
-	jr z, .mimic
-
 	ld b, 0
 	add hl, bc
 	ld a, [hl]
-	cp MIMIC
+	ld bc, MIMIC
+	call CompareMove
 	jr nz, .mimic
+	
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	call CompareMove
+	jr z, .mimic
 
 	scf
 	ret
@@ -1189,10 +1224,13 @@ BattleCommand_Critical:
 .CheckCritical:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld de, 1
+	call GetMoveIndexFromID
+	ld de, 2
 	ld hl, CriticalHitMoves
 	push bc
-	call IsInArray
+	ld b, h
+	ld c, l
+	call IsInHalfwordArray
 	pop bc
 	jr nc, .ScopeLens
 
@@ -1230,7 +1268,8 @@ BattleCommand_Stab:
 ; STAB = Same Type Attack Bonus
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp STRUGGLE
+	ld bc, STRUGGLE
+	call CompareMove
 	ret z
 
 	ld hl, wBattleMonType1
@@ -1572,7 +1611,8 @@ BattleCommand_CheckHit:
 ; checkhit
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp THUNDER_WAVE
+	ld bc, THUNDER_WAVE
+	call CompareMove
 	jr nz, .skipcheck
 	
 	ld hl, wEnemyMonType1
@@ -1779,7 +1819,8 @@ BattleCommand_CheckHit:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 
-	cp EARTHQUAKE
+	ld bc, EARTHQUAKE
+	call CompareMove
 	ret z
 
 .LockedOn:
@@ -1829,28 +1870,32 @@ BattleCommand_CheckHit:
 
 .flying_or_underground
 	bit SUBSTATUS_FLYING, a
-	jr z, .DigMoves
+	ld hl, .FlyMoves
+	jr z, .check_move_in_list
+	ld hl, .DigMoves
+.check_move_in_list
+	; returns z (and a = 0) if the current move is in a given list, or nz (and a = 1) if not
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 
-	cp GUST
-	ret z
-	cp WHIRLWIND
-	ret z
-	cp THUNDER
-	ret z
-	cp TWISTER
-	ret z
-	cp SKY_UPPERCUT
+	call CheckMoveInList
+	sbc a
+	inc a
 	ret
-
+	
+.FlyMoves:
+	dw GUST
+	dw WHIRLWIND
+	dw THUNDER
+	dw TWISTER
+	dw SKY_UPPERCUT
+	dw -1
+	
 .DigMoves:
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-
-	cp EARTHQUAKE
-	ret
+	dw EARTHQUAKE
+	;dw MAGNITUDE
+	dw -1
 
 .ThunderRain:
 ; Return z if the current move always hits in rain, and it is raining.
@@ -2039,10 +2084,10 @@ BattleCommand_LowerSub:
 
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimID + 1], a
 	inc a
 	ld [wBattleAnimParam], a
-	ld a, SUBSTITUTE
+	ld hl, SUBSTITUTE
+	call GetMoveIDFromIndex
 	jp LoadAnim
 
 .mimic_anims
@@ -2103,20 +2148,21 @@ BattleCommand_MoveAnimNoSub:
 .triplekick
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld e, a
-	ld d, 0
-	call PlayFXAnimID
+	call SetMoveAnimationID
+	call PlaySelectedFXAnim
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp FLY
-	jr z, .clear_sprite
-	cp DIG
-	jr z, .clear_sprite
-	cp DIVE
-	ret nz
-.clear_sprite
+	ld hl, .fly_dig_moves
+	call CheckMoveInList
+	ret nc
 	jp AppearUserLowerSub
+	
+.fly_dig_moves
+	dw FLY
+	dw DIG
+	dw DIVE
+	dw -1
 
 .alternate_anim
 	ld a, [wBattleAnimParam]
@@ -2128,13 +2174,13 @@ BattleCommand_MoveAnimNoSub:
 	push af
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld e, a
-	ld d, 0
+	call SetMoveAnimationID
 	pop af
-	jp z, PlayFXAnimID
+	jr z, .play_anim
 	xor a
 	ld [wNumHits], a
-	jp PlayFXAnimID
+.play_anim
+	jp PlaySelectedFXAnim
 
 BattleCommand_StatUpAnim:
 	ld a, [wAttackMissed]
@@ -2163,9 +2209,8 @@ BattleCommand_StatUpDownAnim:
 	ld [wBattleAnimParam], a
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld e, a
-	ld d, 0
-	jp PlayFXAnimID
+	call SetMoveAnimationID
+	jp PlaySelectedFXAnim
 
 BattleCommand_SwitchTurn:
 ; switchturn
@@ -2188,10 +2233,10 @@ BattleCommand_RaiseSub:
 
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimID + 1], a
 	ld a, $2
 	ld [wBattleAnimParam], a
-	ld a, SUBSTITUTE
+	ld hl, SUBSTITUTE
+	call GetMoveIDFromIndex
 	jp LoadAnim
 
 BattleCommand_FailureText:
@@ -2207,12 +2252,11 @@ BattleCommand_FailureText:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVarAddr
 
-	cp FLY
-	jr z, .fly_dig_dive
-	cp DIG
-	jr z, .fly_dig_dive
-	cp DIVE
-	jr z, .fly_dig_dive
+	push hl
+	ld hl, .fly_dig_moves
+	call CheckMoveInList
+	pop hl
+	jr c, .fly_dig_dive
 
 ; Move effect:
 	inc hl
@@ -2240,6 +2284,11 @@ BattleCommand_FailureText:
 	res SUBSTATUS_UNDERWATER, [hl]
 	call AppearUserRaiseSub
 	jp EndMoveEffect
+	
+.fly_dig_moves
+	dw FLY
+	dw DIG
+	dw -1
 
 BattleCommand_ApplyDamage:
 ; applydamage
@@ -2386,11 +2435,12 @@ GetFailureResultText:
 	ld hl, ButItFailedText
 	ld de, ItFailedText
 	jr z, .got_text
-	cp EFFECT_MAGNITUDE
-	jr z, .got_text
+;	cp EFFECT_MAGNITUDE
+;	jr z, .got_text
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	cp THUNDER_WAVE
+	ld bc, THUNDER_WAVE
+	call CompareMove
 	jr z, .got_text
 	ld hl, AttackMissedText
 	ld de, AttackMissed2Text
@@ -2597,10 +2647,10 @@ BattleCommand_CheckFaint:
 	call BattleCommand_SwitchTurn
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimID + 1], a
 	inc a
 	ld [wBattleAnimParam], a
-	ld a, DESTINY_BOND
+	ld hl, DESTINY_BOND
+	call GetMoveIDFromIndex
 	call LoadAnim
 	call BattleCommand_SwitchTurn
 
@@ -2614,8 +2664,8 @@ BattleCommand_CheckFaint:
 	cp EFFECT_DOUBLE_HIT
 	jr z, .multiple_hit_raise_sub
 	cp EFFECT_POISON_MULTI_HIT
-	jr z, .multiple_hit_raise_sub
-	cp EFFECT_BEAT_UP
+;	jr z, .multiple_hit_raise_sub
+;	cp EFFECT_BEAT_UP
 	jr nz, .finish
 
 .multiple_hit_raise_sub
@@ -2627,7 +2677,7 @@ BattleCommand_CheckFaint:
 BattleCommand_BuildOpponentRage: ;hijacked for other stuff too
 ; buildopponentrage
 
-	jp .start  ;what?
+;	jp .start  ;what?
 
 .start
 	ld a, [wAttackMissed]
@@ -2682,53 +2732,54 @@ BattleCommand_BuildOpponentRage: ;hijacked for other stuff too
 	call BattleCommand_SwitchTurn
 	
 .continuerage
-	ld a, BATTLE_VARS_SUBSTATUS4_OPP
-	call GetBattleVar
-	bit SUBSTATUS_RAGE, a
-	ret z
+;	ld a, BATTLE_VARS_SUBSTATUS4_OPP
+;	call GetBattleVar
+;	bit SUBSTATUS_RAGE, a
+;	ret z
 
-	ld de, wEnemyRageCounter
-	ldh a, [hBattleTurn]
-	and a
-	jr z, .player
-	ld de, wPlayerRageCounter
-.player
-	ld a, [de]
-	inc a
-	ret z
-	ld [de], a
+;	ld de, wEnemyRageCounter
+;	ldh a, [hBattleTurn]
+;	and a
+;	jr z, .player
+;	ld de, wPlayerRageCounter
+;.player
+;	ld a, [de]
+;	inc a
+;	ret z
+;	ld [de], a
 
-	call BattleCommand_SwitchTurn
-	ld hl, RageBuildingText
-	call StdBattleTextbox
-	jp BattleCommand_SwitchTurn
+;	call BattleCommand_SwitchTurn
+;	ld hl, RageBuildingText
+;	call StdBattleTextbox
+;	jp BattleCommand_SwitchTurn
+	ret
 
 BattleCommand_RageDamage:
 ; ragedamage
 
-	ld a, [wCurDamage]
-	ld h, a
-	ld b, a
-	ld a, [wCurDamage + 1]
-	ld l, a
-	ld c, a
-	ldh a, [hBattleTurn]
-	and a
-	ld a, [wPlayerRageCounter]
-	jr z, .rage_loop
-	ld a, [wEnemyRageCounter]
-.rage_loop
-	and a
-	jr z, .done
-	dec a
-	add hl, bc
-	jr nc, .rage_loop
-	ld hl, $ffff
-.done
-	ld a, h
-	ld [wCurDamage], a
-	ld a, l
-	ld [wCurDamage + 1], a
+;	ld a, [wCurDamage]
+;	ld h, a
+;	ld b, a
+;	ld a, [wCurDamage + 1]
+;	ld l, a
+;	ld c, a
+;	ldh a, [hBattleTurn]
+;	and a
+;	ld a, [wPlayerRageCounter]
+;	jr z, .rage_loop
+;	ld a, [wEnemyRageCounter]
+;.rage_loop
+;	and a
+;	jr z, .done
+;	dec a
+;	add hl, bc
+;	jr nc, .rage_loop
+;	ld hl, $ffff
+;.done
+;	ld a, h
+;	ld [wCurDamage], a
+;	ld a, l
+;	ld [wCurDamage + 1], a
 	ret
 
 EndMoveEffect:
@@ -3363,7 +3414,7 @@ EnemyAttackDamage:
 	and a
 	ret
 
-INCLUDE "engine/battle/move_effects/beat_up.asm"
+;INCLUDE "engine/battle/move_effects/beat_up.asm"
 
 BattleCommand_ClearMissDamage:
 ; clearmissdamage
@@ -3810,6 +3861,10 @@ INCLUDE "engine/battle/move_effects/encore.asm"
 
 INCLUDE "engine/battle/move_effects/pain_split.asm"
 
+INCLUDE "engine/battle/move_effects/snore.asm"
+
+INCLUDE "engine/battle/move_effects/conversion2.asm"
+
 INCLUDE "engine/battle/move_effects/lock_on.asm"
 
 INCLUDE "engine/battle/move_effects/sketch.asm"
@@ -3871,6 +3926,7 @@ PlayFXAnimID:
 	ld a, d
 	ld [wFXAnimID + 1], a
 
+PlaySelectedFXAnim:
 	ld c, 3
 	call DelayFrames
 	callfar PlayBattleAnim
@@ -4064,8 +4120,8 @@ DoSubstituteDamage:
 	jr z, .ok
 	cp EFFECT_POISON_MULTI_HIT
 	jr z, .ok
-	cp EFFECT_BEAT_UP
-	jr z, .ok
+;	cp EFFECT_BEAT_UP
+;	jr z, .ok
 	xor a
 	ld [hl], a
 .ok
@@ -4084,7 +4140,6 @@ UpdateMoveData:
 	ld [wCurSpecies], a
 	ld [wNamedObjectIndex], a
 
-	dec a
 	call GetMoveData
 	call GetMoveName
 	jp CopyName1
@@ -4949,20 +5004,22 @@ SpecialDefenseBoost:
 MinimizeDropSub:
 ; Lower the substitute if we're minimizing
 
-	ld bc, wPlayerMinimized
+	ld de, wPlayerMinimized
 	ld hl, DropPlayerSub
 	ldh a, [hBattleTurn]
 	and a
 	jr z, .do_player
-	ld bc, wEnemyMinimized
+	ld de, wEnemyMinimized
 	ld hl, DropEnemySub
 .do_player
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
+	ld bc, MINIMIZE
+	call CompareMove
 	ret
 
 	ld a, $1
-	ld [bc], a
+	ld [de], a
 	call _CheckBattleScene
 	ret nc
 
@@ -4996,6 +5053,10 @@ BattleCommand_SpecialDefenseDown:
 ; specialdefensedown
 	ld a, SP_DEFENSE
 	jr BattleCommand_StatDown
+	
+BattleCommand_AccuracyDown2:
+	ld a, $10 | ACCURACY
+	jr BattleCommand_StatDown
 
 BattleCommand_AccuracyDown:
 ; accuracydown
@@ -5015,6 +5076,11 @@ BattleCommand_AttackDown2:
 BattleCommand_DefenseDown2:
 ; defensedown2
 	ld a, $10 | DEFENSE
+	jr BattleCommand_StatDown
+	
+BattleCommand_SpecialDefenseDown2:
+; defensedown2
+	ld a, $10 | SP_DEFENSE
 	jr BattleCommand_StatDown
 
 BattleCommand_SpeedDown2:
@@ -5880,7 +5946,8 @@ BattleCommand_ForceSwitch:
 	pop af
 
 	ld hl, FledInFearText
-	cp ROAR
+	ld bc, ROAR
+	call CompareMove
 	jr z, .do_text
 	ld hl, BlownAwayText
 .do_text
@@ -5942,37 +6009,37 @@ BattleCommand_EndLoop:
 	cp EFFECT_DOUBLE_HIT
 	ld a, 1
 	jr z, .double_hit
-	ld a, [hl]
-	cp EFFECT_BEAT_UP
-	jr z, .beat_up
+;	ld a, [hl]
+;	cp EFFECT_BEAT_UP
+;	jr z, .beat_up
 	jr .not_triple_kick
 
-.beat_up
-	ldh a, [hBattleTurn]
-	and a
-	jr nz, .check_ot_beat_up
-	ld a, [wPartyCount]
-	cp 1
-	jp z, .only_one_beatup
-	dec a
-	jr .double_hit
+;.beat_up
+;	ldh a, [hBattleTurn]
+;	and a
+;	jr nz, .check_ot_beat_up
+;	ld a, [wPartyCount]
+;	cp 1
+;	jp z, .only_one_beatup
+;	dec a
+;	jr .double_hit
 
-.check_ot_beat_up
-	ld a, [wBattleMode]
-	cp WILD_BATTLE
-	jp z, .only_one_beatup
-	ld a, [wOTPartyCount]
-	cp 1
-	jp z, .only_one_beatup
-	dec a
-	jr .double_hit
+;.check_ot_beat_up
+;	ld a, [wBattleMode]
+;	cp WILD_BATTLE
+;	jp z, .only_one_beatup
+;	ld a, [wOTPartyCount]
+;	cp 1
+;	jp z, .only_one_beatup
+;	dec a
+;	jr .double_hit
 
-.only_one_beatup
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVarAddr
-	res SUBSTATUS_IN_LOOP, [hl]
-	call BattleCommand_BeatUpFailText
-	jp EndMoveEffect
+;.only_one_beatup
+;	ld a, BATTLE_VARS_SUBSTATUS3
+;	call GetBattleVarAddr
+;	res SUBSTATUS_IN_LOOP, [hl]
+;	call BattleCommand_BeatUpFailText
+;	jp EndMoveEffect
 
 .not_triple_kick
 	call BattleRandom
@@ -6014,10 +6081,10 @@ BattleCommand_EndLoop:
 	push bc
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
-	cp EFFECT_BEAT_UP
-	jr z, .beat_up_2
+;	cp EFFECT_BEAT_UP
+;	jr z, .beat_up_2
 	call StdBattleTextbox
-.beat_up_2
+;.beat_up_2
 
 	pop bc
 	xor a
@@ -6216,13 +6283,13 @@ BattleCommand_Charge:
 	inc a
 	ld [wBattleAnimParam], a
 	call LoadMoveAnim
-	ld a, BATTLE_VARS_MOVE_ANIM
+	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
-	cp FLY
+	cp EFFECT_FLY
 	jr z, .flying
-	cp DIG
+	cp EFFECT_DIG
 	jr z, .flying
-	cp DIVE
+	cp EFFECT_DIVE
 	jr z, .flying
 	call BattleCommand_RaiseSub
 	jr .not_flying
@@ -6232,14 +6299,14 @@ BattleCommand_Charge:
 .not_flying
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
-	ld a, BATTLE_VARS_MOVE_ANIM
+	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	ld b, a
-	cp DIVE
+	cp EFFECT_DIVE
 	jr z, .set_diving
-	cp FLY
+	cp EFFECT_FLY
 	jr z, .set_flying
-	cp DIG
+	cp EFFECT_DIG
 	jr nz, .dont_set_digging
 	set SUBSTATUS_UNDERGROUND, [hl]
 	jr .dont_set_digging
@@ -6278,32 +6345,34 @@ BattleCommand_Charge:
 	text_asm
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp RAZOR_WIND
-	ld hl, .BattleMadeWhirlwindText
-	jr z, .done
-
-	cp SOLARBEAM
-	ld hl, .BattleTookSunlightText
-	jr z, .done
-
-	cp SKY_ATTACK
-	ld hl, .BattleGlowingText
-	jr z, .done
-
-	cp FLY
-	ld hl, .BattleFlewText
-	jr z, .done
-
-	cp DIG
-	ld hl, .BattleDugText
-	jr z, .done
 	
-	cp DIVE
-	ld hl, .BattleDiveText
-	jr z, .done
-
-.done
+	push bc
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
+	ld de, 4
+	ld hl, .move_messages
+	call IsInHalfwordArray ; hl will point to the low byte of the found item
+	jr c, .found_text
+	ld hl, .move_messages
+.found_text
+	inc hl
+	inc hl
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	pop bc
 	ret
+	
+.move_messages
+	dw RAZOR_WIND, .BattleMadeWhirlwindText
+	dw SOLARBEAM,  .BattleTookSunlightText
+	dw SKULL_BASH, .BattleLoweredHeadText
+	dw SKY_ATTACK, .BattleGlowingText
+	dw FLY,        .BattleFlewText
+	dw DIG,        .BattleDugText
+	dw DIVE,       .BattleDiveText
+	dw -1
 
 .BattleMadeWhirlwindText:
 	text_far _BattleMadeWhirlwindText
@@ -6369,13 +6438,19 @@ BattleCommand_TrapTarget:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld [de], a
-	ld b, a
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
 	ld hl, .Traps
 
 .find_trap_text
 	ld a, [hli]
+	cp c
+	ld a, [hli]
+	jr nz, .next_trap_text
 	cp b
 	jr z, .found_trap_text
+.next_trap_text
 	inc hl
 	inc hl
 	jr .find_trap_text
@@ -6387,9 +6462,9 @@ BattleCommand_TrapTarget:
 	jp StdBattleTextbox
 
 .Traps:
-	dbw WRAP,      WrappedByText     ; 'was WRAPPED by'
-	dbw FIRE_SPIN, FireSpinTrapText  ; 'was trapped!'
-	dbw WHIRLPOOL, WhirlpoolTrapText ; 'was trapped!'
+	dw WRAP,      WrappedByText     ; 'was WRAPPED by'
+	dw FIRE_SPIN, FireSpinTrapText  ; 'was trapped!'
+	dw WHIRLPOOL, WhirlpoolTrapText ; 'was trapped!'
 
 INCLUDE "engine/battle/move_effects/mist.asm"
 
@@ -6716,7 +6791,7 @@ EndRechargeOpp:
 	pop hl
 	ret
 
-INCLUDE "engine/battle/move_effects/rage.asm"
+;INCLUDE "engine/battle/move_effects/rage.asm"
 
 INCLUDE "engine/battle/move_effects/hex.asm"
 
@@ -6825,7 +6900,8 @@ BattleCommand_Heal:
 	pop hl
 	jp z, .hp_full
 	ld a, b
-	cp REST
+	ld bc, REST
+	call CompareMove
 	jr nz, .not_rest
 
 	push hl
@@ -7177,7 +7253,7 @@ BattleCommand_CheckSafeguard:
 	call StdBattleTextbox
 	jp EndMoveEffect
 
-INCLUDE "engine/battle/move_effects/magnitude.asm"
+;INCLUDE "engine/battle/move_effects/magnitude.asm"
 
 INCLUDE "engine/battle/move_effects/baton_pass.asm"
 
@@ -7301,6 +7377,8 @@ INCLUDE "engine/battle/move_effects/sunny_day.asm"
 
 INCLUDE "engine/battle/move_effects/hail.asm"
 
+INCLUDE "engine/battle/move_effects/acid_rain.asm"
+
 INCLUDE "engine/battle/move_effects/belly_drum.asm"
 
 INCLUDE "engine/battle/move_effects/psych_up.asm"
@@ -7422,15 +7500,12 @@ AnimateCurrentMove:
 	ret
 
 PlayDamageAnim:
-	xor a
-	ld [wFXAnimID + 1], a
-
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	and a
 	ret z
 
-	ld [wFXAnimID], a
+	call SetMoveAnimationID
 
 	ldh a, [hBattleTurn]
 	and a
@@ -7446,7 +7521,6 @@ PlayDamageAnim:
 LoadMoveAnim:
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimID + 1], a
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -7456,8 +7530,7 @@ LoadMoveAnim:
 	; fallthrough
 
 LoadAnim:
-	ld [wFXAnimID], a
-
+	call SetMoveAnimationID
 	; fallthrough
 
 PlayUserBattleAnim:
@@ -7467,6 +7540,16 @@ PlayUserBattleAnim:
 	callfar PlayBattleAnim
 	pop bc
 	pop de
+	pop hl
+	ret
+	
+SetMoveAnimationID:
+	push hl
+	call GetMoveIndexFromID
+	ld a, l
+	ld [wFXAnimID], a
+	ld a, h
+	ld [wFXAnimID + 1], a
 	pop hl
 	ret
 
@@ -7534,27 +7617,6 @@ SkipToBattleCommand:
 	ld [wBattleScriptBufferAddress], a
 	ret
 
-GetMoveAttr:
-; Assuming hl = Moves + x, return attribute x of move a.
-	push bc
-	ld bc, MOVE_LENGTH
-	call AddNTimes
-	call GetMoveByte
-	pop bc
-	ret
-
-GetMoveData:
-; Copy move struct a to de.
-	ld hl, Moves
-	ld bc, MOVE_LENGTH
-	call AddNTimes
-	ld a, BANK(Moves)
-	jp FarCopyBytes
-
-GetMoveByte:
-	ld a, BANK(Moves)
-	jp GetFarByte
-
 DisappearUser:
 	farcall _DisappearUser
 	ret
@@ -7582,7 +7644,8 @@ SandstormSpDefBoost:
 ; First, check if Sandstorm is active.
 	ld a, [wBattleWeather]
 	cp WEATHER_SANDSTORM
-	ret nz
+	jr nz, .check_acid
+;	ret nz
 
 ; Then, check the opponent's types.
 	ld hl, wEnemyMonType1
@@ -7596,6 +7659,25 @@ SandstormSpDefBoost:
 	jr z, .start_boost
 	ld a, [hl]
 	cp ROCK
+	jr z, .start_boost
+	ret nz
+	
+.check_acid
+	ld a, [wBattleWeather]
+	cp WEATHER_ACID_RAIN
+	ret nz
+
+	ld hl, wEnemyMonType1
+	ldh a, [hBattleTurn]
+	and a
+	jr z, .ok2
+	ld hl, wBattleMonType1
+.ok2
+	ld a, [hli]
+	cp POISON
+	jr z, .start_boost
+	ld a, [hl]
+	cp POISON
 	ret nz
 
 .start_boost
@@ -7630,3 +7712,30 @@ BattleCommand_EffectSporeStatusChance:
 .StatusCommands:
 	dw BattleCommand_ParalyzeTarget ; paralyze
 	dw BattleCommand_PoisonTarget ; poison
+	
+CompareMove:
+	; checks if the move ID in a matches the move in bc
+	push hl
+	call GetMoveIndexFromID
+	ld a, h
+	cp b
+	ld a, l
+	pop hl
+	ret nz
+	cp c
+	ret
+
+CheckMoveInList:
+	; checks if the move ID in a belongs to a list of moves in hl
+	push bc
+	push de
+	push hl
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
+	pop hl
+	ld de, 2
+	call IsInHalfwordArray
+	pop de
+	pop bc
+	ret

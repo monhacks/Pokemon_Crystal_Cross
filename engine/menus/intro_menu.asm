@@ -134,11 +134,14 @@ DebugRoom: ; unreferenced
 endc
 
 ResetWRAM:
-	ld a, BANK(wPokemonIndexTable)
+	ld a, BANK("16-bit WRAM tables")
 	ldh [rSVBK], a
 	ld hl, wPokemonIndexTable
 	ld bc, wPokemonIndexTableEnd - wPokemonIndexTable
 	xor a
+	call ByteFill
+	ld hl, wMoveIndexTable
+	ld bc, wMoveIndexTableEnd - wMoveIndexTable
 	call ByteFill
 
 	ld a, 1

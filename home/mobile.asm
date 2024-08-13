@@ -30,24 +30,24 @@ Function3e32::
 
 Function3e60::
 ; Return from Function110030
-	ld [$c986], a
-	ld a, l
-	ld [$c987], a
-	ld a, h
-	ld [$c988], a
+;	ld [$c986], a
+;	ld a, l
+;	ld [$c987], a
+;	ld a, h
+;	ld [$c988], a
 
-	pop bc
-	ld a, b
-	ld [$c981], a
-	rst Bankswitch
+;	pop bc
+;	ld a, b
+;	ld [$c981], a
+;	rst Bankswitch
 
-	ld hl, $c822
-	res 6, [hl]
-	ld hl, $c987
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [$c986]
+;	ld hl, $c822
+;	res 6, [hl]
+;	ld hl, $c987
+;	ld a, [hli]
+;	ld h, [hl]
+;	ld l, a
+;	ld a, [$c986]
 	ret
 
 MobileReceive::
@@ -123,45 +123,45 @@ MobileTimer::  ;deleting this breaks things
 	reti
 
 Function3eea::
-	push hl
-	push bc
-	ld de, wAttrmap - wTilemap
-	add hl, de
-	inc b
-	inc b
-	inc c
-	inc c
-	call Function3f35
-	pop bc
-	pop hl
+;	push hl
+;	push bc
+;	ld de, wAttrmap - wTilemap
+;	add hl, de
+;	inc b
+;	inc b
+;	inc c
+;	inc c
+;	call Function3f35
+;	pop bc
+;	pop hl
 	jp MobileHome_PlaceBox
 
 Function3f20::
-	hlcoord 0, 0, wAttrmap
-	ld b,  6
-	ld c, 20
-	call Function3f35
-	hlcoord 0, 0
-	ld b,  4
-	ld c, 18
-	call MobileHome_PlaceBox
+;	hlcoord 0, 0, wAttrmap
+;	ld b,  6
+;	ld c, 20
+;	call Function3f35
+;	hlcoord 0, 0
+;	ld b,  4
+;	ld c, 18
+;	call MobileHome_PlaceBox
 	ret
 
 Function3f35::
-	ld a, 6
-	ld de, SCREEN_WIDTH
-.row
-	push bc
-	push hl
-.col
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop hl
-	add hl, de
-	pop bc
-	dec b
-	jr nz, .row
+;	ld a, 6
+;	ld de, SCREEN_WIDTH
+;.row
+;	push bc
+;	push hl
+;.col
+;	ld [hli], a
+;	dec c
+;	jr nz, .col
+;	pop hl
+;	add hl, de
+;	pop bc
+;	dec b
+;	jr nz, .row
 	ret
 
 MobileHome_PlaceBox:
@@ -177,81 +177,81 @@ MobileHome_PlaceBox:
 ;	call .FillBottom
 	ret
 
-.FillTop:
-	ld a, $63
-	ld d, $62
-	ld e, $64
-	jr .FillRow
+;.FillTop:
+;	ld a, $63
+;	ld d, $62
+;	ld e, $64
+;	jr .FillRow
 
-.FillBottom:
-	ld a, $68
-	ld d, $67
-	ld e, $69
-	jr .FillRow
+;.FillBottom:
+;	ld a, $68
+;	ld d, $67
+;	ld e, $69
+;	jr .FillRow
 
-.FillMiddle:
-	ld a, $7f
-	ld d, $65
-	ld e, $66
+;.FillMiddle:
+;	ld a, $7f
+;	ld d, $65
+;	ld e, $66
 
-.FillRow:
-	push hl
-	ld [hl], d
-	inc hl
-.FillLoop:
-	ld [hli], a
-	dec c
-	jr nz, .FillLoop
-	ld [hl], e
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-	ret
+;.FillRow:
+;	push hl
+;	ld [hl], d
+;	inc hl
+;.FillLoop:
+;	ld [hli], a
+;	dec c
+;	jr nz, .FillLoop
+;	ld [hl], e
+;	pop hl
+;	ld de, SCREEN_WIDTH
+;	add hl, de
+;	ret
 
 Function3f7c::
-	call MenuBoxCoord2Tile
-	call GetMenuBoxDims
-	dec b
-	dec c
-	call Function3eea
+;	call MenuBoxCoord2Tile
+;	call GetMenuBoxDims
+;	dec b
+;	dec c
+;	call Function3eea
 	ret
 
 Function3f88::
-	ld hl, wDecompressScratch
-	ld b, 0
-.row
-	push bc
-	ld c, 1 tiles / 2
-.col
-	ld a, [de]
-	inc de
-	cpl
-	ld [hl], 0
-	inc hl
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop bc
-	dec c
-	jr nz, .row
+;	ld hl, wDecompressScratch
+;	ld b, 0
+;.row
+;	push bc
+;	ld c, 1 tiles / 2
+;.col
+;	ld a, [de]
+;	inc de
+;	cpl
+;	ld [hl], 0
+;	inc hl
+;	ld [hli], a
+;	dec c
+;	jr nz, .col
+;	pop bc
+;	dec c
+;	jr nz, .row
 	ret
 
 Function3f9f::
-	ld hl, wDecompressScratch
-.row
-	push bc
-	ld c, 1 tiles / 2
-.col
-	ld a, [de]
-	inc de
-	inc de
-	cpl
-	ld [hl], $0
-	inc hl
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop bc
-	dec c
-	jr nz, .row
+;	ld hl, wDecompressScratch
+;.row
+;	push bc
+;	ld c, 1 tiles / 2
+;.col
+;	ld a, [de]
+;	inc de
+;	inc de
+;	cpl
+;	ld [hl], $0
+;	inc hl
+;	ld [hli], a
+;	dec c
+;	jr nz, .col
+;	pop bc
+;	dec c
+;	jr nz, .row
 	ret

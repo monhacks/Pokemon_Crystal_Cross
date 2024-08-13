@@ -192,12 +192,12 @@ CyndaquilPokeBallScript:
 	giveitem COIN_CASE
 	givecoins 50000
 	; good party
-	givepoke TYPHLOSION, 100
-	givepoke SUICUDRAX, 50
-	givepoke AERODON, 50
-	givepoke CHARIZARD_M, 50
-	givepoke RAIENSUI, 50
-	givepoke BELLOSSOM, 50
+	givepoke QUILAVA, 50
+	givepoke MURKROW, 27
+	givepoke YANMA, 32
+	givepoke EKANS, 50
+	givepoke SNEASEL, 28
+	givepoke EEVEE, 1
 	; tms for party
 	giveitem TM_ICE_BEAM
 	giveitem TM_FLAMETHROWER
@@ -303,6 +303,11 @@ CyndaquilPokeBallScript:
 	giveitem MAX_ELIXER, 99
 	giveitem RARE_CANDY, 99
 	giveitem ESCAPE_ROPE, 99
+	giveitem RAZOR_CLAW, 99
+	giveitem DUSK_STONE, 99
+	giveitem SUN_STONE, 99
+	giveitem RARE_CANDY, 99
+	
 	; all balls
 	giveitem MASTER_BALL, 99
 	giveitem POKE_BALL, 99

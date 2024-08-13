@@ -470,88 +470,59 @@ InitEggMoves2:
 
 GetEggMove:
 	push bc
-	ld a, [wEggMonSpecies]
-	call GetPokemonIndexFromID
-	ld bc, EggMovePointers - 2
-	add hl, hl
-	add hl, bc
-	ld a, BANK(EggMovePointers)
-	call GetFarWord
-.loop
-	ld a, BANK("Egg Moves")
-	call GetFarByte
-	cp -1
-	jr z, .reached_end
-	ld b, a
-	ld a, [de]
-	cp b
-	jr z, .done_carry
-	inc hl
-	jr .loop
-	
-.reached_end
+	push de
 	call GetBreedmonMovePointer
 	ld b, NUM_MOVES
-.loop2
-	;ld a, [de]
-	;cp [hl]
-	;jr z, .found_eggmove
-	inc hl
-	dec b
-	jr z, .inherit_tmhm
-	jr .loop2
-
-;.found_eggmove ; skipped
-	;ld a, [wEggMonSpecies]
-	;call GetPokemonIndexFromID
-	;ld b, h
-	;ld c, l
-	;ld hl, EvosAttacksPointers
-	;ld a, BANK(EvosAttacksPointers)
-	;call LoadDoubleIndirectPointer
-	;call FarSkipEvolutions
-	
-;.loop4 ; skipped
-	;ld a, b
-	;call GetFarByte
-	;and a
-	;jr z, .inherit_tmhm
-	;inc hl
-	;ld a, b
-	;call GetFarByte
-	;ld c, a
-	;ld a, [de]
-	;cp c
-	;jr z, .done_carry
-	;inc hl
-	;jr .loop4
-
-.inherit_tmhm
-	ld hl, TMHMMoves
-.loop5
-	ld a, BANK(TMHMMoves)
-	call GetFarByte
-	inc hl
-	and a
-	jr z, .done
-	ld b, a
 	ld a, [de]
-	cp b
-	jr nz, .loop5
-	ld [wPutativeTMHMMove], a
-	predef CanLearnTMHMMove
+	ld c, a
+.breedmon_loop
+	ld a, [hli]
+	and a
+	jr z, .not_breedmon
+;	cp c
+;	jr z, .breedmon_found
+	dec b
+	jr nz, .breedmon_loop
+.not_breedmon
 	ld a, c
-	and a
-	jr z, .done
+	call GetMoveIndexFromID
+	ld d, h
+	ld e, l
+.not_learnset_move	
+	ld a, [wEggMonSpecies]
+	call GetPokemonIndexFromID
+	ld b, h
+	ld c, l
+	ld hl, EggMovePointers
+	ld a, BANK(EggMovePointers)
+	call LoadDoubleIndirectPointer
+.egg_move_loop
+	push hl
+	call GetFarWord
+	ld a, h
+	and l	
+	ld c, a
+	ld a, h
+	cp d
+	jr nz, .no_egg_match
+	ld a, l
+	cp e
+.no_egg_match
+	pop hl
+	jr z, .is_egg_move
+	inc hl	
+	inc hl
+	ld a, b
+	inc c
+	jr nz, .egg_move_loop
+	
+	jr .done
 
-.done_carry
-	pop bc
+.is_egg_move
 	scf
-	ret
-
 .done
+	pop de
 	pop bc
-	and a
 	ret
 
 LoadEggMove:
@@ -588,62 +559,62 @@ LoadEggMove:
 	pop de
 	ret
 
-GetHeritableMoves: ; no longer referenced
-	ld hl, wBreedMon2Moves
-	ld a, [wBreedMon1Species]
-	cp DITTO
-	jr z, .ditto1
-	ld a, [wBreedMon2Species]
-	cp DITTO
-	jr z, .ditto2
-	ld a, [wBreedMotherOrNonDitto]
-	and a
-	ret z
-	ld hl, wBreedMon1Moves
-	ret
+;GetHeritableMoves: ; no longer referenced
+;	ld hl, wBreedMon2Moves
+;	ld a, [wBreedMon1Species]
+;	cp DITTO
+;	jr z, .ditto1
+;	ld a, [wBreedMon2Species]
+;	cp DITTO
+;	jr z, .ditto2
+;	ld a, [wBreedMotherOrNonDitto]
+;	and a
+;	ret z
+;	ld hl, wBreedMon1Moves
+;	ret
 
-.ditto1
-	ld a, [wCurPartySpecies]
-	push af
-	ld a, [wBreedMon2Species]
-	ld [wCurPartySpecies], a
-	ld a, [wBreedMon2DVs]
-	ld [wTempMonDVs], a
-	ld a, [wBreedMon2DVs + 1]
-	ld [wTempMonDVs + 1], a
-	ld a, TEMPMON
-	ld [wMonType], a
-	predef GetGender
-	jr c, .inherit_mon2_moves
-	jr nz, .inherit_mon2_moves
-	jr .inherit_mon1_moves
+;.ditto1
+;	ld a, [wCurPartySpecies]
+;	push af
+;	ld a, [wBreedMon2Species]
+;	ld [wCurPartySpecies], a
+;	ld a, [wBreedMon2DVs]
+;	ld [wTempMonDVs], a
+;	ld a, [wBreedMon2DVs + 1]
+;	ld [wTempMonDVs + 1], a
+;	ld a, TEMPMON
+;	ld [wMonType], a
+;	predef GetGender
+;	jr c, .inherit_mon2_moves
+;	jr nz, .inherit_mon2_moves
+;	jr .inherit_mon1_moves
 
-.ditto2
-	ld a, [wCurPartySpecies]
-	push af
-	ld a, [wBreedMon1Species]
-	ld [wCurPartySpecies], a
-	ld a, [wBreedMon1DVs]
-	ld [wTempMonDVs], a
-	ld a, [wBreedMon1DVs + 1]
-	ld [wTempMonDVs + 1], a
-	ld a, TEMPMON
-	ld [wMonType], a
-	predef GetGender
-	jr c, .inherit_mon1_moves
-	jr nz, .inherit_mon1_moves
+;.ditto2
+;	ld a, [wCurPartySpecies]
+;	push af
+;	ld a, [wBreedMon1Species]
+;	ld [wCurPartySpecies], a
+;	ld a, [wBreedMon1DVs]
+;	ld [wTempMonDVs], a
+;	ld a, [wBreedMon1DVs + 1]
+;	ld [wTempMonDVs + 1], a
+;	ld a, TEMPMON
+;	ld [wMonType], a
+;	predef GetGender
+;	jr c, .inherit_mon1_moves
+;	jr nz, .inherit_mon1_moves
+;
+;.inherit_mon2_moves
+;	ld hl, wBreedMon2Moves
+;	pop af
+;	ld [wCurPartySpecies], a
+;	ret
 
-.inherit_mon2_moves
-	ld hl, wBreedMon2Moves
-	pop af
-	ld [wCurPartySpecies], a
-	ret
-
-.inherit_mon1_moves
-	ld hl, wBreedMon1Moves
-	pop af
-	ld [wCurPartySpecies], a
-	ret
+;.inherit_mon1_moves
+;	ld hl, wBreedMon1Moves
+;	pop af
+;	ld [wCurPartySpecies], a
+;	ret
 
 GetBreedmonMovePointer:
 	ld hl, DITTO

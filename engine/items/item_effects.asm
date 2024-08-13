@@ -870,11 +870,11 @@ MoonBallMultiplier:
 	push bc
 	ld a, [wTempEnemyMonSpecies]
 	call GetPokemonIndexFromID
-	ld bc, EvosAttacksPointers - 2
-	add hl, hl
-	add hl, bc
+	ld b, h
+	ld c, l
+	ld hl, EvosAttacksPointers
 	ld a, BANK(EvosAttacksPointers)
-	call GetFarWord
+	call LoadDoubleIndirectPointer
 
 	ld a, [wCurItem]
 	ld c, a
@@ -2397,8 +2397,20 @@ RestorePPEffect:
 	jp nz, Not_PP_Up
 
 	ld a, [hl]
-	cp SKETCH
+	push hl
+	call GetMoveIndexFromID
+	ld a, h
+	if HIGH(SKETCH)
+		cp HIGH(SKETCH)
+	else
+		and a
+	endc
+	ld a, l
+	pop hl
+	jr nz, .not_sketch
+	cp LOW(SKETCH)
 	jr z, .CantUsePPUpOnSketch
+.not_sketch
 
 	ld bc, MON_PP - MON_MOVES
 	add hl, bc
@@ -2928,14 +2940,11 @@ GetMaxPPOfMove:
 
 .gotdatmove
 	ld a, [hl]
-	dec a
 
 	push hl
-	ld hl, Moves + MOVE_PP
-	ld bc, MOVE_LENGTH
-	call AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	ld l, a
+	ld a, MOVE_PP
+	call GetMoveAttribute
 	ld b, a
 	ld de, wStringBuffer1
 	ld [de], a

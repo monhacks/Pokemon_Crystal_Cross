@@ -43,12 +43,12 @@ EvolveAfterBattle_MasterLoop:
 
 	ld a, [wEvolutionOldSpecies]
 	call GetPokemonIndexFromID
-	ld bc, EvosAttacksPointers - 2
-	add hl, hl
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld b, h
+	ld c, l
+	ld hl, EvosAttacksPointers
+	ld a, BANK(EvosAttacksPointers)
+	call LoadDoubleIndirectPointer
+	ldh [hTemp], a
 
 	push hl
 	xor a
@@ -57,7 +57,7 @@ EvolveAfterBattle_MasterLoop:
 	pop hl
 
 .loop
-	ld a, [hli]
+	call GetNextEvoAttackByte
 	and a
 	jr z, EvolveAfterBattle_MasterLoop
 
@@ -110,31 +110,31 @@ EvolveAfterBattle_MasterLoop:
 	jp z, .hold
 
 ; EVOLVE_STAT
+	call GetNextEvoAttackByte
+	ld c, a
 	ld a, [wTempMonLevel]
-	cp [hl]
-	jp c, .dont_evolve_1
+	cp c
+	jp c, .dont_evolve_2
 
 	call IsMonHoldingEverstone
-	jp z, .dont_evolve_1
+	jp z, .dont_evolve_2
 
 	push hl
 	ld de, wTempMonAttack
 	ld hl, wTempMonDefense
 	ld c, 2
 	call CompareBytes
-	ld a, ATK_EQ_DEF
+	ld c, ATK_EQ_DEF
 	jr z, .got_tyrogue_evo
-	ld a, ATK_LT_DEF
+	ld c, ATK_LT_DEF
 	jr c, .got_tyrogue_evo
-	ld a, ATK_GT_DEF
+	ld c, ATK_GT_DEF
 .got_tyrogue_evo
 	pop hl
 
-	inc hl
-	cp [hl]
+	call GetNextEvoAttackByte
+	cp c
 	jp nz, .dont_evolve_2
-
-	inc hl
 	jp .proceed
 	
 .gender
@@ -156,7 +156,7 @@ EvolveAfterBattle_MasterLoop:
 .got_gender
 	pop hl
 	
-	inc hl   
+	inc hl    ;call GetNextEvoAttackByte ?
 	cp [hl]
 	jp nz, .dont_evolve_2 
 
@@ -164,7 +164,7 @@ EvolveAfterBattle_MasterLoop:
 	jp .proceed
 	
 .item_level
-	ld a, [hli]             ;item -> level
+	call GetNextEvoAttackByte  ;item -> level
 	ld b, a
 	ld a, [wCurItem]
 	cp b
@@ -178,7 +178,7 @@ EvolveAfterBattle_MasterLoop:
 	jp .proceed
 	
 .hold_level
-	ld a, [hli]             ;item -> level
+	call GetNextEvoAttackByte  ;item -> level
 	ld b, a
 	ld a, [wTempMonItem]
 	cp b
@@ -194,7 +194,7 @@ EvolveAfterBattle_MasterLoop:
 	jp .proceed
 	
 .hold
-	ld a, [hli]             ;item -> mon
+	call GetNextEvoAttackByte  ;item -> mon
 	ld b, a
 	ld a, [wTempMonItem]
 	cp b
@@ -205,7 +205,7 @@ EvolveAfterBattle_MasterLoop:
 	jp .proceed
 	
 .item_sevii
-	ld a, [hli]             ;item -> mon
+	call GetNextEvoAttackByte  ;item -> mon
 	ld b, a
 	ld a, [wCurItem]
 	cp b
@@ -224,7 +224,7 @@ EvolveAfterBattle_MasterLoop:
 	jp .dont_evolve_3
 	
 .move
-	ld a, [hli]
+	call GetNextEvoAttackByte
 	push hl
 	push bc
 	ld b, a
@@ -251,7 +251,7 @@ endr
 	call IsMonHoldingEverstone
 	jp z, .dont_evolve_2
 
-	ld a, [hli]
+	call GetNextEvoAttackByte
 	cp TR_ANYTIME
 	jp z, .proceed
 	cp TR_MORNDAY
@@ -277,7 +277,7 @@ endr
 	call IsMonHoldingEverstone
 	jp z, .dont_evolve_2
 
-	ld a, [hli]
+	call GetNextEvoAttackByte
 	ld b, a
 	inc a
 	jp z, .proceed
@@ -295,7 +295,7 @@ endr
 	jp .proceed
 
 .item
-	ld a, [hli]
+	call GetNextEvoAttackByte
 	ld b, a
 	ld a, [wCurItem]
 	cp b
@@ -310,7 +310,7 @@ endr
 	jr .proceed
 	
 .level_region
-	ld a, [hli]
+	call GetNextEvoAttackByte
 	ld b, a
 	ld a, [wTempMonLevel]
 	cp b
@@ -331,7 +331,7 @@ endr
 	jp .proceed
 	
 .level_sevii
-	ld a, [hli]
+	call GetNextEvoAttackByte
 	ld b, a
 	ld a, [wTempMonLevel]
 	cp b
@@ -352,11 +352,11 @@ endr
 	jp .dont_evolve_3
 
 .level
-	ld a, [hli]      ;level -> pokemon (end)
+	call GetNextEvoAttackByte ;level -> pokemon (end)
 	ld b, a
 	ld a, [wTempMonLevel]
 	cp b
-	jp c, .dont_evolve_3    ;+2
+	jp c, .dont_evolve_3   ;+2
 	call IsMonHoldingEverstone
 	jp z, .dont_evolve_3
 
@@ -366,9 +366,9 @@ endr
 	ld a, $1
 	ld [wMonTriedToEvolve], a
 
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ldh a, [hTemp]
+	call GetFarWord
+	
 	call GetPokemonIDFromIndex
 	ld [wEvolutionNewSpecies], a
 	ld a, [wCurPartyMon]
@@ -647,26 +647,32 @@ LearnLevelMoves:
 	ld a, [wTempSpecies]
 	ld [wCurPartySpecies], a
 	call GetPokemonIndexFromID
-	ld bc, EvosAttacksPointers - 2
-	add hl, hl
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld b, h
+	ld c, l
+	ld hl, EvosAttacksPointers
+	ld a, BANK(EvosAttacksPointers)
+	call LoadDoubleIndirectPointer
+	ldh [hTemp], a
 	call SkipEvolutions
 
 .find_move
-	ld a, [hli]
+	call GetNextEvoAttackByte
 	and a
 	jr z, .done
 
 	ld b, a
 	ld a, [wCurPartyLevel]
 	cp b
-	ld a, [hli]
+	call GetNextEvoAttackByte
+	ld e, a
+	call GetNextEvoAttackByte
+	ld d, a
 	jr nz, .find_move
 
 	push hl
+	ld h, d
+	ld l, e
+	call GetMoveIDFromIndex
 	ld d, a
 	ld hl, wPartyMon1Moves
 	ld a, [wCurPartyMon]
@@ -675,7 +681,7 @@ LearnLevelMoves:
 
 	ld b, NUM_MOVES
 .check_move
-	ld a, [hli]
+	call GetNextEvoAttackByte
 	cp d
 	jr z, .has_move
 	dec b
@@ -707,14 +713,14 @@ FillMoves:
 	push hl
 	push de
 	push bc
-	ld bc, EvosAttacksPointers - 2
 	ld a, [wCurPartySpecies]
 	call GetPokemonIndexFromID
-	add hl, hl
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld b, h
+	ld c, l
+	ld hl, EvosAttacksPointers
+	ld a, BANK(EvosAttacksPointers)
+	call LoadDoubleIndirectPointer
+	ldh [hTemp], a
 	call SkipEvolutions
 	jr .GetLevel
 
@@ -722,15 +728,17 @@ FillMoves:
 	pop de
 .GetMove:
 	inc hl
+	inc hl
 .GetLevel:
-	ld a, [hli]
+	call GetNextEvoAttackByte
 	and a
 	jp z, .done
 	ld b, a
 	ld a, [wCurPartyLevel]
 	cp b
 	jp c, .done
-	ld a, [wSkipMovesBeforeLevelUp]
+;	ld a, [wSkipMovesBeforeLevelUp]
+	ld a, [wEvolutionOldSpecies]
 	and a
 	jr z, .CheckMove
 	ld a, [wPrevPartyLevel]
@@ -740,10 +748,18 @@ FillMoves:
 .CheckMove:
 	push de
 	ld c, NUM_MOVES
+	
+	ldh a, [hTemp] ;??
+	push hl
+	call GetFarWord
+	call GetMoveIDFromIndex
+	pop hl
+	ld b, a        ;??
+	
 .CheckRepeat:
 	ld a, [de]
 	inc de
-	cp [hl]
+	cp b
 	jr z, .NextMove
 	dec c
 	jr nz, .CheckRepeat
@@ -778,26 +794,30 @@ FillMoves:
 	pop hl
 
 .LearnMove:
-	ld a, [hl]
+	ldh a, [hTemp]
+	push hl
+	call GetFarWord
+	call GetMoveIDFromIndex
+	pop hl
+	ld b, a
+	
 	ld [de], a
 	ld a, [wEvolutionOldSpecies]
 	and a
 	jr z, .NextMove
 	push hl
-	ld a, [hl]
+	
+	ld a, b
 	ld hl, MON_PP - MON_MOVES
 	add hl, de
 	push hl
-	dec a
-	ld hl, Moves + MOVE_PP
-	ld bc, MOVE_LENGTH
-	call AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	ld l, a
+	ld a, MOVE_PP
+	call GetMoveAttribute
 	pop hl
 	ld [hl], a
 	pop hl
-	jr .NextMove
+	jp .NextMove
 
 .done
 	pop bc
@@ -837,8 +857,10 @@ GetLowestEvolutionStage:
 	ret
 
 SkipEvolutions::
-; Receives a pointer to the evos and attacks for a mon in hl, and skips to the attacks.
-	ld a, [hli]
+; Receives a pointer to the evos and attacks for a mon in b:hl, and skips to the attacks.
+	ld a, b
+	call GetFarByte
+	inc hl
 	and a
 	ret z
 	cp EVOLVE_HOLD_LEVEL
@@ -858,21 +880,24 @@ SkipEvolutions::
 	jr SkipEvolutions
 
 DetermineEvolutionItemResults::
-; in: de: pointer to evos and attacks struct, wCurItem: item
-; out: de: species ID or zero; a, hl: clobbered
+; in: b:de: pointer to evos and attacks struct, wCurItem: item
+; out: de: species ID or zero; a, b, hl: clobbered
 	ld h, d
 	ld l, e
 	ld de, 0
+	ld a, b
+	ldh [hTemp], a
 .loop
-	ld a, [hli]  ;evo method -> item
+	call GetNextEvoAttackByte  ;evo method -> item
 	and a
 	ret z
 
 	cp EVOLVE_ITEM_LEVEL
 	jr nz, .next
 	
+	ld b, a
 	ld a, [wCurItem]
-	cp [hl]
+	cp b
 	jr nz, .increase	
 
 	inc hl           ;item -> level
@@ -895,8 +920,10 @@ DetermineEvolutionItemResults::
 .no_extra_increase
 	cp EVOLVE_ITEM ; will fail if the EVOLVE_STAT check passed
 	jr nz, .no_item_check
+	
+	ld b, a
 	ld a, [wCurItem]
-	cp [hl]
+	cp b	
 	jr z, .get_species
 	
 .no_item_check
@@ -906,9 +933,14 @@ DetermineEvolutionItemResults::
 	jr .loop
 
 .get_species
-	inc hl      ;level -> species
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
+	ldh a, [hTemp]
+	call GetFarWord
+	ld d, h
+	ld e, l
 	ret
 	
+GetNextEvoAttackByte:
+	ldh a, [hTemp]
+	call GetFarByte
+	inc hl
+	ret

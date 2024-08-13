@@ -182,6 +182,20 @@ BattleTowerBattle:
 	xor a ; FALSE
 	ld [wBattleTowerBattleEnded], a
 	call _BattleTowerBattle
+	xor a
+	ld l, LOCKED_MON_ID_BATTLE_TOWER_1
+	call LockPokemonID
+	ld l, LOCKED_MON_ID_BATTLE_TOWER_2
+	call LockPokemonID
+	ld l, LOCKED_MON_ID_BATTLE_TOWER_3
+	call LockPokemonID
+	lb bc, NUM_MOVES * 3, LOCKED_MOVE_ID_BATTLE_TOWER_MON1_MOVE1
+.loop
+	ld l, c
+	call LockMoveID
+	inc c
+	dec b
+	jr nz, .loop
 	ret
 
 UnusedBattleTowerDummySpecial1:
@@ -426,10 +440,16 @@ ValidateBTParty: ; unreferenced
 	ld d, NUM_MOVES - 1
 	ld a, [hli]
 	and a
-	jr nz, .valid_move
+	jr z, .not_move
+	cp MOVE_TABLE_ENTRIES + 1
+	jr c, .valid_move
 
+.not_move
 	dec hl
-	ld a, POUND
+	push hl
+	ld hl, POUND
+	call GetMoveIDFromIndex
+	pop hl
 	ld [hli], a
 	xor a
 	ld [hli], a
@@ -438,7 +458,13 @@ ValidateBTParty: ; unreferenced
 	jr .done_moves
 
 .valid_move
-	ld a, [hli]
+	ld a, [hl]
+	cp MOVE_TABLE_ENTRIES + 1
+	jr c, .next
+	ld [hl], $0
+
+.next
+	inc hl
 	dec d
 	jr nz, .valid_move
 

@@ -241,8 +241,6 @@ GetBaseData::
 	push hl
 	ldh a, [hROMBank]
 	push af
-	ld a, BANK(BaseData)
-	rst Bankswitch
 
 ; Egg doesn't have BaseData
 	ld a, [wCurSpecies]
@@ -253,9 +251,11 @@ GetBaseData::
 	call GetPokemonIndexFromID
 	ld b, h
 	ld c, l
-	ld a, BASE_DATA_SIZE
-	ld hl, BaseData - BASE_DATA_SIZE ;go one back so we don't decrement hl
-	call AddNTimes
+	ld a, BANK(BaseData)
+	ld hl, BaseData
+	call LoadIndirectPointer
+
+	rst Bankswitch
 	ld de, wCurBaseData
 	ld bc, BASE_DATA_SIZE
 	call CopyBytes
@@ -268,18 +268,6 @@ GetBaseData::
 	ld b, $55 ; 5x5
 	ld hl, wBasePicSize
 	ld [hl], b
-
-; Beta front and back sprites
-; (see pokegold-spaceworld's data/pokemon/base_stats/*)
-	ld hl, wBaseUnusedFrontpic
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	inc hl
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	jr .end ; useless
 
 .end
 ; Replace Pokedex # with species

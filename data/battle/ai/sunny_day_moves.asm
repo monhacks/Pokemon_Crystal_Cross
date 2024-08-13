@@ -1,13 +1,13 @@
 ; AI_SMART prefers these moves during harsh sunlight.
 
 SunnyDayMoves:
-	db FIRE_PUNCH
-	db EMBER
-	db FLAMETHROWER
-	db FIRE_SPIN
-	db FIRE_BLAST
-	db SACRED_FIRE
-	db MORNING_SUN
-	db SOLARBEAM
-	db MOONLIGHT
-	db -1 ; end
+	dw FIRE_PUNCH
+	dw EMBER
+	dw FLAMETHROWER
+	dw FIRE_SPIN
+	dw FIRE_BLAST
+	dw SACRED_FIRE
+	dw MORNING_SUN
+	dw SOLARBEAM
+	dw MOONLIGHT
+	dw -1 ; end

@@ -6,11 +6,10 @@ ENDM
 EggMoveEggProbabilitiesFriday:
 prob_totalfri = 0
 ; Eevee
-	probfri 5
+	probfri 3
 ; Growlithe
 	probfri 2
-	probfri 1
-	probfri 1
+	probfri 2
 	probfri 1
 	probfri 2
 ; Totodile
@@ -21,8 +20,7 @@ prob_totalfri = 0
 	probfri 2
 ; Kangaskid
 	probfri 2
-	probfri 1
-	probfri 1
+	probfri 2
 	probfri 2
 ; Sentret
 	probfri 2
@@ -33,7 +31,8 @@ prob_totalfri = 0
 	probfri 2
 	probfri 1
 	probfri 1
-	probfri 2
+	probfri 1
+	probfri 1
 ; Paras 
 	probfri 2
 	probfri 1
@@ -42,314 +41,315 @@ prob_totalfri = 0
 	probfri 1
 	probfri 1
 ; Skarmory 
+	probfri 3
 	probfri 2
-	probfri 2
-	probfri 1
 	probfri 2
 ; Murkrow 
 	probfri 2
 	probfri 1
 	probfri 1
 	probfri 1
-	probfri 1
-	probfri 1
+	probfri 2
 ; Spinarak 
 	probfri 2
 	probfri 1
 	probfri 1
 	probfri 1
-	probfri 2
+	probfri 1
 ; Delibird 
 	probfri 2
 	probfri 1
 	probfri 1
 	probfri 1
-	probfri 2
+	probfri 1
 ; Horsea
 	probfri 2
 	probfri 1
-	probfri 1
-	probfri 1
 	probfri 2
+	probfri 1
 ; Natu 
 	probfri 2
 	probfri 2
 	probfri 1
-	probfri 2
+	probfri 1
 ; Shuckle
 	probfri 2
 	probfri 2
 	probfri 2
 ; Phanpy
-	probfri 2
+	probfri 1
 	probfri 2
 	probfri 1
 	probfri 2
+; Sunkern
+	probfri 2
+	probfri 2
+	probfri 1
+; Eevee
+	probfri 2
 	
 	
-; poison, dark, bug
 EggMoveEggSpeciesFriday:
 	dw EEVEE      ;1
 	dw GROWLITHE  ;2
 	dw GROWLITHE  ;3
 	dw GROWLITHE  ;4
 	dw GROWLITHE  ;5
-	dw GROWLITHE  ;6
+	dw TOTODILE   ;6
 	dw TOTODILE   ;7
 	dw TOTODILE   ;8
 	dw TOTODILE   ;9
 	dw TOTODILE   ;10
-	dw TOTODILE   ;11
+	dw KANGASKID  ;11
 	dw KANGASKID  ;12
 	dw KANGASKID  ;13
-	dw KANGASKID  ;14
-	dw KANGASKID  ;15
+	dw SENTRET    ;14
+	dw SENTRET    ;15
 	dw SENTRET    ;16
 	dw SENTRET    ;17
-	dw SENTRET    ;18
-	dw SENTRET    ;19
+	dw DODUO      ;18
+	dw DODUO      ;19
 	dw DODUO      ;20
 	dw DODUO      ;21
 	dw DODUO      ;22
-	dw DODUO      ;23
+	dw PARAS      ;23
 	dw PARAS      ;24
 	dw PARAS      ;25
 	dw PARAS      ;26
 	dw PARAS      ;27
 	dw PARAS      ;28
-	dw PARAS      ;29
-	dw SKARMORY   ;30
-	dw SKARMORY   ;31
-	dw SKARMORY   ;32
-	dw SKARMORY   ;33
+	dw SKARCHIC   ;29
+	dw SKARCHIC   ;30
+	dw SKARCHIC   ;31
+	dw MURKROW    ;32
+	dw MURKROW    ;33
 	dw MURKROW    ;34
 	dw MURKROW    ;35
 	dw MURKROW    ;36
-	dw MURKROW    ;37
-	dw MURKROW    ;38
-	dw MURKROW    ;39
+	dw SPINARAK   ;37
+	dw SPINARAK   ;38
+	dw SPINARAK   ;39
 	dw SPINARAK   ;40
 	dw SPINARAK   ;41
-	dw SPINARAK   ;42
-	dw SPINARAK   ;43
-	dw SPINARAK   ;44
+	dw DELIBIRD   ;42
+	dw DELIBIRD   ;43
+	dw DELIBIRD   ;44
 	dw DELIBIRD   ;45
 	dw DELIBIRD   ;46
-	dw DELIBIRD   ;47
-	dw DELIBIRD   ;48
-	dw DELIBIRD   ;49
+	dw HORSEA     ;47
+	dw HORSEA     ;48
+	dw HORSEA     ;49
 	dw HORSEA     ;50
-	dw HORSEA     ;51
-	dw HORSEA     ;52
-	dw HORSEA     ;53
-	dw HORSEA     ;54
-	dw NATU       ;55
-	dw NATU       ;56
-	dw NATU       ;57
-	dw NATU       ;58
-	dw SHUCKLE    ;59
-	dw SHUCKLE    ;60
-	dw SHUCKLE    ;61
-	dw PHANPY     ;62
-	dw PHANPY     ;63
-	dw PHANPY     ;64
-	dw PHANPY     ;65
-	
+	dw NATU       ;51
+	dw NATU       ;52
+	dw NATU       ;53
+	dw NATU       ;54
+	dw SHUCKLE    ;55
+	dw SHUCKLE    ;56
+	dw SHUCKLE    ;57
+	dw PHANPY     ;58
+	dw PHANPY     ;59
+	dw PHANPY     ;60
+	dw PHANPY     ;61
+	dw SUNKERN    ;62
+	dw SUNKERN    ;63
+	dw SUNKERN    ;64
+	dw EEVEE      ;65
 
 EggMoveEggsFriday:
 
 	; Eevee3
-	db TACKLE, TAIL_WHIP, SAFEGUARD, SLAM
+	dw TACKLE, TAIL_WHIP, ECHOED_VOICE, SAFEGUARD
 	
 	; Growlithe1
-	db EMBER, LEER, ENDURE, SLAM
+	dw EMBER, ENDURE, DOUBLE_KICK, BITE
 	
 	; Growlithe2
-	db EMBER, LEER, GROWL, THRASH
+	dw EMBER, GROWL, MORNING_SUN, BITE
 	
 	; Growlithe3
-	db EMBER, LEER, CHARM, SNORE
+	dw EMBER, CHARM, SAFEGUARD, SLAM
 	
 	; Growlithe4
-	db EMBER, LEER, SAFEGUARD, FIRE_SPIN
-	
-	; Growlithe5
-	db EMBER, LEER, DOUBLE_KICK, MORNING_SUN
+	dw EMBER, LEER, DRAGON_RAGE, SWAGGER
 	
 	; Totodile1
-	db SCRATCH, LEER, DRAGON_DANCE, SLAM
+	dw SCRATCH, LEER, DRAGON_DANCE, SLAM
 	
 	; Totodile2
-	db SCRATCH, LEER, ENDURE, LOW_KICK
+	dw SCRATCH, ENDURE, AQUA_JET, FLAIL
 	
 	; Totodile3
-	db SCRATCH, LEER, MUD_SHOT, METAL_CLAW
+	dw SCRATCH, LEER, MUD_SHOT, ANCIENTPOWER
 	
 	; Totodile4
-	db SCRATCH, LEER, POWERUPPUNCH, TAKE_DOWN
+	dw SCRATCH, LEER, POWERUPPUNCH, TAKE_DOWN
 	
 	; Totodile5
-	db SCRATCH, LEER, ANCIENTPOWER, DRAGON_DANCE
+	dw SCRATCH, LEER, METAL_CLAW, WATER_GUN
 	
 	; Kangaskid1
-	db TACKLE, LEER, SAFEGUARD, DOUBLE_KICK
+	dw TACKLE, LEER, DOUBLE_KICK, SAFEGUARD
 	
 	; Kangaskid2
-	db TACKLE, LEER, STOMP, FOCUS_ENERGY
+	dw TACKLE, LEER, LOW_KICK, SWAGGER
 	
 	; Kangaskid3
-	db TACKLE, LEER, DISABLE, FAINT_ATTACK
-	
-	; Kangaskid4
-	db TACKLE, LEER, PURSUIT, FORESIGHT
+	dw TACKLE, DISABLE, ECHOED_VOICE, SING
 	
 	; Sentret1
-	db SCRATCH, FORESIGHT, CONFUSION, SLASH
+	dw SCRATCH, LASER_FOCUS, PURSUIT, SLASH
 	
 	; Sentret2
-	db SCRATCH, FORESIGHT, FOCUS_ENERGY, THRASH
+	dw TACKLE, DEFENSE_CURL, ECHOED_VOICE, ROLLOUT
 	
 	; Sentret3
-	db SCRATCH, FORESIGHT, REVERSAL, POWERUPPUNCH
+	dw SCRATCH, ENDURE, POWERUPPUNCH, REVERSAL
 	
 	; Sentret4
-	db SCRATCH, FORESIGHT, CHARM, SUPER_FANG
+	dw SCRATCH, CHARM, SUPER_FANG, CONFUSION
 
 	; Doduo1
-	db PECK, GROWL, SCREECH, LOW_KICK
+	dw PECK, ENDURE, LOW_KICK, FLAIL
 	
 	; Doduo2
-	db PECK, GROWL, ENDURE, MIRROR_MOVE
+	dw PECK, GROWL, AIR_CUTTER, MIRROR_MOVE
 	
 	; Doduo3
-	db PECK, GROWL, SUPERSONIC, SKY_ATTACK
+	dw PECK, GROWL, FEATHERDANCE, SKY_ATTACK
 	
 	; Doduo4
-	db PECK, GROWL, HAZE, FAINT_ATTACK
+	dw PECK, GROWL, JUMP_KICK, BATON_PASS
+	
+	; Doduo5
+	dw MUD_SLAP, GROWL, EXTREMESPEED, HAZE
 	
 	; Paras1
-	db SCRATCH, STUN_SPORE, AGILITY, PSYBEAM
+	dw SCRATCH, EFFECT_SPORE, AGILITY, PSYBEAM
 	
 	; Paras2
-	db SCRATCH, STUN_SPORE, SCREECH, FLAIL
+	dw SCRATCH, ENDURE, METAL_CLAW, FLAIL
 	
 	; Paras3
-	db SCRATCH, STUN_SPORE, SWEET_SCENT, X_SCISSOR
+	dw SCRATCH, EFFECT_SPORE, ACID_SPRAY, SYNTHESIS
 	
 	; Paras4
-	db SCRATCH, STUN_SPORE, MOONLIGHT, SLUDGE
+	dw SCRATCH, SWEET_SCENT, FELL_STINGER, LEECH_SEED
 	
 	; Paras5
-	db SCRATCH, STUN_SPORE, COTTON_SPORE, METAL_CLAW
+	dw SCRATCH, EFFECT_SPORE, PURSUIT, SCREECH
 	
 	; Paras6
-	db SCRATCH, STUN_SPORE, CROSS_CHOP, PURSUIT
+	dw SCRATCH, EFFECT_SPORE, SHARPEN, BUG_BITE
 	
 	; Skarmory1
-	db PECK, LEER, ENDURE, MIRROR_MOVE
+	dw PECK, LEER, METAL_CLAW, X_SCISSOR
 	
 	; Skarmory2
-	db PECK, LEER, FORESIGHT, SKY_ATTACK
+	dw PECK, ENDURE, SKY_ATTACK, HAZE
 	
 	; Skarmory3
-	db PECK, LEER, HAZE, PURSUIT
-	
-	; Skarmory4
-	db PECK, LEER, HARDEN, SKY_ATTACK
+	dw PECK, LEER, PURSUIT, MIRROR_MOVE
 	
 	; Murkrow1
-	db PECK, SPITE, ASTONISH, PERISH_SONG
+	dw PECK, PSYCH_UP, PERISH_SONG, HEX
 	
 	; Murkrow2
-	db PECK, SPITE, SCREECH, BEAT_UP
+	dw PECK, SHARPEN, QUICK_ATTACK, DRILL_PECK
 	
 	; Murkrow3
-	db PECK, SPITE, FEATHERDANCE, FURY_ATTACK
+	dw PECK, SPITE, FEATHERDANCE, AIR_CUTTER
 	
 	; Murkrow4
-	db PECK, SPITE, WHIRLWIND, SKY_ATTACK
+	dw PECK, SPITE, WHIRLWIND, SKY_ATTACK
 	
 	; Murkrow5
-	db PECK, SPITE, CONFUSE_RAY, QUICK_ATTACK
-	
-	; Murkrow6
-	db PECK, SPITE, DRILL_PECK, PSYCH_UP
+	dw PECK, SPITE, MYSTICALFIRE, OMINOUS_WIND
 	
 	; Spinarak1
-	db POISON_STING, STRING_SHOT, DISABLE, PSYBEAM
+	dw POISON_STING, DISABLE, FELL_STINGER, PSYBEAM
 	
 	; Spinarak2
-	db POISON_STING, STRING_SHOT, GROWTH, SLASH
+	dw POISON_STING, GROWTH, PIN_MISSILE, SLASH
 	
 	; Spinarak3
-	db POISON_STING, STRING_SHOT, X_SCISSOR, BATON_PASS
+	dw POISON_STING, STRING_SHOT, MEGAHORN, PURSUIT
 	
 	; Spinarak4
-	db POISON_STING, STRING_SHOT, SONICBOOM, PURSUIT
+	dw POISON_STING, SHARPEN, X_SCISSOR, BATON_PASS 
 	
 	; Spinarak5
-	db POISON_STING, STRING_SHOT, TWINEEDLE, FLAIL
+	dw POISON_STING, STRING_SHOT, SONICBOOM, BUG_BUZZ
 	
 	; Delibird1
-	db POUND, GROWL, CONFUSION, BATON_PASS
+	dw SPLASH, GROWL, CONFUSION, METRONOME
 	
 	; Delibird2
-	db POUND, GROWL, ENDURE, SKY_ATTACK
+	dw PECK, GROWL, ECHOED_VOICE, SKY_ATTACK
 	
 	; Delibird3
-	db POUND, GROWL, AURORA_BEAM, RAPID_SPIN
+	dw WATER_GUN, GROWL, AURORA_BEAM, SLAM
 	
 	; Delibird4
-	db POUND, GROWL, QUICK_ATTACK, SLAM
+	dw PECK, GROWL, POWERUPPUNCH, BATON_PASS
 	
 	; Delibird5
-	db POUND, GROWL, ICE_SHARD, WATER_GUN
+	dw ICE_SHARD, GROWL, DESTINY_BOND, RAPID_SPIN
 	
 	; Horsea1
-	db BUBBLE, SMOKESCREEN, SMOG, MUD_SHOT
+	dw WATER_GUN, DISABLE, MUD_SHOT, SMOG
 	
 	; Horsea2
-	db BUBBLE, SMOKESCREEN, HAZE, OCTAZOOKA
+	dw WATER_GUN, LEER, AURORA_BEAM, HAZE 
 	
 	; Horsea3
-	db BUBBLE, SMOKESCREEN, DRAGON_RAGE, FLAIL
+	dw WATER_GUN, LEER, DRAGON_RAGE, AQUA_JET
 	
 	; Horsea4
-	db BUBBLE, SMOKESCREEN, DISABLE, POWDER_SNOW
-	
-	; Horsea5
-	db BUBBLE, SMOKESCREEN, CONFUSE_RAY, AURORA_BEAM
+	dw POWDER_SNOW, LEER, CONFUSE_RAY, FLAIL
 	
 	; Natu1
-	db PECK, LEER, GUST, FAINT_ATTACK
+	dw PECK, LEER, SKY_ATTACK, FEATHERDANCE
 	
 	; Natu2
-	db PECK, LEER, FIRE_SPIN, HAZE
+	dw PECK, LEER, SILVER_WIND, REFRESH
 	
 	; Natu3
-	db PECK, LEER, SAND_ATTACK, DRILL_PECK
+	dw PECK, PSYCH_UP, DRILL_PECK, HAZE
 	
 	; Natu4
-	db PECK, LEER, QUICK_ATTACK, FEATHERDANCE
+	dw GUST, LEER, QUICK_ATTACK, SAND_ATTACK
 	
 	; Shuckle1
-	db WRAP, HARDEN, MIST, MIRROR_COAT
+	dw WRAP, HARDEN, MIRROR_COAT, REFRESH
 	
 	; Shuckle2
-	db WRAP, SWEET_SCENT, MUD_SHOT, SLUDGE
+	dw WRAP, SWEET_SCENT, MUD_SHOT, ENDURE
 	
 	; Shuckle3
-	db WRAP, STRING_SHOT, MAGNITUDE, ENDURE
+	dw WRAP, STRING_SHOT, TRI_ATTACK, SWAGGER
 	
 	; Phanpy1
-	db TACKLE, GROWL, WATER_GUN, MUD_SHOT
+	dw TACKLE, GROWL, WATER_GUN, ECHOED_VOICE
 	
 	; Phanpy2
-	db TACKLE, SAND_ATTACK, SNORE, REVERSAL
+	dw TACKLE, GROWL, ANCIENTPOWER, REVERSAL
 	
 	; Phanpy3
-	db TACKLE, GROWL, FOCUS_ENERGY, ICE_SHARD
+	dw TACKLE, SAND_ATTACK, ICE_SHARD, HOWL
 	
 	; Phanpy4
-	db TACKLE, GROWL, ANCIENTPOWER, POWDER_SNOW
+	dw TACKLE, GROWL, BULK_UP, POWDER_SNOW
+	
+	; Sunkern1
+	dw VINE_WHIP, GROWTH, SAFEGUARD, SING
+
+	; Sunkern2
+	dw POUND, ENDURE, MUD_SHOT, ACID_SPRAY
+
+	; Sunkern3
+	dw POUND, SWEET_SCENT, PSYBEAM, MORNING_SUN
+	
+	; EEVEE
+	dw TACKLE, TAIL_WHIP, DOUBLE_KICK, FLAIL
 	

@@ -1,5 +1,28 @@
-BattleAnimations::
 ; entries correspond to constants/move_constants.asm
+; negative entries first (see the constants file for details)
+	dw BattleAnim_ThrowPokeBall
+	dw BattleAnim_SendOutMon
+	dw BattleAnim_ReturnMon
+	dw BattleAnim_Confused
+	dw BattleAnim_Slp
+	dw BattleAnim_Brn
+	dw BattleAnim_Psn
+	dw BattleAnim_Sap
+	dw BattleAnim_Frz
+	dw BattleAnim_Par
+	dw BattleAnim_InLove
+	dw BattleAnim_InSandstorm
+	dw BattleAnim_InNightmare
+	dw BattleAnim_InWhirlpool
+	dw BattleAnim_Miss
+	dw BattleAnim_EnemyDamage
+	dw BattleAnim_EnemyStatDown
+	dw BattleAnim_PlayerStatDown
+	dw BattleAnim_PlayerDamage
+	dw BattleAnim_Wobble
+	dw BattleAnim_Shake
+	dw BattleAnim_HitConfusion
+BattleAnimations::
 	dw BattleAnim_0
 	dw BattleAnim_Pound
 	dw BattleAnim_Snore ;bug buzz
@@ -250,41 +273,88 @@ BattleAnimations::
 	dw BattleAnim_HornDrill  ; drill run
 	dw BattleAnim_QuickAttack ;accelerock
 	dw BattleAnim_Slam       ; wave crash
-	dw BattleAnim_Slash      ; night slash
+	dw BattleAnim_Guillotine ; night slash
 	dw BattleAnim_Slam       ; sky uppercut
 	dw BattleAnim_DoubleKick ; blaze kick
 	dw BattleAnim_Splash     ; quiver dance
 	dw BattleAnim_Meditate   ; bulk up
+	dw BattleAnim_Acid
+	dw BattleAnim_Spore
+	dw BattleAnim_Softboiled
+	dw BattleAnim_FaintAttack
+	dw BattleAnim_Conversion ; conversion2
+	dw BattleAnim_MegaPunch  ; shadow punch
+	dw BattleAnim_Thrash
+	dw BattleAnim_CottonSpore
+	dw BattleAnim_Twineedle
+	dw BattleAnim_Tackle     ; astonish
+	dw BattleAnim_MachPunch
+	dw BattleAnim_Doubleslap
+	dw BattleAnim_FireSpin
+	dw BattleAnim_Withdraw
+	dw BattleAnim_FuryAttack
+	dw BattleAnim_SweetKiss
+	dw BattleAnim_DefenseCurl ;cotton guard
+	dw BattleAnim_AuroraBeam ; dragon pulse
+	dw BattleAnim_Slash      ; cross poison
+	dw BattleAnim_BodySlam   ; lunge
+	dw BattleAnim_Psybeam    ; signal beam
+	dw BattleAnim_Flash      ; tail glow
+	dw BattleAnim_NightShade ; night daze
+	dw BattleAnim_Reversal   ; dragon tail
+	dw BattleAnim_SpikeCannon ;scale shot
+	dw BattleAnim_Par        ; charge
+	dw BattleAnim_ThunderWave ;discharge
+	dw BattleAnim_Bite       ; thunder fang
+	dw BattleAnim_KarateChop ; brick break
+	dw BattleAnim_Bide       ; drain punch
+	dw BattleAnim_Dynamicpunch ;focus blast
+	dw BattleAnim_Detect
+	dw BattleAnim_FlameWheel ; fiery dance
+	dw BattleAnim_FireSpin   ; heat wave
+	dw BattleAnim_FireBlast  ; lava plume
+	dw BattleAnim_FalseSwipe ; aerial ace
+	dw BattleAnim_FaintAttack ;shadow sneak
+	dw BattleAnim_SpikeCannon ;bullet seed
+	dw BattleAnim_HornAttack ; horn leech
+	dw BattleAnim_RazorLeaf  ; magical leaf
+	dw BattleAnim_VineWhip   ; power whip
+	dw BattleAnim_Barrage    ; seed bomb
+	dw BattleAnim_Gust       ; sand tomb
+	dw BattleAnim_SandAttack ; searing sand
+	dw BattleAnim_IcyWind    ; frostbreath
+	dw BattleAnim_HornAttack ; icicle spear
+	dw BattleAnim_DoubleEdge ; giga impact
+	dw BattleAnim_Slash      ; crush claw
+	dw BattleAnim_Slam       ; double hit
+	dw BattleAnim_Reversal   ; poison tail
+	dw BattleAnim_Sludge
+	dw BattleAnim_Confusion  ; extrasensory
+	dw BattleAnim_Bite       ; psychic fang
+	dw BattleAnim_WingAttack ; esper wing
+	dw BattleAnim_RockSlide  ; meteor storm
+	dw BattleAnim_RockThrow  ; rock tomb
+	dw BattleAnim_Bide       ; metal burst
+	dw BattleAnim_Barrage    ; magnet bomb
+	dw BattleAnim_Screech    ; metal sound
+	dw BattleAnim_Sharpen    ; shift gear
+	dw BattleAnim_SkullBash
+	dw BattleAnim_WaterGun   ; scald
+	dw BattleAnim_FocusEnergy
+	dw BattleAnim_Foresight
+	dw BattleAnim_Snore
+	dw BattleAnim_Frustration ;payback
+	dw BattleAnim_RockSlide  ; avalanche
+	dw BattleAnim_StunSpore  ; infestation
+	dw BattleAnim_Minimize
+	dw BattleAnim_Guillotine ; venomstrike
+	dw BattleAnim_Fly        ; phantomforce
+	dw BattleAnim_Fissure
+	dw BattleAnim_FurySwipes ; shadow claw
+	dw BattleAnim_RainDance  ; acid rain
 	dw BattleAnim_Struggle
-; $100	
-	dw BattleAnim_SweetScent2
-	dw BattleAnim_ThrowPokeBall
-	dw BattleAnim_SendOutMon
-	dw BattleAnim_ReturnMon
-	dw BattleAnim_Confused
-	dw BattleAnim_Slp
-	dw BattleAnim_Brn
-	dw BattleAnim_Psn
-	dw BattleAnim_Sap
-	dw BattleAnim_Frz
-	dw BattleAnim_Par
-	dw BattleAnim_InLove
-	dw BattleAnim_InSandstorm
-	dw BattleAnim_InNightmare
-	dw BattleAnim_InWhirlpool
-	dw BattleAnim_Miss
-	dw BattleAnim_EnemyDamage
-	dw BattleAnim_EnemyStatDown
-	dw BattleAnim_PlayerStatDown
-	dw BattleAnim_PlayerDamage
-	dw BattleAnim_Wobble
-	dw BattleAnim_Shake
-	dw BattleAnim_HitConfusion
 
 BattleAnim_0:
-BattleAnim_252:
-BattleAnim_253:
-BattleAnim_254:
 BattleAnim_MirrorMove:
 	anim_ret
 

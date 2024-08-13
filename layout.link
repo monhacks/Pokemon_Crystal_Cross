@@ -44,7 +44,8 @@ ROMX $07
 	"Enemy Trainer Parties 1"
 ROMX $08
 	"Clock Reset"
-	"Egg Moves"
+	"Egg Move Pointers"
+	"Egg Moves 1"
 ROMX $09
 	"bank9"
 ROMX $0a
@@ -61,7 +62,8 @@ ROMX $0f
 	"Battle Core"
 ROMX $10
 	"bank10"
-	"Evolutions and Attacks"
+	"Evolutions and Attacks Pointers"
+	"Evolutions and Attacks 1"
 ROMX $11
 	"bank11"
 ROMX $12
@@ -187,7 +189,8 @@ SRAM $00
 	"Scratch"
 	org $a600
 	"SRAM Bank 0"
-	org $b200
+	org $ae00
+	"Saved 16-bit conversion tables"
 	"Backup Save"
 SRAM $01
 	"Save"

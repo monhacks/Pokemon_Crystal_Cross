@@ -188,20 +188,20 @@ MartGoldenrod5F4:
 	
 MartGoldenrod5F5:
 	db 2
-	db TM_MUD_SLAP
+;	db TM_MUD_SLAP
 	db TM_FURY_CUTTER
 	db -1
 
 MartGoldenrod5F6:
 	db 3
-	db TM_MUD_SLAP
+;	db TM_MUD_SLAP
 	db TM_FURY_CUTTER
 	db TM_ATTRACT
 	db -1
 	
 MartGoldenrod5F7:
 	db 4
-	db TM_MUD_SLAP
+;	db TM_MUD_SLAP
 	db TM_FURY_CUTTER
 	db TM_ATTRACT
 	db TM_SHADOW_BALL
@@ -209,7 +209,7 @@ MartGoldenrod5F7:
 	
 MartGoldenrod5F8:
 	db 5
-	db TM_MUD_SLAP
+;	db TM_MUD_SLAP
 	db TM_FURY_CUTTER
 	db TM_ATTRACT
 	db TM_SHADOW_BALL
@@ -218,7 +218,7 @@ MartGoldenrod5F8:
 	
 MartGoldenrod5F9:
 	db 5
-	db TM_MUD_SLAP
+;	db TM_MUD_SLAP
 	db TM_FURY_CUTTER
 	db TM_ATTRACT
 	db TM_SHADOW_BALL
@@ -227,26 +227,26 @@ MartGoldenrod5F9:
 	
 MartGoldenrod5F10:
 	db 5
-	db TM_MUD_SLAP
+;	db TM_MUD_SLAP
 	db TM_FURY_CUTTER
 	db TM_ATTRACT
 	db TM_SHADOW_BALL
-	db TM_ICY_WIND
+;	db TM_ICY_WIND
 	db -1
 	
 MartGoldenrod5F11:
 	db 6
-	db TM_MUD_SLAP
+;	db TM_MUD_SLAP
 	db TM_FURY_CUTTER
 	db TM_ATTRACT
 	db TM_SHADOW_BALL
 	db TM_DYNAMICPUNCH
-	db TM_ICY_WIND
+;	db TM_ICY_WIND
 	db -1
 	
 MartGoldenrod5F12:
 	db 6
-	db TM_MUD_SLAP
+;	db TM_MUD_SLAP
 	db TM_FURY_CUTTER
 	db TM_ATTRACT
 	db TM_SHADOW_BALL
@@ -256,34 +256,34 @@ MartGoldenrod5F12:
 	
 MartGoldenrod5F13:
 	db 7
-	db TM_MUD_SLAP
+;	db TM_MUD_SLAP
 	db TM_FURY_CUTTER
 	db TM_ATTRACT
 	db TM_SHADOW_BALL
 	db TM_DYNAMICPUNCH
 	db TM_IRON_TAIL
-	db TM_ICY_WIND
+;	db TM_ICY_WIND
 	db -1
 	
 MartGoldenrod5F14:
 	db 6
-	db TM_MUD_SLAP
+;	db TM_MUD_SLAP
 	db TM_FURY_CUTTER
 	db TM_ATTRACT
 	db TM_SHADOW_BALL
 	db TM_IRON_TAIL
-	db TM_ICY_WIND
+;	db TM_ICY_WIND
 	db -1
 	
 MartGoldenrod5F15:
 	db 8
-	db TM_MUD_SLAP
+;	db TM_MUD_SLAP
 	db TM_FURY_CUTTER
 	db TM_ATTRACT
 	db TM_SHADOW_BALL
 	db TM_DYNAMICPUNCH
 	db TM_IRON_TAIL
-	db TM_ICY_WIND
+;	db TM_ICY_WIND
 	db TM_DRAGONBREATH
 	db -1
 
@@ -421,7 +421,7 @@ MartCeladon2F1:
 	db TM_ICE_BEAM     ; cc
 	db TM_BLIZZARD     ; cd
 	db TM_HYPER_BEAM   ; ce
-	db TM_ICY_WIND     ; cf
+;	db TM_ICY_WIND     ; cf
 	db TM_PROTECT      ; d0
 	db -1 ; end
 
@@ -440,10 +440,10 @@ MartCeladon2F2:
 	db TM_DIG          ; db
 	db TM_PSYCHIC_M    ; dd
 	db TM_SHADOW_BALL  ; de
-	db TM_MUD_SLAP     ; df
+;	db TM_MUD_SLAP     ; df
 	db TM_DOUBLE_TEAM  ; e0
 	db TM_ICE_PUNCH    ; e1
-	db TM_SWAGGER      ; e2
+;	db TM_SWAGGER      ; e2
 	db -1 ; end
 
 MartCeladon3F:
@@ -463,7 +463,7 @@ MartCeladon3F:
 	db TM_STEEL_WING   ; ef
 	db TM_FIRE_PUNCH   ; f0
 	db TM_FURY_CUTTER  ; f1
-	db TM_NIGHTMARE
+;	db TM_NIGHTMARE
 	db -1 ; end
 
 MartCeladon4F:

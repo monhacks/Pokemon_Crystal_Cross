@@ -6,30 +6,27 @@ ENDM
 EggMoveEggProbabilitiesSaturday:
 prob_totalsat = 0
 ; Bellsprout
-	probsat 3
-	probsat 3
+	probsat 2
+	probsat 2
+	probsat 2
 ; Slugma
 	probsat 2
 	probsat 2
-	probsat 1
-	probsat 2
+	probsat 3
 ; Marill 
 	probsat 2
 	probsat 1
-	probsat 1
-	probsat 1
 	probsat 2
+	probsat 1
 ; Teddiursa
 	probsat 2
-	probsat 1
-	probsat 1
+	probsat 2
 	probsat 1
 	probsat 1
 ; Togepi 
 	probsat 1
 	probsat 1
-	probsat 1
-	probsat 1
+	probsat 2
 	probsat 1
 	probsat 1
 ; Ledyba
@@ -47,31 +44,28 @@ prob_totalsat = 0
 	probsat 1
 	probsat 1
 	probsat 1
-	probsat 2
+	probsat 1
 ; Larvitar
 	probsat 2
 	probsat 1
 	probsat 1
 	probsat 1
 	probsat 1
-	probsat 1
 ; Tentacool
 	probsat 2
-	probsat 1
-	probsat 1
+	probsat 2
 	probsat 2
 ; Nessi
-	probsat 1
-	probsat 1
-	probsat 1
-	probsat 1
+	probsat 2
+	probsat 2
 	probsat 1
 	probsat 1
 ; Tyrogue
-	probsat 5
-; Dratini
+	probsat 2
 	probsat 2
 	probsat 1
+; Dratini
+	probsat 2
 	probsat 1
 	probsat 1
 	probsat 1
@@ -84,16 +78,21 @@ prob_totalsat = 0
 	probsat 2
 	probsat 1
 	probsat 1
-	probsat 2
+	probsat 1
+	probsat 1
 ; Eevee 
 	probsat 5
+; WooperP
+	probsat 1
+	probsat 1
+	probsat 1
+	probsat 1
 	
 	
-; rock, ground, fighting	
 EggMoveEggSpeciesSaturday:
 	dw BELLSPROUT   ;1
 	dw BELLSPROUT   ;2
-	dw SLUGMA       ;3
+	dw BELLSPROUT   ;3
 	dw SLUGMA       ;4
 	dw SLUGMA       ;5
 	dw SLUGMA       ;6
@@ -101,261 +100,257 @@ EggMoveEggSpeciesSaturday:
 	dw MARILL       ;8
 	dw MARILL       ;9
 	dw MARILL       ;10
-	dw MARILL       ;11
+	dw TEDDIURSA    ;11
 	dw TEDDIURSA    ;12
 	dw TEDDIURSA    ;13
 	dw TEDDIURSA    ;14
-	dw TEDDIURSA    ;15
-	dw TEDDIURSA    ;16
+	dw TOGEPI       ;15
+	dw TOGEPI       ;16
 	dw TOGEPI       ;17
 	dw TOGEPI       ;18
 	dw TOGEPI       ;19
-	dw TOGEPI       ;20
-	dw TOGEPI       ;21
-	dw TOGEPI       ;22
+	dw LEDYBA       ;20
+	dw LEDYBA       ;21
+	dw LEDYBA       ;22
 	dw LEDYBA       ;23
-	dw LEDYBA       ;24
-	dw LEDYBA       ;25
-	dw LEDYBA       ;26
+	dw PINECO       ;24
+	dw PINECO       ;25
+	dw PINECO       ;26
 	dw PINECO       ;27
-	dw PINECO       ;28
-	dw PINECO       ;29
-	dw PINECO       ;30
+	dw CUBONE       ;28
+	dw CUBONE       ;29
+	dw CUBONE       ;30
 	dw CUBONE       ;31
 	dw CUBONE       ;32
-	dw CUBONE       ;33
-	dw CUBONE       ;34
-	dw CUBONE       ;35
+	dw LARVITAR     ;33
+	dw LARVITAR     ;34
+	dw LARVITAR     ;35
 	dw LARVITAR     ;36
 	dw LARVITAR     ;37
-	dw LARVITAR     ;38
-	dw LARVITAR     ;39
-	dw LARVITAR     ;40
-	dw LARVITAR     ;41
-	dw TENTACOOL    ;42
-	dw TENTACOOL    ;43
-	dw TENTACOOL    ;44
-	dw TENTACOOL    ;45
-	dw NESSI        ;46
-	dw NESSI        ;47
-	dw NESSI        ;48
-	dw NESSI        ;49
-	dw NESSI        ;50
-	dw NESSI        ;51
-	dw TYROGUE      ;52
-	dw DRATINI      ;53
-	dw DRATINI      ;54
-	dw DRATINI      ;55
-	dw DRATINI      ;56
-	dw DRATINI      ;57
-	dw DRATINI      ;58
-	dw CORSOLA      ;59
-	dw CORSOLA      ;60
-	dw CORSOLA      ;61
-	dw SANDSHREW    ;62
-	dw SANDSHREW    ;63
-	dw SANDSHREW    ;64
-	dw SANDSHREW    ;65
-	dw EEVEE        ;66
+	dw TENTACOOL    ;38
+	dw TENTACOOL    ;39
+	dw TENTACOOL    ;40
+	dw NESSI        ;41
+	dw NESSI        ;42
+	dw NESSI        ;43
+	dw NESSI        ;44
+	dw TYROGUE      ;45
+	dw TYROGUE      ;46
+	dw TYROGUE      ;47
+	dw DRATINI      ;48
+	dw DRATINI      ;49
+	dw DRATINI      ;50
+	dw DRATINI      ;51
+	dw DRATINI      ;52
+	dw CORSOLA      ;53
+	dw CORSOLA      ;54
+	dw CORSOLA      ;55
+	dw SANDSHREW    ;56
+	dw SANDSHREW    ;57
+	dw SANDSHREW    ;58
+	dw SANDSHREW    ;59
+	dw SANDSHREW    ;60
+	dw EEVEE        ;61
+	dw WOOPER_PALDEAN  ;62
+	dw WOOPER_PALDEAN  ;63
+	dw WOOPER_PALDEAN  ;64
+	dw WOOPER_PALDEAN  ;65
 	
 
 EggMoveEggsSaturday:
 
 	; Bellsprout1
-	db VINE_WHIP, SWEET_KISS, LEECH_SEED, ENCORE
+	dw MEGA_DRAIN, GROWTH, LEECH_SEED, ENCORE
 	
 	; Bellsprout2
-	db VINE_WHIP, SWEET_KISS, LEECH_LIFE, MORNING_SUN
+	dw WRAP, GROWTH, MORNING_SUN, SMOG
+	
+	; Bellsprout3
+	dw WRAP, GROWTH, LEECH_LIFE, SWAGGER
 	
 	; Slugma1
-	db SMOG, SMOKESCREEN, ENCORE, MAGNITUDE
+	dw EMBER, HARDEN, MIRROR_COAT, ENCORE 
 	
 	; Slugma2
-	db SMOG, DEFENSE_CURL, ROLLOUT, SNORE
+	dw EMBER, SMOKESCREEN, IRON_DEFENSE, REFRESH
 	
 	; Slugma3
-	db SMOG, EMBER, PSYBEAM, ACID_ARMOR
-	
-	; Slugma4
-	db SMOG, EMBER, IRON_DEFENSE, MIRROR_COAT
+	dw EMBER, HARDEN, PSYBEAM, ACID_ARMOR
 	
 	; Marill1
-	db TACKLE, DEFENSE_CURL, SING, PRESENT
-	
+	dw TACKLE, ENCORE, PRESENT, PERISH_SONG
+
 	; Marill2
-	db TACKLE, DEFENSE_CURL, ENCORE, PERISH_SONG
+	dw TACKLE, SUPERSONIC, AMNESIA, SLAM
 	
 	; Marill3
-	db TACKLE, DEFENSE_CURL, SUPERSONIC, BELLY_DRUM
+	dw TACKLE, DEFENSE_CURL, POWERUPPUNCH, AQUA_JET
 	
 	; Marill4
-	db TACKLE, DEFENSE_CURL, FORESIGHT, POWERUPPUNCH
-	
-	; Marill5
-	db TACKLE, DEFENSE_CURL, AMNESIA, AURORA_BEAM
+	dw TACKLE, REFRESH, AURORA_BEAM, SING
 	
 	; Teddiursa1
-	db SCRATCH, LEER, SLAM, MOONLIGHT
+	dw SCRATCH, REFRESH, METAL_CLAW, MOONLIGHT
 	
 	; Teddiursa2
-	db SCRATCH, LEER, FOCUS_ENERGY, TAKE_DOWN
+	dw SCRATCH, GROWL, POWERUPPUNCH, CRUNCH
 	
 	; Teddiursa3
-	db SCRATCH, LEER, BELLY_DRUM, METAL_CLAW
+	dw SCRATCH, GROWL, BELLY_DRUM, SLAM
 	
 	; Teddiursa4
-	db SCRATCH, LEER, ENDURE, CROSS_CHOP
-	
-	; Teddiursa5
-	db SCRATCH, LEER, CRUNCH, POWERUPPUNCH
+	dw SCRATCH, BULK_UP, METRONOME, LOW_KICK
 	
 	; Togepi1
-	db PECK, GROWL, PRESENT, SOFTBOILED
+	dw PECK, DEFENSE_CURL, PRESENT, ROLLOUT
 	
 	; Togepi2
-	db PECK, GROWL, DEFENSE_CURL, ROLLOUT
+	dw PECK, GROWL, CONFUSION, MIRROR_MOVE
 	
 	; Togepi3
-	db PECK, GROWL, PSYCH_UP, CONFUSION
+	dw PECK, GROWL, MYSTICALFIRE, MORNING_SUN
 	
 	; Togepi4
-	db PECK, GROWL, ENDURE, MORNING_SUN
+	dw PECK, GROWL, ECHOED_VOICE, NASTY_PLOT
 	
 	; Togepi5
-	db PECK, GROWL, FORESIGHT, MIRROR_MOVE
-	
-	; Togepi6
-	db PECK, GROWL, SPARK, SCREECH
+	dw PECK, SCREECH, SPARK, PSYCH_UP
 	
 	; Ledyba1
-	db TACKLE, SUPERSONIC, SCREECH, ROLLOUT
+	dw TACKLE, REFRESH, LEECH_LIFE, SCREECH
 	
 	; Ledyba2
-	db TACKLE, SUPERSONIC, ENDURE, LEECH_LIFE
+	dw TACKLE, ENDURE, AIR_CUTTER, ROLLOUT
 	
 	; Ledyba3
-	db TACKLE, SUPERSONIC, HYPNOSIS, FAINT_ATTACK
+	dw TACKLE, HYPNOSIS, PSYBEAM, OMINOUS_WIND
 	
 	; Ledyba4
-	db TACKLE, SUPERSONIC, PSYBEAM, SWEET_SCENT
+	dw GUST, SUPERSONIC, BUG_BITE, VACUUM_WAVE
 	
 	; Pineco1
-	db TACKLE, PROTECT, DEFENSE_CURL, ROLLOUT
+	dw TACKLE, DEFENSE_CURL, ROLLOUT, REFRESH
 	
 	; Pineco2
-	db TACKLE, PROTECT, SWEET_SCENT, FLAIL
+	dw TACKLE, PROTECT, CONFUSION, RECOVER
 	
 	; Pineco3
-	db TACKLE, PROTECT, CONFUSION, STRING_SHOT
+	dw TACKLE, STRING_SHOT, SCREECH, FLAIL
 	
 	; Pineco4
-	db TACKLE, PROTECT, MAGNITUDE, REVERSAL
+	dw TACKLE, PROTECT, BUG_BUZZ, REVERSAL
 	
 	; Cubone1
-	db POUND, GROWL, HEX, PERISH_SONG
+	dw POUND, GROWL, PERISH_SONG, CHARM
 	
 	; Cubone2
-	db POUND, GROWL, POWERUPPUNCH, LOW_KICK
+	dw POUND, GROWL, POWERUPPUNCH, LOW_KICK
 	
 	; Cubone3
-	db POUND, GROWL, ENDURE, FURY_ATTACK
+	dw POUND, ENDURE, ANCIENTPOWER, HEX
 	
 	; Cubone4
-	db POUND, GROWL, SCREECH, ANCIENTPOWER
+	dw POUND, GROWL, SKY_UPPERCUT, IRON_DEFENSE
 	
 	; Cubone5
-	db POUND, LEER, BELLY_DRUM, DOUBLE_KICK
+	dw POUND, GROWL, DOUBLE_KICK, BELLY_DRUM
 	
 	; Larvitar1
-	db BITE, LEER, SPITE, PURSUIT
+	dw TACKLE, SPITE, ANCIENTPOWER, PURSUIT
 	
 	; Larvitar2
-	db BITE, LEER, STOMP, ENDURE
+	dw TACKLE, LEER, POWERUPPUNCH, ENDURE
 	
 	; Larvitar3
-	db BITE, LEER, FOCUS_ENERGY, SLAM
+	dw TACKLE, LEER, DOUBLE_KICK, POWER_GEM
 	
 	; Larvitar4
-	db BITE, LEER, RAGE, IRON_DEFENSE
+	dw TACKLE, LEER, IRON_DEFENSE, SLAM
 	
 	; Larvitar5
-	db BITE, LEER, DRAGON_DANCE, ICE_FANG
-	
-	; Larvitar6
-	db BITE, LEER, DOUBLE_KICK, ANCIENTPOWER
+	dw TACKLE, LEER, DRAGON_DANCE, STOMP
 	
 	; Tentacool1
-	db POISON_STING, SUPERSONIC, CONFUSE_RAY, HEX
+	dw POISON_STING, CONFUSE_RAY, ACID_SPRAY, PURSUIT
 	
 	; Tentacool2
-	db POISON_STING, SUPERSONIC, HAZE, AURORA_BEAM
+	dw POISON_STING, SUPERSONIC, AURORA_BEAM, RAPID_SPIN
 	
 	; Tentacool3
-	db POISON_STING, SUPERSONIC, SAFEGUARD, MIRROR_COAT
-	
-	; Tentacool4
-	db POISON_STING, SUPERSONIC, POWER_GEM, RAPID_SPIN
-	
+	dw POISON_STING, SAFEGUARD, POWER_GEM, MIRROR_COAT
+
 	; Nessi1
-	db WATER_GUN, GROWL, HYPNOSIS, CONFUSION
+	dw POWDER_SNOW, HYPNOSIS, ECHOED_VOICE, CONFUSION
 	
 	; Nessi2
-	db WATER_GUN, GROWL, FORESIGHT, HORN_DRILL
+	dw POWDER_SNOW, GROWL, DRAGON_DANCE, BITE
 	
 	; Nessi3
-	db WATER_GUN, GROWL, ENDURE, ANCIENTPOWER
+	dw POWDER_SNOW, GROWL, BUBBLEBEAM, ANCIENTPOWER
 	
 	; Nessi4
-	db WATER_GUN, GROWL, SNORE, RECOVER
-	
-	; Nessi5
-	db WATER_GUN, GROWL, PURSUIT, DRAGON_DANCE
-	
-	; Nessi6
-	db WATER_GUN, GROWL, BITE, ICE_SHARD
+	dw WATER_GUN, GROWL, DRAGON_RAGE, PURSUIT
 	
 	; Tyrogue1
-	db TACKLE, POWERUPPUNCH, RAGE, PURSUIT
+	dw TACKLE, ENDURE, POWERUPPUNCH, REVERSAL
+	
+	; Tyrogue2
+	dw TACKLE, BULK_UP, BULLET_PUNCH, SWAGGER
+	
+	; Tyrogue3
+	dw TACKLE, ENDURE, LOW_KICK, RAPID_SPIN
 	
 	; Dratini1
-	db WRAP, LEER, MOONLIGHT, PURSUIT
+	dw WRAP, LEER, MOONLIGHT, PURSUIT
 	
 	; Dratini2
-	db WRAP, LEER, SUPERSONIC, BUBBLEBEAM
+	dw WRAP, REFRESH, SUPERSONIC, AQUA_JET
 	
 	; Dratini3
-	db WRAP, LEER, RAGE, EXTREMESPEED
+	dw WRAP, LEER, COIL, EXTREMESPEED
 	
 	; Dratini4
-	db WRAP, LEER, HAZE, HYDRO_PUMP
+	dw WRAP, LEER, HYDRO_PUMP, HAZE
 	
 	; Dratini5
-	db WRAP, LEER, MIST, PSYBEAM
-	
-	; Dratini6
-	db WRAP, LEER, MOONLIGHT, POWER_GEM
+	dw WRAP, LEER, PSYBEAM, MYSTICALFIRE
 	
 	; Corsola1
-	db TACKLE, HARDEN, SAFEGUARD, SLAM
+	dw TACKLE, ENDURE, IRON_DEFENSE, FLAIL
 	
 	; Corsola2
-	db TACKLE, DEFENSE_CURL, ROLLOUT, SCREECH
+	dw TACKLE, DEFENSE_CURL, ROLLOUT, SCREECH
 	
 	; Corsola3
-	db TACKLE, HARDEN, CONFUSE_RAY, AMNESIA
+	dw TACKLE, CONFUSE_RAY, AMNESIA, SLAM
 	
 	; Sandshrew1
-	db SCRATCH, DEFENSE_CURL, MUD_SHOT, SUPER_FANG
+	dw SCRATCH, DEFENSE_CURL, MUD_SHOT, SAFEGUARD
 	
 	; Sandshrew2
-	db SCRATCH, ENDURE, FLAIL, SLAM
+	dw SCRATCH, DEFENSE_CURL, METAL_CLAW, X_SCISSOR
 	
 	; Sandshrew3
-	db SCRATCH, DEFENSE_CURL, SAFEGUARD, METAL_CLAW
+	dw SCRATCH, ENDURE, LEECH_LIFE, SUPER_FANG
 	
 	; Sandshrew4
-	db SCRATCH, DEFENSE_CURL, POISON_JAB, X_SCISSOR
+	dw MUD_SLAP, DEFENSE_CURL, DIRE_CLAW, SLAM
+	
+	; Sandshrew5
+	dw SCRATCH, SHARPEN, NIGHT_SLASH, FURY_SWIPES
 	
 	; Eevee4
-	db TACKLE, FOCUS_ENERGY, SNORE, MORNING_SUN
+	dw TACKLE, TAIL_WHIP, MILK_DRINK, SLAM
+	
+	; WooperPaldean1
+	dw POISON_STING, SAFEGUARD, ANCIENTPOWER, HAZE
+	
+	; WooperPaldean2
+	dw POISON_STING, TAIL_WHIP, BELLY_DRUM, DOUBLE_KICK
+	
+	; WooperPaldean3
+	dw POISON_STING, ENCORE, THUNDERSHOCK, RECOVER
+	
+	; WooperPaldean4
+	dw POISON_STING, ENDURE, POWERUPPUNCH, PURSUIT
 	

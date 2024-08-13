@@ -22,7 +22,7 @@ ENDM
 	command criticaltext            ; 0f
 	command supereffectivetext      ; 10
 	command checkfaint              ; 11
-	command buildopponentrage       ; 12
+;	command buildopponentrage       ; 12
 	command poisontarget            ; 13
 	command sleeptarget             ; 14
 	command draintarget             ; 15
@@ -98,7 +98,7 @@ ENDM
 	command damagecalc              ; 5c
 	command safeguard               ; 5e
 	command checksafeguard          ; 5f
-	command getmagnitude            ; 60
+;	command getmagnitude            ; 60
 	command batonpass               ; 61
 	command pursuit                 ; 62
 	command clearhazards            ; 63
@@ -141,7 +141,7 @@ ENDM
 	command fakeout                 ; 8a
 	command bellydrum               ; 8b
 	command psychup                 ; 8c
-	command rage                    ; 8d
+;	command rage                    ; 8d
 	command doubleflyingdamage      ; 8e
 	command doubleundergrounddamage ; 8f
 	command mirrorcoat              ; 90
@@ -149,14 +149,14 @@ ENDM
 	command skipsuncharge           ; 92
 	command thunderaccuracy         ; 93
 	command teleport                ; 94
-	command beatup                  ; 95
-	command ragedamage              ; 96
+;	command beatup                  ; 95
+;	command ragedamage              ; 96
 	command resettypematchup        ; 97
 	command allstatsup              ; 98
 	command starthail               ; 99
 	command raisesubnoanim          ; 9a
 	command lowersubnoanim          ; 9b
-	command beatupfailtext          ; 9c
+;	command beatupfailtext          ; 9c
 	command clearmissdamage         ; 9d
 	command movedelay               ; 9e
 	command moveanim                ; 9f
@@ -169,6 +169,9 @@ ENDM
 	command checkpowder
 	command effectsporestatuschance
 	command specialattackup2
+	command specialdefensedown2
+	command accuracydown2
+	command startacidrain
 
 	const_def -1, -1
 	command endmove                 ; ff

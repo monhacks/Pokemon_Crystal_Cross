@@ -62,7 +62,7 @@ INCLUDE "home/sprite_anims.asm"
 INCLUDE "home/audio.asm"
 INCLUDE "home/audionighttable.asm"
 INCLUDE "home/mobile.asm"
-
+INCLUDE "home/moves.asm"
 INCLUDE "home/indirection.asm"
 INCLUDE "home/16bit.asm"
 INCLUDE "home/powder_moves.asm"

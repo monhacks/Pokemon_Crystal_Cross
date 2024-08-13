@@ -1,5 +1,10 @@
 MoveDescriptions::
 ; entries correspond to move ids (see constants/move_constants.asm)
+	indirect_table 2, 1
+	indirect_entries NUM_ATTACKS, MoveDescriptions1
+	indirect_table_end
+
+MoveDescriptions1:
 	dw PoundDescription
 	dw BugBuzzDescription
 	dw MegaPunchDescription
@@ -104,7 +109,6 @@ MoveDescriptions::
 	dw LightScreenDescription
 	dw HazeDescription
 	dw ReflectDescription
-	dw FocusEnergyDescription
 	dw SilverWindDescription
 	dw MetronomeDescription
 	dw MirrorMoveDescription
@@ -219,7 +223,7 @@ MoveDescriptions::
 	dw WhirlpoolDescription
 	dw RockClimbDescription
 	dw DarkPulseDescription
-	dw CrossPoisonDescription
+	dw PoisonJabDescription
 	dw DiveDescription
 	dw VoltTackleDescription
 	dw PowerUpPunchDescription
@@ -256,16 +260,148 @@ MoveDescriptions::
 	dw BlazeKickDescription
 	dw QuiverDanceDescription
 	dw BulkUpDescription
+	dw AcidDescription
+	dw SporeDescription
+	dw SoftboiledDescription
+	dw FaintAttackDescription
+	dw ConversionDescription
+	dw ShadowPunchDescription
+	dw ThrashDescription
+	dw CottonSporeDescription
+	dw TwineedleDescription
+	dw AstonishDescription
+	dw MachPunchDescription
+	dw DoubleslapDescription
+	dw FireSpinDescription
+	dw WithdrawDescription
+	dw FuryAtteckDescription
+	dw SweetKissDescription
+	dw CottonGuardDescription
+	dw DragonPulseDescription
+	dw CrossPoisonDescription
+	dw LungeDescription
+	dw SignalBeamDescription
+	dw TailGlowDescription
+	dw NightDazeDescription
+	dw DragonTailDescription
+	dw ScaleShotDescription
+	dw ChargeDescription
+	dw DischargeDescription
+	dw ThunderFangDescription
+	dw BrickBreakDescription
+	dw DrainPunchDescription
+	dw FocusBlastDescription
+	dw DetectDescription
+	dw FieryDanceDescription
+	dw HeatWaveDescription
+	dw LavaPlumeDescription
+	dw AerialAceDescription
+	dw ShadowSneakDescription
+	dw BulletSeedDescription
+	dw HornLeechDescription
+	dw MagicalLeafDescription
+	dw PowerWhipDescription
+	dw SeedBombDescription
+	dw SandTombDescription
+	dw SearingSandDescription
+	dw FrostbreathDescription
+	dw IcicleSpearDescription
+	dw GigaImpactDescription
+	dw CrushClawDescription
+	dw DoubleHitDescription
+	dw PoisonTailDescription
+	dw SludgeDescription
+	dw ExtrasensoryDescription
+	dw PsychicFangDescription
+	dw EsperWingDescription
+	dw MeteorStormDescription
+	dw RockTombDescription
+	dw MetalBurstDescription
+	dw MagnetBombDescription
+	dw MetalSoundDescription
+	dw ShiftGearDescription
+	dw SkullBashDescription
+	dw ScaldDescription
+	dw FocusEnergyDescription
+	dw SnoreDescription
+	dw PaybackDescription
+	dw AvalancheDescription
+	dw InfestationDescription
+	dw MinimizeDescription
+	dw VenomstrikeDescription
+	dw PhantomForceDescription
+	dw FissureDescription
+	dw ShadowClawDescription
+	dw AcidRainDescription	
 	dw StruggleDescription
-	dw Move00Description
 
-Move00Description:
+
+InvalidMoveDescription:
 	db "?@"
 	
 ShadowRushDescription:
 	db   "An evil move that"
 	next "also hurts the user@"
-
+	
+SporeDescription:
+ConversionDescription:
+CottonSporeDescription:
+TwineedleDescription:
+AstonishDescription:
+MachPunchDescription:
+FuryAtteckDescription:
+SweetKissDescription:
+CottonGuardDescription:
+DragonPulseDescription:
+CrossPoisonDescription:
+LungeDescription:
+SignalBeamDescription:
+TailGlowDescription:
+NightDazeDescription:
+DragonTailDescription:
+ScaleShotDescription:
+ChargeDescription:
+DischargeDescription:
+ThunderFangDescription:
+BrickBreakDescription:
+DrainPunchDescription:
+FocusBlastDescription:
+FieryDanceDescription:
+HeatWaveDescription:
+LavaPlumeDescription:
+AerialAceDescription:
+ShadowSneakDescription:
+BulletSeedDescription:
+HornLeechDescription:
+MagicalLeafDescription:
+PowerWhipDescription:
+SeedBombDescription:
+SandTombDescription:
+SearingSandDescription:
+FrostbreathDescription:
+IcicleSpearDescription:
+GigaImpactDescription:
+CrushClawDescription:
+DoubleHitDescription:
+PoisonTailDescription:
+SludgeDescription:
+ExtrasensoryDescription:
+PsychicFangDescription:
+EsperWingDescription:
+MeteorStormDescription:
+RockTombDescription:
+MetalBurstDescription:
+MagnetBombDescription:
+MetalSoundDescription:
+ShiftGearDescription:
+ScaldDescription:
+PaybackDescription:
+AvalancheDescription:
+InfestationDescription:
+VenomstrikeDescription:
+PhantomForceDescription:
+ShadowClawDescription:
+AcidRainDescription:	
 BulkUpDescription:
 QuiverDanceDescription:
 BlazeKickDescription:
@@ -291,7 +427,6 @@ LaserFocusDescription:
 DrillRunDescription:
 AccelerockDescription:
 WaveCrashDescription:
-StruggleDescription:
 	db "?@"
 	
 FireFangDescription:
@@ -390,7 +525,7 @@ RoostDescription:
 DarkPulseDescription:
 	db "?@"
 	
-CrossPoisonDescription:
+PoisonJabDescription:
 	db "?@"
 	
 FlashCannonDescription:

@@ -1,37 +1,56 @@
 ; used in data/pokemon/base_stats/*.asm
 tmhm: MACRO
-; initialize bytes to 0
-n = 0
-rept (NUM_TM_HM_TUTOR + 7) / 8
-_TM_BYTE EQUS "_tm{d:n}"
-_TM_BYTE = 0
-PURGE _TM_BYTE
-n = n + 1
-endr
-; set bits of bytes
+; used in data/pokemon/base_stats/*.asm
+_tms1 = 0 ; TM01-TM24 (24)
+_tms2 = 0 ; TM25-TM48 (24)
+_tms3 = 0 ; TM49-TM50 + HM01-HM07 + MT01-MT03 (??/24)
+_tms4 = 0 ; (extra)
 rept _NARG
 	if DEF(\1_TMNUM)
-n = (\1_TMNUM - 1) / 8
-i = (\1_TMNUM - 1) % 8
-_TM_BYTE EQUS "_tm{d:n}"
-_TM_BYTE = _TM_BYTE | (1 << i)
-PURGE _TM_BYTE
+	if \1_TMNUM < 24 + 1
+_tms1 = _tms1 | (1 << ((\1_TMNUM) - 1))
+	elif \1_TMNUM < 48 + 1
+_tms2 = _tms2 | (1 << ((\1_TMNUM) - 1 - 24))
 	else
-		fail "\1 is not a TM, HM, or tutor move"
+_tms3 = _tms3 | (1 << ((\1_TMNUM) - 1 - 48))
+else
+_tms4 = _tms4 | (1 << ((\1_TMNUM) - 1 - 72))
+	endc
+	else
+		fail "\1 is not a TM, HM, or move tutor move"
 	endc
 	shift
 endr
-; output bytes
-n = 0
-rept (NUM_TM_HM_TUTOR + 7) / 8
-_TM_BYTE EQUS "_tm{d:n}"
-	db _TM_BYTE
-PURGE _TM_BYTE
-n = n + 1
+rept 3 ; TM01-TM24 (24/24)
+	db _tms1 & $ff
+_tms1 = _tms1 >> 8
+endr
+rept 3 ; TM25-TM48 (24/24)
+	db _tms2 & $ff
+_tms2 = _tms2 >> 8
+endr
+rept 3 ; TM49-TM60 + HM01-HM10 + MT01-MT03 (24/24)
+	db _tms3 & $ff
+_tms3 = _tms3 >> 8
+endr
+rept 3 ; (extra)
+	db _tms4 & $ff
+_tms4 = _tms4 >> 8
 endr
 ENDM
 
 BaseData::
+;	; the parameter to indirect_table must be a compile-time constant, and BASE_DATA_SIZE is not
+	if ((__RGBDS_MAJOR__ << 24) | (__RGBDS_MINOR__ << 8) | __RGBDS_PATCH__) >= $400
+;		; if this version of RGBDS supports asserts, just assert that the size is correct
+		assert $1E == BASE_DATA_SIZE, "Please adjust the table size (and this assertion) to match BASE_DATA_SIZE"
+	endc
+	indirect_table $1E, 1
+	indirect_entries MEW, BaseData1
+	indirect_entries NUM_POKEMON, BaseData2
+	indirect_table_end
+
+BaseData1:
 INCLUDE "data/pokemon/base_stats/bulbasaur.asm"
 INCLUDE "data/pokemon/base_stats/ivysaur.asm"
 INCLUDE "data/pokemon/base_stats/venusaur.asm"
@@ -210,6 +229,8 @@ INCLUDE "data/pokemon/base_stats/dragonair.asm"
 INCLUDE "data/pokemon/base_stats/dragonite.asm"
 INCLUDE "data/pokemon/base_stats/mewtwo.asm"
 INCLUDE "data/pokemon/base_stats/mew.asm"
+
+BaseData2:
 INCLUDE "data/pokemon/base_stats/chikorita.asm"
 INCLUDE "data/pokemon/base_stats/bayleef.asm"
 INCLUDE "data/pokemon/base_stats/meganium.asm"
@@ -351,5 +372,3 @@ INCLUDE "data/pokemon/base_stats/kabutops_fossil.asm"
 INCLUDE "data/pokemon/base_stats/aerodactyl_fossil.asm"
 INCLUDE "data/pokemon/base_stats/missingno.asm"
 INCLUDE "data/pokemon/base_stats/charizard_m.asm"
-.End:
-	assert BaseData.End - BaseData == NUM_POKEMON * BASE_DATA_SIZE

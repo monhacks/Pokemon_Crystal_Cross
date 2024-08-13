@@ -89,6 +89,12 @@ HailHitsText:
 	line "health is sapped"
 	cont "by the cold!"
 	prompt
+	
+AcidHitsText:
+	text "<USER>"
+	line "is hurt by the"
+	cont "acid rain!"
+	prompt
 
 PerishCountText:
 	text "<USER>'s"
@@ -155,6 +161,16 @@ BattleText_HailContinuesToFall:
 	text "The snowstorm"
 	line "continues."
 	prompt
+	
+BattleText_AcidContinuesToFall:
+	text "The acid storm"
+	line "continues."
+	prompt
+	
+BattleText_FogContinues:
+	text "The fog is"
+	line "deep..."
+	prompt
 
 BattleText_TheRainStopped:
 	text "The rain stopped."
@@ -173,6 +189,16 @@ BattleText_TheSandstormSubsided:
 BattleText_TheHailEnded:
 	text "The snowstorm"
 	line "ended."
+	prompt
+	
+BattleText_TheAcidEnded:
+	text "The acid storm"
+	line "ended."
+	prompt
+	
+BattleText_TheFogEnded:
+	text "The fog has"
+	line "lifted."
 	prompt
 	
 RainRestoreText:
@@ -1050,6 +1076,16 @@ StartPerishText:
 HailFallsText:
 	text "Snow started to"
 	line "fall!"
+	prompt
+	
+AcidFallsText:
+	text "Acid rain began"
+	line "to fall!"
+	prompt
+	
+FogDescendsText:
+	text "A think fog"
+	line "crept up."
 	prompt
 	
 SandstormBrewedText:

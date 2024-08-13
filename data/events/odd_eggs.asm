@@ -27,12 +27,23 @@ OddEggSpecies:
 	dw ELEKID
 	dw TYROGUE
 	dw TYROGUE
+	
+OddEggMoves:
+	dw THUNDERSHOCK, CHARM, POWERUPPUNCH, NO_MOVE
+	dw THUNDERSHOCK, CHARM, POWERUPPUNCH, NO_MOVE
+	dw EMBER, POWERUPPUNCH, NO_MOVE, NO_MOVE
+	dw EMBER, POWERUPPUNCH, NO_MOVE, NO_MOVE
+	dw QUICK_ATTACK, LEER, POWERUPPUNCH, NO_MOVE
+	dw QUICK_ATTACK, LEER, POWERUPPUNCH, NO_MOVE
+	dw TACKLE, POWERUPPUNCH, NO_MOVE, NO_MOVE
+	dw TACKLE, POWERUPPUNCH, NO_MOVE, NO_MOVE
+
 
 OddEggs:
 
 	db 0 ; Species, will be filled on load
 	db NO_ITEM
-	db THUNDERSHOCK, CHARM, POWERUPPUNCH, 0
+	db 0, 0, 0, 0 ; Moves, will be filled on load
 	dw 02048 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -58,7 +69,7 @@ OddEggs:
 
 	db 0 ; Species, will be filled on load
 	db NO_ITEM
-	db THUNDERSHOCK, CHARM, POWERUPPUNCH, 0
+	db 0, 0, 0, 0 ; Moves, will be filled on load
 	dw 00256 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -84,7 +95,7 @@ OddEggs:
 
 	db 0 ; Species, will be filled on load
 	db NO_ITEM
-	db EMBER, POWERUPPUNCH, 0, 0
+	db 0, 0, 0, 0 ; Moves, will be filled on load
 	dw 02560 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -110,7 +121,7 @@ OddEggs:
 
 	db 0 ; Species, will be filled on load
 	db NO_ITEM
-	db EMBER, POWERUPPUNCH, 0, 0
+	db 0, 0, 0, 0 ; Moves, will be filled on load
 	dw 00512 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -136,7 +147,7 @@ OddEggs:
 
 	db 0 ; Species, will be filled on load
 	db NO_ITEM
-	db QUICK_ATTACK, LEER, POWERUPPUNCH, 0
+	db 0, 0, 0, 0 ; Moves, will be filled on load
 	dw 03072 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -162,7 +173,7 @@ OddEggs:
 
 	db 0 ; Species, will be filled on load
 	db NO_ITEM
-	db QUICK_ATTACK, LEER, POWERUPPUNCH, 0
+	db 0, 0, 0, 0 ; Moves, will be filled on load
 	dw 00512 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -188,7 +199,7 @@ OddEggs:
 
 	db 0 ; Species, will be filled on load
 	db NO_ITEM
-	db TACKLE, POWERUPPUNCH, 0, 0
+	db 0, 0, 0, 0 ; Moves, will be filled on load
 	dw 02560 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -214,7 +225,7 @@ OddEggs:
 
 	db 0 ; Species, will be filled on load
 	db NO_ITEM
-	db TACKLE, POWERUPPUNCH, 0, 0
+	db 0, 0, 0, 0 ; Moves, will be filled on load
 	dw 00256 ; OT ID
 	dt 125 ; Exp
 	; Stat exp

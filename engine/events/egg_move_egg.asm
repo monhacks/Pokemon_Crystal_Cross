@@ -298,7 +298,7 @@ BaseStructEgg:
 
 	db 0 ; base
 	db NO_ITEM
-	db TACKLE, NO_MOVE, NO_MOVE, NO_MOVE
+	db 0, 0, 0, 0 ; Moves, will be filled on load
 	dw 02048 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -324,7 +324,7 @@ BaseStructEgg:
 	
 	db 0 ; base
 	db NO_ITEM
-	db TACKLE, NO_MOVE, NO_MOVE, NO_MOVE
+	db 0, 0, 0, 0 ; Moves, will be filled on load
 	dw 02048 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -350,7 +350,7 @@ BaseStructEgg:
 	
 	db 0 ; base
 	db NO_ITEM
-	db TACKLE, NO_MOVE, NO_MOVE, NO_MOVE
+	db 0, 0, 0, 0 ; Moves, will be filled on load
 	dw 02048 ; OT ID
 	dt 125 ; Exp
 	; Stat exp
@@ -376,7 +376,7 @@ BaseStructEgg:
 	
 	db 0 ; base
 	db NO_ITEM
-	db TACKLE, NO_MOVE, NO_MOVE, NO_MOVE
+	db 0, 0, 0, 0 ; Moves, will be filled on load
 	dw 02048 ; OT ID
 	dt 125 ; Exp
 	; Stat exp

@@ -2495,16 +2495,14 @@ wBaseItems::
 wBaseItem1:: db
 wBaseItem2:: db
 wBaseGender:: db
-wBaseUnknown1:: db
 wBaseEggSteps:: db
-wBaseUnknown2:: db
 wBasePicSize:: db
-wBaseUnusedFrontpic:: dw
-wBaseUnusedBackpic:: dw
 wBaseGrowthRate:: db
 wBaseEggGroups:: db
 wBaseTMHM:: flag_array NUM_TM_HM_TUTOR
 wCurBaseDataEnd::
+
+ds 6
 
 wCurDamage:: dw
 
@@ -3279,6 +3277,7 @@ wPokeAnimStructEnd::
 SECTION "16-bit WRAM tables", WRAMX
 ; align this section to $100
 	wram_conversion_table wPokemonIndexTable, MON_TABLE
+	wram_conversion_table wMoveIndexTable, MOVE_TABLE
 
 
 SECTION "Battle Tower RAM", WRAMX

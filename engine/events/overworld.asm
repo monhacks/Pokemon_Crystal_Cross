@@ -60,7 +60,11 @@ CheckBadge:
 .BadgeRequiredText:
 	text_far _BadgeRequiredText
 	text_end
-	
+
+CheckPartyMoveIndex:
+; Check if a monster in your party has move hl.
+	call GetMoveIDFromIndex
+	ld d, a	
 CheckPartyMove:
 ; Check if a monster in your party has move d.
 
@@ -560,13 +564,13 @@ TrySurfOW::
 	call CheckItem
 	jr z, .quit
 
-	ld d, SURF
-	call CheckPartyMove
+	ld hl, SURF
+	call CheckPartyMoveIndex
 	jr c, .try_next
 	jr .yes
 	
 .try_next	
-	ld d, SURF
+	ld hl, SURF
 	call CheckPartyCanLearnMove
 	and a
 	jr z, .yes
@@ -781,13 +785,13 @@ TryWaterfallOW::
 	call CheckItem
 	jr z, .failed
 
-	ld d, WATERFALL
-	call CheckPartyMove
+	ld hl, WATERFALL
+	call CheckPartyMoveIndex
 	jr c, .try_next
 	jr .yes
 	
 .try_next	
-	ld d, WATERFALL
+	ld hl, WATERFALL
 	call CheckPartyCanLearnMove
 	and a
 	jr z, .yes
@@ -1057,13 +1061,13 @@ StrengthFunction:
 	call CheckItem
 	jr z, .Failed
 	
-	ld d, STRENGTH
-	call CheckPartyMove
+	ld hl, STRENGTH
+	call CheckPartyMoveIndex
 	jr c, .try_next
 	jr .UseStrength
 	
 .try_next	
-	ld d, STRENGTH
+	ld hl, STRENGTH
 	call CheckPartyCanLearnMove
 	and a
 	jr z, .UseStrength
@@ -1316,13 +1320,13 @@ TryWhirlpoolOW::
 	call CheckItem
 	jr z, .failed
 
-	ld d, WHIRLPOOL
-	call CheckPartyMove
+	ld hl, WHIRLPOOL
+	call CheckPartyMoveIndex
 	jr c, .try_next
 	jr .yes
 	
 .try_next	
-	ld d, WHIRLPOOL
+	ld hl, WHIRLPOOL
 	call CheckPartyCanLearnMove
 	and a
 	jr z, .yes
@@ -1418,8 +1422,8 @@ HeadbuttScript:
 	end
 
 TryHeadbuttOW::
-	ld d, HEADBUTT
-	call CheckPartyMove
+	ld hl, HEADBUTT
+	call CheckPartyMoveIndex
 	jr c, .no
 
 	ld a, BANK(AskHeadbuttScript)
@@ -1556,13 +1560,13 @@ HasRockSmash:
 	call CheckItem
 	jr z, .no
 
-	ld d, ROCK_SMASH
-	call CheckPartyMove
+	ld hl, ROCK_SMASH
+	call CheckPartyMoveIndex
 	jr c, .try_next
 	jr .yes
 	
 .try_next	
-	ld d, ROCK_SMASH
+	ld hl, ROCK_SMASH
 	call CheckPartyCanLearnMove
 	and a
 	jr z, .yes
@@ -2269,13 +2273,13 @@ TryCutOW::
 	call CheckItem
 	jr z, .cant_cut
 	
-	ld d, CUT
-	call CheckPartyMove
+	ld hl, CUT
+	call CheckPartyMoveIndex
 	jr c, .try_next
 	jr .yes
 	
 .try_next	
-	ld d, CUT
+	ld hl, CUT
 	call CheckPartyCanLearnMove
 	and a
 	jr z, .yes
@@ -2576,13 +2580,13 @@ TryDiveOW::
 	call CheckItem
 	jr z, .failed
 
-	ld d, DIVE
-	call CheckPartyMove
+	ld hl, DIVE
+	call CheckPartyMoveIndex
 	jr c, .try_next
 	jr .yes
 	
 .try_next	
-	ld d, DIVE
+	ld hl, DIVE
 	call CheckPartyCanLearnMove
 	and a
 	jr z, .yes

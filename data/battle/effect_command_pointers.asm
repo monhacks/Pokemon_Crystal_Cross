@@ -22,7 +22,7 @@ BattleCommandPointers:
 	dw BattleCommand_CriticalText
 	dw BattleCommand_SuperEffectiveText
 	dw BattleCommand_CheckFaint
-	dw BattleCommand_BuildOpponentRage
+;	dw BattleCommand_BuildOpponentRage
 	dw BattleCommand_PoisonTarget
 	dw BattleCommand_SleepTarget
 	dw BattleCommand_DrainTarget
@@ -98,7 +98,7 @@ BattleCommandPointers:
 	dw BattleCommand_DamageCalc
 	dw BattleCommand_Safeguard
 	dw BattleCommand_CheckSafeguard
-	dw BattleCommand_GetMagnitude
+;	dw BattleCommand_GetMagnitude
 	dw BattleCommand_BatonPass
 	dw BattleCommand_Pursuit
 	dw BattleCommand_ClearHazards
@@ -141,7 +141,7 @@ BattleCommandPointers:
 	dw BattleCommand_FakeOut
 	dw BattleCommand_BellyDrum
 	dw BattleCommand_PsychUp
-	dw BattleCommand_Rage
+;	dw BattleCommand_Rage
 	dw BattleCommand_DoubleFlyingDamage
 	dw BattleCommand_DoubleUndergroundDamage
 	dw BattleCommand_MirrorCoat
@@ -149,14 +149,14 @@ BattleCommandPointers:
 	dw BattleCommand_SkipSunCharge
 	dw BattleCommand_ThunderAccuracy
 	dw BattleCommand_Teleport
-	dw BattleCommand_BeatUp
-	dw BattleCommand_RageDamage
+;	dw BattleCommand_BeatUp
+;	dw BattleCommand_RageDamage
 	dw BattleCommand_ResetTypeMatchup
 	dw BattleCommand_AllStatsUp
 	dw BattleCommand_StartHail
 	dw BattleCommand_RaiseSubNoAnim
 	dw BattleCommand_LowerSubNoAnim
-	dw BattleCommand_BeatUpFailText
+;	dw BattleCommand_BeatUpFailText
 	dw BattleCommand_ClearMissDamage
 	dw BattleCommand_MoveDelay
 	dw BattleCommand_MoveAnim
@@ -169,4 +169,7 @@ BattleCommandPointers:
 	dw BattleCommand_CheckPowder
 	dw BattleCommand_EffectSporeStatusChance
 	dw BattleCommand_SpecialAttackUp2
+	dw BattleCommand_SpecialDefenseDown2
+	dw BattleCommand_AccuracyDown2
+	dw BattleCommand_StartAcidRain
 	
