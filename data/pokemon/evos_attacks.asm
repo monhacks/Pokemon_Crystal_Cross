@@ -22,5 +22,3 @@ EvosAttacksPointers::
 	
 INCLUDE "data/pokemon/evos_attacks_kanto.asm"
 INCLUDE "data/pokemon/evos_attacks_johto.asm"
-
-INCLUDE "data/pokemon/evolution_moves.asm"

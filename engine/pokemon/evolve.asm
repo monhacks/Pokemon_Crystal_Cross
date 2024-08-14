@@ -467,7 +467,6 @@ endr
 	ld [wTempSpecies], a
 	xor a
 	ld [wMonType], a
-	call LearnEvolutionMove
 	call LearnLevelMoves
 	ld a, [wTempSpecies]
 	call SetSeenAndCaughtMon
@@ -538,44 +537,6 @@ endr
 	ld a, [wMonTriedToEvolve]
 	and a
 	call nz, RestartMapMusic
-	ret
-	
-LearnEvolutionMove:
-	ld a, [wTempSpecies]
-	ld [wCurPartySpecies], a
-	call GetPokemonIndexFromID
-	ld bc, EvolutionMoves - 1
-	add hl, bc
-	ld a, [hl]
-	and a
-	ret z
-
-	push hl
-	ld d, a
-	ld hl, wPartyMon1Moves
-	ld a, [wCurPartyMon]
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
-
-	ld b, NUM_MOVES
-.check_move
-	ld a, [hli]
-	cp d
-	jr z, .has_move
-	dec b
-	jr nz, .check_move
-
-	ld a, d
-	ld [wPutativeTMHMMove], a
-	ld [wNamedObjectIndex], a
-	call GetMoveName
-	call CopyName1
-	predef LearnMove
-	ld a, [wCurPartySpecies]
-	ld [wTempSpecies], a
-
-.has_move
-	pop hl
 	ret
 
 UpdateSpeciesNameIfNotNicknamed:
@@ -660,9 +621,23 @@ LearnLevelMoves:
 	and a
 	jr z, .done
 
+	ld d, a
+	ld a, [wEvolutionOldSpecies]
+	ld e, a
+	ld a, [wCurPartySpecies]
+	cp e
+	ld a, d
+	jr z, .did_not_evolve
+
+	cp LEARN_EVO_MOVE
+	jr z, .get_move
+
+.did_not_evolve
 	ld b, a
 	ld a, [wCurPartyLevel]
 	cp b
+	
+.get_move
 	call GetNextEvoAttackByte
 	ld e, a
 	call GetNextEvoAttackByte
@@ -749,12 +724,12 @@ FillMoves:
 	push de
 	ld c, NUM_MOVES
 	
-	ldh a, [hTemp] ;??
+	ldh a, [hTemp]
 	push hl
 	call GetFarWord
 	call GetMoveIDFromIndex
 	pop hl
-	ld b, a        ;??
+	ld b, a
 	
 .CheckRepeat:
 	ld a, [de]

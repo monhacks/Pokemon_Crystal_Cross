@@ -153,6 +153,10 @@ NUM_HOF_TEAMS EQU 30
 	const_def 1
 	const EVO_MALE
 	const EVO_FEMALE
+	
+; Learn move upon evo trigger
+	const_def MAX_LEVEL + 1
+	const LEARN_EVO_MOVE
 
 ; wild data
 

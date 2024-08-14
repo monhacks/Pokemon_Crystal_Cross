@@ -216,6 +216,7 @@ IvysaurEvosAttacks:                  ;final
 
 VenusaurEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, PETAL_DANCE
 	dbw 1, SLUDGE_BOMB
 	dbw 1, TACKLE
 	dbw 1, GROWL
@@ -268,6 +269,7 @@ CharmeleonEvosAttacks:               ;final
 
 CharizardEvosAttacks:                ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, WING_ATTACK
 	dbw 1, DRAGON_CLAW
 	dbw 1, SCRATCH
 	dbw 1, GROWL
@@ -320,6 +322,7 @@ WartortleEvosAttacks:                ;final
 
 BlastoiseEvosAttacks:                ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, FLASH_CANNON
 	dbw 1, HEADBUTT
 	dbw 1, TACKLE
 	dbw 1, TAIL_WHIP
@@ -354,6 +357,7 @@ MetapodEvosAttacks:                  ;final
 
 ButterfreeEvosAttacks:               ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, CONFUSION
 	dbw 1, AIR_CUTTER
 	dbw 1, TACKLE
 	dbw 1, STRING_SHOT
@@ -389,6 +393,7 @@ KakunaEvosAttacks:                   ;final
 
 BeedrillEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, FELL_STINGER
 	dbw 1, BATON_PASS
 	dbw 1, STRING_SHOT
 	dbw 1, POISON_STING
@@ -425,6 +430,7 @@ PidgeyEvosAttacks:                   ;final
 PidgeottoEvosAttacks:                ;final
 	dbbw EVOLVE_LEVEL, 36, PIDGEOT
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, FEATHERDANCE
 	dbw 1, AIR_CUTTER
 	dbw 1, TACKLE
 	dbw 1, SAND_ATTACK
@@ -478,6 +484,7 @@ RattataEvosAttacks:                  ;final
 
 RaticateEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, SCARY_FACE
 	dbw 1, REFRESH
 	dbw 1, TACKLE
 	dbw 1, TAIL_WHIP
@@ -513,6 +520,7 @@ SpearowEvosAttacks:                  ;final
 
 FearowEvosAttacks:                   ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, WING_ATTACK
 	dbw 1, SKY_ATTACK
 	dbw 1, PECK
 	dbw 1, LEER
@@ -551,6 +559,7 @@ EkansEvosAttacks:                    ;final
 
 ArbokEvosAttacks:                    ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, SCARY_FACE
 	dbw 1, FIRE_FANG
 	dbw 1, ICE_FANG
 	dbw 1, WRAP
@@ -638,6 +647,7 @@ SandshrewEvosAttacks:                ;final
 
 SandslashEvosAttacks:                ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, SANDSLASH
 	dbw 1, DRILL_RUN
 	dbw 1, SCRATCH
 	dbw 1, SHARPEN
@@ -688,8 +698,8 @@ NidorinaEvosAttacks:                 ;final
 
 NidoqueenEvosAttacks:                ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, SLAM
 	dbw 1, BULK_UP
-	dbw 1, SLAM           ;evolution move
 	dbw 1, SCRATCH
 	dbw 1, GROWL
 	dbw 4, POISON_STING
@@ -739,8 +749,8 @@ NidorinoEvosAttacks:                 ;final
 
 NidokingEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, HORN_DRILL
 	dbw 1, POWERUPPUNCH
-	dbw 1, HORN_DRILL     ;evolution move
 	dbw 1, PECK
 	dbw 1, LEER
 	dbw 4, POISON_STING
@@ -777,8 +787,8 @@ ClefairyEvosAttacks:                 ;final
 
 ClefableEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, HEAL_BELL
 	dbw 1, MYSTICALFIRE
-	dbw 1, HEAL_BELL      ;evolution move
 	dbw 1, POUND
 	dbw 1, DEFENSE_CURL
 	dbw 4, ENCORE
@@ -814,6 +824,7 @@ VulpixEvosAttacks:                   ;final
 
 NinetalesEvosAttacks:                ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, CURSE
 	dbw 1, NASTY_PLOT
 	dbw 1, EMBER
 	dbw 1, TAIL_WHIP
@@ -850,6 +861,7 @@ JigglypuffEvosAttacks:               ;final
 
 WigglytuffEvosAttacks:               ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, PAIN_SPLIT
 	dbw 1, COUNTER
 	dbw 1, POUND
 	dbw 1, DEFENSE_CURL
@@ -886,7 +898,7 @@ ZubatEvosAttacks:                    ;final
 GolbatEvosAttacks:                   ;final
 	dbbw EVOLVE_HAPPINESS, TR_ANYTIME, CROBAT
 	db 0 ; no more evolutions
-	dbw 1, LICK           ;evolution move
+	dbw LEARN_EVO_MOVE, LICK       ;evolution move
 	dbw 1, LEECH_LIFE
 	dbw 1, SUPERSONIC
 	dbw 4, BITE
@@ -903,8 +915,8 @@ GolbatEvosAttacks:                   ;final
 	
 CrobatEvosAttacks:                   ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, POISON_JAB ;evolution move
 	dbw 1, X_SCISSOR
-	dbw 1, POISON_JAB    ;evolution move
 	dbw 1, LEECH_LIFE
 	dbw 1, SUPERSONIC
 	dbw 4, BITE
@@ -952,8 +964,8 @@ GloomEvosAttacks:                    ;final
 
 VileplumeEvosAttacks:                ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, SLUDGE_BOMB  ;evolution move
 	dbw 1, SLAM
-	dbw 1, SLUDGE_BOMB    ;evolution move
 	dbw 1, MEGA_DRAIN
 	dbw 1, GROWTH
 	dbw 4, SWEET_SCENT
@@ -969,8 +981,8 @@ VileplumeEvosAttacks:                ;final
 	
 BellossomEvosAttacks:                ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, PETAL_DANCE  ;evolution move
 	dbw 1, QUIVER_DANCE
-	dbw 1, PETAL_DANCE    ;evolution move
 	dbw 1, MEGA_DRAIN
 	dbw 1, GROWTH
 	dbw 4, SWEET_SCENT
@@ -1001,6 +1013,7 @@ ParasEvosAttacks:                    ;final
 
 ParasectEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, SLASH
 	dbw 1, CRABHAMMER
 	dbw 1, SCRATCH
 	dbw 1, LEECH_LIFE
@@ -1035,6 +1048,7 @@ VenonatEvosAttacks:                  ;final
 
 VenomothEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, GUST
 	dbw 1, POISON_FANG
 	dbw 1, GUST
 	dbw 1, DISABLE
@@ -1070,6 +1084,7 @@ DiglettEvosAttacks:                  ;final
 
 DugtrioEvosAttacks:                  ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, SLASH ;why is this not tri attack?
 	dbw 1, TRI_ATTACK
 	dbw 1, SCRATCH
 	dbw 1, GROWL
@@ -1106,6 +1121,7 @@ MeowthEvosAttacks:                   ;final
 
 PersianEvosAttacks:                  ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, SWIFT
 	dbw 1, SLAM
 	dbw 1, SCRATCH
 	dbw 1, GROWL
@@ -1142,6 +1158,7 @@ PsyduckEvosAttacks:                  ;final
 
 GolduckEvosAttacks:                  ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, POWER_GEM
 	dbw 1, LOW_KICK
 	dbw 1, SCRATCH
 	dbw 1, TAIL_WHIP
@@ -1197,8 +1214,8 @@ PrimeapeEvosAttacks:                 ;final
 
 AnnihilapeEvosAttacks:               ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, SHADOW_PUNCH ;evolution move
 	dbw 1, SKY_UPPERCUT
-	dbw 1, SHADOWSTRIKE   ;evolution move
 	dbw 1, SCRATCH
 	dbw 1, LEER
 	dbw 4, LOW_KICK
@@ -1232,6 +1249,7 @@ GrowlitheEvosAttacks:                ;final
 
 ArcanineEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, EXTREMESPEED
 	dbw 1, MORNING_SUN
 	dbw 1, EMBER
 	dbw 1, LEER
@@ -1283,8 +1301,8 @@ PoliwhirlEvosAttacks:                ;final
 
 PoliwrathEvosAttacks:                ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, COUNTER    ;evolution move
 	dbw 1, BULK_UP
-	dbw 1, COUNTER        ;evolution move
 	dbw 1, POWERUPPUNCH
 	dbw 1, HYPNOSIS
 	dbw 4, WATER_GUN
@@ -1301,8 +1319,8 @@ PoliwrathEvosAttacks:                ;final
 	
 PolitoedEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, PERISH_SONG  ;evolution move
 	dbw 1, CALM_MIND
-	dbw 1, PERISH_SONG    ;evolution move
 	dbw 1, ECHOED_VOICE
 	dbw 1, HYPNOSIS
 	dbw 4, WATER_GUN
@@ -1328,6 +1346,7 @@ AbraEvosAttacks:                     ;final
 KadabraEvosAttacks:                  ;final
 	dbbbw EVOLVE_ITEM_LEVEL, SHINY_STONE, 42, ALAKAZAM
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, HIDDEN_POWER
 	dbw 1, TELEPORT
 	dbw 1, DISABLE
 	dbw 4, CONFUSION
@@ -1448,8 +1467,8 @@ WeepinbellEvosAttacks:               ;final
 
 VictreebelEvosAttacks:               ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, LEAF_BLADE   ;evolution move
 	dbw 1, SWORDS_DANCE
-	dbw 1, LEAF_BLADE     ;evolution move
 	dbw 1, WRAP
 	dbw 1, GROWTH
 	dbw 4, VINE_WHIP
@@ -1483,6 +1502,7 @@ TentacoolEvosAttacks:                ;final
 
 TentacruelEvosAttacks:               ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, FELL_STINGER
 	dbw 1, POWER_GEM
 	dbw 1, WRAP
 	dbw 1, SUPERSONIC
@@ -1537,6 +1557,7 @@ GravelerEvosAttacks:                 ;final
 
 GolemEvosAttacks:                    ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, RAPID_SPIN
 	dbw 1, COUNTER
 	dbw 1, TACKLE
 	dbw 1, DEFENSE_CURL
@@ -1573,8 +1594,8 @@ PonytaEvosAttacks:                   ;final
 
 RapidashEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, HORN_ATTACK  ;evolution move
 	dbw 1, DRILL_RUN
-	dbw 1, HORN_ATTACK    ;evolution move
 	dbw 1, TACKLE
 	dbw 1, GROWL
 	dbw 4, EMBER
@@ -1612,6 +1633,7 @@ SlowpokeEvosAttacks:                 ;final
 
 SlowbroEvosAttacks:                  ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, RAZOR_SHELL
 	dbw 1, IRON_DEFENSE
 	dbw 1, TACKLE
 	dbw 1, GROWL
@@ -1631,6 +1653,7 @@ SlowbroEvosAttacks:                  ;final
 	
 SlowkingEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, POWER_GEM
 	dbw 1, HYPNOSIS
 	dbw 1, TACKLE
 	dbw 1, GROWL
@@ -1669,6 +1692,7 @@ MagnemiteEvosAttacks:                ;final
 
 MagnetonEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, TRI_ATTACK
 	dbw 1, IRON_DEFENSE
 	dbw 1, TACKLE
 	dbw 1, SUPERSONIC
@@ -1707,6 +1731,7 @@ FarfetchDEvosAttacks:                ;final
 	
 WuDukEvosAttacks:                    ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, ROCK_SMASH
 	dbw 1, X_SCISSOR
 	dbw 1, WING_ATTACK
 	dbw 1, LEER
@@ -1743,6 +1768,7 @@ DoduoEvosAttacks:                    ;final
 
 DodrioEvosAttacks:                   ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, TRI_ATTACK
 	dbw 1, DRILL_RUN
 	dbw 1, PECK
 	dbw 1, GROWL
@@ -1852,6 +1878,7 @@ ShellderEvosAttacks:                 ;final
 
 CloysterEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, SPIKE_CANNON
 	dbw 1, FELL_STINGER
 	dbw 1, TACKLE
 	dbw 1, HARDEN
@@ -1890,6 +1917,7 @@ GastlyEvosAttacks:                   ;final
 HaunterEvosAttacks:                  ;final
 	dbbbw EVOLVE_ITEM_LEVEL, DUSK_STONE, 42, GENGAR
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, SHADOW_PUNCH
 	dbw 1, LICK
 	dbw 1, SPITE
 	dbw 4, SMOG
@@ -1897,7 +1925,7 @@ HaunterEvosAttacks:                  ;final
 	dbw 12, CURSE
 	dbw 15, NIGHT_SHADE
 	dbw 19, CONFUSE_RAY
-	dbw 24, SHADOWSTRIKE  ;evolution move
+	dbw 24, SHADOW_PUNCH  ;evolution move
 	dbw 29, DARK_PULSE
 	dbw 33, HYPNOSIS
 	dbw 36, SHADOW_BALL
@@ -1981,6 +2009,7 @@ DrowzeeEvosAttacks:                  ;final
 
 HypnoEvosAttacks:                    ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, DARK_PULSE
 	dbw 1, CONFUSE_RAY
 	dbw 1, POUND
 	dbw 1, HYPNOSIS
@@ -2017,6 +2046,7 @@ KrabbyEvosAttacks:                   ;final
 
 KinglerEvosAttacks:                  ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, NIGHT_SLASH
 	dbw 1, SWORDS_DANCE
 	dbw 1, LEER
 	dbw 1, WATER_GUN
@@ -2089,6 +2119,7 @@ ExeggcuteEvosAttacks:                ;final
 
 ExeggutorEvosAttacks:                ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, RAZOR_LEAF
 	dbw 1, LOW_KICK
 	dbw 1, CONFUSION
 	dbw 1, HYPNOSIS
@@ -2153,6 +2184,7 @@ TyrogueEvosAttacks:
 
 HitmonleeEvosAttacks:                ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, DOUBLE_KICK
 	dbw 1, REFRESH
 	dbw 1, TACKLE
 	dbw 1, ENDURE
@@ -2172,6 +2204,7 @@ HitmonleeEvosAttacks:                ;final
 
 HitmonchanEvosAttacks:               ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, POWERUPPUNCH
 	dbw 1, BULLET_PUNCH
 	dbw 1, TACKLE
 	dbw 1, ENDURE
@@ -2193,6 +2226,7 @@ HitmonchanEvosAttacks:               ;final
 	
 HitmontopEvosAttacks:                ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, RAPID_SPIN
 	dbw 1, TWISTER
 	dbw 1, TACKLE
 	dbw 1, ENDURE
@@ -2246,6 +2280,7 @@ KoffingEvosAttacks:                  ;final
 
 WeezingEvosAttacks:                  ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, SLAM
 	dbw 1, WILL_O_WISP
 	dbw 1, TACKLE
 	dbw 1, DEFENSE_CURL
@@ -2282,6 +2317,7 @@ RhyhornEvosAttacks:                  ;final
 
 RhydonEvosAttacks:                   ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, HORN_DRILL
 	dbw 1, POWERUPPUNCH
 	dbw 1, TACKLE
 	dbw 1, TAIL_WHIP
@@ -2311,6 +2347,7 @@ HappinyEvosAttacks:                  ;final
 
 ChanseyEvosAttacks:                  ;final
 	dbbw EVOLVE_HAPPINESS, TR_ANYTIME, BLISSEY
+	dbw LEARN_EVO_MOVE, SOFTBOILED
 	db 0 ; no more evolutions
 	dbw 1, SEISMIC_TOSS
 	dbw 1, POUND
@@ -2318,7 +2355,7 @@ ChanseyEvosAttacks:                  ;final
 	dbw 4, GROWL
 	dbw 9, TAIL_WHIP
 	dbw 12, REFRESH
-	dbw 14, RECOVER       ;evolution move
+	dbw 14, SOFTBOILED       ;evolution move
 	dbw 20, DOUBLE_TEAM
 	dbw 23, ECHOED_VOICE
 	dbw 27, SING
@@ -2374,8 +2411,8 @@ KangaskidEvosAttacks:                ;final
 
 KangaskhanEvosAttacks:               ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, POWERUPPUNCH ;evolution move
 	dbw 1, SLAM
-	dbw 1, POWERUPPUNCH   ;evolution move
 	dbw 1, TACKLE
 	dbw 1, LEER
 	dbw 4, TAIL_WHIP
@@ -2409,6 +2446,7 @@ HorseaEvosAttacks:                   ;final
 SeadraEvosAttacks:                   ;final
 	dbbw EVOLVE_HOLD, DRAGON_SCALE, KINGDRA
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, POISON_STING
 	dbw 1, SPLASH
 	dbw 1, LEER
 	dbw 4, WATER_GUN
@@ -2496,6 +2534,7 @@ StaryuEvosAttacks:                   ;final
 
 StarmieEvosAttacks:                  ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, PSYBEAM
 	dbw 1, REFRESH
 	dbw 1, TACKLE
 	dbw 1, HARDEN
@@ -2533,6 +2572,7 @@ ScytherEvosAttacks:                  ;final
 	
 ScizorEvosAttacks:                   ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, METAL_CLAW
 	dbw 1, CRABHAMMER
 	dbw 1, BULLET_PUNCH
 	dbw 1, LEER
@@ -2563,6 +2603,7 @@ ElekidEvosAttacks:                   ;final
 
 ElectabuzzEvosAttacks:               ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, THUNDERPUNCH
 	dbw 1, SLAM
 	dbw 1, QUICK_ATTACK
 	dbw 1, LEER
@@ -2592,6 +2633,7 @@ MagbyEvosAttacks:                    ;final
 
 MagmarEvosAttacks:                   ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, FIRE_PUNCH
 	dbw 1, BLAZE_KICK
 	dbw 1, SCRATCH
 	dbw 1, LEER
@@ -2683,6 +2725,7 @@ MagikarpEvosAttacks:                 ;final
 
 GyaradosEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, DRAGON_RAGE
 	dbw 1, SLAM
 	dbw 1, TACKLE
 	dbw 1, LEER
@@ -2712,6 +2755,7 @@ NessiEvosAttacks:                    ;final
 
 LaprasEvosAttacks:                   ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, CONFUSE_RAY
 	dbw 1, RECOVER
 	dbw 1, GROWL
 	dbw 1, SING
@@ -2765,6 +2809,7 @@ EeveeEvosAttacks:                    ;final
 
 VaporeonEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, WATER_GUN
 	dbw 1, ICE_FANG       ;move relearner
 	dbw 1, CONFUSE_RAY    ;move relearner
 	dbw 1, TACKLE
@@ -2785,6 +2830,7 @@ VaporeonEvosAttacks:                 ;final
 
 JolteonEvosAttacks:                  ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, THUNDERSHOCK
 	dbw 1, EXTREMESPEED   ;move relearner
 	dbw 1, FELL_STINGER   ;move relearner
 	dbw 1, TACKLE
@@ -2805,6 +2851,7 @@ JolteonEvosAttacks:                  ;final
 
 FlareonEvosAttacks:                  ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, EMBER
 	dbw 1, SLAM           ;move relearner
 	dbw 1, MORNING_SUN    ;move relearner
 	dbw 1, TACKLE
@@ -2825,6 +2872,7 @@ FlareonEvosAttacks:                  ;final
 	
 EspeonEvosAttacks:                   ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, CONFUSION
 	dbw 1, BATON_PASS     ;move relearner
 	dbw 1, COSMIC_POWER   ;move relearner
 	dbw 1, TACKLE
@@ -2845,6 +2893,7 @@ EspeonEvosAttacks:                   ;final
 
 UmbreonEvosAttacks:                  ;final   >I don't like it! I don't care-
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, PURSUIT
 	dbw 1, POISON_FANG    ;move relearner
 	dbw 1, COSMIC_POWER   ;move relearner
 	dbw 1, TACKLE
@@ -2865,6 +2914,7 @@ UmbreonEvosAttacks:                  ;final   >I don't like it! I don't care-
 	
 LeafeonEvosAttacks:                  ;final   >what it looks like to anyone else
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, MEGA_DRAIN
 	dbw 1, X_SCISSOR      ;move relearner
 	dbw 1, LEECH_SEED     ;move relearner
 	dbw 1, TACKLE
@@ -2885,6 +2935,7 @@ LeafeonEvosAttacks:                  ;final   >what it looks like to anyone else
 	
 GlaceonEvosAttacks:                  ;final   >-I don't like it one bit!
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, POWDER_SNOW
 	dbw 1, WATER_PULSE    ;move relearner | this is a tm :/
 	dbw 1, AURORA_BEAM    ;move relearner
 	dbw 1, TACKLE
@@ -2905,6 +2956,7 @@ GlaceonEvosAttacks:                  ;final   >-I don't like it one bit!
 	
 SylveonEvosAttacks:                  ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, ECHOED_VOICE
 	dbw 1, SWEET_SCENT    ;move relearner | 'and this is lady susan, she smells good'
 	dbw 1, MYSTICALFIRE   ;move relearner
 	dbw 1, TACKLE
@@ -2943,8 +2995,8 @@ PorygonEvosAttacks:                  ;final
 	
 Porygon2EvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, CALM_MIND    ;evolution move
 	dbw 1, SAFEGUARD
-	dbw 1, CALM_MIND      ;evolution move
 	dbw 1, TACKLE
 	dbw 1, DISABLE
 	dbw 4, THUNDERSHOCK
@@ -2962,8 +3014,8 @@ Porygon2EvosAttacks:                 ;final
 	
 PorygonZEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, NASTY_PLOT     ;evolution move
 	dbw 1, SCREECH
-	dbw 1, NASTY_PLOT     ;evolution move
 	dbw 1, TACKLE
 	dbw 1, DISABLE
 	dbw 4, THUNDERSHOCK
@@ -2997,6 +3049,7 @@ OmanyteEvosAttacks:                  ;final
 
 OmastarEvosAttacks:                  ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, SPIKE_CANNON
 	dbw 1, RAZOR_SHELL
 	dbw 1, WRAP
 	dbw 1, HARDEN
@@ -3031,6 +3084,7 @@ KabutoEvosAttacks:                   ;final
 
 KabutopsEvosAttacks:                 ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, SLASH
 	dbw 1, X_SCISSOR
 	dbw 1, SCRATCH
 	dbw 1, LEER
@@ -3064,6 +3118,7 @@ AerodonEvosAttacks:                  ;final
 
 AerodactylEvosAttacks:               ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, WING_ATTACK
 	dbw 1, FIRE_FANG
 	dbw 1, ICE_FANG
 	dbw 1, ROCK_THROW
@@ -3100,6 +3155,7 @@ MunchlaxEvosAttacks:                 ;final
 
 SnorlaxEvosAttacks:                  ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, REST
 	dbw 1, REFRESH
 	dbw 1, TACKLE
 	dbw 1, DEFENSE_CURL
@@ -3212,8 +3268,8 @@ DragonairEvosAttacks:                ;final
 
 DragoniteEvosAttacks:                ;final
 	db 0 ; no more evolutions
+	dbw LEARN_EVO_MOVE, WING_ATTACK  ;evolution move
 	dbw 1, HEAL_BELL
-	dbw 1, WING_ATTACK    ;evolution move
 	dbw 1, WRAP
 	dbw 1, LEER
 	dbw 4, THUNDER_WAVE
