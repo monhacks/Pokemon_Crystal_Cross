@@ -193,11 +193,11 @@ CyndaquilPokeBallScript:
 	givecoins 50000
 	; good party
 	givepoke QUILAVA, 50
-	givepoke MURKROW, 27
+	givepoke TYROGUE, 27
 	givepoke YANMA, 32
 	givepoke EKANS, 50
-	givepoke SNEASEL, 28
-	givepoke EEVEE, 1
+	givepoke TYROGUE, 28
+	givepoke TYROGUE, 1
 	; tms for party
 	giveitem TM_ICE_BEAM
 	giveitem TM_FLAMETHROWER
@@ -306,7 +306,8 @@ CyndaquilPokeBallScript:
 	giveitem RAZOR_CLAW, 99
 	giveitem DUSK_STONE, 99
 	giveitem SUN_STONE, 99
-	giveitem RARE_CANDY, 99
+	giveitem RED_JUICE, 99
+	giveitem YELLOW_JUICE, 99
 	
 	; all balls
 	giveitem MASTER_BALL, 99

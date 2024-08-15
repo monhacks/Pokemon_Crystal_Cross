@@ -47,8 +47,8 @@ EvolveAfterBattle_MasterLoop:
 	ld c, l
 	ld hl, EvosAttacksPointers
 	ld a, BANK(EvosAttacksPointers)
-	call LoadDoubleIndirectPointer
-	ldh [hTemp], a
+	call LoadDoubleIndirectPointer  ;start, outputs a + hl pointer to evo data
+	ldh [hTemp], a                  ; a is backed up to temp
 
 	push hl
 	xor a
@@ -57,56 +57,53 @@ EvolveAfterBattle_MasterLoop:
 	pop hl
 
 .loop
-	call GetNextEvoAttackByte
-	and a
+	call GetNextEvoAttackByte  ;loads temp back into a, retrieves one byte in a, inc hl
+	and a                      ;so a now contains the first byte of hl, and hl is inc'd
 	jr z, EvolveAfterBattle_MasterLoop
 
-	ld b, a
-
-	cp EVOLVE_TRADE
-	jp z, .trade
+	ld b, a                    ;the first byte of every evo data is the method, so compare
 
 	ld a, [wLinkMode]
 	and a
 	jp nz, .dont_evolve_check
 
 	ld a, b
-	cp EVOLVE_ITEM
+	cp EVOLVE_ITEM             ;if Item, jump to item, hl is pointing to the item param
 	jp z, .item
 	
-	cp EVOLVE_ITEM_LEVEL
-	jp z, .item_level
+	cp EVOLVE_ITEM_LEVEL       ;if Item Level, jump to item_level, hl is pointing to the
+	jp z, .item_level          ;item param
 	
-	cp EVOLVE_ITEM_REGION_SEVII
-	jp z, .item_sevii
+	cp EVOLVE_ITEM_REGION_SEVII ;if Item Region, jump to item_sevii, hl is pointing to
+	jp z, .item_sevii           ;the item param
 
-	ld a, [wForceEvolution]
-	and a
+	ld a, [wForceEvolution]     ;I don't recall why this is here, the item evos jump
+	and a                       ;before hitting this, which usually use this
 	jp nz, .dont_evolve_check
 
 	ld a, b
-	cp EVOLVE_LEVEL
+	cp EVOLVE_LEVEL             ;if Level, jump to level, hl is pointing to the level param
 	jp z, .level
 
-	cp EVOLVE_HAPPINESS
-	jp z, .happiness
+	cp EVOLVE_HAPPINESS         ;if Happiness, jump to happiness, hl is pointing to the
+	jp z, .happiness            ;time of day param
 	
-	cp EVOLVE_LEVEL_REGION
-	jp z, .level_region
+	cp EVOLVE_LEVEL_REGION      ;if Evolve Region, jump to level_region, hl is pointing
+	jp z, .level_region         ;to the level param
 	
-	cp EVOLVE_LEVEL_REGION_SEVII
-	jp z, .level_sevii
+	cp EVOLVE_LEVEL_REGION_SEVII  ;if Evolve Sevii, jump to level_sevii, hl is pointing
+	jp z, .level_sevii            ;to the level param
 	
-	cp EVOLVE_GENDER
+	cp EVOLVE_GENDER           ;if Gender, jump to gender, hl is pointing to the level param
 	jp z, .gender
 	
-	cp EVOLVE_MOVE
+	cp EVOLVE_MOVE             ;if Move, jump to move, hl is pointing to the move param
 	jp z, .move
 	
-	cp EVOLVE_HOLD_LEVEL
-	jp z, .hold_level
+	cp EVOLVE_HOLD_LEVEL       ;if Hold Level, jump to hold_level, hl is pointing to the
+	jp z, .hold_level          ;item param
 	
-	cp EVOLVE_HOLD
+	cp EVOLVE_HOLD             ;if Hold, jump to hold, hl is pointing to the item param
 	jp z, .hold
 
 ; EVOLVE_STAT
@@ -134,68 +131,71 @@ EvolveAfterBattle_MasterLoop:
 
 	call GetNextEvoAttackByte
 	cp c
-	jp nz, .dont_evolve_2
+	jp nz, .dont_evolve_3
 	jp .proceed
 	
 .gender
+	call GetNextEvoAttackByte  ;retrieves next evo byte into a, inc hl to point to gender
+	ld b, a                    ;a now contains the level required for evolution
 	ld a, [wTempMonLevel]
-	cp [hl]
-	jp c, .dont_evolve_1
+	cp b
+	jp c, .dont_evolve_2
 
 	call IsMonHoldingEverstone
-	jp z, .dont_evolve_1
+	jp z, .dont_evolve_2
 	
 	push hl
 	ld a, TEMPMON
 	ld [wMonType], a
 	predef GetGender
-	ld a, EVO_MALE
+	ld b, EVO_MALE
 	jr nz, .got_gender
-	ld a, EVO_FEMALE
+	ld b, EVO_FEMALE
 	
 .got_gender
 	pop hl
 	
-	inc hl    ;call GetNextEvoAttackByte ?
-	cp [hl]
-	jp nz, .dont_evolve_2 
-
-	inc hl
+	call GetNextEvoAttackByte  ;retrieves next evo byte into a, inc hl to point to evo
+                               ;a now contains the gender required for evolution
+	cp b
+	jp nz, .dont_evolve_3 
 	jp .proceed
 	
 .item_level
-	call GetNextEvoAttackByte  ;item -> level
-	ld b, a
+	call GetNextEvoAttackByte  ;retrieves next evo byte into a, inc hl to point to level
+	ld b, a                    ;a now contains the item required for evolution
 	ld a, [wCurItem]
 	cp b
 	jp nz, .dont_evolve_2
 	
+	call GetNextEvoAttackByte  ;retrieves next evo byte into a, inc hl to point to evo
+	ld b, a                    ;a now contains the level required for evolution
 	ld a, [wTempMonLevel]
-	cp [hl]
-	jp c, .dont_evolve_2
+	cp b
+	jp c, .dont_evolve_3
 
-	inc hl                  ;level -> mon
 	jp .proceed
 	
 .hold_level
-	call GetNextEvoAttackByte  ;item -> level
-	ld b, a
+	call GetNextEvoAttackByte  ;retrieves next evo byte into a, inc hl to point to level
+	ld b, a                    ;a now contains the item required for evolution
 	ld a, [wTempMonItem]
 	cp b
 	jp nz, .dont_evolve_2
 	
+	call GetNextEvoAttackByte  ;retrieves next evo byte into a, inc hl to point to evo
+	ld b, a                    ;a now contains the level required for evolution
 	ld a, [wTempMonLevel]
-	cp [hl]
-	jp c, .dont_evolve_2
+	cp b
+	jp c, .dont_evolve_3
 
 	xor a
 	ld [wTempMonItem], a
-	inc hl                  ;level -> mon
 	jp .proceed
 	
 .hold
-	call GetNextEvoAttackByte  ;item -> mon
-	ld b, a
+	call GetNextEvoAttackByte  ;retrieves next evo byte into a, inc hl to point to evo
+	ld b, a                    ;a now contains the item required for evolution
 	ld a, [wTempMonItem]
 	cp b
 	jp nz, .dont_evolve_3
@@ -205,8 +205,8 @@ EvolveAfterBattle_MasterLoop:
 	jp .proceed
 	
 .item_sevii
-	call GetNextEvoAttackByte  ;item -> mon
-	ld b, a
+	call GetNextEvoAttackByte  ;retrieves next evo byte into a, inc hl to point to evo
+	ld b, a                    ;a now contains the item required for evolution
 	ld a, [wCurItem]
 	cp b
 	jp nz, .dont_evolve_3
@@ -223,24 +223,73 @@ EvolveAfterBattle_MasterLoop:
 	jp z, .proceed
 	jp .dont_evolve_3
 	
-.move
-	call GetNextEvoAttackByte
-	push hl
-	push bc
-	ld b, a
-	ld hl, wTempMonMoves
-rept NUM_MOVES
-	ld a, [hli]
-	cp b
-	jr z, .move_proceed
-endr
-	pop bc
-	pop hl
-	jp .dont_evolve_3
+.move                            ;this now only works with ancientpower specifically :/
 	
-.move_proceed
-	pop bc
+	ld a, [wTempMonMoves + 0]
+	push hl
+	call GetMoveIndexFromID
+	ld a, h
+	if HIGH(ANCIENTPOWER)
+		cp HIGH(ANCIENTPOWER)
+	else
+		and a
+	endc
+	ld a, l
 	pop hl
+	jr nz, .trymove2
+	cp LOW(ANCIENTPOWER)
+	jr z, .move_proceed
+
+.trymove2
+	ld a, [wTempMonMoves + 1]
+	push hl
+	call GetMoveIndexFromID
+	ld a, h
+	if HIGH(ANCIENTPOWER)
+		cp HIGH(ANCIENTPOWER)
+	else
+		and a
+	endc
+	ld a, l
+	pop hl
+	jr nz, .trymove3
+	cp LOW(ANCIENTPOWER)
+	jr z, .move_proceed
+	
+.trymove3	
+	ld a, [wTempMonMoves + 2]
+	push hl
+	call GetMoveIndexFromID
+	ld a, h
+	if HIGH(ANCIENTPOWER)
+		cp HIGH(ANCIENTPOWER)
+	else
+		and a
+	endc
+	ld a, l
+	pop hl
+	jr nz, .trymove4
+	cp LOW(ANCIENTPOWER)
+	jr z, .move_proceed
+	
+.trymove4	
+	ld a, [wTempMonMoves + 3]
+	push hl
+	call GetMoveIndexFromID
+	ld a, h
+	if HIGH(ANCIENTPOWER)
+		cp HIGH(ANCIENTPOWER)
+	else
+		and a
+	endc
+	ld a, l
+	pop hl
+	jp nz, .dont_evolve_3
+	cp LOW(ANCIENTPOWER)
+	jr z, .move_proceed
+	jp .dont_evolve_3
+
+.move_proceed
 	jp .proceed
 
 .happiness
@@ -251,8 +300,8 @@ endr
 	call IsMonHoldingEverstone
 	jp z, .dont_evolve_2
 
-	call GetNextEvoAttackByte
-	cp TR_ANYTIME
+	call GetNextEvoAttackByte  ;retrieves next evo byte into a, inc hl to point to evo
+	cp TR_ANYTIME              ;a now contains the time required for evolution
 	jp z, .proceed
 	cp TR_MORNDAY
 	jr z, .happiness_daylight
@@ -269,35 +318,10 @@ endr
 	jp nc, .dont_evolve_3
 	jp .proceed
 
-.trade
-	ld a, [wLinkMode]
-	and a
-	jp z, .dont_evolve_2
-
-	call IsMonHoldingEverstone
-	jp z, .dont_evolve_2
-
-	call GetNextEvoAttackByte
-	ld b, a
-	inc a
-	jp z, .proceed
-
-	ld a, [wLinkMode]
-	cp LINK_TIMECAPSULE
-	jp z, .dont_evolve_3
-
-	ld a, [wTempMonItem]
-	cp b
-	jp nz, .dont_evolve_3
-
-	xor a
-	ld [wTempMonItem], a
-	jp .proceed
-
 .item
-	call GetNextEvoAttackByte
-	ld b, a
-	ld a, [wCurItem]
+	call GetNextEvoAttackByte ;retrieves next evo byte into a, inc hl to point to evo
+	ld b, a                   ;a now contains the item required for evolution
+	ld a, [wCurItem]          
 	cp b
 	jp nz, .dont_evolve_3
 
@@ -310,8 +334,8 @@ endr
 	jr .proceed
 	
 .level_region
-	call GetNextEvoAttackByte
-	ld b, a
+	call GetNextEvoAttackByte  ;retrieves next evo byte into a, inc hl to point to evo
+	ld b, a                    ;a now contains the level required for evolution
 	ld a, [wTempMonLevel]
 	cp b
 	jp c, .dont_evolve_3
@@ -331,8 +355,8 @@ endr
 	jp .proceed
 	
 .level_sevii
-	call GetNextEvoAttackByte
-	ld b, a
+	call GetNextEvoAttackByte  ;retrieves next evo byte into a, inc hl to point to evo
+	ld b, a                    ;a now contains the level required for evolution
 	ld a, [wTempMonLevel]
 	cp b
 	jp c, .dont_evolve_3
@@ -347,16 +371,16 @@ endr
 	call GetWorldMapLocation
 	pop hl
 	
-	cp SEVII_LANDMARK
-	jr z, .proceed
-	jp .dont_evolve_3
+	cp SEVII_LANDMARK          ;something about this is bugged
+	jp c, .dont_evolve_3
+	jr .proceed
 
 .level
-	call GetNextEvoAttackByte ;level -> pokemon (end)
-	ld b, a
+	call GetNextEvoAttackByte  ;retrieves next evo byte into a, inc hl to point to evo
+	ld b, a                    ;a now contains the level required for evolution
 	ld a, [wTempMonLevel]
 	cp b
-	jp c, .dont_evolve_3   ;+2
+	jp c, .dont_evolve_3       ;+2
 	call IsMonHoldingEverstone
 	jp z, .dont_evolve_3
 
@@ -366,8 +390,8 @@ endr
 	ld a, $1
 	ld [wMonTriedToEvolve], a
 
-	ldh a, [hTemp]
-	call GetFarWord
+	ldh a, [hTemp]             ;pointer is loaded back into a, hl should be pointing at 
+	call GetFarWord            ;the evolution species param, we are done w/ evo bytes
 	
 	call GetPokemonIDFromIndex
 	ld [wEvolutionNewSpecies], a
@@ -712,7 +736,6 @@ FillMoves:
 	ld a, [wCurPartyLevel]
 	cp b
 	jp c, .done
-;	ld a, [wSkipMovesBeforeLevelUp]
 	ld a, [wEvolutionOldSpecies]
 	and a
 	jr z, .CheckMove
