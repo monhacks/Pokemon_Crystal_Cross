@@ -154,6 +154,11 @@ NUM_HOF_TEAMS EQU 30
 	const EVO_MALE
 	const EVO_FEMALE
 	
+;Evovle move triggers
+	const_def 1
+	const EVO_ANCIENT
+	const EVO_DOUBLE
+	
 ; Learn move upon evo trigger
 	const_def MAX_LEVEL + 1
 	const LEARN_EVO_MOVE

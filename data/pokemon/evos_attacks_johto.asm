@@ -843,7 +843,7 @@ SunfloraEvosAttacks:                 ;final
 	db 0 ; no more level-up moves
 
 YanmaEvosAttacks:                    ;final
-	dbw EVOLVE_MOVE, YANMEGA
+	dbbw EVOLVE_MOVE, EVO_ANCIENT, YANMEGA
 	db 0 ; no more evolutions
 	dbw 1, TACKLE
 	dbw 1, LASER_FOCUS

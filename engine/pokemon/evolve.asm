@@ -223,10 +223,19 @@ EvolveAfterBattle_MasterLoop:
 	jp z, .proceed
 	jp .dont_evolve_3
 	
-.move                            ;this now only works with ancientpower specifically :/
-	
-	ld a, [wTempMonMoves + 0]
+.move                     ;this works but I literally can't figure how to make it smaller
+	call GetNextEvoAttackByte  ;retrieves next evo byte into a, inc hl to point to evo
+	ld b, EVO_ANCIENT          ;a now contains the move param required for evolution
+	ld c, EVO_DOUBLE
+	cp b
+	jr z, .ancient
+	cp c
+	jr z, .double
+	jp .dont_evolve_3
+ 
+.ancient                       ;'this is a terrible way of doing this'
 	push hl
+	ld a, [wTempMonMoves + 0]
 	call GetMoveIndexFromID
 	ld a, h
 	if HIGH(ANCIENTPOWER)
@@ -235,14 +244,12 @@ EvolveAfterBattle_MasterLoop:
 		and a
 	endc
 	ld a, l
-	pop hl
 	jr nz, .trymove2
 	cp LOW(ANCIENTPOWER)
 	jr z, .move_proceed
 
 .trymove2
 	ld a, [wTempMonMoves + 1]
-	push hl
 	call GetMoveIndexFromID
 	ld a, h
 	if HIGH(ANCIENTPOWER)
@@ -251,14 +258,12 @@ EvolveAfterBattle_MasterLoop:
 		and a
 	endc
 	ld a, l
-	pop hl
 	jr nz, .trymove3
 	cp LOW(ANCIENTPOWER)
 	jr z, .move_proceed
 	
 .trymove3	
 	ld a, [wTempMonMoves + 2]
-	push hl
 	call GetMoveIndexFromID
 	ld a, h
 	if HIGH(ANCIENTPOWER)
@@ -267,14 +272,12 @@ EvolveAfterBattle_MasterLoop:
 		and a
 	endc
 	ld a, l
-	pop hl
 	jr nz, .trymove4
 	cp LOW(ANCIENTPOWER)
 	jr z, .move_proceed
 	
 .trymove4	
 	ld a, [wTempMonMoves + 3]
-	push hl
 	call GetMoveIndexFromID
 	ld a, h
 	if HIGH(ANCIENTPOWER)
@@ -283,13 +286,73 @@ EvolveAfterBattle_MasterLoop:
 		and a
 	endc
 	ld a, l
-	pop hl
 	jp nz, .dont_evolve_3
 	cp LOW(ANCIENTPOWER)
 	jr z, .move_proceed
+	pop hl
+	jp .dont_evolve_3
+	
+.double
+	push hl
+	ld a, [wTempMonMoves + 0]
+	call GetMoveIndexFromID
+	ld a, h
+	if HIGH(DOUBLE_HIT)
+		cp HIGH(DOUBLE_HIT)
+	else
+		and a
+	endc
+	ld a, l
+	jr nz, .trymove2b
+	cp LOW(DOUBLE_HIT)
+	jr z, .move_proceed
+
+.trymove2b
+	ld a, [wTempMonMoves + 1]
+	call GetMoveIndexFromID
+	ld a, h
+	if HIGH(DOUBLE_HIT)
+		cp HIGH(DOUBLE_HIT)
+	else
+		and a
+	endc
+	ld a, l
+	jr nz, .trymove3b
+	cp LOW(DOUBLE_HIT)
+	jr z, .move_proceed
+	
+.trymove3b
+	ld a, [wTempMonMoves + 2]
+	call GetMoveIndexFromID
+	ld a, h
+	if HIGH(DOUBLE_HIT)
+		cp HIGH(DOUBLE_HIT)
+	else
+		and a
+	endc
+	ld a, l
+	jr nz, .trymove4b
+	cp LOW(DOUBLE_HIT)
+	jr z, .move_proceed
+	
+.trymove4b	
+	ld a, [wTempMonMoves + 3]
+	call GetMoveIndexFromID
+	ld a, h
+	if HIGH(DOUBLE_HIT)
+		cp HIGH(DOUBLE_HIT)
+	else
+		and a
+	endc
+	ld a, l
+	jp nz, .dont_evolve_3
+	cp LOW(DOUBLE_HIT)
+	jr z, .move_proceed
+	pop hl
 	jp .dont_evolve_3
 
 .move_proceed
+	pop hl
 	jp .proceed
 
 .happiness
@@ -886,56 +949,62 @@ DetermineEvolutionItemResults::
 	ld a, b
 	ldh [hTemp], a
 .loop
-	call GetNextEvoAttackByte  ;evo method -> item
+	call GetNextEvoAttackByte
 	and a
 	ret z
-
+	cp EVOLVE_STAT
+	jr z, .skip_species_two_parameters
+	cp EVOLVE_GENDER
+	jr z, .skip_species_two_parameters
+	cp EVOLVE_MOVE
+	jr z, .skip_species_two_parameters
+	cp EVOLVE_HOLD
+	jr z, .skip_species_two_parameters
+	cp EVOLVE_HOLD_LEVEL
+	jr z, .skip_species_three_parameters
 	cp EVOLVE_ITEM_LEVEL
-	jr nz, .next
-	
-	ld b, a
+	jr z, .next	
+
+	cp EVOLVE_ITEM
+	jr nz, .skip_species_parameter
+
+	call GetNextEvoAttackByte
+	ld b, a	
 	ld a, [wCurItem]
 	cp b
-	jr nz, .increase	
-
-	inc hl           ;item -> level
-	ld a, [wTempMonLevel]
-	cp [hl]
-	jr c, .no_item_check
-	jr .get_species
+	jr nz, .skip_species
+	jr .species
 
 .next
-	cp EVOLVE_HOLD_LEVEL
-	jr z, .increase
-	cp EVOLVE_STAT
-	jr z, .increase
-	cp EVOLVE_GENDER
-	jr z, .increase
-	jr .no_extra_increase
-
-.increase	
-	inc hl
-.no_extra_increase
-	cp EVOLVE_ITEM ; will fail if the EVOLVE_STAT check passed
-	jr nz, .no_item_check
-	
-	ld b, a
+	call GetNextEvoAttackByte
+	ld b, a	
 	ld a, [wCurItem]
-	cp b	
-	jr z, .get_species
-	
-.no_item_check
-	inc hl
-	inc hl
-	inc hl
-	jr .loop
+	cp b
+	jr nz, .skip_species_parameter
 
-.get_species
+	call GetNextEvoAttackByte
+	ld b, a	
+	ld a, [wTempMonLevel]
+	cp b
+	jr nz, .skip_species
+
+.species
 	ldh a, [hTemp]
 	call GetFarWord
 	ld d, h
 	ld e, l
 	ret
+
+.skip_species_three_parameters
+	inc hl
+.skip_species_two_parameters
+	inc hl
+.skip_species_parameter
+	inc hl
+.skip_species
+	inc hl
+	inc hl
+	jr .loop
 	
 GetNextEvoAttackByte:
 	ldh a, [hTemp]
