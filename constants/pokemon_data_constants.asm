@@ -154,7 +154,7 @@ NUM_HOF_TEAMS EQU 30
 	const EVO_MALE
 	const EVO_FEMALE
 	
-;Evovle move triggers
+;Evolve move triggers
 	const_def 1
 	const EVO_ANCIENT
 	const EVO_DOUBLE
