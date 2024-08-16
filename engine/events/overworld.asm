@@ -1171,13 +1171,13 @@ TryStrengthOW:
 	call CheckItem
 	jr z, .nope
 	
-	ld d, STRENGTH
-	call CheckPartyMove
+	ld hl, STRENGTH
+	call CheckPartyMoveIndex
 	jr c, .try_next
 	jr .passedstrength
 	
 .try_next	
-	ld d, STRENGTH
+	ld hl, STRENGTH
 	call CheckPartyCanLearnMove
 	and a
 	jr z, .passedstrength
@@ -1588,13 +1588,13 @@ TryRockSmashWallOW::
 	call CheckItem
 	jr z, .failed
 
-	ld d, ROCK_SMASH
-	call CheckPartyMove
+	ld hl, ROCK_SMASH
+	call CheckPartyMoveIndex
 	jr c, .try_next
 	jr .yes
 	
 .try_next	
-	ld d, ROCK_SMASH
+	ld hl, ROCK_SMASH
 	call CheckPartyCanLearnMove
 	and a
 	jr z, .yes
@@ -1701,13 +1701,13 @@ TryCutLogOW::
 	call CheckItem
 	jr z, .failed
 
-	ld d, CUT
-	call CheckPartyMove
+	ld hl, CUT
+	call CheckPartyMoveIndex
 	jr c, .try_next
 	jr .yes
 	
 .try_next	
-	ld d, CUT
+	ld hl, CUT
 	call CheckPartyCanLearnMove
 	and a
 	jr z, .yes
@@ -1833,13 +1833,13 @@ TryCutBushOW::
 	call CheckItem
 	jr z, .cant_cut
 	
-	ld d, CUT
-	call CheckPartyMove
+	ld hl, CUT
+	call CheckPartyMoveIndex
 	jr c, .try_next
 	jr .yes
 	
 .try_next	
-	ld d, CUT
+	ld hl, CUT
 	call CheckPartyCanLearnMove
 	and a
 	jr z, .yes
@@ -2398,13 +2398,13 @@ TryRockClimbOW::
 	call CheckItem
 	jr z, .cant_climb
 
-	ld d, ROCK_CLIMB
-	call CheckPartyMove
+	ld hl, ROCK_CLIMB
+	call CheckPartyMoveIndex
 	jr c, .try_next
 	jr .yes
 	
 .try_next	
-	ld d,ROCK_CLIMB
+	ld hl,ROCK_CLIMB
 	call CheckPartyCanLearnMove
 	and a
 	jr z, .yes
