@@ -117,7 +117,7 @@ EvolutionAnimation:
 
 	ld a, [wBoxAlignment]
 	push af
-	ld a, $1
+	xor a
 	ld [wBoxAlignment], a
 	ld a, [wCurPartySpecies]
 	push af
@@ -164,11 +164,11 @@ EvolutionAnimation:
 .PlaceFrontpic:
 	call GetBaseData
 	hlcoord 7, 2
-	jp PrepMonFrontpic
+	jp PrepMonFrontpicAlt
 
 .LoadFrontpic:
 	call GetBaseData
-	ld a, $1
+	xor a
 	ld [wBoxAlignment], a
 	ld de, vTiles2
 	predef GetAnimatedFrontpic
@@ -358,3 +358,30 @@ endr
 .GFX:
 INCBIN "gfx/evo/bubble_large.2bpp"
 INCBIN "gfx/evo/bubble.2bpp"
+
+PrepMonFrontpicAlt:
+	xor a
+	ld [wBoxAlignment], a
+
+	ld a, [wCurPartySpecies]
+	call IsAPokemon
+	jr c, .not_pokemon
+
+	push hl
+	ld de, vTiles2
+	predef GetMonFrontpic
+	pop hl
+	xor a
+	ldh [hGraphicStartTile], a
+	lb bc, 7, 7
+	predef PlaceGraphic
+	xor a
+	ld [wBoxAlignment], a
+	ret
+
+.not_pokemon
+	xor a
+	ld [wBoxAlignment], a
+	inc a
+	ld [wCurPartySpecies], a
+	ret
