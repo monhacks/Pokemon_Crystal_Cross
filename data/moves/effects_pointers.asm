@@ -74,7 +74,6 @@ MoveEffectsPointers:
 	dw DragonDance
 	dw Substitute
 	dw HyperBeam
-;	dw Rage
 	dw Mimic
 	dw Metronome
 	dw LeechSeed
@@ -145,7 +144,6 @@ MoveEffectsPointers:
 	dw Solarbeam
 	dw Thunder
 	dw Teleport
-;	dw BeatUp
 	dw Fly
 	dw DefenseCurl
 	dw FreezeHit
@@ -153,7 +151,6 @@ MoveEffectsPointers:
 	dw Surf
 	dw Whirlpool
 	dw SpAtkUpHit
-	dw SpAtkDownHit
 	dw DoEffectSpore
 	dw Coil
 	dw DireClaw

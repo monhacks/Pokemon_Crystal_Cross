@@ -172,7 +172,6 @@ MoveDescriptions1:
 	dw PerishSongDescription
 	dw IcyWindDescription
 	dw FeatherDanceDescription
-	dw LockOnDescription
 	dw OutrageDescription
 	dw SandstormDescription
 	dw GigaDrainDescription
@@ -323,6 +322,7 @@ MoveDescriptions1:
 	dw SkullBashDescription
 	dw ScaldDescription
 	dw FocusEnergyDescription
+	dw ForesightDescription
 	dw SnoreDescription
 	dw PaybackDescription
 	dw AvalancheDescription
@@ -342,7 +342,8 @@ InvalidMoveDescription:
 ShadowRushDescription:
 	db   "An evil move that"
 	next "also hurts the user@"
-	
+
+ForesightDescription:	
 SporeDescription:
 ConversionDescription:
 CottonSporeDescription:
