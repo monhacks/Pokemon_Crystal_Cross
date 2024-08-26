@@ -178,6 +178,7 @@ GiveEggMoveEgg:
 .continuespecies
 	add hl, bc
 	add hl, bc
+	
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -226,14 +227,32 @@ GiveEggMoveEgg:
 .saturdayegg
 	ld hl, EggMoveEggsSaturday
 
-.continueegg	
+.continueegg
 	add hl, bc
 	add hl, bc
 	add hl, bc
 	add hl, bc
+	
+	add hl, bc
+	add hl, bc
+	add hl, bc
+	add hl, bc
+
+	ld c, NUM_MOVES
 	ld de, wOddEggMoves
-	ld bc, NUM_MOVES
-	call CopyBytes
+	
+.move_loop
+	ld a, [hli]
+	push hl
+	ld h, [hl]
+	ld l, a
+	call GetMoveIDFromIndex
+	pop hl
+	inc hl
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .move_loop
 	
 	; load Odd Egg Name in wTempOddEggNickname
 	ld hl, .Odd
