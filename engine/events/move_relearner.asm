@@ -38,14 +38,14 @@ MoveRelearner:
 	call IsAPokemon
 	jr c, .no_mon
 
-	call GetRelearnableMoves
-	jr z, .no_moves
+	call GetRelearnableMoves            ;step 1
+;	jr z, .no_moves                     ;is somehow looping through moves and returning 0
 
 	ld a, MOVERELEARNERTEXT_WHICHMOVE
 	call PrintMoveRelearnerText
 	call JoyWaitAorB
 
-	call ChooseMoveToLearn
+	call ChooseMoveToLearn              ;step 2
 	jr c, .skip_learn
 	ld a, [wMenuSelection]
 	ld [wNamedObjectIndex], a
@@ -103,65 +103,74 @@ GetRelearnableMoves:
 	ld hl, wRelearner
 	xor a
 	ld [hli], a
-	ld [hl], $ff
-	ld a, MON_SPECIES	
+	ld [hl], $ff                 ;mon species is 00? on debug- or is this the struct order
+	ld a, MON_SPECIES	         ;store pokemon species in CurPartySpecies
 	call GetPartyParamLocation
 	ld a, [hl]
 	ld [wCurPartySpecies], a
-	push af
-	ld a, MON_LEVEL
+	push af                      ;says this is 1f (31), ..this is wrong?
+	ld a, MON_LEVEL              ;store pokemon level in CurPartyLevel
 	call GetPartyParamLocation
 	ld a, [hl]
 	ld [wCurPartyLevel], a
-	ld b, 0
+	ld b, 0                      ;list starts at zero
 	ld de, wRelearner + 1
 .loop
 	push bc
-	ld a, [wCurPartySpecies]
-	call GetPokemonIndexFromID
-	ld bc, EvosAttacksPointers - 2
-	add hl, hl
-	add hl, bc
-	ld a, BANK(EvosAttacksPointers)
-	call GetFarWord
-
-	call FarSkipEvolutions
+	ld a, [wCurPartySpecies]     ;get current pokemon's evosattack pointer
 	
-.loop_moves
-	;ld a, BANK(EvosAttacks)
+	call GetPokemonIndexFromID
+	ld b, h
+	ld c, l
+	ld hl, EvosAttacksPointers
 	ld a, BANK(EvosAttacksPointers)
-	call GetFarByte2
-	and a
+	call LoadDoubleIndirectPointer
+	ldh [hTemp], a
+	call FarSkipEvolutions       ;skip past the evolution data to the move data
+	jr .loop_moves
+	
+.loop_moves2
+	pop de
+.loop_moves
+	call GetNextEvoAttackByte2
+	and a                        ;if zero, done
 	jr z, .done
 	ld c, a
 	ld a, [wCurPartyLevel]
 	cp c
-	;ld a, BANK(EvosAttacks)
-	ld a, BANK(EvosAttacksPointers)
-	call GetFarByte2
-	jr c, .loop_moves
+;compare level first ^
+	push de                      ;push de because it is in use storing the move list
+	call GetNextEvoAttackByte2
+	ld e, a
+	call GetNextEvoAttackByte2
+	ld d, a
+	jr c, .loop_moves2            ;if level low enough, try to add move to list
 .okay
+	push hl
+	ld h, d
+	ld l, e
+	call GetMoveIDFromIndex
 	ld c, a
-	call CheckAlreadyInList
-	jr c, .loop_moves
+	pop hl
+	pop de
+;	call CheckAlreadyInList      ;if move is already in list, return to moves loop
+;	jr c, .loop_moves            ;I don't care about fixing this
 	call CheckPokemonAlreadyKnowsMove
-	jr c, .loop_moves
+	jr c, .loop_moves            ;if mon already knows move, return to moves loop
 	ld a, c
-	ld [de], a
-	inc de
+	ld [de], a                   ;not sure what's going on here, other than 
+	inc de                       ;increasing the length of the move list
 	ld a, $ff
 	ld [de], a
 	pop bc
-	inc b
+	inc b                        ;inc number of moves in list
 	push bc
 	jr .loop_moves
 .done
-	callfar GetLowestEvolutionStage
 	pop bc
-	jr c, .loop
 	pop af
 	ld [wCurPartySpecies], a
-	ld a, b
+	ld a, b                      ;number of moves in list
 	ld [wRelearner], a
 	and a
 	ret
@@ -171,9 +180,9 @@ CheckAlreadyInList:
 	ld hl, wRelearner + 1
 .loop
 	ld a, [hli]
-	cp $ff
+	cp $ff                       ;compare move ff?
 	jr z, .nope
-	cp c
+	cp c                         ;compare move in c to moves in list
 	jr nz, .loop
 	pop hl
 	scf
@@ -186,15 +195,17 @@ CheckAlreadyInList:
 CheckPokemonAlreadyKnowsMove:
 	; Check if move c is in the selected pokemon's movepool already.
 	; Returns c if yes.
+	ld a, c
 	push hl
 	push bc
+	ld c, a
 	ld a, MON_MOVES
 	call GetPartyParamLocation
 	ld b, 4
 .loop
 	ld a, [hli]
-	cp c
-	jr z, .yes
+	cp c                         ;compare move in c to moves in list
+	jr z, .yes                   ;I honestly don't even think this worked before
 	dec b
 	jr nz, .loop
 	pop bc
@@ -274,13 +285,17 @@ ChooseMoveToLearn:
 	cp $ff
 	ret z
 	push de
-	dec a                      ;-remove section
-	ld bc, MOVE_LENGTH
-	ld hl, Moves + MOVE_TYPE
-	call AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
-	ld [wNamedObjectIndex], a  ;replace w/ call GetMoveData ?
+;	dec a                      ;-remove section
+;	ld bc, MOVE_LENGTH
+;	ld hl, Moves + MOVE_TYPE
+;	call AddNTimes
+;	ld a, BANK(Moves)
+;	call GetFarByte
+	ld l, a
+	ld a, MOVE_TYPE
+	call GetMoveAttribute      ;does this need a farcall? apparently not
+
+	ld [wNamedObjectIndex], a
 	; get move type
 	and $3f
 	; 5 characters
@@ -303,12 +318,16 @@ ChooseMoveToLearn:
 	; get move class
 
 	ld a, [wMenuSelection]
-	dec a                      ;-remove section
-	ld bc, MOVE_LENGTH
-	ld hl, Moves + MOVE_PP
-	call AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte            ;replace w/ call GetMoveData ?
+;	dec a                      ;-remove section
+;	ld bc, MOVE_LENGTH
+;	ld hl, Moves + MOVE_PP
+;	call AddNTimes
+;	ld a, BANK(Moves)
+;	call GetFarByte
+	ld l, a
+	ld a, MOVE_PP
+	call GetMoveAttribute
+
 	ld [wEngineBuffer1], a
 	ld hl, wStringBuffer1 + 10
 	ld de, wEngineBuffer1
@@ -442,4 +461,10 @@ PrintMoveRelearnerText:
 	line "learn any moves"
 	cont "from me."
 	done
+	
+GetNextEvoAttackByte2:
+	ldh a, [hTemp]
+	call GetFarByte
+	inc hl
+	ret
 	
