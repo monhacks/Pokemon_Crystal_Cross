@@ -96,6 +96,9 @@ EvolutionAnimation:
 
 	call .AnimationSequence
 	jr c, .cancel_evo
+	
+	ld a, 1
+	ld [wDittoFlag], a
 
 	ld a, -7 * 7
 	ld [wEvolutionPicOffset], a
@@ -268,6 +271,7 @@ EvolutionAnimation:
 	ld a, [wEvolutionCanceled]
 	and a
 	ret nz
+	
 	ld de, SFX_EVOLVED
 	call PlaySFX
 	ld hl, wJumptableIndex

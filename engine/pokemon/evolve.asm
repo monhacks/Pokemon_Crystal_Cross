@@ -709,10 +709,8 @@ LearnLevelMoves:
 	jr z, .done
 
 	ld d, a
-	ld a, [wEvolutionOldSpecies]
-	ld e, a
-	ld a, [wCurPartySpecies]
-	cp e
+	ld a, [wDittoFlag]     ;the evo oldspecies check never worked for some reason
+	and a                  ;so we're borrowing this
 	ld a, d
 	jr z, .did_not_evolve
 
@@ -767,6 +765,8 @@ LearnLevelMoves:
 .done
 	ld a, [wCurPartySpecies]
 	ld [wTempSpecies], a
+	xor a
+	ld [wDittoFlag], a
 	ret
 
 FillMoves:
