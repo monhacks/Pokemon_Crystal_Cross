@@ -521,6 +521,9 @@ WhirlpoolTrapText:
 	line "was trapped!"
 	prompt
 
+InfestationTrapText:
+MaelstromTrapText:
+SandTombTrapText:
 FireSpinTrapText:
 	text "<TARGET>"
 	line "was trapped!"

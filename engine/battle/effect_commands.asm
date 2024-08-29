@@ -6465,6 +6465,9 @@ BattleCommand_TrapTarget:
 	dw WRAP,      WrappedByText     ; 'was WRAPPED by'
 	dw FIRE_SPIN, FireSpinTrapText  ; 'was trapped!'
 	dw WHIRLPOOL, WhirlpoolTrapText ; 'was trapped!'
+	dw SAND_TOMB, SandTombTrapText  ; 'was trapped!'
+	dw MAELSTROM, MaelstromTrapText ; 'was trapped!'
+	dw INFESTATION, InfestationTrapText ; 'was trapped!'
 
 INCLUDE "engine/battle/move_effects/mist.asm"
 
@@ -7694,6 +7697,26 @@ BattleCommand_CheckPowder:
 	call BattleCommand_CheckPowder2
 	ret	
 	
+BattleCommand_DireClawStatusChance:
+; effectsporestatuschance
+
+	call BattleCommand_EffectChance
+.loop
+	; 1/3 chance of each status
+	call BattleRandom
+	swap a
+	and %11
+	jr z, .loop
+	dec a
+	ld hl, .StatusCommands
+	rst JumpTable
+	ret
+
+.StatusCommands:
+	dw BattleCommand_ParalyzeTarget ; paralyze
+	dw BattleCommand_PoisonTarget ; poison
+	dw BattleCommand_DoNothing
+	
 BattleCommand_EffectSporeStatusChance:
 ; effectsporestatuschance
 
@@ -7712,6 +7735,10 @@ BattleCommand_EffectSporeStatusChance:
 .StatusCommands:
 	dw BattleCommand_ParalyzeTarget ; paralyze
 	dw BattleCommand_PoisonTarget ; poison
+	dw BattleCommand_ParalyzeTarget ; paralyze
+	
+BattleCommand_DoNothing:
+	ret
 	
 CompareMove:
 	; checks if the move ID in a matches the move in bc

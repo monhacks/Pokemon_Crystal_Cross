@@ -1,5 +1,5 @@
 BattleCommand_StartAcidRain:
-; starthail
+; startacidrain
 
 	ld a, [wBattleWeather]
 	cp WEATHER_ACID_RAIN

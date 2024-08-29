@@ -171,4 +171,6 @@ MoveEffectsPointers:
 	dw AcidRain
 	dw Fly
 	dw Fly
+	dw VenomDrench
+	dw DarkVoid
 	

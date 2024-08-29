@@ -132,7 +132,7 @@
 	const FLASH_CANNON ; 8c spdef -1
 	const LEECH_LIFE   ; 8d
 	const ROOST        ; 8e
-	const SKY_ATTACK   ; 8f
+	const BRAVE_BIRD   ; 8f
 	const TRANSFORM    ; 90
 	const FLASH        ; 94 acc -1 spatk +1 
 	const ICICLE_CRASH ; 95
@@ -283,7 +283,7 @@
 	const SIGNAL_BEAM
 	const TAIL_GLOW
 	const NIGHT_DAZE
-	const DRAGON_TAIL
+	const DRAGON_TAIL  ;switch_hit is surprisingly functional
 	const SCALE_SHOT
 	const CHARGE
 	const DISCHARGE
@@ -319,7 +319,7 @@
 	const METAL_BURST
 	const MAGNET_BOMB
 	const METAL_SOUND
-	const SHIFT_GEAR
+	const VENOM_DRENCH
 	const SKULL_BASH
 	const SCALD
 	const FOCUS_ENERGY
@@ -334,6 +334,53 @@
 	const FISSURE
 	const SHADOW_CLAW
 	const ACID_RAIN	
+	const MIND_READER
+	const SHEER_COLD
+	const FLARE_BLITZ
+	const FLAME_BURST
+	const WEATHER_BALL
+	const FIERY_WRATH
+	const ICY_GLARE
+	const THUNDER_KICK
+	const MIST_BALL
+	const LUSTER_BASH
+	const MAELSTROM
+	const SECRETSTRIKE
+	const SHOCK_WAVE
+	const THUNDERSPEAR
+	const NUZZLE
+	const CAMOUFLAGE
+	const DIZZY_PUNCH
+	const SOUL_DRAIN
+	const INFERNALPARADE
+	const FLAME_CHARGE
+	const DARK_VOID
+	const ACIDDOWNPOUR
+	const PSYCHO_BOOST
+	const DRAGON_RUSH
+	const AURORA_VEIL
+	const STAR_FREEZE
+	const STONE_EDGE
+	const IRON_HEAD
+	const LANDS_WRATH
+	const MUD_BOMB
+	const AQUA_TAIL
+	const MUDDY_WATER
+	const CLAMP
+	const PETAL_STORM
+	const SKY_ATTACK
+	const AIR_SLASH
+	const GALE_WIND
+	const TORMENT
+	const KNOCK_OFF
+	const NIGHTMARE
+	const AROMATHERAPY
+	const UPROAR
+	const YAWN
+	const BARRIER
+	const MIRACLE_EYE
+	const PSYCHO_SHIFT
+	const SNATCH
 	const STRUGGLE
 	
 NUM_ATTACKS EQU const_value + - 1

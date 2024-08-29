@@ -131,7 +131,7 @@ MoveDescriptions1:
 	dw FlashCannonDescription
 	dw LeechLifeDescription
 	dw RoostDescription
-	dw SkyAttackDescription
+	dw BraveBirdDescription
 	dw TransformDescription
 	dw FlashDescription
 	dw IcicleCrashDescription
@@ -318,7 +318,7 @@ MoveDescriptions1:
 	dw MetalBurstDescription
 	dw MagnetBombDescription
 	dw MetalSoundDescription
-	dw ShiftGearDescription
+	dw VenomDrenchDescription
 	dw SkullBashDescription
 	dw ScaldDescription
 	dw FocusEnergyDescription
@@ -332,7 +332,54 @@ MoveDescriptions1:
 	dw PhantomForceDescription
 	dw FissureDescription
 	dw ShadowClawDescription
-	dw AcidRainDescription	
+	dw AcidRainDescription
+	dw MindReaderDescription
+	dw SheerColdDescription
+	dw FlareBlitzDescription
+	dw FlameBurstDescription
+	dw WeatherBallDescription
+	dw FieryWrathDescription
+	dw IcyGlareDescription
+	dw ThunderKickDescription
+	dw MistBallDescription
+	dw LusterBashDescription
+	dw MaelstromDescription
+	dw SecretStrikeDescription
+	dw ShockWaveDescription
+	dw ThunderSpearDescription
+	dw NuzzleDescription
+	dw CamouflageDescription
+	dw DizzyPunchDescription
+	dw SoulDrainDescription
+	dw InfernalParadeDescription
+	dw FlameChargeDescription
+	dw DarkVoidDescription
+	dw AcidDownpourDescription
+	dw PsychoBoostDescription
+	dw DragonRushDescription
+	dw AuroraVeilDescription
+	dw StarFreezeDescription
+	dw StoneEdgeDescription
+	dw IronHeadDescription
+	dw LandsWrathDescription
+	dw MudBombDescription
+	dw AquaTailDescription
+	dw MuddyWaterDescription
+	dw ClampDescription
+	dw PetalStormDescription
+	dw SkyAttackDescription
+	dw AirSlashDescription
+	dw GaleWindDescription
+	dw TormentDescription
+	dw KnockOffDescription
+	dw NightmareDescription
+	dw AromatherapyDescription
+	dw UproarDescription
+	dw YawnDescription
+	dw BarrierDescription
+	dw MiracleEyeDescription
+	dw PsychoShiftDescription
+	dw SnatchDescription
 	dw StruggleDescription
 
 
@@ -343,6 +390,49 @@ ShadowRushDescription:
 	db   "An evil move that"
 	next "also hurts the user@"
 
+SheerColdDescription:
+FlareBlitzDescription:
+FlameBurstDescription:
+WeatherBallDescription:
+FieryWrathDescription:
+IcyGlareDescription:
+ThunderKickDescription:
+MistBallDescription:
+LusterBashDescription:
+MaelstromDescription:
+SecretStrikeDescription:
+ShockWaveDescription:
+ThunderSpearDescription:
+NuzzleDescription:
+CamouflageDescription:
+SoulDrainDescription:
+InfernalParadeDescription:
+FlameChargeDescription:
+DarkVoidDescription:
+AcidDownpourDescription:
+PsychoBoostDescription:
+DragonRushDescription:
+AuroraVeilDescription:
+StarFreezeDescription:
+StoneEdgeDescription:
+IronHeadDescription:
+LandsWrathDescription:
+MudBombDescription:
+AquaTailDescription:
+MuddyWaterDescription:
+PetalStormDescription:
+AirSlashDescription:
+GaleWindDescription:
+TormentDescription:
+KnockOffDescription:
+NightmareDescription:
+AromatherapyDescription:
+UproarDescription:
+YawnDescription:
+MiracleEyeDescription:
+PsychoShiftDescription:
+SnatchDescription:
+BraveBirdDescription:
 ForesightDescription:	
 SporeDescription:
 ConversionDescription:
@@ -394,7 +484,7 @@ RockTombDescription:
 MetalBurstDescription:
 MagnetBombDescription:
 MetalSoundDescription:
-ShiftGearDescription:
+VenomDrenchDescription:
 ScaldDescription:
 PaybackDescription:
 AvalancheDescription:

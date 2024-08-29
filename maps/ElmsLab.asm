@@ -197,7 +197,7 @@ CyndaquilPokeBallScript:
 	givepoke YANMA, 32
 	givepoke EKANS, 50
 	givepoke MURKROW, 28
-	givepoke MEW, 1
+	givepoke MEW, 70
 	; tms for party
 	giveitem TM_ICE_BEAM
 	giveitem TM_FLAMETHROWER

@@ -172,4 +172,6 @@ BattleCommandPointers:
 	dw BattleCommand_SpecialDefenseDown2
 	dw BattleCommand_AccuracyDown2
 	dw BattleCommand_StartAcidRain
+	dw BattleCommand_DoNothing
+	dw BattleCommand_DireClawStatusChance
 	

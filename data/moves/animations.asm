@@ -150,7 +150,7 @@ BattleAnimations::
 	dw BattleAnim_AuroraBeam   ;flash cannon
 	dw BattleAnim_LeechLife
 	dw BattleAnim_Synthesis    ;roost
-	dw BattleAnim_SkyAttack
+	dw BattleAnim_SkyAttack    ;brave bird
 	dw BattleAnim_Transform
 	dw BattleAnim_Flash
 	dw BattleAnim_Crabhammer   ;icicle crash
@@ -337,7 +337,7 @@ BattleAnimations::
 	dw BattleAnim_Bide         ;metal burst
 	dw BattleAnim_Barrage      ;magnet bomb
 	dw BattleAnim_Screech      ;metal sound
-	dw BattleAnim_Sharpen      ;shift gear
+	dw BattleAnim_Acid         ;venom drench
 	dw BattleAnim_SkullBash
 	dw BattleAnim_WaterGun     ;scald
 	dw BattleAnim_FocusEnergy
@@ -352,6 +352,53 @@ BattleAnimations::
 	dw BattleAnim_Fissure
 	dw BattleAnim_FurySwipes   ;shadow claw
 	dw BattleAnim_RainDance    ;acid rain
+	dw BattleAnim_MindReader
+	dw BattleAnim_Blizzard     ;sheer cold
+	dw BattleAnim_FlameWheel   ;flare blitz
+	dw BattleAnim_Ember        ;flame burst
+	dw BattleAnim_HiddenPower  ;weather ball
+	dw BattleAnim_FireSpin     ;fiery wrath
+	dw BattleAnim_Glare        ;icy glare
+	dw BattleAnim_JumpKick     ;thunder kick
+	dw BattleAnim_ShadowBall   ;mist ball
+	dw BattleAnim_Slam         ;luster bash
+	dw BattleAnim_Whirlpool    ;maelstrom
+	dw BattleAnim_Slash        ;secretstrike
+	dw BattleAnim_Thundershock ;shock wave
+	dw BattleAnim_HornAttack   ;thunderspear
+	dw BattleAnim_Tackle       ;nuzzle
+	dw BattleAnim_DefenseCurl  ;camouflage
+	dw BattleAnim_DizzyPunch
+	dw BattleAnim_GigaDrain    ;souldrain
+	dw BattleAnim_NightShade   ;infernalparade
+	dw BattleAnim_FlameWheel   ;flame charge
+	dw BattleAnim_Nightmare    ;dark void
+	dw BattleAnim_SludgeBomb   ;aciddownpour
+	dw BattleAnim_PsychicM     ;psycho boost
+	dw BattleAnim_TakeDown     ;dragon rush
+	dw BattleAnim_LightScreen  ;aurora veil
+	dw BattleAnim_Flash        ;star freeze
+	dw BattleAnim_RockSlide    ;stone edge
+	dw BattleAnim_IronTail     ;iron head
+	dw BattleAnim_Earthquake   ;land's wrath
+	dw BattleAnim_SludgeBomb   ;mud bomb
+	dw BattleAnim_Waterfall    ;aqua tail
+	dw BattleAnim_Surf         ;muddy water
+	dw BattleAnim_Clamp
+	dw BattleAnim_PetalDance   ;petal storm
+	dw BattleAnim_SkyAttack
+	dw BattleAnim_Slash        ;air slash
+	dw BattleAnim_Gust         ;gale wind
+	dw BattleAnim_Amnesia      ;torment
+	dw BattleAnim_Slam         ;knock off
+	dw BattleAnim_Nightmare
+	dw BattleAnim_SweetScent   ;aromatherapy
+	dw BattleAnim_Snore        ;uproar
+	dw BattleAnim_Rest         ;yawn
+	dw BattleAnim_Barrier
+	dw BattleAnim_MeanLook     ;miracle eye
+	dw BattleAnim_ConfuseRay   ;psycho shift
+	dw BattleAnim_ScaryFace    ;snatch
 	dw BattleAnim_Struggle
 
 BattleAnim_0:

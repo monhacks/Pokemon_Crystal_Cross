@@ -3322,4 +3322,16 @@ MewEvosAttacks:                      ;final
 	dbw 60, AURA_SPHERE
 	dbw 65, NASTY_PLOT
 	dbw 70, SKETCH
+	;for testing
+	dbw 70, EFFECT_SPORE
+	dbw 70, THUNDERSPEAR
+	dbw 70, DIRE_CLAW
+	dbw 70, INFERNALPARADE
+	dbw 70, DARK_VOID
+	dbw 70, VENOM_DRENCH
+	dbw 70, ACIDDOWNPOUR
+	dbw 70, AURORA_VEIL
+	dbw 70, STAR_FREEZE
+	dbw 70, ACID_RAIN
+	dbw 70, LANDS_WRATH
 	db 0 ; no more level-up moves

@@ -1985,36 +1985,6 @@ Hex:
 	nightmare
 	endmove
 
-ChargeWave:
-	checkcharge
-	checkobedience
-	doturn
-	lowersub
-    statupanim
-	raisesub
-    specialattackup
-	statupmessage
-	charge
-	usedmovetext
-	critical
-	damagestats
-	damagecalc
-	stab
-	damagevariation
-	checkhit
-	effectchance
-	moveanim
-	failuretext
-	applydamage
-	criticaltext
-	supereffectivetext
-	checkfaint
-	kingsrock
-	endturn
-	defenseup
-	statupmessage
-	endmove	
-
 Surf:
 	checkobedience
 	usedmovetext
@@ -2058,16 +2028,16 @@ SpiderWeb:
 	checkobedience
 	usedmovetext
 	doturn
-	arenatrap
 	checkhit
-	speeddown
 	lowersub
 	statdownanim
 	raisesub
+	speeddown
 	statdownmessage
 	statdownfailtext
 	checksafeguard
 	poison
+	arenatrap
 	endmove
 	
 SpAtkUpHit:
@@ -2155,7 +2125,7 @@ DireClaw:
 	criticaltext
 	supereffectivetext
 	checkfaint
-	effectsporestatuschance
+	direclawstatuschance
 	endmove
 	
 HoneClaws:
@@ -2357,5 +2327,42 @@ AcidRain:
 	usedmovetext
 	doturn
 	startacidrain
+	endmove
+	
+VenomDrench:
+	checkobedience
+	usedmovetext
+	doturn
+	checkhit
+	attackdown
+	lowersub
+	statdownanim
+	raisesub
+	statdownmessage
+	specialattackdown
+	statdownmessage
+	statdownfailtext
+	endmove
+	
+	
+DarkVoid:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	sleeptarget
+	nightmare
 	endmove
 	
