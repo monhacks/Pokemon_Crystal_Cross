@@ -96,7 +96,7 @@ Moves1:
 ;TAKE_DOWN
 	move EFFECT_RECOIL_HIT,        100, NORMAL,       PHYSICAL,  85, 20,   0
 ;ICE_FANG
-	move EFFECT_FREEZE_HIT,         65, ICE,          PHYSICAL,  95, 15,  10
+	move EFFECT_ICE_FANG,           65, ICE,          PHYSICAL,  95, 15,  20
 ;TAIL_WHIP
 	move EFFECT_DEFENSE_DOWN,        0, NORMAL,       STATUS,   100, 30,   0
 ;POISON_STING
@@ -136,7 +136,7 @@ Moves1:
 ;ICE_BEAM
 	move EFFECT_FREEZE_HIT,         90, ICE,          SPECIAL,  100, 10,  10
 ;BLIZZARD
-	move EFFECT_BLIZZARD,          120, ICE,          SPECIAL,   70,  5,  20
+	move EFFECT_BLIZZARD,          120, ICE,          SPECIAL,   70,  5,  30
 ;PSYBEAM
 	move EFFECT_CONFUSE_HIT,        65, PSYCHIC_TYPE, SPECIAL,  100, 20,  10
 ;BUBBLEBEAM
@@ -264,7 +264,7 @@ Moves1:
 ;SPIKE_CANNON
 	move EFFECT_MULTI_HIT,          20, STEEL,        PHYSICAL,  95, 15,   0
 ;POISON_FANG
-	move EFFECT_POISON_HIT,         50, POISON,       PHYSICAL, 100, 15,  50
+	move EFFECT_POISON_FANG,        50, POISON,       PHYSICAL, 100, 15,  50
 ;AMNESIA
 	move EFFECT_SP_DEF_UP_2,         0, PSYCHIC_TYPE, STATUS,   100, 20,   0
 ;WILL_O_WISP
@@ -308,7 +308,7 @@ Moves1:
 ;SHARPEN,     
 	move EFFECT_HONE_CLAWS,          0, DARK,         STATUS,   100, 15,   0
 ;FIRE_FANG  
-	move EFFECT_BURN_HIT,           65, FIRE,         PHYSICAL,  95, 15,  20
+	move EFFECT_FIRE_FANG,          65, FIRE,         PHYSICAL,  95, 15,  30
 ;TRI_ATTACK
 	move EFFECT_TRI_ATTACK,         80, CURSE_TYPE,   SPECIAL,  100, 10,  20
 ;SUPER_FANG
@@ -510,7 +510,7 @@ Moves1:
 ;ECHOED_VOICE
 	move EFFECT_FURY_CUTTER,        40, NORMAL,       SPECIAL,  100, 15,   0
 ;DIRE_CLAW
-	move EFFECT_DIRE_CLAW,          70, POISON,       PHYSICAL, 100, 15,  50
+	move EFFECT_DIRE_CLAW,          70, POISON,       PHYSICAL, 100, 15,  30
 ;AQUA_JET
 	move EFFECT_PRIORITY_HIT,       40, WATER,        PHYSICAL, 100, 20,   0
 ;MYSTICALFIRE
@@ -583,7 +583,7 @@ Moves1:
 	move EFFECT_SP_ATK_UP_2,         0, BUG,          STATUS,   100, 20,   0
 ;NIGHT_DAZE
 	move EFFECT_ACCURACY_DOWN_HIT,  95, DARK,         SPECIAL,   95, 10,  30
-;DRAGON_TAIL (needs testing)
+;DRAGON_TAIL
 	move EFFECT_SWITCH_HIT,         60, DRAGON,       PHYSICAL,  90, 10, 100
 ;SCALE_SHOT
 	move EFFECT_MULTI_HIT,          18, DRAGON,       PHYSICAL,  90, 20,   0
@@ -591,8 +591,8 @@ Moves1:
 	move EFFECT_SP_DEF_UP,           0, ELECTRIC,     STATUS,   100, 20,   0
 ;DISCHARGE
 	move EFFECT_PARALYZE_HIT,       80, ELECTRIC,     SPECIAL,  100, 15,  30
-;THUNDER_FANG (effect unfinished)
-	move EFFECT_PARALYZE_HIT,       65, ELECTRIC,     PHYSICAL,  95, 15,  20
+;THUNDER_FANG
+	move EFFECT_THUNDER_FANG,       65, ELECTRIC,     PHYSICAL,  95, 15,  30
 ;BRICK_BREAK
 	move EFFECT_NORMAL_HIT,         75, FIGHTING,     PHYSICAL, 100, 15,   0
 ;DRAIN_PUNCH
@@ -649,7 +649,7 @@ Moves1:
 	move EFFECT_BURN_HIT,          100, ROCK,         SPECIAL,   90,  5,  30
 ;ROCK_TOMB
 	move EFFECT_SPEED_DOWN_HIT,     60, ROCK,         PHYSICAL,  95, 15, 100
-;METAL_BURST (effect temporary)
+;METAL_BURST (change to need 1/2 health like belly drum? or 1/4th)
 	move EFFECT_RECOIL_HIT,        120, STEEL,        SPECIAL,  100, 10,   0
 ;MAGNET_BOMB
 	move EFFECT_ALWAYS_HIT,         60, STEEL,        PHYSICAL, 100, 20,   0
@@ -667,9 +667,9 @@ Moves1:
 	move EFFECT_FORESIGHT,           0, FIGHTING,     STATUS,   100, 40,   0
 ;SNORE
 	move EFFECT_SNORE,              70, NORMAL,       PHYSICAL, 100, 15,  30
-;PAYBACK (effect incorrect)
+;PAYBACK
 	move EFFECT_NEGATIVE_PRIORITY_HIT, 100, DARK,     PHYSICAL, 100, 10,   0
-;AVALANCHE (effect incorrect)
+;AVALANCHE
 	move EFFECT_NEGATIVE_PRIORITY_HIT, 100, ICE,      PHYSICAL, 100, 10,   0
 ;INFESTATION
 	move EFFECT_TRAP_TARGET,        20, BUG,          SPECIAL,   90, 20,   0
@@ -725,7 +725,7 @@ Moves1:
 	move EFFECT_BURN_HIT,          100, GHOST,        SPECIAL,   100, 15, 30
 ;FLAME_CHARGE
 	move EFFECT_FLAME_WHEEL,        50, FIRE,         PHYSICAL,  100, 25, 50
-;DARK_VOID (make cause nightmare)
+;DARK_VOID
 	move EFFECT_DARK_VOID,         120, DARK,         SPECIAL,    70,  5, 50
 ;ACIDDOWNPOUR
 	move EFFECT_SP_DEF_DOWN_HIT,   120, POISON,       SPECIAL,    80,  5, 20

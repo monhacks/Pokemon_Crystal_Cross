@@ -173,4 +173,8 @@ MoveEffectsPointers:
 	dw Fly
 	dw VenomDrench
 	dw DarkVoid
+	dw PoisonHit
+	dw ElementFang
+	dw ElementFang
+	dw ElementFang
 	

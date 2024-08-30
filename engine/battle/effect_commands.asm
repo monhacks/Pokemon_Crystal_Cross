@@ -4383,6 +4383,11 @@ BattleCommand_Poison:
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_TOXIC
+	jr z, .endcheck
+	cp EFFECT_POISON_FANG
+	ret
+.endcheck
+	cp EFFECT_TOXIC ;I don't know if this is needed, or if you can jr z twice in a row
 	ret
 
 CheckIfTargetIsPoisonType:
@@ -7715,29 +7720,53 @@ BattleCommand_DireClawStatusChance:
 .StatusCommands:
 	dw BattleCommand_ParalyzeTarget ; paralyze
 	dw BattleCommand_PoisonTarget ; poison
-	dw BattleCommand_DoNothing
+	dw BattleCommand_ConfuseTarget ; confusion
 	
 BattleCommand_EffectSporeStatusChance:
 ; effectsporestatuschance
 
 	call BattleCommand_EffectChance
 .loop
-	; 1/3 chance of each status
+	; 1/2 chance of each status
 	call BattleRandom
 	swap a
-	and %11
-	jr z, .loop
-	dec a
-	ld hl, .StatusCommands
-	rst JumpTable
+	and %01
+	jr z, .paralyze
+	call BattleCommand_PoisonTarget
+	jr .end
+.paralyze
+	call BattleCommand_ParalyzeTarget
+.end
 	ret
-
-.StatusCommands:
-	dw BattleCommand_ParalyzeTarget ; paralyze
-	dw BattleCommand_PoisonTarget ; poison
-	dw BattleCommand_ParalyzeTarget ; paralyze
 	
-BattleCommand_DoNothing:
+BattleCommand_ElementFangChance:
+; elementfangchance
+
+	call BattleCommand_EffectChance
+.loop
+	; 1/2 chance of each status
+	call BattleRandom
+	swap a
+	and %01
+	jr z, .checkfang
+	call BattleCommand_FlinchTarget
+	jr .end
+.checkfang
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_THUNDER_FANG
+	jr z, .paralyze
+	cp EFFECT_FIRE_FANG
+	jr z, .burn
+	;EFFECT_ICE_FANG
+	call BattleCommand_FreezeTarget
+	jr .end
+.paralyze
+	call BattleCommand_ParalyzeTarget
+	jr .end
+.burn
+	call BattleCommand_BurnTarget
+.end
 	ret
 	
 CompareMove:

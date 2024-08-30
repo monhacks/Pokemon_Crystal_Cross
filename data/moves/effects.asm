@@ -2342,8 +2342,7 @@ VenomDrench:
 	specialattackdown
 	statdownmessage
 	statdownfailtext
-	endmove
-	
+	endmove	
 	
 DarkVoid:
 	checkobedience
@@ -2364,5 +2363,24 @@ DarkVoid:
 	checkfaint
 	sleeptarget
 	nightmare
+	endmove
+	
+ElementFang:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	elementfangchance
 	endmove
 	

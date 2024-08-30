@@ -17,4 +17,5 @@ CriticalHitMoves:
 	dw FROSTBREATH
 	dw POISON_TAIL
 	dw VENOMSTRIKE
+	dw STONE_EDGE
 	dw -1

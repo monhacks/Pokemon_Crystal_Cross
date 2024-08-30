@@ -3324,11 +3324,11 @@ MewEvosAttacks:                      ;final
 	dbw 70, SKETCH
 	;for testing
 	dbw 70, EFFECT_SPORE
-	dbw 70, THUNDERSPEAR
+	dbw 70, POISON_FANG
 	dbw 70, DIRE_CLAW
-	dbw 70, INFERNALPARADE
-	dbw 70, DARK_VOID
-	dbw 70, VENOM_DRENCH
+	dbw 70, FIRE_FANG
+	dbw 70, THUNDER_FANG
+	dbw 70, ICE_FANG
 	dbw 70, ACIDDOWNPOUR
 	dbw 70, AURORA_VEIL
 	dbw 70, STAR_FREEZE

@@ -172,8 +172,8 @@ ENDM
 	command specialdefensedown2
 	command accuracydown2
 	command startacidrain
-	command donothing
 	command direclawstatuschance
+	command elementfangchance
 
 	const_def -1, -1
 	command endmove                 ; ff
