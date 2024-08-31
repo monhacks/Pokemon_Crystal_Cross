@@ -174,6 +174,8 @@ ENDM
 	command startacidrain
 	command direclawstatuschance
 	command elementfangchance
+	command miracleeye
+	command corrosion
 
 	const_def -1, -1
 	command endmove                 ; ff

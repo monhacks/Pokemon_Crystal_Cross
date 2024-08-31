@@ -2384,3 +2384,19 @@ ElementFang:
 	elementfangchance
 	endmove
 	
+MiracleEye:
+	checkobedience
+	usedmovetext
+	doturn
+	checkhit
+	miracleeye
+	endmove
+	
+Corrosion:
+	checkobedience
+	usedmovetext
+	doturn
+	checkhit
+	corrosion
+	endmove
+	

@@ -177,4 +177,6 @@ MoveEffectsPointers:
 	dw ElementFang
 	dw ElementFang
 	dw ElementFang
+	dw MiracleEye
+	dw Corrosion
 	

@@ -1,3 +1,4 @@
+;alternate future idea- add new label above this that runs into this if need more anti-immune moves
 TypeMatchups:
 	;  attacker,     defender,     *=
 	db NORMAL,       ROCK,         NOT_VERY_EFFECTIVE
@@ -52,7 +53,6 @@ TypeMatchups:
 	db POISON,       GROUND,       NOT_VERY_EFFECTIVE
 	db POISON,       ROCK,         NOT_VERY_EFFECTIVE
 	db POISON,       GHOST,        NOT_VERY_EFFECTIVE
-	db POISON,       STEEL,        NO_EFFECT
 	db POISON,       NORMAL,       SUPER_EFFECTIVE
 	db GROUND,       FIRE,         SUPER_EFFECTIVE
 	db GROUND,       ELECTRIC,     SUPER_EFFECTIVE
@@ -102,11 +102,20 @@ TypeMatchups:
 	db STEEL,        ROCK,         SUPER_EFFECTIVE
 	db STEEL,        STEEL,        NOT_VERY_EFFECTIVE
 
-	db -3 ; end (with Foresight)
-
+; end (with miracle eye)
+	db -3
+; Miracle Eye removes Dark's immunity + Ghost immunities
+	db PSYCHIC_TYPE, DARK,         NO_EFFECT
+	
+; end (with Foresight)
+	db -2 
 ; Foresight removes Ghost's immunities.
 	db NORMAL,       GHOST,        NO_EFFECT
 	db FIGHTING,     GHOST,        NO_EFFECT
-	db PSYCHIC_TYPE, DARK,         NO_EFFECT 
-
+	
 	db -1 ; end
+	
+TypeMatchupsExtra:
+	db POISON,       STEEL,        NO_EFFECT
+	db -4 ; end
+	

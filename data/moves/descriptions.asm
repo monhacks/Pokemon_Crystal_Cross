@@ -484,10 +484,6 @@ AcidDownpourDescription:
 	db   "A corrosive attack"
 	next "damages STEEL.@"
 
-;PsychoBoostDescription:
-;	db   "A attack that also"
-;	next "hurts the user.@"
-
 SkyAttackDescription:
 IcicleCrashDescription:
 ExtrasensoryDescription:
@@ -507,37 +503,17 @@ StarFreezeDescription:
 	db   "May paralyze or"
 	next "freeze the foe.@"
 	
-;StoneEdgeDescription:
-;	db   "Has a high criti-"
-;	next "cal hit ratio.@"
-	
-;IronHeadDescription:
-;	db   "An attack that may"
-;	next "cause flinching.@"
-	
 LandsWrathDescription:
 	db   "1st turn: Attack"
 	next "2nd turn: Rest@"
-	
-;MudBombDescription:
-;	db   "An attack that may"
-;	next "reduce accuracy.@"
 	
 AquaTailDescription:
 	db   "User's tail makes"
 	next "waves to attack.@"
 	
-;MuddyWaterDescription:
-;	db   "An attack that may"
-;	next "reduce accuracy.@"
-	
 PetalStormDescription:
 	db   "Attacks foe with"
 	next "a whirl of petals@"
-	
-;AirSlashDescription:
-;	db   "An attack that may"
-;	next "cause flinching.@"
 	
 GaleWindDescription:
 	db   "Summons a windstorm"
@@ -579,10 +555,6 @@ SnatchDescription:
 	db   "Steals foe's stat-"
 	next "boosting move.@"
 	
-;BraveBirdDescription:
-;	db   "A attack that also"
-;	next "hurts the user.@"
-	
 ForesightDescription:
 	db   "Negates accuracy"
 	next "reduction moves.@"
@@ -603,14 +575,6 @@ TwineedleDescription:
 	db   "Jabs the foe twice"
 	next "using stingers.@"
 	
-;AstonishDescription:
-;	db   "An attack that may"
-;	next "cause flinching.@"
-	
-;MachPunchDescription:
-;	db   "Lets the user get"
-;	next "in the first hit.@"
-	
 FuryAttackDescription:
 	db   "Jabs the target"
 	next "2-5 times.@"
@@ -618,10 +582,6 @@ FuryAttackDescription:
 SweetKissDescription:
 	db   "A move that causes"
 	next "confusion.@"
-	
-;CottonGuardDescription:
-;	db   "Sharply increases"
-;	next "user's DEFENSE.@"
 	
 DragonPulseDescription:
 	db   "Attacks foe with a"
@@ -635,18 +595,6 @@ LungeDescription:
 	db   "An attack that may"
 	next "lower ATTACK.@"
 	
-;SignalBeamDescription:
-;	db   "An attack that may"
-;	next "confuse the foe.@"
-	
-;TailGlowDescription:
-;	db   "Sharply increases"
-;	next "user's SPCL. ATK.@"
-	
-;NightDazeDescription:
-;	db   "An attack that may"
-;	next "reduce accuracy.@"
-	
 DragonTailDescription:
 	db   "Slams the foe away"
 	next "& ends battle.@"
@@ -658,10 +606,6 @@ ScaleShotDescription:
 ChargeDescription:
 	db   "Boosts SPCL DEF"
 	next "and ELEC. power.@"
-	
-;DischargeDescription:
-;	db   "An attack that may"
-;	next "cause paralysis.@"
 	
 ThunderFangDescription:
 	db   "May cause flinches"
@@ -678,10 +622,6 @@ PoisonTailDescription:
 BrickBreakDescription:
 	db   "Has a high criti-"
 	next "cal hit ratio.@"
-	
-;DrainPunchDescription:
-;	db   "Steals 1/2 of the"
-;	next "damage inflicted.@"
 
 FlashCannonDescription:
 EarthPowerDescription:
@@ -699,14 +639,6 @@ FieryDanceDescription:
 HeatWaveDescription:
 	db   "A scorching wind,"
 	next "may inflict burns@"
-	
-;LavaPlumeDescription:
-;	db   "An attack that may"
-;	next "inflict a burn.@"
-	
-;AerialAceDescription:
-;	db   "An attack that"
-;	next "never misses.@"
 
 MachPunchDescription:
 IceShardDescription:
@@ -721,14 +653,6 @@ ShadowSneakDescription:
 BulletSeedDescription:
 	db   "Fires seeds to"
 	next "hit 2-5 times.@"
-	
-;HornLeechDescription:
-;	db   "Steals 1/2 of the"
-;	next "damage inflicted.@"
-	
-;MagicalLeafDescription:
-;	db   "An attack that"
-;	next "never misses.@"
 	
 PowerWhipDescription:
 	db   "Lashes foe with"
@@ -767,17 +691,9 @@ DoubleHitDescription:
 	db   "An attack that"
 	next "strikes twice.@"
 	
-;PoisonTailDescription:
-;	db   "Has a high criti-"
-;	next "cal hit ratio.@"
-	
 SludgeDescription:
 	db   "An attack that may"
 	next "poison the foe.@"
-	
-;ExtrasensoryDescription:
-;	db   "An attack that may"
-;	next "cause flinching.@"
 	
 PsychicFangDescription:
 	db   "Metaphysical bite,"
@@ -800,10 +716,6 @@ MetalBurstDescription:
 	db   "A attack that also"
 	next "hurts the user.@"
 	
-;MagnetBombDescription:
-;	db   "An attack that"
-;	next "never misses.@"
-	
 MetalSoundDescription:
 	db   "Sharply reduces"
 	next "foe's SPCL. DEF.@"
@@ -811,19 +723,11 @@ MetalSoundDescription:
 VenomDrenchDescription:
 	db   "Harsh venom lowers"
 	next "foe's defenses.@"
-	
-;ScaldDescription:
-;	db   "An attack that"
-;	next "may cause a burn.@"
 
 AvalancheDescription:	
 PaybackDescription:
 	db   "Powerful, but"
 	next "user moves second@"
-	
-;AvalancheDescription:
-;	db   "Powerful, but"
-;	next "user moves second@"
 	
 InfestationDescription:
 	db   "Traps the foe for"
@@ -836,10 +740,6 @@ VenomstrikeDescription:
 PhantomForceDescription:
 	db   "1st turn: Vanish"
 	next "2nd turn: Attack@"
-	
-;ShadowClawDescription:
-;	db   "Has a high criti-"
-;	next "cal hit ratio.@"
 	
 AcidRainDescription:
 	db   "Summons acid rain"
@@ -861,21 +761,9 @@ SkyUppercutDescription:
 	db   "An uppercut attack"
 	next "that hits the sky@"
 	
-;NightSlashDescription:	
-;	db   "Has a high criti-"
-;	next "cal hit ratio.@"
-	
 EffectSporeDescription:
 	db   "Inflicts poison or"
 	next "paralysis on foe@"
-	
-;BulldozeDescription:
-;	db   "An attack that may"
-;	next "lower SPEED.@"
-	
-;BulletPunchDescription:
-;	db   "Lets the user get"
-;	next "in the first hit.@"
 	
 BugBiteDescription:
 	db   "Bites the foe with"
@@ -884,10 +772,6 @@ BugBiteDescription:
 CoilDescription:
 	db   "Raises ATK, DEF,"
 	next "and ACCURACY.@"
-	
-;AirCutterDescription:
-;	db   "Has a high criti-"
-;	next "cal hit ratio.@"
 
 NightDazeDescription:
 MuddyWaterDescription:
@@ -901,14 +785,6 @@ PsystrikeDescription:
 	db   "Strikes foe with"
 	next "psychic energy.@"
 	
-;VacuumWaveDescription:
-;	db   "Lets the user get"
-;	next "in the first hit.@"
-	
-;ShadowStrikeDescription:
-;	db   "An attack that may"
-;	next "cause flinching.@"
-	
 EchoedVoiceDescription:
 	db   "Successive hits"
 	next "raise power.@"
@@ -916,14 +792,6 @@ EchoedVoiceDescription:
 DireClawDescription:
 	db   "May poison or"
 	next "paralyze the foe.@"
-	
-;AquaJetDescription:
-;	db   "Lets the user get"
-;	next "in the first hit.@"
-	
-;MysticalFireDescription:
-;	db   "An attack that may"
-;	next "lower SPCL. ATK.@"
 
 TailGlowDescription:
 NastyPlotDescription:
@@ -938,25 +806,9 @@ LaserFocusDescription:
 	db   "Locks onto foe and"
 	next "boosts crit rate.@"
 	
-;DrillRunDescription:
-;	db   "Has a high criti-"
-;	next "cal hit ratio.@"
-	
-;AccelerockDescription:
-;	db   "Lets the user get"
-;	next "in the first hit.@"
-	
-;WaveCrashDescription:
-;	db   "A move that also"
-;	next "hurts the user.@"
-	
 FireFangDescription:
 	db   "May cause flinches"
 	next "or burns.@"
-
-;BugBuzzDescription:
-;	db   "An attack that may"
-;	next "lower SPCL. DEF.@"
 
 SilverWindDescription:
 OminousWindDescription:
@@ -973,11 +825,7 @@ XScissorDescription:
 
 SnarlDescription:
 	db   "An attack that"
-	next "lowers SPCL. ATK.@"
-
-;EnergyBallDescription:
-;	db   "An attack that may"
-;	next "lower SPCL. DEF.@"	
+	next "lowers SPCL. ATK.@"	
 	
 DiveDescription:
 	db   "1st turn: Dive"
@@ -996,25 +844,9 @@ IronDefenseDescription:
 	db   "Sharply increases"
 	next "user's DEFENSE.@"
 
-;LeafBladeDescription:
-;	db   "Has a high criti-"
-;	next "cal hit ratio.@"
-
-;IceShardDescription:
-;	db   "Lets the user get"
-;	next "in the first hit.@"
-
 RazorShellDescription:
 	db   "May lower foe's"
 	next "DEF. High crit.@"
-
-;ChargeBeamDescription:
-;	db   "May raise the"
-;	next "user's SPCL. ATK.@"	
-	
-;IcicleCrashDescription:
-;	db   "An attack that may"
-;	next "cause flinching.@"
 	
 HexDescription:
 	db   "Power doubles if"
@@ -1023,10 +855,6 @@ HexDescription:
 DragonClawDescription:
 	db   "Slashes the foe"
 	next "with sharp claws.@"
-	
-;EarthPowerDescription:
-;	db   "An attack that may"
-;	next "lower SPCL. DEF.@"
 	
 PowerGemDescription:
 	db   "Attacks foe with"
@@ -1080,34 +908,10 @@ DarkPulseDescription:
 PoisonJabDescription:
 	db   "An attack that may"
 	next "poison the target.@"
-	
-;FlashCannonDescription:
-;	db   "An attack that may"
-;	next "lower SPCL. DEF.@"
-	
-;MudShotDescription:
-;	db   "An attack that may"
-;	next "reduce accuracy.@"
-	
-;AuraSphereDescription:
-;	db   "An attack that"
-;	next "never misses.@"
-	
-;SilverWindDescription:
-;	db   "An attack that may"
-;	next "raise all stats.@"
 
 PoisonFangDescription:
 	db   "May badly poison"
 	next "the target.@"
-	
-;ShadowPunchDescription:
-;	db   "An attack that"
-;	next "never misses.@"
-
-;PsychoCutDescription:
-;	db   "Has a high criti-"
-;	next "cal hit ratio.@"
 
 PoundDescription:
 	db   "Pounds with fore-"
@@ -1588,10 +1392,6 @@ DreamEaterDescription:
 LeechLifeDescription:
 	db   "Steals 1/2 of the"
 	next "damage inflicted.@"
-
-;SkyAttackDescription:
-;	db   "An attack that may"
-;	next "cause flinching.@"
 
 TransformDescription:
 	db   "The user assumes"

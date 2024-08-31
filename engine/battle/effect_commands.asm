@@ -1264,6 +1264,10 @@ INCLUDE "data/moves/critical_hit_moves.asm"
 
 INCLUDE "data/battle/critical_hit_chances.asm"
 
+INCLUDE "engine/battle/move_effects/miracle_eye.asm"
+
+INCLUDE "engine/battle/move_effects/corrosion.asm"
+
 BattleCommand_Stab:
 ; STAB = Same Type Attack Bonus
 	ld a, BATTLE_VARS_MOVE_ANIM
@@ -1347,23 +1351,43 @@ BattleCommand_Stab:
 	call GetBattleVar
 	and TYPE_MASK
 	ld b, a
-	ld hl, TypeMatchups
+	ld hl, TypeMatchups                 ;load type matchups into hl
 
 .TypesLoop:
-	ld a, [hli]
+	ld a, [hli]                         ;load hl into a, inc hl
+	
+	cp -4                               ;end of extralist
+	jp z, .end
 
-	cp -1
-	jr z, .end
+	cp -1                               ;-1 list end
+	jr z, .next_list
 
-	; foresight
-	;cp -2
-	cp -3
+	cp -3                               ;-3 is the end if foe hasn't been 'seen' (miracle eye)
+	jr nz, .CheckForesight
+	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	call GetBattleVar
+	bit SUBSTATUS_MIRACLE_EYE, a
+	jr nz, .next_list
+	
+	jr .TypesLoop
+
+.CheckForesight
+	cp -2                               ;-2 is the end if foe hasn't been 'identified'
 	jr nz, .SkipForesightCheck
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
+	jr nz, .next_list
+	
+	jr .TypesLoop
+	
+.next_list
+	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	call GetBattleVar
+	bit SUBSTATUS_CORROSION, a
 	jr nz, .end
-
+	
+	ld hl, TypeMatchupsExtra            ;steel vs poison matchup
 	jr .TypesLoop
 
 .SkipForesightCheck:
@@ -1440,7 +1464,7 @@ BattleCommand_Stab:
 .SkipType:
 	inc hl
 	inc hl
-	jr .TypesLoop
+	jp .TypesLoop
 
 .end
 	call BattleCheckTypeMatchup
@@ -1480,14 +1504,36 @@ CheckTypeMatchup:
 	ld hl, TypeMatchups
 .TypesLoop:
 	ld a, [hli]
-	cp -1
+	cp -4
 	jr z, .End
+	
+	cp -1
+	jr z, .extra_list
+	
+	cp -3
+	jr nz, .CheckNext
+	ld a, BATTLE_VARS_SUBSTATUS5_OPP  ;miracle eye
+	call GetBattleVar
+	bit SUBSTATUS_MIRACLE_EYE, a
+	jr nz, .extra_list
+	jr .TypesLoop
+
+.CheckNext	
 	cp -2
 	jr nz, .Next
-	ld a, BATTLE_VARS_SUBSTATUS1_OPP
+	ld a, BATTLE_VARS_SUBSTATUS1_OPP  ;foresight
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
+	jr nz, .extra_list
+	jr .TypesLoop
+	
+.extra_list
+	ld a, BATTLE_VARS_SUBSTATUS5_OPP
+	call GetBattleVar
+	bit SUBSTATUS_CORROSION, a
 	jr nz, .End
+	
+	ld hl, TypeMatchupsExtra          ;steel vs poison matchup
 	jr .TypesLoop
 
 .Next:

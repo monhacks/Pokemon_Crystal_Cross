@@ -68,8 +68,8 @@ compare: $(roms)
 tools:
 	$(MAKE) -C tools/
 
-
-RGBASMFLAGS = -L -Weverything
+# -w added to surpress non-fatal warnings
+RGBASMFLAGS = -L -Weverything -w
 # Create a sym/map for debug purposes if `make` run with `DEBUG=1`
 ifeq ($(DEBUG),1)
 RGBASMFLAGS += -E

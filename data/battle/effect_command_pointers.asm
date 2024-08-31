@@ -174,4 +174,6 @@ BattleCommandPointers:
 	dw BattleCommand_StartAcidRain
 	dw BattleCommand_DireClawStatusChance
 	dw BattleCommand_ElementFangChance
+	dw BattleCommand_Miracle_Eye
+	dw BattleCommand_Corrosion
 	

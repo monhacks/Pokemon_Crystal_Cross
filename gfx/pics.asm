@@ -793,8 +793,6 @@ Ekans_DarkFrontpic: INCBIN "gfx/pokemon/ekans_dark/front.animated.2bpp.lz"
 Ekans_DarkBackpic: INCBIN "gfx/pokemon/ekans_dark/back.2bpp.lz"
 Arbok_DarkFrontpic: INCBIN "gfx/pokemon/arbok_dark/front.animated.2bpp.lz"
 Arbok_DarkBackpic: INCBIN "gfx/pokemon/arbok_dark/back.2bpp.lz"
-Pichu_SpikyFrontpic: INCBIN "gfx/pokemon/pichu_spiky/front.animated.2bpp.lz"
-Pichu_SpikyBackpic: INCBIN "gfx/pokemon/pichu_spiky/back.2bpp.lz"
 
 SECTION "Pics 21", ROMX
 
@@ -875,3 +873,5 @@ MissingnoFrontpic: INCBIN "gfx/pokemon/missingno/front.animated.2bpp.lz"
 MissingnoBackpic: INCBIN "gfx/pokemon/missingno/back.2bpp.lz"
 Charizard_MFrontpic: INCBIN "gfx/pokemon/charizard_m/front.animated.2bpp.lz"
 Charizard_MBackpic: INCBIN "gfx/pokemon/charizard_m/back.2bpp.lz"
+Pichu_SpikyFrontpic: INCBIN "gfx/pokemon/pichu_spiky/front.animated.2bpp.lz"
+Pichu_SpikyBackpic: INCBIN "gfx/pokemon/pichu_spiky/back.2bpp.lz"

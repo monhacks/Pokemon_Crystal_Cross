@@ -1070,6 +1070,11 @@ IdentifiedText:
 	line "identified"
 	cont "<TARGET>!"
 	prompt
+	
+CorrosionText:
+	text "<TARGET>"
+	line "is being corroded!"
+	prompt
 
 StartPerishText:
 	text "Both #MON will"
