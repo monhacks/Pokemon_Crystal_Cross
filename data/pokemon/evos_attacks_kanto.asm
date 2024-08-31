@@ -3325,13 +3325,13 @@ MewEvosAttacks:                      ;final
 	;for testing
 	dbw 70, FORESIGHT
 	dbw 70, POISON_FANG
-	dbw 70, DIRE_CLAW
+	dbw 70, ACIDDOWNPOUR
 	dbw 70, FIRE_FANG
 	dbw 70, THUNDER_FANG
 	dbw 70, ICE_FANG
 	dbw 70, VENOM_DRENCH
 	dbw 70, AURORA_VEIL
 	dbw 70, STAR_FREEZE
-	dbw 70, ACID_RAIN
+	dbw 70, ACID
 	dbw 70, MIRACLE_EYE
 	db 0 ; no more level-up moves

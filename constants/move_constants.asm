@@ -381,6 +381,8 @@
 	const MIRACLE_EYE
 	const PSYCHO_SHIFT
 	const SNATCH
+	const CORROSION
+	const WORK_UP
 	const STRUGGLE
 	
 NUM_ATTACKS EQU const_value + - 1

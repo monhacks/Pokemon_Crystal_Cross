@@ -2400,3 +2400,49 @@ Corrosion:
 	corrosion
 	endmove
 	
+AcidDownpour:
+	checkobedience
+	usedmovetext
+	doturn
+	stubbedcorrosion
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	printcorrosion
+	effectchance
+	specialdefensedown
+	statdownmessage
+	endmove
+	
+Acid:
+	checkobedience
+	usedmovetext
+	doturn
+	stubbedcorrosion
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	resetcorrosion
+	specialdefensedown
+	statdownmessage
+	endmove	
+	

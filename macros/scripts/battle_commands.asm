@@ -176,6 +176,9 @@ ENDM
 	command elementfangchance
 	command miracleeye
 	command corrosion
+	command stubbedcorrosion
+	command printcorrosion
+	command resetcorrosion
 
 	const_def -1, -1
 	command endmove                 ; ff

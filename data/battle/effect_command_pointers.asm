@@ -176,4 +176,7 @@ BattleCommandPointers:
 	dw BattleCommand_ElementFangChance
 	dw BattleCommand_Miracle_Eye
 	dw BattleCommand_Corrosion
+	dw BattleCommand_StubbedCorrosion
+	dw BattleCommand_PrintCorrosion
+	dw BattleCommand_ResetCorrosion
 	

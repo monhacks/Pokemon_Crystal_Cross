@@ -164,7 +164,7 @@ Moves1:
 ;LEECH_SEED
 	move EFFECT_LEECH_SEED,          0, GRASS,        STATUS,    90, 10,   0
 ;GROWTH
-	move EFFECT_GROWTH,              0, NORMAL,       STATUS,   100, 40,   0
+	move EFFECT_GROWTH,              0, GRASS,        STATUS,   100, 40,   0
 ;RAZOR_LEAF
 	move EFFECT_NORMAL_HIT,         55, GRASS,        PHYSICAL,  95, 25,   0
 ;SOLARBEAM
@@ -252,7 +252,7 @@ Moves1:
 ;SMOG
 	move EFFECT_CLEAR_SMOG,         50, POISON,       SPECIAL,   90, 20,  30
 ;ACID_SPRAY
-	move EFFECT_SP_DEF_DOWN_HIT,    55, POISON,       SPECIAL,  100, 20, 100
+	move  EFFECT_ACIDDOWNPOUR,      55, POISON,       SPECIAL,  100, 20,   0
 ;BONE_CLUB
 	move EFFECT_FLINCH_HIT,         65, GROUND,       PHYSICAL,  85, 20,  10
 ;FIRE_BLAST
@@ -538,7 +538,7 @@ Moves1:
 ;BULK_UP
 	move EFFECT_BULK_UP,             0, FIGHTING,     STATUS,   100, 20,   0	
 ;ACID
-	move EFFECT_SP_DEF_DOWN_HIT,    40, POISON,       SPECIAL,  100, 30,  10
+	move EFFECT_ACID,               40, POISON,       SPECIAL,  100, 30,  30 
 ;SPORE
 	move EFFECT_SLEEP,               0, GRASS,        STATUS,   100, 15,   0
 ;SOFTBOILED
@@ -656,7 +656,7 @@ Moves1:
 ;METAL_SOUND
 	move EFFECT_SP_DEF_DOWN_2,       0, STEEL,        STATUS,    85, 40,   0
 ;VENOM_DRENCH
-	move EFFECT_CORROSION,           0, POISON,       STATUS,   100, 20,   0
+	move EFFECT_VENOM_DRENCH,        0, POISON,       STATUS,   100, 20,   0
 ;SKULL_BASH
 	move EFFECT_RECOIL_HIT,        120, ROCK,         PHYSICAL,  95, 10,   0
 ;SCALD
@@ -728,7 +728,7 @@ Moves1:
 ;DARK_VOID
 	move EFFECT_DARK_VOID,         120, DARK,         SPECIAL,    70,  5, 50
 ;ACIDDOWNPOUR
-	move EFFECT_SP_DEF_DOWN_HIT,   120, POISON,       SPECIAL,    80,  5, 20
+	move EFFECT_ACIDDOWNPOUR,      120, POISON,       SPECIAL,    80,  5, 30
 ;PSYCHO_BOOST
 	move EFFECT_RECOIL_HIT,        130, PSYCHIC_TYPE, SPECIAL,    90,  5,  0
 ;DRAGON_RUSH
@@ -779,13 +779,18 @@ Moves1:
 	move EFFECT_MIST,                0, PSYCHIC_TYPE, STATUS,     90, 10,  0
 ;SNATCH (temp effect)
 	move EFFECT_PSYCH_UP,            0, DARK,         STATUS,    100, 10,  0
+;CORROSION
+	move EFFECT_CORROSION,           0, POISON,       STATUS,    100, 40,  0
+;WORK_UP
+	move EFFECT_GROWTH,              0, NORMAL,       STATUS,    100, 30,  0
 	
 ;sleep + nightmare move?
 ;fog map weather?
-;windy weather?- yes
 	
 ;STRUGGLE
 	move EFFECT_RECOIL_HIT,         50, NORMAL,       PHYSICAL, 100,  1,   0
+	
+;377 moves
 	
 	
 	

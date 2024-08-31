@@ -7749,25 +7749,8 @@ BattleCommand_CheckPowder:
 	ret	
 	
 BattleCommand_DireClawStatusChance:
-; effectsporestatuschance
+; fallthrough into effectspore status chance
 
-	call BattleCommand_EffectChance
-.loop
-	; 1/3 chance of each status
-	call BattleRandom
-	swap a
-	and %11
-	jr z, .loop
-	dec a
-	ld hl, .StatusCommands
-	rst JumpTable
-	ret
-
-.StatusCommands:
-	dw BattleCommand_ParalyzeTarget ; paralyze
-	dw BattleCommand_PoisonTarget ; poison
-	dw BattleCommand_ConfuseTarget ; confusion
-	
 BattleCommand_EffectSporeStatusChance:
 ; effectsporestatuschance
 

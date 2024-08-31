@@ -399,6 +399,8 @@ BattleAnimations::
 	dw BattleAnim_MeanLook     ;miracle eye
 	dw BattleAnim_ConfuseRay   ;psycho shift
 	dw BattleAnim_ScaryFace    ;snatch
+	dw BattleAnim_Toxic        ;corrosion
+	dw BattleAnim_Frustration  ;work up
 	dw BattleAnim_Struggle
 
 BattleAnim_0:

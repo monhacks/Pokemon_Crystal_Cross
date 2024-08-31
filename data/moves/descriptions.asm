@@ -380,12 +380,18 @@ MoveDescriptions1:
 	dw MiracleEyeDescription
 	dw PsychoShiftDescription
 	dw SnatchDescription
+	dw CorrosionDescription
+	dw WorkUpDescription
 	dw StruggleDescription
 
 
 InvalidMoveDescription:
 	db   ""
 	next "@"
+	
+CorrosionDescription:
+	db   "An attack that"
+	next "causes corrosion.@"
 	
 ShadowRushDescription:
 	db   "An evil move that"
@@ -1165,6 +1171,7 @@ LeechSeedDescription:
 	db   "Steals HP from the"
 	next "foe on every turn.@"
 
+WorkUpDescription:
 GrowthDescription:
 	db   "Raises user's ATK"
 	next "and SPCL. ATK.@"
@@ -1342,8 +1349,8 @@ SmogDescription:
 	next "poison the foe.@"
 
 AcidSprayDescription:
-	db   "An attack that may"
-	next "poison the foe.@"
+	db   "An attack that"
+	next "corrodes the foe.@"
 
 BoneClubDescription:
 	db   "An attack that may"

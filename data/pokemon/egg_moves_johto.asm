@@ -844,3 +844,4 @@ StarlyEggMoves:
 
 NoEggMoves2:
 	dw -1 ; end
+	

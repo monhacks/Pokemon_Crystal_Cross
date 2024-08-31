@@ -1073,7 +1073,7 @@ IdentifiedText:
 	
 CorrosionText:
 	text "<TARGET>"
-	line "is being corroded!"
+	line "was corroded!"
 	prompt
 
 StartPerishText:

@@ -1026,3 +1026,4 @@ DratiniEggMoves:      ;xx
 
 NoEggMoves1:
 	dw -1 ; end
+	
