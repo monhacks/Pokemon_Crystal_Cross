@@ -203,7 +203,7 @@ WildFled_EnemyFled_LinkBattleCanceled:
 
 BattleTurn:
 .loop
-	call Stubbed_Increments5_a89a
+;	call Stubbed_Increments5_a89a
 	call CheckContestBattleOver
 	jp c, .quit
 
@@ -261,24 +261,6 @@ BattleTurn:
 
 .quit
 	ret
-
-Stubbed_Increments5_a89a:
-	ret
-	;ld a, BANK(s5_a89a) ; MBC30 bank used by JP Crystal; inaccessible by MBC3
-	;call OpenSRAM
-	;ld hl, s5_a89a + 1 ; address of MBC30 bank
-	;inc [hl]
-	;jr nz, .finish
-	;dec hl
-	;inc [hl]
-	;jr nz, .finish
-	;dec [hl]
-	;inc hl
-	;dec [hl]
-
-;.finish
-	;call CloseSRAM
-	;ret
 
 HandleBetweenTurnEffects:
 	ldh a, [hSerialConnectionStatus]
@@ -3075,7 +3057,7 @@ AddBattleMoneyToAccount:
 	push bc
 	ld b, h
 	ld c, l
-	farcall StubbedTrainerRankings_AddToBattlePayouts
+;	farcall StubbedTrainerRankings_AddToBattlePayouts
 	pop bc
 	pop hl
 .loop
@@ -6078,7 +6060,7 @@ MoveInfoBox:
 	ld b, 3
 	ld c, 9
 	call Textbox
-	call MobileTextBorder
+;	call MobileTextBorder
 
 	ld a, [wPlayerDisableCount]
 	and a
@@ -8596,7 +8578,7 @@ StartBattle:
 	ret
 
 BattleIntro:
-	farcall StubbedTrainerRankings_Battles ; mobile
+;	farcall StubbedTrainerRankings_Battles ; mobile
 	call LoadTrainerOrWildMonPic
 	xor a
 	ld [wTempBattleMonSpecies], a
@@ -8679,7 +8661,7 @@ BackUpBGMap2:
 
 InitEnemyTrainer:
 	ld [wTrainerClass], a
-	farcall StubbedTrainerRankings_TrainerBattles
+;	farcall StubbedTrainerRankings_TrainerBattles
 	xor a
 	ld [wTempEnemyMonSpecies], a
 	callfar GetTrainerAttributes
@@ -8735,7 +8717,7 @@ InitEnemyTrainer:
 InitEnemyWildmon:
 	ld a, WILD_BATTLE
 	ld [wBattleMode], a
-	farcall StubbedTrainerRankings_WildBattles
+;	farcall StubbedTrainerRankings_WildBattles
 	call LoadEnemyMon
 	ld hl, wEnemyMonMoves
 	ld de, wWildMonMoves
@@ -8933,8 +8915,8 @@ CheckPayDay:
 	ret
 
 ShowLinkBattleParticipantsAfterEnd:
-	farcall StubbedTrainerRankings_LinkBattles
-	farcall BackupMobileEventIndex
+;	farcall StubbedTrainerRankings_LinkBattles
+;	farcall BackupMobileEventIndex
 	ld a, [wCurOTMon]
 	ld hl, wOTPartyMon1Status
 	call GetPartyLocation
@@ -8951,24 +8933,24 @@ DisplayLinkBattleResult:
 	jr c, .win ; WIN
 	jr z, .lose ; LOSE
 	; DRAW
-	farcall StubbedTrainerRankings_ColosseumDraws
+;	farcall StubbedTrainerRankings_ColosseumDraws
 	ld de, .Draw
 	jr .store_result
 
 .win
-	farcall StubbedTrainerRankings_ColosseumWins
+;	farcall StubbedTrainerRankings_ColosseumWins
 	ld de, .YouWin
 	jr .store_result
 
 .lose
-	farcall StubbedTrainerRankings_ColosseumLosses
+;	farcall StubbedTrainerRankings_ColosseumLosses
 	ld de, .YouLose
 	jr .store_result
 
 .store_result
 	hlcoord 6, 8
 	call PlaceString
-	farcall BackupMobileEventIndex
+;	farcall BackupMobileEventIndex
 	ld c, 200
 	call DelayFrames
 
@@ -9515,7 +9497,7 @@ InitBattleDisplay:
 	ld b, 4
 	ld c, 18
 	call Textbox
-	farcall MobileTextBorder
+;	farcall MobileTextBorder
 	hlcoord 1, 5
 	lb bc, 3, 7
 	call ClearBox
@@ -9723,7 +9705,7 @@ BattleStartMessage:
 	cp BATTLETYPE_FISH
 	jr nz, .NotFishing
 
-	farcall StubbedTrainerRankings_HookedEncounters
+;	farcall StubbedTrainerRankings_HookedEncounters
 
 	ld hl, HookedPokemonAttackedText
 	jr .PlaceBattleStartText

@@ -193,11 +193,11 @@ CyndaquilPokeBallScript:
 	givecoins 50000
 	; good party
 	givepoke QUILAVA, 50
-	givepoke MOLTRES_GALARIAN, 27
-	givepoke ARTICUNO_GALARIAN, 32
-	givepoke MANTYKE, 50
-	givepoke PORYGON_Z, 28
-	givepoke HAPPINY, 70
+	givepoke MOLTRES_GALARIAN, 40
+	givepoke ARTICUNO_GALARIAN, 40
+	givepoke ZAPDOS_GALARIAN, 40
+	givepoke ARBOK, 40
+	givepoke MEW, 70
 	; tms for party
 	giveitem TM_ICE_BEAM
 	giveitem TM_FLAMETHROWER
@@ -522,7 +522,7 @@ ElmsLabHealingMachine:
 	end
 
 ElmsLabHealingMachine_HealParty:
-	special StubbedTrainerRankings_Healings
+;	special StubbedTrainerRankings_Healings
 	special HealParty
 	playmusic MUSIC_NONE
 	setval HEALMACHINE_ELMS_LAB

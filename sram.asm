@@ -397,13 +397,9 @@ s5_aa48:: db
 
 s5_aa4a:: db
 
-sMobileLoginPassword:: ds MOBILE_LOGIN_PASSWORD_LENGTH
+	ds $2
 
-	ds $1
-
-s5_aa5d:: ds MOBILE_LOGIN_PASSWORD_LENGTH
-
-	ds $4
+	ds $5
 
 s5_aa72:: db
 s5_aa73:: ds 12

@@ -23,7 +23,7 @@ DelCellNum::
 	ret
 
 CheckCellNum::
-	jp _CheckCellNum ; useless
+;	jp _CheckCellNum ; useless
 
 _CheckCellNum:
 	ld hl, wPhoneList
@@ -437,7 +437,7 @@ Script_SpecialElmCall: ; unreferenced
 RingTwice_StartCall:
 	call .Ring
 	call .Ring
-	farcall StubbedTrainerRankings_PhoneCalls
+;	farcall StubbedTrainerRankings_PhoneCalls
 	ret
 
 .Ring:
@@ -465,7 +465,7 @@ PhoneCall::
 	ld [wPhoneCaller + 1], a
 	call .Ring
 	call .Ring
-	farcall StubbedTrainerRankings_PhoneCalls
+;	farcall StubbedTrainerRankings_PhoneCalls
 	ret
 
 .Ring:

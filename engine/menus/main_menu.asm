@@ -21,9 +21,6 @@
 	const MAINMENUITEM_RESET_CLOCK
 	const MAINMENUITEM_DEBUG_ROOM     ; 6
 
-MobileMenuGFX:
-INCBIN "gfx/mobile/mobile_menu.2bpp"
-
 MainMenu:
 .loop
 	xor a
@@ -83,8 +80,10 @@ endc
 	dw MainMenu_NewGame
 	dw MainMenu_Option
 	dw MainMenu_MysteryGift
-	dw MainMenu_Mobile
-	dw MainMenu_MobileStudium
+;	dw MainMenu_Mobile
+;	dw MainMenu_MobileStudium
+	dw MainMenu_MysteryGift
+	dw MainMenu_MysteryGift
 	dw MainMenu_ResetClock
 if DEF(_DEBUG)
 	dw MainMenu_DebugRoom
@@ -220,12 +219,6 @@ MainMenu_GetWhichMenu:
 	cp -1 ; locked?
 	call CloseSRAM
 	jr nz, .mystery_gift
-	; This check makes no difference.
-	ld a, [wStatusFlags]
-	bit STATUSFLAGS_MAIN_MENU_MOBILE_CHOICES_F, a
-	ld a, MAINMENU_CONTINUE
-	jr z, .ok
-	jr .ok
 
 .ok
 	jr .ok2
@@ -235,14 +228,10 @@ MainMenu_GetWhichMenu:
 	ret
 
 .mystery_gift
-	; This check makes no difference.
-	ld a, [wStatusFlags]
-	bit STATUSFLAGS_MAIN_MENU_MOBILE_CHOICES_F, a
-	jr z, .ok3
-	jr .ok3
+
 
 .ok3
-	jr .ok4
+
 
 .ok4
 	ld a, MAINMENU_MYSTERY

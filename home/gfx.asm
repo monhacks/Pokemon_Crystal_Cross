@@ -136,16 +136,6 @@ Request2bpp::
 	ld a, TILES_PER_CYCLE
 	ldh [hTilesPerCycle], a
 
-	ld a, [wLinkMode]
-;	cp LINK_MOBILE
-;	jr nz, .NotMobile
-;	ldh a, [hMobile]
-;	and a
-;	jr nz, .NotMobile
-;	ld a, MOBILE_TILES_PER_CYCLE
-;	ldh [hTilesPerCycle], a
-
-;.NotMobile:
 	ld a, e
 	ld [wRequested2bppSource], a
 	ld a, d
@@ -210,16 +200,6 @@ Request1bpp::
 	ld a, TILES_PER_CYCLE
 	ldh [hTilesPerCycle], a
 
-	ld a, [wLinkMode]
-;	cp LINK_MOBILE
-;	jr nz, .NotMobile
-;	ldh a, [hMobile]
-;	and a
-;	jr nz, .NotMobile
-;	ld a, MOBILE_TILES_PER_CYCLE
-;	ldh [hTilesPerCycle], a
-
-;.NotMobile:
 	ld a, e
 	ld [wRequested1bppSource], a
 	ld a, d

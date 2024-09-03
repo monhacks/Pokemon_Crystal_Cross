@@ -455,8 +455,6 @@ UsedSurfScript:
 	
 	special SurfColor
 
-	callasm .stubbed_fn
-
 	readmem wSurfingPlayerState
 	writevar VAR_MOVEMENT
 
@@ -467,10 +465,6 @@ UsedSurfScript:
 	special SurfStartStep
 	applymovement PLAYER, wMovementBuffer
 	end
-
-.stubbed_fn
-	farcall StubbedTrainerRankings_Surf
-	ret
 
 UsedSurfText:
 	text_far _UsedSurfText
@@ -761,7 +755,6 @@ Script_UsedWaterfall:
 	ld a, [wPlayerStandingTile]
 	call CheckWaterfallTile
 	ret z
-	farcall StubbedTrainerRankings_Waterfall
 	ld a, $1
 	ld [wScriptVar], a
 	ret
