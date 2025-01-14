@@ -3332,6 +3332,6 @@ MewEvosAttacks:                      ;final
 	dbw 70, VENOM_DRENCH
 	dbw 70, AURORA_VEIL
 	dbw 70, STAR_FREEZE
-	dbw 70, ACID
-	dbw 70, MIRACLE_EYE
+	dbw 70, TOXIC_SPIKES
+	dbw 70, SPIKES
 	db 0 ; no more level-up moves

@@ -1064,6 +1064,11 @@ SpikesText:
 	line "all around"
 	cont "<TARGET>!"
 	prompt
+	
+ToxicSpikesText:
+	text "TOXIC SPIKES "
+	line "were scattered!"
+	prompt
 
 IdentifiedText:
 	text "<USER>"

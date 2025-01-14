@@ -4567,9 +4567,7 @@ SpikesDamage:
 	ld bc, UpdateEnemyHUD
 .ok
 
-	bit SCREENS_SPIKES, [hl]
-	ret z
-
+;checkflying
 	; Flying-types aren't affected by Spikes.
 	ld a, [de]
 	cp FLYING
@@ -4577,6 +4575,14 @@ SpikesDamage:
 	inc de
 	ld a, [de]
 	cp FLYING
+	ret z                              ; if flying, end here
+
+	bit SCREENS_TOXIC_SPIKES, [hl] ; if no toxic spikes, check spikes
+	jr z, .checkspikes
+	jr .toxicspikes
+
+.checkspikes
+	bit SCREENS_SPIKES, [hl]           ; if no spikes, end
 	ret z
 
 	push bc
@@ -4594,6 +4600,20 @@ SpikesDamage:
 
 .hl
 	jp hl
+	
+.toxicspikes
+	push bc
+;	ld hl, BattleText_UserPoisonedByToxicSpikes
+;	call StdBattleTextbox
+
+	call SwitchTurnCore
+	callfar BattleCommand_PoisonTarget
+	call SwitchTurnCore
+	
+	pop hl
+	call .hl
+
+	jp WaitBGMap
 
 PursuitSwitch:
 	ld a, BATTLE_VARS_MOVE

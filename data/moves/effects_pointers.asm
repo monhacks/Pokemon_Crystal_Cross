@@ -181,4 +181,5 @@ MoveEffectsPointers:
 	dw Corrosion
 	dw AcidDownpour
 	dw Acid
+	dw ToxicSpikes
 	

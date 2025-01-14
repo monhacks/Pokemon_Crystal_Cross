@@ -72,4 +72,3 @@ BattleCommand_ResetCorrosion:          ;this is a hack way of doing this, so aci
 	call GetBattleVarAddr              
 	res SUBSTATUS_CORROSION, [hl]
 	ret
-	

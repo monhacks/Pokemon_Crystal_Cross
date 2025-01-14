@@ -179,4 +179,5 @@ BattleCommandPointers:
 	dw BattleCommand_StubbedCorrosion
 	dw BattleCommand_PrintCorrosion
 	dw BattleCommand_ResetCorrosion
+	dw BattleCommand_ToxicSpikes
 	

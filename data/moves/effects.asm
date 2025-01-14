@@ -2446,3 +2446,10 @@ Acid:
 	statdownmessage
 	endmove	
 	
+ToxicSpikes:
+	checkobedience
+	usedmovetext
+	doturn
+	toxicspikes
+	endmove
+	

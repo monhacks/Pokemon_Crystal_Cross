@@ -345,7 +345,7 @@
 	const MIST_BALL
 	const LUSTER_BASH
 	const MAELSTROM
-	const SECRETSTRIKE
+	const TOXIC_SPIKES
 	const SHOCK_WAVE
 	const THUNDERSPEAR
 	const NUZZLE

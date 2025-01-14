@@ -344,7 +344,7 @@ MoveDescriptions1:
 	dw MistBallDescription
 	dw LusterBashDescription
 	dw MaelstromDescription
-	dw SecretStrikeDescription
+	dw ToxicSpikesDescription
 	dw ShockWaveDescription
 	dw ThunderSpearDescription
 	dw NuzzleDescription
@@ -442,7 +442,7 @@ MaelstromDescription:
 	db   "Traps the foe for"
 	next "2-5 turns.@"
 	
-SecretStrikeDescription:
+ToxicSpikesDescription:
 	db   ""
 	next "@"
 

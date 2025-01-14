@@ -338,7 +338,7 @@ MoveNames::
 	db "MIST BALL@"
 	db "LUSTER BASH@"
 	db "MAELSTROM@"
-	db "SECRETSTRIKE@"
+	db "TOXIC SPIKES@"
 	db "SHOCK WAVE@"
 	db "THUNDERSPEAR@"
 	db "NUZZLE@"

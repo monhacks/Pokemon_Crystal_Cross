@@ -3461,6 +3461,7 @@ EnemyAttackDamage:
 	ret
 
 ;INCLUDE "engine/battle/move_effects/beat_up.asm"
+INCLUDE "engine/battle/move_effects/toxicspikes.asm"
 
 BattleCommand_ClearMissDamage:
 ; clearmissdamage
@@ -4291,7 +4292,6 @@ BattleCommand_SleepTarget:
 
 BattleCommand_PoisonTarget:
 ; poisontarget
-
 	call CheckSubstituteOpp
 	ret nz
 	ld a, BATTLE_VARS_STATUS_OPP

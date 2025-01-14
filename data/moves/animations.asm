@@ -363,7 +363,7 @@ BattleAnimations::
 	dw BattleAnim_ShadowBall   ;mist ball
 	dw BattleAnim_Slam         ;luster bash
 	dw BattleAnim_Whirlpool    ;maelstrom
-	dw BattleAnim_Slash        ;secretstrike
+	dw BattleAnim_Spikes       ;toxic spikes
 	dw BattleAnim_Thundershock ;shock wave
 	dw BattleAnim_HornAttack   ;thunderspear
 	dw BattleAnim_Tackle       ;nuzzle

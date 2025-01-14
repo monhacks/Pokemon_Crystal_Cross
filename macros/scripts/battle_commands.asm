@@ -179,6 +179,7 @@ ENDM
 	command stubbedcorrosion
 	command printcorrosion
 	command resetcorrosion
+	command toxicspikes
 
 	const_def -1, -1
 	command endmove                 ; ff
