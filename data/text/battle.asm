@@ -971,6 +971,11 @@ LandsWrathEffectText:
 	text "<USER>"
 	line "took in energy."
 	prompt
+	
+BattleGlowingText:
+	text "<USER>"
+	line "is glowing!"
+	prompt
 
 NothingHappenedText:
 	text "But nothing"

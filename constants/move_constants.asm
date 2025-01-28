@@ -363,7 +363,7 @@
 	const MUDDY_WATER
 	const CLAMP
 	const PETAL_STORM
-	const SKY_ATTACK
+	const FALCON_DIVE
 	const AIR_SLASH
 	const GALE_WIND
 	const TORMENT
@@ -383,6 +383,7 @@
 	const ROCK_POLISH
 	const SHELL_SMASH
 	const DOUBLE_EDGE
+	const SKY_ATTACK
 	const STRUGGLE
 	
 NUM_ATTACKS EQU const_value + - 1

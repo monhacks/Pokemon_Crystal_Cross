@@ -6382,6 +6382,8 @@ BattleCommand_Charge:
 	jr z, .flying
 	cp EFFECT_LANDS_WRATH
 	jr z, .landswrath
+	cp EFFECT_SKY_ATTACK
+	jr z, .skyattack
 	cp EFFECT_DIVE
 	jr z, .flying
 	call BattleCommand_RaiseSub
@@ -6393,6 +6395,15 @@ BattleCommand_Charge:
 	call BattleCommand_SpecialAttackUp
 	call BattleCommand_StatUpMessage
 	call BattleCommand_SpecialDefenseUp
+	call BattleCommand_StatUpMessage
+jr .not_flying
+
+.skyattack
+	ld hl, BattleGlowingText
+	call StdBattleTextbox
+	call BattleCommand_AttackUp
+	call BattleCommand_StatUpMessage
+	call BattleCommand_SpecialAttackUp
 	call BattleCommand_StatUpMessage
 jr .not_flying
 
@@ -6478,7 +6489,7 @@ jr .not_flying
 	dw -1
 
 .BattleLandsWrathText:
-	text_far LandsWrathEffectText
+;	text_far LandsWrathEffectText
 	text_end	
 
 .BattleMadeWhirlwindText:
@@ -6494,7 +6505,7 @@ jr .not_flying
 	text_end
 
 .BattleGlowingText:
-	text_far _BattleGlowingText
+;	text_far _BattleGlowingText
 	text_end
 
 .BattleFlewText:
@@ -7825,6 +7836,11 @@ BattleCommand_ElementFangChance:       ;moved to Effect Commands 2
 BattleCommand_AuroraVeil:
 ; auroraveil
 	farcall BattleCommand_AuroraVeil2
+	ret
+	
+BattleCommand_WeatherBall:
+; weatherball
+	farcall BattleCommand_WeatherBall2
 	ret
 	
 CompareMove:

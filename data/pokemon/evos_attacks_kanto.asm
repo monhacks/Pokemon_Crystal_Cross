@@ -3328,11 +3328,11 @@ MewEvosAttacks:                      ;final
 	dbw 70, TRI_ATTACK
 	dbw 70, ACIDDOWNPOUR
 	dbw 70, PIN_MISSILE
-	dbw 70, SPORE
-	dbw 70, DARK_VOID
-	dbw 70, SHELL_SMASH
+	dbw 70, HIDDEN_POWER
+	dbw 70, WEATHER_BALL
 	dbw 70, HAIL
-	dbw 70, LANDS_WRATH
-	dbw 70, REFLECT
-	dbw 70, AURORA_VEIL
+	dbw 70, SANDSTORM
+	dbw 70, SUNNY_DAY
+	dbw 70, RAIN_DANCE
+	dbw 70, ACID_RAIN
 	db 0 ; no more level-up moves

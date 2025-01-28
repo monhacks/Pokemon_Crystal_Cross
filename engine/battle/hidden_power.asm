@@ -105,5 +105,5 @@ HiddenPowerDamage:
 	push af
 	farcall BattleCommand_DamageStats ; damagestats
 	pop af
-	ld d, a
+;	ld d, a    ;comment out to prevent power from changing from 60 ?
 	ret

@@ -50,7 +50,7 @@ Moves1:
 ;OMINOUS_WIND
 	move EFFECT_ALL_UP_HIT,         60, GHOST,        SPECIAL, 100,  10,  15
 ;RAZOR_WIND - high critical hit move
-	move EFFECT_NORMAL_HIT,         80, FLYING,       SPECIAL,   90, 10,   0
+	move EFFECT_NORMAL_HIT,         90, FLYING,       SPECIAL,   90, 10,   0
 ;SWORDS_DANCE
 	move EFFECT_ATTACK_UP_2,         0, NORMAL,       STATUS,   100, 30,   0
 ;CUT
@@ -434,7 +434,7 @@ Moves1:
 ;MOONLIGHT
 	move EFFECT_MOONLIGHT,           0, NORMAL,       STATUS,   100, 10,   0
 ;HIDDEN_POWER
-	move EFFECT_HIDDEN_POWER,        1, CURSE_TYPE,   SPECIAL,  100, 15,   0
+	move EFFECT_HIDDEN_POWER,       60, CURSE_TYPE,   SPECIAL,  100, 15,   0
 ;TWISTER
 	move EFFECT_TWISTER,            40, DRAGON,       SPECIAL,  100, 20,  20
 ;RAIN_DANCE
@@ -498,7 +498,7 @@ Moves1:
 ;FLAIL
 	move EFFECT_REVERSAL,            1, NORMAL,       PHYSICAL, 100, 15,   0
 ;AIR_CUTTER - high critical hit move
-	move EFFECT_NORMAL_HIT,         55, FLYING,       SPECIAL,   95, 25,   0
+	move EFFECT_NORMAL_HIT,         60, FLYING,       SPECIAL,   95, 25,   0
 ;MIRROR_SHOT
 	move EFFECT_ACCURACY_DOWN_HIT,  55, STEEL,        SPECIAL,   85, 10,  20
 ;PSYSTRIKE
@@ -687,8 +687,8 @@ Moves1:
 	move EFFECT_OHKO,                1, ICE,          SPECIAL,   30,  5,   0
 ;FLARE_BLITZ
 	move EFFECT_RECOIL_HIT,        120, FIRE,         PHYSICAL, 100,  15,  0
-;WEATHER_BALL (placeholder effect)
-	move EFFECT_NORMAL_HIT,         50, NORMAL,       SPECIAL,  100,  10,  0
+;WEATHER_BALL - 80bp during weather; sun=fire, rain=water, sand=rock, hail=ice, acidrain=poison
+	move EFFECT_WEATHER_BALL,       50, NORMAL,       SPECIAL,  100,  10,  0
 ;FIERY_WRATH
 	move EFFECT_BURN_HIT,           90, DARK,         SPECIAL,  100,  10, 20
 ;ICY_GLARE
@@ -732,7 +732,7 @@ Moves1:
 ;IRON_HEAD
 	move EFFECT_FLINCH_HIT,         80, STEEL,        PHYSICAL,  100, 15, 30
 ;LANDS_WRATH - rasies sp atk and sp def on charge turn, then attacks next turn
-	move EFFECT_LANDS_WRATH,       120, GROUND,       SPECIAL,   100, 10,  0
+	move EFFECT_LANDS_WRATH,       120, GROUND,       SPECIAL,    90,  5,  0
 ;MUD_BOMB
 	move EFFECT_ACCURACY_DOWN_HIT,  75, GROUND,       SPECIAL,    85, 10, 30
 ;AQUA_TAIL
@@ -743,7 +743,7 @@ Moves1:
 	move EFFECT_TRAP_TARGET,        35, WATER,        PHYSICAL,   85, 10,  0
 ;PETAL_STORM
 	move EFFECT_NORMAL_HIT,        100, GRASS,        SPECIAL,    90, 15,  0
-;SKY_ATTACK (falcon dive)
+;FALCON_DIVE
 	move EFFECT_FLINCH_HIT,         95, FLYING,       PHYSICAL,  100, 10, 30
 ;AIR_SLASH
 	move EFFECT_FLINCH_HIT,         75, FLYING,       SPECIAL,    95, 15, 20
@@ -783,6 +783,10 @@ Moves1:
 	move EFFECT_SHELL_SMASH,         0, NORMAL,       STATUS,    100, 15,  0
 ;DOUBLE_EDGE
 	move EFFECT_RECOIL_HIT,        120, NORMAL,       PHYSICAL,  100, 15,  0
+;SKY_ATTACK - rasies atk and sp atk on charge turn, then attacks next turn
+	move EFFECT_SKY_ATTACK,        120, FLYING,       PHYSICAL,  90,   5,  0
+	
+;BASILISK FANG - dragon move w/ venomstrike effect ?
 	
 ;fog map weather?
 	

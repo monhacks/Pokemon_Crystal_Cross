@@ -1833,7 +1833,7 @@ LugiaEvosAttacks:                    ;final
 	dbw 52, RECOVER       ;-  boss
 	dbw 58, AEROBLAST     ;- levels
 	dbw 66, PSYCHIC_M     ;/
-	dbw 72, SKY_ATTACK
+	dbw 72, MAELSTROM
 	db 0 ; no more level-up moves
 
 HoOhEvosAttacks:                     ;final

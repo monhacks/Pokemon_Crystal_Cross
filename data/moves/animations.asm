@@ -381,7 +381,7 @@ BattleAnimations::
 	dw BattleAnim_Surf         ;muddy water
 	dw BattleAnim_Clamp
 	dw BattleAnim_PetalDance   ;petal storm
-	dw BattleAnim_SkyAttack
+	dw BattleAnim_Extremespeed ;falcon dive
 	dw BattleAnim_Slash        ;air slash
 	dw BattleAnim_Gust         ;gale wind
 	dw BattleAnim_Amnesia      ;torment
@@ -401,6 +401,7 @@ BattleAnimations::
 	dw BattleAnim_Harden       ;rock polish
 	dw BattleAnim_ShellSmash   ;shell smash
 	dw BattleAnim_DoubleEdge
+	dw BattleAnim_SkyAttack
 	dw BattleAnim_Struggle
 
 BattleAnim_0:

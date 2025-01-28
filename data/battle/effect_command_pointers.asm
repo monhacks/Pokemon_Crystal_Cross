@@ -184,4 +184,5 @@ BattleCommandPointers:
 	dw BattleCommand_AccuracyDownPoisonChance
 	dw BattleCommand_DisableHit
 	dw BattleCommand_AuroraVeil
+	dw BattleCommand_WeatherBall
 	

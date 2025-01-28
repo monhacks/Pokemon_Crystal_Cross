@@ -190,4 +190,5 @@ MoveEffectsPointers:
 	dw ShellSmash
 	dw AuroraVeil
 	dw LandsWrath
+	dw WeatherBall
 	

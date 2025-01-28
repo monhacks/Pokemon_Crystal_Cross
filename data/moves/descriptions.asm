@@ -362,7 +362,7 @@ MoveDescriptions1:
 	dw MuddyWaterDescription
 	dw ClampDescription
 	dw PetalStormDescription
-	dw SkyAttackDescription
+	dw FalconDiveDescription
 	dw AirSlashDescription
 	dw GaleWindDescription
 	dw TormentDescription
@@ -382,9 +382,11 @@ MoveDescriptions1:
 	dw RockPolishDescription
 	dw ShellSmashDescription
 	dw DoubleEdgeDescription
+	dw SkyAttackDescription
 	dw StruggleDescription
 
 
+SkyAttackDescription:
 RockPolishDescription:
 ShellSmashDescription:
 SuperpowerDescription:
@@ -492,7 +494,7 @@ AcidDownpourDescription:
 	db   "A corrosive attack"
 	next "damages STEEL.@"
 
-SkyAttackDescription:
+FalconDiveDescription:
 IcicleCrashDescription:
 ExtrasensoryDescription:
 AstonishDescription:

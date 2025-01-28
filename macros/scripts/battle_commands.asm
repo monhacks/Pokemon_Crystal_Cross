@@ -184,6 +184,7 @@ ENDM
 	command accuracydownpoisonchance
 	command disablehit
 	command auroraveil
+	command weatherball
 
 	const_def -1, -1
 	command endmove                 ; ff

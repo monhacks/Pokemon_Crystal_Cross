@@ -89,3 +89,64 @@ BattleCommand_AuroraVeil2:
 	ld hl, ButItFailedText
 	call StdBattleTextbox
 	ret
+	
+BattleCommand_WeatherBall2:
+	ld a, [wAttackMissed]
+	and a
+	ret nz
+
+	call SetPowerTo80CheckWeather
+	cp WEATHER_HAIL
+	ld a, ICE
+	jr z, .finish
+	
+	call SetPowerTo80CheckWeather
+	cp WEATHER_SUN
+	ld a, FIRE
+	jr z, .finish
+	
+	call SetPowerTo80CheckWeather
+	cp WEATHER_RAIN
+	ld a, WATER
+	jr z, .finish
+	
+	call SetPowerTo80CheckWeather
+	cp WEATHER_SANDSTORM
+	ld a, ROCK
+	jr z, .finish
+	
+	call SetPowerTo80CheckWeather
+	cp WEATHER_ACID_RAIN
+	ld a, POISON
+	jr z, .finish
+	
+	ld a, 50                       ;this is all horribly inefficient
+	ld d, a
+	ld a, NORMAL
+
+.finish
+	push af
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVarAddr
+	pop af
+	or SPECIAL
+	ld [hl], a                     ;load type into hl
+	
+	ld a, d
+	push af
+	farcall BattleCommand_DamageStats
+	pop af
+	ld d, a                        ;load power into d
+	ret
+
+SetPowerTo80CheckWeather:
+	ld a, 80
+	ld d, a
+	ld a, [wBattleWeather]
+	ret
+
+
+
+
+
+

@@ -2596,3 +2596,22 @@ LandsWrath:
 	checkfaint
 	kingsrock
 	endmove
+	
+WeatherBall:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	weatherball
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	kingsrock
+	endmove
