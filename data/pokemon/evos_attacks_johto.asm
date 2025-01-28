@@ -264,7 +264,7 @@ TotodileEvosAttacks:                 ;final
 	dbw 4, WATER_GUN
 	dbw 8, MUD_SLAP
 	dbw 12, BITE
-	dbw 16, SHARPEN
+;	dbw 16, SHARPEN
 	dbw 22, ICE_FANG
 	dbw 25, SCARY_FACE
 	dbw 32, SLASH
@@ -282,7 +282,7 @@ CroconawEvosAttacks:                 ;final
 	dbw 4, WATER_GUN
 	dbw 8, MUD_SLAP
 	dbw 12, BITE
-	dbw 16, SHARPEN
+;	dbw 16, SHARPEN
 	dbw 24, ICE_FANG
 	dbw 32, SCARY_FACE
 	dbw 36, SLASH
@@ -300,7 +300,7 @@ FeraligatrEvosAttacks:               ;final
 	dbw 4, WATER_GUN
 	dbw 8, MUD_SLAP
 	dbw 12, BITE
-	dbw 16, SHARPEN
+;	dbw 16, SHARPEN     (replace with metal claw? idk)
 	dbw 24, ICE_FANG
 	dbw 32, SCARY_FACE
 	dbw 35, SLASH
@@ -1284,7 +1284,7 @@ SneaselEvosAttacks:                  ;final
 	dbw 1, LEER
 	dbw 4, PURSUIT
 	dbw 8, QUICK_ATTACK
-	dbw 12, SHARPEN
+;	dbw 12, SHARPEN          (add Hone Claws to moveset)
 	dbw 16, FURY_SWIPES
 	dbw 21, AGILITY
 	dbw 28, ICE_SHARD
@@ -1302,7 +1302,7 @@ WeavileEvosAttacks:                  ;final
 	dbw 1, LEER
 	dbw 4, PURSUIT
 	dbw 8, QUICK_ATTACK
-	dbw 12, SHARPEN
+;	dbw 12, SHARPEN
 	dbw 16, FURY_SWIPES
 	dbw 21, AGILITY
 	dbw 28, ICE_SHARD
@@ -1341,13 +1341,13 @@ UrsaringEvosAttacks:                 ;final
 	dbw 15, PURSUIT
 	dbw 22, SWEET_SCENT
 	dbw 27, SLASH
-	dbw 29, SHARPEN       ;evolution move
+;	dbw 29, SHARPEN       ;evolution move
 	dbw 36, SCARY_FACE
 	dbw 43, REST
 	dbw 47, TAKE_DOWN
 	dbw 53, NIGHT_SLASH
 	dbw 58, SUBMISSION
-	dbw LEARN_EVO_MOVE, SHARPEN
+;	dbw LEARN_EVO_MOVE, SHARPEN
 	db 0 ; no more level-up moves
 
 SlugmaEvosAttacks:                   ;final
@@ -1624,7 +1624,7 @@ DonphanEvosAttacks:                  ;final
 	dbw 15, ENDURE
 	dbw 19, ROLLOUT
 	dbw 24, RAPID_SPIN    ;evolution move
-	dbw 28, SHARPEN
+;	dbw 28, SHARPEN
 	dbw 33, BULLDOZE
 	dbw 37, SLAM
 	dbw 42, SCARY_FACE
@@ -1804,7 +1804,7 @@ TyranitarEvosAttacks:                ;final
 	dbw 1, TACKLE
 	dbw 1, LEER
 	dbw 4, ROCK_THROW
-	dbw 7, SHARPEN
+;	dbw 7, SHARPEN
 	dbw 11, BITE
 	dbw 15, BULLDOZE
 	dbw 21, SCARY_FACE
@@ -2269,7 +2269,7 @@ Sandslash_AlolanEvosAttacks:         ;final
 	db 0 ; no more evolutions
 	dbw 1, DRILL_RUN
 	dbw 1, SCRATCH
-	dbw 1, SHARPEN
+;	dbw 1, SHARPEN
 	dbw 4, POWDER_SNOW
 	dbw 9, POISON_STING
 	dbw 11, ROLLOUT

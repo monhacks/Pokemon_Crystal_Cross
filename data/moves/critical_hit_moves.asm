@@ -5,7 +5,7 @@ CriticalHitMoves:
 	dw CRABHAMMER
 	dw SLASH
 	dw AEROBLAST
-	dw BRICK_BREAK
+	dw CROSS_CHOP
 	dw PSYCHO_CUT
 	dw DRILL_RUN
 	dw SHADOW_CLAW
@@ -18,4 +18,6 @@ CriticalHitMoves:
 	dw POISON_TAIL
 	dw VENOMSTRIKE
 	dw STONE_EDGE
+	dw X_SCISSOR
+	dw THUNDERSPEAR
 	dw -1

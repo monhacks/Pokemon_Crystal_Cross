@@ -473,7 +473,7 @@ RattataEvosAttacks:                  ;final
 	dbw 4, QUICK_ATTACK
 	dbw 7, LASER_FOCUS
 	dbw 10, BITE
-	dbw 13, SHARPEN
+;	dbw 13, SHARPEN
 	dbw 19, FURY_SWIPES
 	dbw 22, PURSUIT
 	dbw 27, SUPER_FANG
@@ -490,7 +490,7 @@ RaticateEvosAttacks:                 ;final
 	dbw 4, QUICK_ATTACK
 	dbw 7, LASER_FOCUS
 	dbw 10, BITE
-	dbw 13, SHARPEN
+;	dbw 13, SHARPEN
 	dbw 19, FURY_SWIPES
 	dbw 19, SCARY_FACE    ;evolution move
 	dbw 27, PURSUIT
@@ -508,7 +508,7 @@ SpearowEvosAttacks:                  ;final
 	dbw 1, LEER
 	dbw 4, MUD_SLAP
 	dbw 9, PURSUIT
-	dbw 14, SHARPEN
+;	dbw 14, SHARPEN
 	dbw 19, AIR_CUTTER
 	dbw 21, LASER_FOCUS
 	dbw 25, MIRROR_MOVE
@@ -525,7 +525,7 @@ FearowEvosAttacks:                   ;final
 	dbw 1, LEER
 	dbw 4, MUD_SLAP
 	dbw 9, PURSUIT
-	dbw 14, SHARPEN
+;	dbw 14, SHARPEN
 	dbw 19, WING_ATTACK   ;evolution move
 	dbw 25, LASER_FOCUS
 	dbw 29, MIRROR_MOVE
@@ -649,7 +649,7 @@ SandslashEvosAttacks:                ;final
 	db 0 ; no more evolutions
 	dbw 1, DRILL_RUN
 	dbw 1, SCRATCH
-	dbw 1, SHARPEN
+;	dbw 1, SHARPEN
 	dbw 4, SAND_ATTACK
 	dbw 9, POISON_STING
 	dbw 11, ROLLOUT
@@ -674,7 +674,7 @@ NidoranFEvosAttacks:                 ;final
 	dbw 14, DOUBLE_KICK
 	dbw 19, BITE
 	dbw 23, FURY_SWIPES
-	dbw 28, SHARPEN
+;	dbw 28, SHARPEN
 	dbw 35, POISON_FANG
 	dbw 38, CHARM
 	dbw 43, CRUNCH
@@ -690,7 +690,7 @@ NidorinaEvosAttacks:                 ;final
 	dbw 14, DOUBLE_KICK
 	dbw 23, BITE
 	dbw 28, FURY_SWIPES
-	dbw 35, SHARPEN
+;	dbw 35, SHARPEN
 	dbw 38, POISON_FANG
 	dbw 43, CHARM
 	dbw 47, CRUNCH
@@ -706,7 +706,7 @@ NidoqueenEvosAttacks:                ;final
 	dbw 14, DOUBLE_KICK
 	dbw 23, BITE
 	dbw 28, FURY_SWIPES
-	dbw 35, SHARPEN
+;	dbw 35, SHARPEN
 	dbw 38, POISON_FANG
 	dbw 43, CHARM
 	dbw 47, CRUNCH
@@ -725,7 +725,7 @@ NidoranMEvosAttacks:                 ;final
 	dbw 14, DOUBLE_KICK
 	dbw 19, HORN_ATTACK
 	dbw 23, PIN_MISSILE
-	dbw 28, SHARPEN
+;	dbw 28, SHARPEN
 	dbw 35, POISON_JAB
 	dbw 38, SWAGGER
 	dbw 43, TAKE_DOWN
@@ -741,7 +741,7 @@ NidorinoEvosAttacks:                 ;final
 	dbw 14, DOUBLE_KICK
 	dbw 23, HORN_ATTACK
 	dbw 28, PIN_MISSILE
-	dbw 35, SHARPEN
+;	dbw 35, SHARPEN
 	dbw 38, POISON_JAB
 	dbw 43, SWAGGER
 	dbw 47, TAKE_DOWN
@@ -757,7 +757,7 @@ NidokingEvosAttacks:                 ;final
 	dbw 14, DOUBLE_KICK
 	dbw 23, HORN_ATTACK
 	dbw 28, PIN_MISSILE
-	dbw 35, SHARPEN
+;	dbw 35, SHARPEN
 	dbw 38, POISON_JAB
 	dbw 43, SWAGGER
 	dbw 47, TAKE_DOWN
@@ -981,6 +981,7 @@ VileplumeEvosAttacks:                ;final
 	
 BellossomEvosAttacks:                ;final
 	db 0 ; no more evolutions
+	dbw 1, FIERY_DANCE     ;this was vince's idea
 	dbw 1, QUIVER_DANCE
 	dbw 1, MEGA_DRAIN
 	dbw 1, GROWTH
@@ -1106,7 +1107,7 @@ MeowthEvosAttacks:                   ;final
 	db 0 ; no more evolutions
 	dbw 1, SCRATCH
 	dbw 1, GROWL
-	dbw 4, SHARPEN
+;	dbw 4, SHARPEN           (add Hone Claws to moveset)
 	dbw 9, FURY_SWIPES
 	dbw 14, BITE
 	dbw 17, SCREECH
@@ -1124,7 +1125,7 @@ PersianEvosAttacks:                  ;final
 	dbw 1, SLAM
 	dbw 1, SCRATCH
 	dbw 1, GROWL
-	dbw 4, SHARPEN
+;	dbw 4, SHARPEN
 	dbw 9, FURY_SWIPES
 	dbw 14, BITE
 	dbw 17, SCREECH
@@ -1605,7 +1606,7 @@ RapidashEvosAttacks:                 ;final
 	dbw 25, DOUBLE_KICK
 	dbw 33, AGILITY
 	dbw 37, BLAZE_KICK
-	dbw 41, SHARPEN
+;	dbw 41, SHARPEN
 	dbw 45, TAKE_DOWN
 	dbw 49, FIRE_BLAST
 	dbw 57, MEGAHORN
@@ -1755,7 +1756,7 @@ DoduoEvosAttacks:                    ;final
 	dbw 1, PECK
 	dbw 1, GROWL
 	dbw 4, QUICK_ATTACK
-	dbw 10, SHARPEN
+;	dbw 10, SHARPEN
 	dbw 14, SUPERSONIC
 	dbw 19, PURSUIT
 	dbw 23, ECHOED_VOICE
@@ -1772,7 +1773,7 @@ DodrioEvosAttacks:                   ;final
 	dbw 1, PECK
 	dbw 1, GROWL
 	dbw 4, QUICK_ATTACK
-	dbw 10, SHARPEN
+;	dbw 10, SHARPEN          (add Swords Dance to moveset)
 	dbw 14, SUPERSONIC
 	dbw 19, PURSUIT
 	dbw 23, ECHOED_VOICE
@@ -1869,7 +1870,7 @@ ShellderEvosAttacks:                 ;final
 	dbw 16, PROTECT
 	dbw 20, BUBBLEBEAM
 	dbw 25, AURORA_BEAM
-	dbw 29, SHARPEN
+;	dbw 29, SHARPEN
 	dbw 33, RAZOR_SHELL
 	dbw 38, IRON_DEFENSE
 	dbw 44, ICE_BEAM
@@ -1888,7 +1889,7 @@ CloysterEvosAttacks:                 ;final
 	dbw 20, BUBBLEBEAM
 	dbw 25, AURORA_BEAM
 	dbw 27, SPIKE_CANNON  ;evolution move
-	dbw 33, SHARPEN
+;	dbw 33, SHARPEN
 	dbw 37, RAZOR_SHELL
 	dbw 40, SPIKES
 	dbw 44, IRON_DEFENSE
@@ -2033,7 +2034,7 @@ KrabbyEvosAttacks:                   ;final
 	dbw 1, WATER_GUN
 	dbw 4, HARDEN
 	dbw 9, MUD_SHOT
-	dbw 11, SHARPEN
+;	dbw 11, SHARPEN
 	dbw 15, BUBBLEBEAM
 	dbw 21, METAL_CLAW
 	dbw 25, STOMP
@@ -2051,7 +2052,7 @@ KinglerEvosAttacks:                  ;final
 	dbw 1, WATER_GUN
 	dbw 4, HARDEN
 	dbw 9, MUD_SHOT
-	dbw 11, SHARPEN
+;	dbw 11, SHARPEN
 	dbw 15, BUBBLEBEAM
 	dbw 21, METAL_CLAW
 	dbw 25, STOMP
@@ -2304,7 +2305,7 @@ RhyhornEvosAttacks:                  ;final
 	dbw 1, TAIL_WHIP
 	dbw 4, ROCK_THROW
 	dbw 8, HORN_ATTACK
-	dbw 12, SHARPEN
+;	dbw 12, SHARPEN
 	dbw 19, ACCELEROCK
 	dbw 23, BULLDOZE
 	dbw 27, SCARY_FACE
@@ -2322,7 +2323,7 @@ RhydonEvosAttacks:                   ;final
 	dbw 1, TAIL_WHIP
 	dbw 4, ROCK_THROW
 	dbw 8, HORN_ATTACK
-	dbw 12, SHARPEN
+;	dbw 12, SHARPEN
 	dbw 19, ACCELEROCK
 	dbw 23, BULLDOZE
 	dbw 27, SCARY_FACE
@@ -2493,7 +2494,7 @@ GoldeenEvosAttacks:                  ;final
 	dbw 27, REFRESH
 	dbw 31, FLAIL
 	dbw 37, WATERFALL
-	dbw 41, SHARPEN
+;	dbw 41, SHARPEN
 	dbw 47, MEGAHORN
 	db 0 ; no more level-up moves
 
@@ -2510,7 +2511,7 @@ SeakingEvosAttacks:                  ;final
 	dbw 27, REFRESH
 	dbw 31, FLAIL
 	dbw 39, WATERFALL
-	dbw 47, SHARPEN
+;	dbw 47, SHARPEN
 	dbw 51, MEGAHORN
 	dbw 57, HORN_DRILL
 	db 0 ; no more level-up moves
@@ -2559,7 +2560,7 @@ ScytherEvosAttacks:                  ;final
 	dbw 4, LASER_FOCUS
 	dbw 9, FURY_CUTTER
 	dbw 13, PURSUIT
-	dbw 17, SHARPEN
+;	dbw 17, SHARPEN
 	dbw 21, FALSE_SWIPE
 	dbw 25, WING_ATTACK
 	dbw 29, SLASH
@@ -2578,7 +2579,7 @@ ScizorEvosAttacks:                   ;final
 	dbw 4, LASER_FOCUS
 	dbw 9, FURY_CUTTER
 	dbw 13, PURSUIT
-	dbw 17, SHARPEN
+;	dbw 17, SHARPEN
 	dbw 21, FALSE_SWIPE
 	dbw 24, METAL_CLAW    ;evolution move
 	dbw 31, SLASH
@@ -2686,7 +2687,7 @@ TaurosEvosAttacks:                   ;final
 	dbw 4, TAIL_WHIP
 	dbw 7, PURSUIT
 	dbw 12, STOMP
-	dbw 17, SHARPEN
+;	dbw 17, SHARPEN
 	dbw 19, HORN_ATTACK
 	dbw 24, REST
 	dbw 29, BULLDOZE
@@ -2842,9 +2843,9 @@ JolteonEvosAttacks:                  ;final
 	dbw 25, DOUBLE_KICK
 	dbw 30, THUNDER_WAVE
 	dbw 35, AGILITY
-	dbw 40, CHARGE_BEAM
+	dbw 40, CHARGE_BEAM    ; see below v
 	dbw 45, AURA_SPHERE
-	dbw 50, NASTY_PLOT
+	dbw 50, NASTY_PLOT     ;needs reworking. give charge
 	dbw 55, THUNDER
 	dbw LEARN_EVO_MOVE, THUNDERSHOCK
 	db 0 ; no more level-up moves
@@ -2982,7 +2983,7 @@ PorygonEvosAttacks:                  ;final
 	dbw 1, TACKLE
 	dbw 1, DISABLE
 	dbw 4, THUNDERSHOCK
-	dbw 7, SHARPEN
+;	dbw 7, SHARPEN
 	dbw 12, PSYBEAM
 	dbw 18, AGILITY
 	dbw 23, RECOVER
@@ -3018,7 +3019,7 @@ PorygonZEvosAttacks:                 ;final
 	dbw 1, TACKLE
 	dbw 1, DISABLE
 	dbw 4, THUNDERSHOCK
-	dbw 8, SHARPEN
+;	dbw 8, SHARPEN
 	dbw 14, PSYBEAM
 	dbw 19, AGILITY
 	dbw 25, RECOVER
@@ -3323,15 +3324,15 @@ MewEvosAttacks:                      ;final
 	dbw 65, NASTY_PLOT
 	dbw 70, SKETCH
 	;for testing
-	dbw 70, FORESIGHT
-	dbw 70, POISON_FANG
+	dbw 70, DIRE_CLAW
+	dbw 70, TRI_ATTACK
 	dbw 70, ACIDDOWNPOUR
-	dbw 70, FIRE_FANG
-	dbw 70, THUNDER_FANG
-	dbw 70, ICE_FANG
-	dbw 70, VENOM_DRENCH
+	dbw 70, PIN_MISSILE
+	dbw 70, SPORE
+	dbw 70, DARK_VOID
+	dbw 70, SHELL_SMASH
+	dbw 70, HAIL
+	dbw 70, LANDS_WRATH
+	dbw 70, REFLECT
 	dbw 70, AURORA_VEIL
-	dbw 70, STAR_FREEZE
-	dbw 70, TOXIC_SPIKES
-	dbw 70, SPIKES
 	db 0 ; no more level-up moves

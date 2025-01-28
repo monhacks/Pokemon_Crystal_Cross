@@ -757,6 +757,12 @@ FellAsleepText:
 	text "<TARGET>"
 	line "fell asleep!"
 	prompt
+	
+FellIntoANightmareText:
+	text "<TARGET>"
+	line "fell into a"
+	cont "NIGHTMARE!"
+	prompt
 
 AlreadyAsleepText:
 	text "<TARGET>'s"
@@ -946,13 +952,24 @@ TransformedText:
 	prompt
 
 LightScreenEffectText:
-	text "<USER>'s"
-	line "SPCL.DEF rose!"
+	text "Team's SPCL.DEF"
+	line "was doubled!"
 	prompt
 
 ReflectEffectText:
-	text "<USER>'s"
-	line "DEFENSE rose!"
+	text "Team's DEFENSE"
+	line "was doubled!"
+	prompt
+	
+AuroraVeilEffectText:
+	text "Team's DEFENSE"
+	line "and SPCL.DEF"
+	cont "were doubled!"
+	prompt
+	
+LandsWrathEffectText:
+	text "<USER>"
+	line "took in energy."
 	prompt
 
 NothingHappenedText:

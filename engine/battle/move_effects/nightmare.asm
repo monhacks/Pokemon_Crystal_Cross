@@ -28,6 +28,11 @@ BattleCommand_Nightmare:
 ; Otherwise give the opponent a nightmare.
 
 	set SUBSTATUS_NIGHTMARE, [hl]
+	
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_DARK_VOID
+	ret z
 	call AnimateCurrentMove
 	ld hl, StartedNightmareText
 	jp StdBattleTextbox

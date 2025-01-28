@@ -21,12 +21,18 @@ BattleCommand_ClearHazards:
 	bit SCREENS_SPIKES, [hl]
 	jr z, .no_spikes
 	res SCREENS_SPIKES, [hl]
+	bit SCREENS_TOXIC_SPIKES, [hl]
+	jr z, .spikes_text
+.no_spikes
+	bit SCREENS_TOXIC_SPIKES, [hl]
+	jr z, .no_toxicspikes
+	res SCREENS_TOXIC_SPIKES, [hl]
+.spikes_text
 	ld hl, BlewSpikesText
 	push de
 	call StdBattleTextbox
 	pop de
-.no_spikes
-
+.no_toxicspikes
 	ld a, [de]
 	and a
 	ret z

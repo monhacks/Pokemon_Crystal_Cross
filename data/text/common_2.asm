@@ -753,37 +753,37 @@ Text_BattleUser::
 	text_end
 
 _BattleMadeWhirlwindText::
-	text_start
+	text "<USER>"
 	line "made a whirlwind!"
 	prompt
 
 _BattleTookSunlightText::
-	text_start
+	text "<USER>"
 	line "took in sunlight!"
 	prompt
 
 _BattleLoweredHeadText::
-	text_start
+	text "<USER>"
 	line "lowered its head!"
 	prompt
 
 _BattleGlowingText::
-	text_start
+	text "<USER>"
 	line "is glowing!"
 	prompt
 
 _BattleFlewText::
-	text_start
+	text "<USER>"
 	line "flew up high!"
 	prompt
 
 _BattleDugText::
-	text_start
+	text "<USER>"
 	line "dug a hole!"
 	prompt
 	
 _BattleChargingText::
-	text_start
+	text "<USER>"
 	line "is charging up!"
 	prompt
 

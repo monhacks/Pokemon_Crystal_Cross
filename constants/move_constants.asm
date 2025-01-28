@@ -116,7 +116,7 @@
 	const SELFDESTRUCT ; 78
 	const DRAGON_DANCE ; 79
 	const LICK         ; 7a
-	const SMOG         ; 7b
+	const CLEAR_SMOG   ; 7b
 	const ACID_SPRAY   ; 7c 
 	const BONE_CLUB    ; 7d
 	const FIRE_BLAST   ; 7e
@@ -144,7 +144,7 @@
 	const BONEMERANG   ; 9b
 	const REST         ; 9c
 	const ROCK_SLIDE   ; 9d
-	const SHARPEN      ; 9f
+	const HONE_CLAWS   ; 9f
 	const FIRE_FANG    ; a0
 	const TRI_ATTACK   ; a1
 	const SUPER_FANG   ; a2
@@ -287,7 +287,7 @@
 	const SCALE_SHOT
 	const CHARGE
 	const DISCHARGE
-	const THUNDER_FANG
+	const CROSS_CHOP
 	const BRICK_BREAK
 	const DRAIN_PUNCH
 	const FOCUS_BLAST
@@ -306,7 +306,6 @@
 	const SEARING_SAND
 	const FROSTBREATH
 	const ICICLE_SPEAR
-	const GIGA_IMPACT
 	const CRUSH_CLAW
 	const DOUBLE_HIT
 	const POISON_TAIL
@@ -328,7 +327,6 @@
 	const PAYBACK
 	const AVALANCHE
 	const INFESTATION
-	const MINIMIZE
 	const VENOMSTRIKE
 	const PHANTOMFORCE
 	const FISSURE
@@ -337,7 +335,6 @@
 	const MIND_READER
 	const SHEER_COLD
 	const FLARE_BLITZ
-	const FLAME_BURST
 	const WEATHER_BALL
 	const FIERY_WRATH
 	const ICY_GLARE
@@ -348,12 +345,10 @@
 	const TOXIC_SPIKES
 	const SHOCK_WAVE
 	const THUNDERSPEAR
-	const NUZZLE
+	const FLASH_STRIKE
 	const CAMOUFLAGE
-	const DIZZY_PUNCH
 	const SOUL_DRAIN
 	const INFERNALPARADE
-	const FLAME_CHARGE
 	const DARK_VOID
 	const ACIDDOWNPOUR
 	const PSYCHO_BOOST
@@ -383,6 +378,11 @@
 	const SNATCH
 	const CORROSION
 	const WORK_UP
+	const SMOG
+	const SUPERPOWER
+	const ROCK_POLISH
+	const SHELL_SMASH
+	const DOUBLE_EDGE
 	const STRUGGLE
 	
 NUM_ATTACKS EQU const_value + - 1

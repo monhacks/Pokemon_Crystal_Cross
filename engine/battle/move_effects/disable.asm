@@ -1,3 +1,9 @@
+BattleCommand_DisableHit:
+	call BattleCommand_EffectChance
+	cp 1
+	ret nz
+;fallthrough
+
 BattleCommand_Disable:
 ; disable
 
@@ -72,4 +78,8 @@ BattleCommand_Disable:
 	jp StdBattleTextbox
 
 .failed
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_DISABLE_HIT
+	ret z
 	jp FailMove

@@ -172,7 +172,7 @@ BattleCommandPointers:
 	dw BattleCommand_SpecialDefenseDown2
 	dw BattleCommand_AccuracyDown2
 	dw BattleCommand_StartAcidRain
-	dw BattleCommand_DireClawStatusChance
+	dw BattleCommand_VenomStrikeStatusChance
 	dw BattleCommand_ElementFangChance
 	dw BattleCommand_Miracle_Eye
 	dw BattleCommand_Corrosion
@@ -180,4 +180,8 @@ BattleCommandPointers:
 	dw BattleCommand_PrintCorrosion
 	dw BattleCommand_ResetCorrosion
 	dw BattleCommand_ToxicSpikes
+	dw BattleCommand_DireClawStatusChance
+	dw BattleCommand_AccuracyDownPoisonChance
+	dw BattleCommand_DisableHit
+	dw BattleCommand_AuroraVeil
 	

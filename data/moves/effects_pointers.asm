@@ -153,7 +153,7 @@ MoveEffectsPointers:
 	dw SpAtkUpHit
 	dw DoEffectSpore
 	dw Coil
-	dw DireClaw
+	dw VenomStrike
 	dw HoneClaws
 	dw SpecialAttackUp2
 	dw NightmareHit
@@ -182,4 +182,12 @@ MoveEffectsPointers:
 	dw AcidDownpour
 	dw Acid
 	dw ToxicSpikes
+	dw DireClaw
+	dw VoltTackle
+	dw Smog
+	dw Superpower
+	dw PsychicFang
+	dw ShellSmash
+	dw AuroraVeil
+	dw LandsWrath
 	

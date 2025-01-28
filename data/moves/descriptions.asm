@@ -115,7 +115,7 @@ MoveDescriptions1:
 	dw SelfdestructDescription
 	dw DragonDanceDescription
 	dw LickDescription
-	dw SmogDescription
+	dw ClearSmogDescription
 	dw AcidSprayDescription
 	dw BoneClubDescription
 	dw FireBlastDescription
@@ -143,7 +143,7 @@ MoveDescriptions1:
 	dw BonemerangDescription
 	dw RestDescription
 	dw RockSlideDescription
-	dw SharpenDescription
+	dw HoneClawsDescription
 	dw FireFangDescription
 	dw TriAttackDescription
 	dw SuperFangDescription
@@ -287,7 +287,7 @@ MoveDescriptions1:
 	dw ChargeDescription
 	dw DischargeDescription
 	dw ThunderFangDescription
-	dw BrickBreakDescription
+	dw CrossChopDescription
 	dw DrainPunchDescription
 	dw FocusBlastDescription
 	dw DetectDescription
@@ -305,7 +305,6 @@ MoveDescriptions1:
 	dw SearingSandDescription
 	dw FrostbreathDescription
 	dw IcicleSpearDescription
-	dw GigaImpactDescription
 	dw CrushClawDescription
 	dw DoubleHitDescription
 	dw PoisonTailDescription
@@ -327,7 +326,6 @@ MoveDescriptions1:
 	dw PaybackDescription
 	dw AvalancheDescription
 	dw InfestationDescription
-	dw MinimizeDescription
 	dw VenomstrikeDescription
 	dw PhantomForceDescription
 	dw FissureDescription
@@ -336,7 +334,6 @@ MoveDescriptions1:
 	dw MindReaderDescription
 	dw SheerColdDescription
 	dw FlareBlitzDescription
-	dw FlameBurstDescription
 	dw WeatherBallDescription
 	dw FieryWrathDescription
 	dw IcyGlareDescription
@@ -347,12 +344,10 @@ MoveDescriptions1:
 	dw ToxicSpikesDescription
 	dw ShockWaveDescription
 	dw ThunderSpearDescription
-	dw NuzzleDescription
+	dw FlashStrikeDescription
 	dw CamouflageDescription
-	dw DizzyPunchDescription
 	dw SoulDrainDescription
 	dw InfernalParadeDescription
-	dw FlameChargeDescription
 	dw DarkVoidDescription
 	dw AcidDownpourDescription
 	dw PsychoBoostDescription
@@ -382,9 +377,17 @@ MoveDescriptions1:
 	dw SnatchDescription
 	dw CorrosionDescription
 	dw WorkUpDescription
+	dw SmogDescription
+	dw SuperpowerDescription
+	dw RockPolishDescription
+	dw ShellSmashDescription
+	dw DoubleEdgeDescription
 	dw StruggleDescription
 
 
+RockPolishDescription:
+ShellSmashDescription:
+SuperpowerDescription:
 InvalidMoveDescription:
 	db   ""
 	next "@"
@@ -409,7 +412,6 @@ FlareBlitzDescription:
 	next "hurts the user.@"
 
 LavaPlumeDescription:	
-FlameBurstDescription:
 	db   "An attack that may"
 	next "inflict a burn.@"
 	
@@ -625,7 +627,7 @@ AirCutterDescription:
 NightSlashDescription:
 ShadowClawDescription:
 PoisonTailDescription:	
-BrickBreakDescription:
+CrossChopDescription:
 	db   "Has a high criti-"
 	next "cal hit ratio.@"
 
@@ -646,6 +648,7 @@ HeatWaveDescription:
 	db   "A scorching wind,"
 	next "may inflict burns@"
 
+FlashStrikeDescription:
 MachPunchDescription:
 IceShardDescription:
 AccelerockDescription:
@@ -684,10 +687,6 @@ FrostbreathDescription:
 IcicleSpearDescription:
 	db   "Fires icicles to"
 	next "hit 2-5 times.@"
-	
-GigaImpactDescription:
-	db   "1st turn: Attack"
-	next "2nd turn: Rest@"
 	
 CrushClawDescription:
 	db   "An attack that may"
@@ -1031,6 +1030,7 @@ WrapDescription:
 	db   "Squeezes the foe"
 	next "for 2-5 turns.@"
 
+DoubleEdgeDescription:
 TakeDownDescription:
 	db   "A tackle that also"
 	next "hurts the user.@"
@@ -1316,6 +1316,7 @@ LightScreenDescription:
 	db   "Ups SPCL.DEF with"
 	next "a wall of light.@"
 
+ClearSmogDescription:
 HazeDescription:
 	db   "Eliminates all"
 	next "stat changes.@"
@@ -1404,10 +1405,6 @@ TransformDescription:
 	db   "The user assumes"
 	next "the foe's guise.@"
 
-DizzyPunchDescription:
-	db   "An attack that may"
-	next "cause confusion.@"
-
 FlashDescription:
 	db   "Blinds the foe to"
 	next "reduce accuracy.@"
@@ -1440,7 +1437,7 @@ RockSlideDescription:
 	db   "An attack that may"
 	next "cause flinching.@"
 
-SharpenDescription:
+HoneClawsDescription:
 	db   "Ups user's ATTACK"
 	next "and ACCURACY.@"
 

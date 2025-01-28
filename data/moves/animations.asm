@@ -134,7 +134,7 @@ BattleAnimations::
 	dw BattleAnim_Selfdestruct
 	dw BattleAnim_FocusEnergy  ;dragon dance
 	dw BattleAnim_Lick
-	dw BattleAnim_Smog
+	dw BattleAnim_Smog         ;clear smog
 	dw BattleAnim_Sludge       ;acid spray
 	dw BattleAnim_BoneClub
 	dw BattleAnim_FireBlast
@@ -162,7 +162,7 @@ BattleAnimations::
 	dw BattleAnim_Bonemerang
 	dw BattleAnim_Rest
 	dw BattleAnim_RockSlide
-	dw BattleAnim_Sharpen
+	dw BattleAnim_Sharpen      ;hone claws
 	dw BattleAnim_Bite         ;fire fang
 	dw BattleAnim_TriAttack
 	dw BattleAnim_SuperFang
@@ -306,7 +306,7 @@ BattleAnimations::
 	dw BattleAnim_Par          ;charge
 	dw BattleAnim_ThunderWave  ;discharge
 	dw BattleAnim_Bite         ;thunder fang
-	dw BattleAnim_KarateChop   ;brick break
+	dw BattleAnim_CrossChop
 	dw BattleAnim_Bide         ;drain punch
 	dw BattleAnim_Dynamicpunch ;focus blast
 	dw BattleAnim_Detect
@@ -324,7 +324,6 @@ BattleAnimations::
 	dw BattleAnim_SandAttack   ;searing sand
 	dw BattleAnim_IcyWind      ;frostbreath
 	dw BattleAnim_HornAttack   ;icicle spear
-	dw BattleAnim_DoubleEdge   ;giga impact
 	dw BattleAnim_Slash        ;crush claw
 	dw BattleAnim_Slam         ;double hit
 	dw BattleAnim_Reversal     ;poison tail
@@ -346,7 +345,6 @@ BattleAnimations::
 	dw BattleAnim_Frustration  ;payback
 	dw BattleAnim_RockSlide    ;avalanche
 	dw BattleAnim_StunSpore    ;infestation
-	dw BattleAnim_Minimize
 	dw BattleAnim_Guillotine   ;venomstrike
 	dw BattleAnim_Fly          ;phantomforce
 	dw BattleAnim_Fissure
@@ -355,7 +353,6 @@ BattleAnimations::
 	dw BattleAnim_MindReader
 	dw BattleAnim_Blizzard     ;sheer cold
 	dw BattleAnim_FlameWheel   ;flare blitz
-	dw BattleAnim_Ember        ;flame burst
 	dw BattleAnim_HiddenPower  ;weather ball
 	dw BattleAnim_FireSpin     ;fiery wrath
 	dw BattleAnim_Glare        ;icy glare
@@ -366,12 +363,10 @@ BattleAnimations::
 	dw BattleAnim_Spikes       ;toxic spikes
 	dw BattleAnim_Thundershock ;shock wave
 	dw BattleAnim_HornAttack   ;thunderspear
-	dw BattleAnim_Tackle       ;nuzzle
+	dw BattleAnim_QuickAttack  ;flash strike
 	dw BattleAnim_DefenseCurl  ;camouflage
-	dw BattleAnim_DizzyPunch
 	dw BattleAnim_GigaDrain    ;souldrain
 	dw BattleAnim_NightShade   ;infernalparade
-	dw BattleAnim_FlameWheel   ;flame charge
 	dw BattleAnim_Nightmare    ;dark void
 	dw BattleAnim_SludgeBomb   ;aciddownpour
 	dw BattleAnim_PsychicM     ;psycho boost
@@ -401,6 +396,11 @@ BattleAnimations::
 	dw BattleAnim_ScaryFace    ;snatch
 	dw BattleAnim_Toxic        ;corrosion
 	dw BattleAnim_Frustration  ;work up
+	dw BattleAnim_Smog
+	dw BattleAnim_Submission   ;superpower
+	dw BattleAnim_Harden       ;rock polish
+	dw BattleAnim_ShellSmash   ;shell smash
+	dw BattleAnim_DoubleEdge
 	dw BattleAnim_Struggle
 
 BattleAnim_0:
@@ -4981,3 +4981,27 @@ BattleAnim_ShowMon_1:
 	anim_wait 1
 	anim_ret
 
+BattleAnim_ShellSmash:
+	anim_bgeffect ANIM_BG_WOBBLE_SCREEN, $0, $0, $0
+	anim_wait 40
+	anim_2gfx ANIM_GFX_ROCKS, ANIM_GFX_HIT
+	anim_sound 0, 1, SFX_SPARK
+	anim_obj ANIM_OBJ_HIT_YFIX, 48, 100, $0
+	anim_sound 0, 1, SFX_SPARK
+	anim_obj ANIM_OBJ_ROCK_SMASH, 48, 108, $28
+	anim_obj ANIM_OBJ_ROCK_SMASH, 48, 108, $5c
+	anim_sound 0, 1, SFX_SPARK
+	anim_obj ANIM_OBJ_ROCK_SMASH, 48, 108, $10
+	anim_obj ANIM_OBJ_ROCK_SMASH, 48, 108, $e8
+	anim_sound 0, 1, SFX_SPARK
+	anim_obj ANIM_OBJ_ROCK_SMASH, 48, 108, $9c
+	anim_obj ANIM_OBJ_ROCK_SMASH, 48, 108, $d0
+	anim_wait 6
+	anim_sound 0, 1, SFX_SPARK
+	anim_obj ANIM_OBJ_ROCK_SMASH, 48, 108, $1c
+	anim_obj ANIM_OBJ_ROCK_SMASH, 48, 108, $50
+	anim_sound 0, 1, SFX_SPARK
+	anim_obj ANIM_OBJ_ROCK_SMASH, 48, 108, $dc
+	anim_obj ANIM_OBJ_ROCK_SMASH, 48, 108, $90
+	anim_wait 32
+	anim_ret

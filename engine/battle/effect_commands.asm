@@ -4229,8 +4229,8 @@ BattleCommand_SleepTarget:
 
 	call CheckSubstituteOpp
 	jr nz, .fail
-
-	call AnimateCurrentMove
+	
+	call AnimateCurrentMove	
 	ld b, SLP
 	ld a, [wInBattleTowerBattle]
 	and a
@@ -4248,7 +4248,14 @@ BattleCommand_SleepTarget:
 	call UpdateOpponentInParty
 	call RefreshBattleHuds
 
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_DARK_VOID
+	ld hl, FellIntoANightmareText
+	jr z, .nightmaretextend
+;usual text
 	ld hl, FellAsleepText
+.nightmaretextend
 	call StdBattleTextbox
 
 	farcall UseHeldStatusHealingItem
@@ -4264,27 +4271,27 @@ BattleCommand_SleepTarget:
 
 .CheckAIRandomFail:
 	; Enemy turn
-	ldh a, [hBattleTurn]
-	and a
-	jr z, .dont_fail
+;	ldh a, [hBattleTurn]
+;	and a
+;	jr z, .dont_fail
 
-	; Not in link battle
-	ld a, [wLinkMode]
-	and a
-	jr nz, .dont_fail
+;	; Not in link battle
+;	ld a, [wLinkMode]
+;	and a
+;	jr nz, .dont_fail
 
-	ld a, [wInBattleTowerBattle]
-	and a
-	jr nz, .dont_fail
+;	ld a, [wInBattleTowerBattle]
+;	and a
+;	jr nz, .dont_fail
 
-	; Not locked-on by the enemy
-	ld a, [wPlayerSubStatus5]
-	bit SUBSTATUS_LOCK_ON, a
-	jr nz, .dont_fail
+;	; Not locked-on by the enemy
+;	ld a, [wPlayerSubStatus5]
+;	bit SUBSTATUS_LOCK_ON, a
+;	jr nz, .dont_fail
 
-	call BattleRandom
-	cp 25 percent + 1 ; 25% chance AI fails
-	ret c
+;	call BattleRandom
+;	cp 25 percent + 1 ; 25% chance AI fails
+;	ret c
 
 .dont_fail
 	xor a
@@ -4359,25 +4366,25 @@ BattleCommand_Poison:
 	and a
 	jr nz, .failed
 
-	ldh a, [hBattleTurn]
-	and a
-	jr z, .dont_sample_failure
+;	ldh a, [hBattleTurn]
+;	and a
+;	jr z, .dont_sample_failure
 
-	ld a, [wLinkMode]
-	and a
-	jr nz, .dont_sample_failure
+;	ld a, [wLinkMode]
+;	and a
+;	jr nz, .dont_sample_failure
 
-	ld a, [wInBattleTowerBattle]
-	and a
-	jr nz, .dont_sample_failure
+;	ld a, [wInBattleTowerBattle]
+;	and a
+;	jr nz, .dont_sample_failure
 
-	ld a, [wPlayerSubStatus5]
-	bit SUBSTATUS_LOCK_ON, a
-	jr nz, .dont_sample_failure
+;	ld a, [wPlayerSubStatus5]
+;	bit SUBSTATUS_LOCK_ON, a
+;	jr nz, .dont_sample_failure
 
-	call BattleRandom
-	cp 25 percent + 1 ; 25% chance AI fails
-	jr c, .failed
+;	call BattleRandom
+;	cp 25 percent + 1 ; 25% chance AI fails
+;	jr c, .failed
 
 .dont_sample_failure
 	call CheckSubstituteOpp
@@ -5065,8 +5072,8 @@ MinimizeDropSub:
 .do_player
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld bc, MINIMIZE
-	call CompareMove
+;	ld bc, MINIMIZE
+;	call CompareMove
 	ret
 
 	ld a, $1
@@ -5174,32 +5181,32 @@ BattleCommand_StatDown:
 
 .ComputerMiss:
 ; Computer opponents have a 25% chance of failing.
-	ldh a, [hBattleTurn]
-	and a
-	jr z, .DidntMiss
+;	ldh a, [hBattleTurn]
+;	and a
+;	jr z, .DidntMiss
 
-	ld a, [wLinkMode]
-	and a
-	jr nz, .DidntMiss
+;	ld a, [wLinkMode]
+;	and a
+;	jr nz, .DidntMiss
 
-	ld a, [wInBattleTowerBattle]
-	and a
-	jr nz, .DidntMiss
+;	ld a, [wInBattleTowerBattle]
+;	and a
+;	jr nz, .DidntMiss
 
 ; Lock-On still always works.
-	ld a, [wPlayerSubStatus5]
-	bit SUBSTATUS_LOCK_ON, a
-	jr nz, .DidntMiss
+;	ld a, [wPlayerSubStatus5]
+;	bit SUBSTATUS_LOCK_ON, a
+;	jr nz, .DidntMiss
 
 ; Attacking moves that also lower accuracy are unaffected.
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_ACCURACY_DOWN_HIT
-	jr z, .DidntMiss
+;	ld a, BATTLE_VARS_MOVE_EFFECT
+;	call GetBattleVar
+;	cp EFFECT_ACCURACY_DOWN_HIT
+;	jr z, .DidntMiss
 
-	call BattleRandom
-	cp 25 percent + 1 ; 25% chance AI fails
-	jr c, .Failed
+;	call BattleRandom
+;	cp 25 percent + 1 ; 25% chance AI fails
+;	jr c, .Failed
 
 .DidntMiss:
 	call CheckSubstituteOpp
@@ -5552,25 +5559,58 @@ LowerStat:
 	ld [wFailedMessage], a
 	ret
 
-BattleCommand_TriStatusChance:
-; tristatuschance
+BattleCommand_DireClawStatusChance:
+; direclawstatuschance
 
-	call BattleCommand_EffectChance
-.loop
+;	call BattleCommand_EffectChance
+	call OneThirdChanceBR
+;.loop
 	; 1/3 chance of each status
+;	call BattleRandom
+;	swap a
+;	and %11
+;	jr z, .loop
+;	dec a
+	ld hl, .StatusCommands2
+	rst JumpTable
+	ret
+
+.StatusCommands2:
+	dw BattleCommand_PoisonTarget ; poison
+	dw BattleCommand_ParalyzeTarget ; paralyze
+	dw BattleCommand_SleepTarget ; sleep
+	
+OneThirdChanceBR:
+	call BattleCommand_EffectChance
+	.loop
+; 1/3 chance of each status
 	call BattleRandom
 	swap a
 	and %11
 	jr z, .loop
 	dec a
+	ret
+
+BattleCommand_TriStatusChance:
+; tristatuschance
+
+;	call BattleCommand_EffectChance
+	call OneThirdChanceBR
+;.loop
+	; 1/3 chance of each status
+;	call BattleRandom
+;	swap a
+;	and %11
+;	jr z, .loop
+;	dec a
 	ld hl, .StatusCommands
 	rst JumpTable
 	ret
 
 .StatusCommands:
+	dw BattleCommand_BurnTarget ; burn
 	dw BattleCommand_ParalyzeTarget ; paralyze
 	dw BattleCommand_FreezeTarget ; freeze
-	dw BattleCommand_BurnTarget ; burn
 
 BattleCommand_Curl:
 ; curl
@@ -6340,10 +6380,21 @@ BattleCommand_Charge:
 	jr z, .flying
 	cp EFFECT_DIG
 	jr z, .flying
+	cp EFFECT_LANDS_WRATH
+	jr z, .landswrath
 	cp EFFECT_DIVE
 	jr z, .flying
 	call BattleCommand_RaiseSub
 	jr .not_flying
+	
+.landswrath
+	ld hl, LandsWrathEffectText
+	call StdBattleTextbox
+	call BattleCommand_SpecialAttackUp
+	call BattleCommand_StatUpMessage
+	call BattleCommand_SpecialDefenseUp
+	call BattleCommand_StatUpMessage
+jr .not_flying
 
 .flying
 	call DisappearUser
@@ -6392,7 +6443,7 @@ BattleCommand_Charge:
 	jp EndMoveEffect
 
 .UsedText:
-	text_far Text_BattleUser ; "<USER>"
+;	text_far Text_BattleUser ; "<USER>"
 	text_asm
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -6423,7 +6474,12 @@ BattleCommand_Charge:
 	dw FLY,        .BattleFlewText
 	dw DIG,        .BattleDugText
 	dw DIVE,       .BattleDiveText
+	dw LANDS_WRATH, .BattleLandsWrathText
 	dw -1
+
+.BattleLandsWrathText:
+	text_far LandsWrathEffectText
+	text_end	
 
 .BattleMadeWhirlwindText:
 	text_far _BattleMadeWhirlwindText
@@ -7748,54 +7804,27 @@ BattleCommand_CheckPowder:
 	call BattleCommand_CheckPowder2
 	ret	
 	
-BattleCommand_DireClawStatusChance:
+BattleCommand_VenomStrikeStatusChance:
 ; fallthrough into effectspore status chance
 
-BattleCommand_EffectSporeStatusChance:
+BattleCommand_EffectSporeStatusChance: ;moved to Effect Commands 2
 ; effectsporestatuschance
-
-	call BattleCommand_EffectChance
-.loop
-	; 1/2 chance of each status
-	call BattleRandom
-	swap a
-	and %01
-	jr z, .paralyze
-	call BattleCommand_PoisonTarget
-	jr .end
-.paralyze
-	call BattleCommand_ParalyzeTarget
-.end
+	farcall BattleCommand_EffectSporeStatusChance2
 	ret
 	
-BattleCommand_ElementFangChance:
+BattleCommand_AccuracyDownPoisonChance:
+; accuracydownstatuschance
+	farcall BattleCommand_AccuracyDownPoisonChance2
+	ret
+	
+BattleCommand_ElementFangChance:       ;moved to Effect Commands 2
 ; elementfangchance
+	farcall BattleCommand_ElementFangChance2
+	ret
 
-	call BattleCommand_EffectChance
-.loop
-	; 1/2 chance of each status
-	call BattleRandom
-	swap a
-	and %01
-	jr z, .checkfang
-	call BattleCommand_FlinchTarget
-	jr .end
-.checkfang
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_THUNDER_FANG
-	jr z, .paralyze
-	cp EFFECT_FIRE_FANG
-	jr z, .burn
-	;EFFECT_ICE_FANG
-	call BattleCommand_FreezeTarget
-	jr .end
-.paralyze
-	call BattleCommand_ParalyzeTarget
-	jr .end
-.burn
-	call BattleCommand_BurnTarget
-.end
+BattleCommand_AuroraVeil:
+; auroraveil
+	farcall BattleCommand_AuroraVeil2
 	ret
 	
 CompareMove:

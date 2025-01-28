@@ -172,7 +172,7 @@ ENDM
 	command specialdefensedown2
 	command accuracydown2
 	command startacidrain
-	command direclawstatuschance
+	command venomstrikestatuschance
 	command elementfangchance
 	command miracleeye
 	command corrosion
@@ -180,6 +180,10 @@ ENDM
 	command printcorrosion
 	command resetcorrosion
 	command toxicspikes
+	command direclawstatuschance
+	command accuracydownpoisonchance
+	command disablehit
+	command auroraveil
 
 	const_def -1, -1
 	command endmove                 ; ff

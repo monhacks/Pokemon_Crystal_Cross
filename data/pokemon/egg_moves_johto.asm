@@ -241,7 +241,7 @@ SpinarakEggMoves:     ;xx
 	dw FELL_STINGER
 	dw X_SCISSOR
 	dw PIN_MISSILE
-	dw SHARPEN
+;	dw SHARPEN
 	dw BUG_BUZZ
 	dw MEGAHORN
 	dw -1 ; end
@@ -397,7 +397,7 @@ MurkrowEggMoves:      ;xx
 	dw MYSTICALFIRE
 	dw AIR_CUTTER
 	dw DRILL_PECK
-	dw SHARPEN
+;	dw SHARPEN
 	dw QUICK_ATTACK
 	dw HEX
 	dw -1 ; end
@@ -467,7 +467,7 @@ GligarEggMoves:       ;xx
 	dw LICK
 	dw BITE
 	dw CRABHAMMER
-	dw SHARPEN
+;	dw SHARPEN
 	dw AIR_CUTTER
 	dw -1 ; end
 
@@ -727,7 +727,7 @@ Charmander_CloneEggMoves:
 	dw POWERUPPUNCH
 	dw AIR_CUTTER
 	dw ECHOED_VOICE
-	dw SHARPEN
+;	dw SHARPEN
 	dw POISON_FANG
 	dw SLASH
 	dw -1 ; end
@@ -798,7 +798,7 @@ Sandshrew_AlolanEggMoves:    ;xx
 	dw X_SCISSOR
 	dw DIRE_CLAW
 	dw ICE_SHARD
-	dw SHARPEN
+;	dw SHARPEN
 	dw LEECH_LIFE
 	dw FURY_SWIPES
 	dw -1 ; end
@@ -837,7 +837,7 @@ StarlyEggMoves:
 	dw SAND_ATTACK
 	dw AIR_CUTTER
 	dw MUD_SLAP
-	dw SHARPEN
+;	dw SHARPEN
 	dw OMINOUS_WIND
 	dw MIRROR_MOVE
 	dw -1 ; end

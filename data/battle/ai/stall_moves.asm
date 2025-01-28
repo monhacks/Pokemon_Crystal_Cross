@@ -26,7 +26,6 @@ StallMoves:
 	dw TRANSFORM
 	dw SPLASH
 	dw ACID_ARMOR
-	dw SHARPEN
 	dw SUBSTITUTE
 	dw FLAME_WHEEL
 	dw TOXIC

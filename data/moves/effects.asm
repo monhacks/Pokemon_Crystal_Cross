@@ -273,6 +273,7 @@ Growth:
 	raisesub
     attackup
 	statupmessage
+	statupfailtext
 	specialattackup
 	statupmessage
     statupfailtext
@@ -283,10 +284,13 @@ Flash:
 	usedmovetext
 	doturn
 	checkhit
-	accuracydown2
+	accuracydown
 	lowersub
 	statdownanim
 	raisesub
+	statdownmessage
+	statdownfailtext
+	evasiondown
 	statdownmessage
 	statdownfailtext
 	endmove
@@ -2109,7 +2113,7 @@ Coil:
     statupfailtext
     endmove
 	
-DireClaw:
+VenomStrike:
 	checkobedience
 	usedmovetext
 	doturn
@@ -2125,7 +2129,7 @@ DireClaw:
 	criticaltext
 	supereffectivetext
 	checkfaint
-	direclawstatuschance
+	venomstrikestatuschance
 	endmove
 	
 HoneClaws:
@@ -2198,7 +2202,6 @@ ClearSmog:
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	moveanim
 	failuretext
 	applydamage
@@ -2206,7 +2209,6 @@ ClearSmog:
 	supereffectivetext
 	checkfaint
 	resetstats
-	poisontarget
 	endmove
 	
 SkyUppercut:
@@ -2348,19 +2350,8 @@ DarkVoid:
 	checkobedience
 	usedmovetext
 	doturn
-	critical
-	damagestats
-	damagecalc
-	stab
-	damagevariation
 	checkhit
-	effectchance
-	moveanim
 	failuretext
-	applydamage
-	criticaltext
-	supereffectivetext
-	checkfaint
 	sleeptarget
 	nightmare
 	endmove
@@ -2453,3 +2444,155 @@ ToxicSpikes:
 	toxicspikes
 	endmove
 	
+DireClaw:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	direclawstatuschance
+	endmove
+	
+VoltTackle:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	recoil
+	checkfaint
+	kingsrock
+	paralyzetarget
+	endmove
+	
+Smog:
+	checkobedience
+	usedmovetext
+	doturn
+	checkhit
+	accuracydown
+	lowersub
+	statdownanim
+	raisesub
+	statdownmessage
+	statdownfailtext
+	accuracydownpoisonchance
+	endmove
+	
+Superpower:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	switchturn
+	attackdown
+	statdownmessage
+	defensedown
+	statdownmessage
+	switchturn
+	checkfaint
+	endmove
+	
+PsychicFang:
+	checkobedience
+	usedmovetext
+	doturn
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
+	moveanim
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	kingsrock
+	disablehit
+	endmove
+	
+ShellSmash:
+	checkobedience
+	usedmovetext
+	doturn
+	attackup
+	lowersub
+	moveanim
+	raisesub
+	statupmessage
+	statupfailtext
+	specialattackup
+	statupmessage
+	statupfailtext
+	speedup
+	statupmessage
+	statupfailtext
+	switchturn
+	defensedown
+	statdownmessage
+	specialdefensedown
+	statdownmessage
+	switchturn
+	endmove
+	
+AuroraVeil:
+	checkobedience
+	usedmovetext
+	doturn
+	auroraveil
+	endmove
+
+LandsWrath:
+	checkcharge
+	checkobedience
+	doturn
+	charge
+	usedmovetext
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	effectchance
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	checkfaint
+	kingsrock
+	endmove

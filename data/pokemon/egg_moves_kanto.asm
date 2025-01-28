@@ -203,7 +203,7 @@ CharmanderEggMoves:   ;xx
 	dw POWERUPPUNCH
 	dw AIR_CUTTER
 	dw ECHOED_VOICE
-	dw SHARPEN
+;	dw SHARPEN
 	dw POISON_FANG
 	dw -1 ; end
 
@@ -234,7 +234,7 @@ WeedleEggMoves:       ;xx
 	dw ACID_SPRAY
 	dw LEECH_LIFE
 	dw MEGAHORN
-	dw SHARPEN
+;	dw SHARPEN
 	dw -1
 
 PidgeyEggMoves:       ;xx
@@ -312,7 +312,7 @@ SandshrewEggMoves:    ;xx
 	dw NIGHT_SLASH
 	dw X_SCISSOR
 	dw MUD_SLAP
-	dw SHARPEN
+;	dw SHARPEN
 	dw DIRE_CLAW
 	dw LEECH_LIFE
 	dw FURY_SWIPES
@@ -425,7 +425,7 @@ ParasEggMoves:        ;xx
 	dw BUG_BITE
 	dw FELL_STINGER
 	dw SYNTHESIS
-	dw SHARPEN
+;	dw SHARPEN
 	dw LEECH_SEED
 	dw ENDURE
 	dw -1 ; end
@@ -455,7 +455,7 @@ DiglettEggMoves:      ;xx
 	dw CHARM
 	dw NIGHT_SLASH
 	dw ECHOED_VOICE
-	dw SHARPEN
+;	dw SHARPEN
 	dw MUD_SHOT
 	dw AGILITY
 	dw -1 ; end
@@ -487,7 +487,7 @@ PsyduckEggMoves:      ;xx
 	dw REFRESH
 	dw POWERUPPUNCH
 	dw VACUUM_WAVE
-	dw SHARPEN
+;	dw SHARPEN
 	dw SMOG
 	dw BUBBLEBEAM
 	dw AQUA_JET
@@ -579,7 +579,7 @@ GeodudeEggMoves:      ;xx
 	dw IRON_DEFENSE
 	dw POWERUPPUNCH
 	dw FLAIL
-	dw SHARPEN
+;	dw SHARPEN
 	dw BULK_UP
 	dw ENDURE
 	dw SWAGGER
@@ -699,7 +699,7 @@ OnixEggMoves:         ;xx
 	dw MIRROR_COAT
 	dw IRON_DEFENSE
 	dw ROLLOUT
-	dw SHARPEN
+;	dw SHARPEN
 	dw FLAIL
 	dw COIL
 	dw MIRROR_SHOT
@@ -965,7 +965,7 @@ OmanyteEggMoves:      ;xx
 	dw ROCK_THROW
 	dw ENDURE
 	dw RAPID_SPIN
-	dw SHARPEN
+;	dw SHARPEN
 	dw DEFENSE_CURL
 	dw LEER
 	dw -1 ; end
@@ -982,7 +982,7 @@ KabutoEggMoves:       ;xx
 	dw CONFUSION
 	dw LEECH_LIFE
 	dw FLAIL
-	dw SHARPEN
+;	dw SHARPEN
 	dw TAKE_DOWN
 	dw -1 ; end
 
@@ -994,7 +994,7 @@ AerodonEggMoves:      ;xx
 	dw EMBER
 	dw DRAGON_DANCE
 	dw ACCELEROCK
-	dw SHARPEN
+;	dw SHARPEN
 	dw DRAGON_RAGE
 	dw GLARE
 	dw -1 ; end
