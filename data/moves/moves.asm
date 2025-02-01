@@ -786,6 +786,8 @@ Moves1:
 ;SKY_ATTACK - rasies atk and sp atk on charge turn, then attacks next turn
 	move EFFECT_SKY_ATTACK,        120, FLYING,       PHYSICAL,  90,   5,  0
 	
+;WYRM_WIND - 75bp special dragon move, chance to lower sp atk
+	
 ;BASILISK FANG - dragon move w/ venomstrike effect ?
 	
 ;fog map weather?

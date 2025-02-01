@@ -349,7 +349,7 @@ PrintParty_MoveString:
 	db "MOVE@"
 
 PrintParty_IDNoString:
-	db "<ID>№.@"
+	db "ID @"
 
 PrintParty_StatsString:
 	db   "ATTACK"

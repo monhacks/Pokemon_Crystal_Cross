@@ -30,7 +30,7 @@ ShowPlayerMonsRemaining:
 	jp LoadTrainerHudOAM
 
 ShowOTTrainerMonsRemaining:
-	call DrawEnemyHUDBorder
+	call DrawEnemyHUDBorderAlt
 	ld hl, wOTPartyMon1HP
 	ld de, wOTPartyCount
 	call StageBallTilesData
@@ -38,7 +38,7 @@ ShowOTTrainerMonsRemaining:
 	ld hl, wPlaceBallsX
 	ld a, 9 * 8
 	ld [hli], a
-	ld [hl], 4 * 8
+	ld [hl], 4 * 7
 	ld a, -8
 	ld [wPlaceBallsDirection], a
 	ld hl, wVirtualOAMSprite00 + PARTY_LENGTH * SPRITEOAMSTRUCT_LENGTH
@@ -137,7 +137,7 @@ DrawEnemyHUDBorder:
 	ld de, wTrainerHUDTiles
 	ld bc, .tiles_end - .tiles
 	call CopyBytes
-	hlcoord 1, 2
+	hlcoord 1, 1
 	ld de, 1 ; start on left
 	call PlaceHUDBorderTiles
 	ld a, [wBattleMode]
@@ -146,13 +146,41 @@ DrawEnemyHUDBorder:
 	ld a, [wTempEnemyMonSpecies]
 	call CheckCaughtMon
 	ret z
+	hlcoord 1, 0
+	;ld [hl], $5d
+	ld [hl], $5f
+	ret
+
+.tiles
+	;db $6d ; left side
+	db $6b
+	db $74 ; bottom left
+	db $78 ; bottom right
+	db $76 ; bottom side
+.tiles_end
+
+DrawEnemyHUDBorderAlt:
+	ld hl, .tiles
+	ld de, wTrainerHUDTiles
+	ld bc, .tiles_end - .tiles
+	call CopyBytes
 	hlcoord 1, 1
+	ld de, 1 ; start on left
+	call PlaceHUDBorderTiles
+	ld a, [wBattleMode]
+	dec a
+	ret nz
+	ld a, [wTempEnemyMonSpecies]
+	call CheckCaughtMon
+	ret z
+	hlcoord 1, 0
 	;ld [hl], $5d
 	ld [hl], $5f
 	ret
 
 .tiles
 	db $6d ; left side
+;	db $6b
 	db $74 ; bottom left
 	db $78 ; bottom right
 	db $76 ; bottom side

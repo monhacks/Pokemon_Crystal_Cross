@@ -1,9 +1,9 @@
 	db 0 ; species ID placeholder
 
-	db  86,  76,  86,  95,  116,  56
+	db  86,  85,  85,  95,  108,  56
 	;   hp   atk  def  spd  sat  sdf
 
-	db BUG, FLYING ; type
+	db BUG, DRAGON ; type
 	db 75 ; catch rate
 	db 184 ; base exp
 	db NO_ITEM, NO_ITEM ; items

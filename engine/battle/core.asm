@@ -5118,10 +5118,10 @@ CheckDanger:
 	ret
 
 PrintPlayerHUD:
-	ld de, wBattleMonNick
-	hlcoord 10, 7
-	call Battle_DummyFunction
-	call PlaceString
+;	ld de, wBattleMonNick
+;	hlcoord 10, 7
+;	call Battle_DummyFunction
+;	call PlaceString
 
 	push bc
 
@@ -5159,13 +5159,13 @@ PrintPlayerHUD:
 	ld a, "♀"
 
 .got_gender_char
-	hlcoord 17, 8
-	ld [hl], a
-	hlcoord 14, 8
+;	hlcoord 17, 8
+;	ld [hl], a
+;	hlcoord 14, 8
 	push af ; back up gender
 	push hl
 	ld de, wBattleMonStatus
-	predef PlaceNonFaintStatus
+;	predef PlaceNonFaintStatus
 	pop hl
 	pop bc
 	ret nz
@@ -5175,9 +5175,10 @@ PrintPlayerHUD:
 	dec hl ; genderless
 
 .copy_level
-	ld a, [wBattleMonLevel]
-	ld [wTempMonLevel], a
-	jp PrintLevel
+;	ld a, [wBattleMonLevel]
+;	ld [wTempMonLevel], a
+;	jp PrintLevel
+	ret
 
 UpdateEnemyHUD::
 	push hl
@@ -5204,10 +5205,10 @@ DrawEnemyHUD:
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	call GetBaseData
-	ld de, wEnemyMonNick
-	hlcoord 1, 0
-	call Battle_DummyFunction
-	call PlaceString
+;	ld de, wEnemyMonNick
+;	hlcoord 1, 0
+;	call Battle_DummyFunction
+;	call PlaceString
 	ld h, b
 	ld l, c
 	dec hl
@@ -5235,10 +5236,10 @@ DrawEnemyHUD:
 	ld a, "♀"
 
 .got_gender
-	hlcoord 9, 1
+	hlcoord 5, 0
 	ld [hl], a
 
-	hlcoord 6, 1
+	hlcoord 2, 0
 	push af
 	push hl
 	ld de, wEnemyMonStatus
@@ -5317,9 +5318,12 @@ DrawEnemyHUD:
 .draw_bar
 	xor a
 	ld [wWhichHPBar], a
-	hlcoord 2, 2
+	hlcoord 2, 1
 	ld b, 0
-	call DrawBattleHPBar
+	call DrawEnemyHPBar
+	hlcoord 8, 1
+	ld b, 0
+	call DrawEnemyHPSymbol
 	ret
 
 UpdateEnemyHPPal:

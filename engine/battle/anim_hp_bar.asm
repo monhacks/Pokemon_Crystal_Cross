@@ -235,16 +235,26 @@ LongHPBarAnim_UpdateTiles:
 
 HPBarAnim_RedrawHPBar:
 	ld a, [wWhichHPBar]
+	and a
+	jr z, .skip
 	cp $2
-	jr nz, .skip
+	jr nz, .skip2
 	ld a, 2 * SCREEN_WIDTH
 	add l
 	ld l, a
 	ld a, 0
 	adc h
 	ld h, a
-.skip
+.skip2
 	call DrawBattleHPBar
+	ret
+.skip
+	hlcoord 2, 1
+	ld b, 0
+	call DrawEnemyHPBar
+	hlcoord 8, 1
+	ld b, 0
+	call DrawEnemyHPSymbol	
 	ret
 
 HPBarAnim_UpdateHPRemaining:

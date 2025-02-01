@@ -74,6 +74,74 @@ DrawBattleHPBar::
 	pop de
 	pop hl
 	ret
+	
+DrawEnemyHPBar::
+; Draw an HP bar d tiles long at hl
+; Fill it up to e pixels
+
+	push hl
+	push de
+	push bc
+
+	push hl
+; Draw a template
+	ld a, $62 ; empty bar
+.template
+	ld [hli], a
+	dec d
+	jr nz, .template
+	ld a, $6a ; bar end
+	add b
+	ld [hl], a
+	pop hl
+
+; Safety check # pixels
+	ld a, e
+	and a
+	jr nz, .fill
+	ld a, c
+	and a
+	jr z, .done
+	ld e, 1
+
+.fill
+; Keep drawing tiles until pixel length is reached
+	ld a, e
+	sub TILE_WIDTH
+	jr c, .lastbar
+
+	ld e, a
+	ld a, $6a ; full bar
+	ld [hli], a
+	ld a, e
+	and a
+	jr z, .done
+	jr .fill
+
+.lastbar
+	ld a, $62  ; empty bar
+	add e      ; + e
+	ld [hl], a
+
+.done
+	pop bc
+	pop de
+	pop hl
+	ret
+
+DrawEnemyHPSymbol::	
+	push hl
+	push de
+	push bc
+; Place 'HP:'
+	ld a, $70
+	ld [hli], a
+	ld a, $72
+	ld [hl], a
+	pop bc
+	pop de
+	pop hl
+	ret
 
 PrepMonFrontpic::
 	ld a, $1
